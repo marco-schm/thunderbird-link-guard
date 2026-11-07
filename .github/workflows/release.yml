@@ -40,7 +40,12 @@ jobs:
           npm run package
           cd dist
           sha256sum "link-guard-$version.xpi" > SHA256SUMS
-      - name: Publish prerelease
+      - name: Publish regular release
         env:
           GH_TOKEN: ${{ github.token }}
-        run: gh release create "$GITHUB_REF_NAME" dist/*.xpi dist/SHA256SUMS --verify-tag --prerelease --generate-notes
+        run: |
+          version=$(node -p "require('./package.json').version")
+          test -s "release/notes/$version.md"
+          gh release create "$GITHUB_REF_NAME" dist/*.xpi dist/SHA256SUMS \
+            --verify-tag --latest --title "Link Guard $version" \
+            --notes-file "release/notes/$version.md"

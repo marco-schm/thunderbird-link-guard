@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.8.0 — 2026-11-07
+
+- Publish the first regular GitHub release with explicit installation and
+  security notes. The Link Guard runtime and permissions are unchanged from
+  0.7.3.
+
 ## 0.7.3 — 2026-11-07
 
 - Fetch the annotated tag object before verifying its YubiKey signature in
