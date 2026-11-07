@@ -4,6 +4,8 @@
   const policy = globalThis.LinkGuardPolicy;
   const access = globalThis.LinkGuardAccess;
   if (!policy || !access) return;
+  if (globalThis.__linkGuardDisplayInstalled) return;
+  globalThis.__linkGuardDisplayInstalled = true;
   const MAX_LISTED_LINKS = 500;
   const originalHrefs = new WeakMap();
   const inlineWarnings = new WeakMap();

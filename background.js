@@ -1,6 +1,5 @@
 "use strict";
 
-const SCRIPT_ID = "link-guard-message-display";
 const policy = globalThis.LinkGuardPolicy;
 const listImport = globalThis.LinkGuardImport;
 const domainScope = globalThis.LinkGuardDomainScope;
@@ -134,17 +133,31 @@ async function setDecision(host, decision, scope = "exact") {
   return readState();
 }
 
-async function registerMessageScript() {
-  const existing = await messenger.scripting.messageDisplay.getRegisteredScripts({ ids: [SCRIPT_ID] });
-  if (existing.length !== 0) await messenger.scripting.messageDisplay.unregisterScripts({ ids: [SCRIPT_ID] });
-  await messenger.scripting.messageDisplay.registerScripts([{
-    id: SCRIPT_ID, js: ["policy.js", "access.js", "display.js"], css: ["display.css"],
-    runAt: "document_start"
-  }]);
+// Manifest scripts cover messages as Thunderbird restores them. An update can also
+// leave a message already open, so inject into those documents once at startup.
+async function protectOpenMessages() {
+  const tabs = await messenger.tabs.query({ type: ["mail", "messageDisplay"] });
+  for (const tab of tabs) {
+    try {
+      if (tab.type === "mail") {
+        const displayed = await messenger.messageDisplay.getDisplayedMessages(tab.id);
+        if (displayed.messages?.length !== 1) continue;
+      }
+      const target = { tabId: tab.id };
+      const probe = await messenger.scripting.executeScript({ target,
+        func: () => Boolean(globalThis.__linkGuardDisplayInstalled) });
+      if (probe.some(result => result.result === true)) continue;
+      await messenger.scripting.insertCSS({ target, files: ["display.css"] });
+      await messenger.scripting.executeScript({ target,
+        files: ["policy.js", "access.js", "display.js"] });
+    } catch (error) {
+      console.error("Link Guard could not protect an already open message", error);
+    }
+  }
 }
 
-registerMessageScript().catch(error => {
-  console.error("Link Guard could not register its message display script", error);
+protectOpenMessages().catch(error => {
+  console.error("Link Guard could not inspect open message tabs", error);
 });
 
 messenger.action.onClicked.addListener(() => messenger.runtime.openOptionsPage());

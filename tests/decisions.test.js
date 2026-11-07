@@ -23,7 +23,7 @@ function harness() {
     } },
     action: { onClicked: { addListener() {} } },
     messageDisplay: { onMessagesDisplayed: { addListener() {} } },
-    tabs: { async sendMessage() {} },
+    tabs: { async query() { return []; }, async sendMessage() {} },
     messageDisplayAction: {
       onClicked: { addListener() {} },
       async setBadgeText() {}, async setBadgeBackgroundColor() {}, async setTitle() {}

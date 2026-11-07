@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.7.1 — 2026-11-07
+
+- Register message protection in the manifest so Thunderbird can apply it as
+  restored messages load after restart. Repair already open message tabs when
+  the extension starts.
+- Require Thunderbird 151 or newer for manifest-based message scripts.
+- Add an inert example JSON list for testing and documenting remote import.
+
 ## 0.7.0 — 2026-11-07
 
 - Show the actual destination host beside links with descriptive text.

@@ -18,11 +18,14 @@ Link Guard works locally on displayed messages. It does not upload mail or inspe
 
 ## Status and installation
 
-Version 0.7.0 is an early preview. The policy tests pass, and its link display
-was tested manually in Thunderbird 159 on macOS. Live testing of OpenPGP mail,
-remote imports, and non-German locales is still needed before a stable release.
+Version 0.7.1 is an early preview. Its policy tests pass, and its link display
+was tested manually in Thunderbird 159 on macOS. Live tests covered a synthetic
+OpenPGP message, a user-initiated HTTPS list preview, English and German UI,
+and a restored message after Thunderbird restarted. The restored message kept
+its links inactive until approved. Other Thunderbird versions and operating
+systems have not been tested live.
 
-Download the XPI from a [GitHub release](https://github.com/marco-schm/thunderbird-link-guard/releases) or build it from source. In Thunderbird, open **Add-ons and Themes**, choose **Install Add-on From File**, select the XPI, and review the requested permissions. Link Guard requests `messagesRead`, `scripting`, and `storage`; it requests no blanket host permission. Thunderbird 128 or newer is required by the manifest. Development testing was performed with Thunderbird 159 on macOS.
+Download the XPI from a [GitHub release](https://github.com/marco-schm/thunderbird-link-guard/releases) or build it from source. In Thunderbird, open **Add-ons and Themes**, choose **Install Add-on From File**, select the XPI, and review the requested permissions. Link Guard requests `messagesRead`, `scripting`, and `storage`; it requests no blanket host permission. Thunderbird 151 or newer is required by the manifest. Development testing was performed with Thunderbird 159 on macOS.
 
 The repository is independent of the OpenSMTPD mail filters. Installing Link Guard does not change the mail server.
 

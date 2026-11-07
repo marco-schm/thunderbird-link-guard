@@ -2,18 +2,23 @@
   "manifest_version": 3,
   "name": "__MSG_extensionName__",
   "description": "__MSG_extensionDescription__",
-  "version": "0.7.0",
+  "version": "0.7.1",
   "default_locale": "de",
   "browser_specific_settings": {
     "gecko": {
       "id": "link-guard@sayanetworks.eu",
-      "strict_min_version": "128.0"
+      "strict_min_version": "151.0"
     }
   },
   "permissions": ["messagesRead", "scripting", "storage"],
   "background": {
     "scripts": ["policy.js", "import-list.js", "domain-scope.js", "background.js"]
   },
+  "message_display_scripts": [{
+    "js": ["policy.js", "access.js", "display.js"],
+    "css": ["display.css"],
+    "run_at": "document_start"
+  }],
   "action": {
     "default_title": "__MSG_optionsAction__"
   },
