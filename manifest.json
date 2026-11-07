@@ -1,0 +1,29 @@
+{
+  "manifest_version": 3,
+  "name": "__MSG_extensionName__",
+  "description": "__MSG_extensionDescription__",
+  "version": "0.7.0",
+  "default_locale": "de",
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "link-guard@sayanetworks.eu",
+      "strict_min_version": "128.0"
+    }
+  },
+  "permissions": ["messagesRead", "scripting", "storage"],
+  "background": {
+    "scripts": ["policy.js", "import-list.js", "domain-scope.js", "background.js"]
+  },
+  "action": {
+    "default_title": "__MSG_optionsAction__"
+  },
+  "message_display_action": {
+    "default_title": "__MSG_toolbarInitial__",
+    "default_label": "__MSG_extensionName__",
+    "default_icon": "icons/shield.svg"
+  },
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": true
+  }
+}

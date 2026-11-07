@@ -1,0 +1,418 @@
+{
+  "extensionName": {
+    "message": "Link Guard"
+  },
+  "extensionDescription": {
+    "message": "Prüft Weblinks in E-Mails und verlangt bei verdächtigen Zielen eine ausdrückliche Freigabe."
+  },
+  "optionsAction": {
+    "message": "Link Guard – Einstellungen öffnen"
+  },
+  "toolbarInitial": {
+    "message": "Link Guard prüft Links in dieser Nachricht"
+  },
+  "toolbarDisabled": {
+    "message": "Link Guard ist deaktiviert"
+  },
+  "toolbarOverflow": {
+    "message": "Link Guard: zu viele Links; übrige Links gesperrt"
+  },
+  "toolbarPending": {
+    "message": "Link Guard: $COUNT$ gesperrte Links",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "toolbarClear": {
+    "message": "Link Guard: keine gesperrten Weblinks"
+  },
+  "toolbarRisk": {
+    "message": "Link Guard: $COUNT$ verdächtige Domains",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "panelTitle": {
+    "message": "Links prüfen"
+  },
+  "panelCompact": {
+    "message": "Links offen: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "panelCompactRisk": {
+    "message": "⚠ Warnungen: $RISK$ · Offen: $BLOCKED$",
+    "placeholders": {
+      "risk": {
+        "content": "$2"
+      },
+      "blocked": {
+        "content": "$1"
+      }
+    }
+  },
+  "panelSummary": {
+    "message": "$TOTAL$ Weblinks geprüft · $BLOCKED$ gesperrt",
+    "placeholders": {
+      "total": {
+        "content": "$1"
+      },
+      "blocked": {
+        "content": "$2"
+      }
+    }
+  },
+  "panelInstruction": {
+    "message": "Prüfe Domain und Anlass unabhängig von dieser E-Mail. Eine dauerhafte Freigabe kann für den exakten Host oder bewusst für seine ganze Domain gelten. Kurzlinks und Weiterleitungen erfordern eine rote Warnbestätigung pro Mail."
+  },
+  "linksForHost": {
+    "message": "Links in dieser Mail: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "status_pending": {
+    "message": "Nicht freigegeben"
+  },
+  "status_temporary": {
+    "message": "Für diese Mail"
+  },
+  "status_permanent": {
+    "message": "Dauerhaft freigegeben"
+  },
+  "status_broad": {
+    "message": "Über ganze Domain freigegeben"
+  },
+  "status_blocked": {
+    "message": "Blockiert"
+  },
+  "allowTemporary": {
+    "message": "Temporär freigeben"
+  },
+  "allowPermanent": {
+    "message": "Dauerhaft freigeben"
+  },
+  "blockHost": {
+    "message": "Blockieren"
+  },
+  "scopePrompt": {
+    "message": "Welcher Bereich soll dauerhaft freigegeben werden?"
+  },
+  "scopePromptShared": {
+    "message": "Hier können andere Inhalte veröffentlichen. Nur diesen Host freigeben."
+  },
+  "linkDestinationInline": {
+    "message": "↗ $HOST$",
+    "placeholders": {
+      "host": { "content": "$1" }
+    }
+  },
+  "scopeExact": {
+    "message": "Nur $HOST$",
+    "placeholders": {
+      "host": {
+        "content": "$1"
+      }
+    }
+  },
+  "scopeBroad": {
+    "message": "$DOMAIN$ und alle Subdomains",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      }
+    }
+  },
+  "riskIdn": {
+    "message": "Ähnliche Zeichen im Domainnamen möglich."
+  },
+  "riskLookalike": {
+    "message": "Ähnelt $DOMAIN$.",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      }
+    }
+  },
+  "riskIdnInline": {
+    "message": "⚠ Ähnliche Zeichen"
+  },
+  "riskLookalikeInline": {
+    "message": "⚠ Ähnlich wie $DOMAIN$",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      }
+    }
+  },
+  "riskUnverified": {
+    "message": "Domainprüfung nicht verfügbar."
+  },
+  "riskUnverifiedInline": {
+    "message": "⚠ Domain ungeprüft"
+  },
+  "risk_insecureHttp": {
+    "message": "HTTP ohne Verschlüsselung."
+  },
+  "risk_credentials": {
+    "message": "Zugangsdaten in der URL."
+  },
+  "risk_ipAddress": {
+    "message": "Direkte IP-Adresse."
+  },
+  "risk_unusualPort": {
+    "message": "Ungewöhnlicher Port."
+  },
+  "risk_textMismatch": {
+    "message": "Linktext und Ziel unterscheiden sich."
+  },
+  "riskInline_insecureHttp": {
+    "message": "⚠ HTTP"
+  },
+  "riskInline_credentials": {
+    "message": "⚠ Zugangsdaten in URL"
+  },
+  "riskInline_ipAddress": {
+    "message": "⚠ IP-Adresse"
+  },
+  "riskInline_unusualPort": {
+    "message": "⚠ Ungewöhnlicher Port"
+  },
+  "riskInline_textMismatch": {
+    "message": "⚠ Linktext ≠ Ziel"
+  },
+  "unsafeTitle": {
+    "message": "Nicht freigebbare Links"
+  },
+  "unknownHost": {
+    "message": "Unbekanntes Ziel"
+  },
+  "reason_invalidUrl": {
+    "message": "Linkziel ist ungültig oder zu lang"
+  },
+  "reason_badScheme": {
+    "message": "Link verwendet ein nicht unterstütztes Protokoll"
+  },
+  "reason_credentials": {
+    "message": "Link enthält Zugangsdaten im Ziel"
+  },
+  "reason_ipAddress": {
+    "message": "Link führt direkt zu einer IP-Adresse"
+  },
+  "reason_insecureHttp": {
+    "message": "Link verwendet unverschlüsseltes HTTP"
+  },
+  "reason_unusualPort": {
+    "message": "Link verwendet einen ungewöhnlichen Port"
+  },
+  "reason_textMismatch": {
+    "message": "Angezeigte und tatsächliche Domain unterscheiden sich"
+  },
+  "reason_redirectUnsafe": {
+    "message": "Weiterleitungsziel ist unsicher oder nicht prüfbar"
+  },
+  "overflowNotice": {
+    "message": "Mehr als 500 Links: Weitere Links bleiben gesperrt und erscheinen nicht in dieser Liste."
+  },
+  "exactHostNotice": {
+    "message": "Ober- und Unterdomains werden immer getrennt behandelt. Bereits angezeigte Linktexte können täuschen."
+  },
+  "stateUnavailable": {
+    "message": "Freigaben konnten nicht geladen werden. Weblinks bleiben gesperrt."
+  },
+  "saveFailed": {
+    "message": "Entscheidung konnte nicht gespeichert werden. Der Link bleibt gesperrt."
+  },
+  "settingsTitle": {
+    "message": "Link Guard Einstellungen"
+  },
+  "settingsSubtitle": {
+    "message": "Entscheide, welchen exakten Hostnamen du für Weblinks in E-Mails vertraust."
+  },
+  "enabledLabel": {
+    "message": "Link Guard aktivieren"
+  },
+  "enabledHint": {
+    "message": "Bei deaktiviertem Schutz werden Links wieder direkt klickbar."
+  },
+  "hostCount": {
+    "message": "Hostnamen: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "customTitle": {
+    "message": "Meine dauerhaften Freigaben"
+  },
+  "customHint": {
+    "message": "Hier erscheinen Domains, die du in einer Mail dauerhaft freigibst. Du kannst sie auch selbst bearbeiten."
+  },
+  "blockedTitle": {
+    "message": "Blockierte Domains"
+  },
+  "blockedHint": {
+    "message": "Diese Liste hat Vorrang vor dauerhaften Freigaben und importierten Listen. Eine ausdrückliche temporäre Freigabe gilt nur in der gerade geöffneten Mail."
+  },
+  "broadTitle": {
+    "message": "Ganze Domains freigeben"
+  },
+  "broadHint": {
+    "message": "Jeder Eintrag gilt für die registrierbare Domain und alle Subdomains. Diese breite Freigabe nur bei eigener Kontrolle der Domain nutzen."
+  },
+  "broadInvalid": {
+    "message": "$DOMAIN$ ist keine registrierbare Domain laut gebündelter Public Suffix List.",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      }
+    }
+  },
+  "importsTitle": {
+    "message": "Eigene und Remote-Listen"
+  },
+  "importsHint": {
+    "message": "JSON-Datei importieren oder HTTPS-Liste verknüpfen. Jede Liste wird vor Aktivierung angezeigt und nur nach deiner Prüfung übernommen. Remote-Änderungen benötigen erneut deine Bestätigung."
+  },
+  "importFileLabel": {
+    "message": "JSON-Datei auswählen"
+  },
+  "importUrlLabel": {
+    "message": "HTTPS-Adresse einer JSON-Liste"
+  },
+  "previewRemote": {
+    "message": "Remote-Liste prüfen"
+  },
+  "importSecurityHint": {
+    "message": "Remote-Server müssen CORS erlauben. Keine Mailinhalte werden übertragen. Maximal 64 KiB, 500 Hostnamen und 20 Listen; keine Weiterleitungen. Lade nur Listen aus vertrauenswürdigen Quellen."
+  },
+  "importPreviewTitle": {
+    "message": "Vorschau"
+  },
+  "refreshTitle": {
+    "message": "Aktualisierung prüfen"
+  },
+  "stageImport": {
+    "message": "Als deaktivierte Liste vormerken"
+  },
+  "stageRefresh": {
+    "message": "Änderung vormerken"
+  },
+  "cancelPreview": {
+    "message": "Abbrechen"
+  },
+  "refreshPreview": {
+    "message": "Remote-Änderung prüfen"
+  },
+  "removeList": {
+    "message": "Liste entfernen"
+  },
+  "importStaged": {
+    "message": "Liste vorgemerkt. Zum Übernehmen unten speichern."
+  },
+  "importReady": {
+    "message": "Liste geprüft. Hostnamen in der Vorschau kontrollieren."
+  },
+  "importLoading": {
+    "message": "Liste wird geladen und geprüft …"
+  },
+  "importTooLarge": {
+    "message": "Liste ist zu groß (maximal 64 KiB)."
+  },
+  "importFormat": {
+    "message": "Ungültiges Listenformat. Erwartet: format, version, name, category und hosts."
+  },
+  "importDuplicate": {
+    "message": "Liste enthält denselben Hostnamen mehrfach."
+  },
+  "importUrl": {
+    "message": "Nur eine HTTPS-Dateiadresse ohne Zugangsdaten, Port, Parameter oder Fragment ist erlaubt."
+  },
+  "importFetch": {
+    "message": "Remote-Liste konnte nicht sicher geladen werden. HTTPS, JSON, CORS und Weiterleitungen prüfen."
+  },
+  "importListLimit": {
+    "message": "Maximal 20 importierte Listen."
+  },
+  "importEmpty": {
+    "message": "Eine importierte Liste darf nicht leer sein."
+  },
+  "category_news": {
+    "message": "Nachrichten"
+  },
+  "category_social": {
+    "message": "Soziale Netzwerke"
+  },
+  "category_companies": {
+    "message": "Unternehmen"
+  },
+  "category_other": {
+    "message": "Sonstiges"
+  },
+  "hostListLabel": {
+    "message": "Ein exakter Hostname pro Zeile"
+  },
+  "saveSettings": {
+    "message": "Änderungen speichern"
+  },
+  "settingsSaved": {
+    "message": "Einstellungen gespeichert."
+  },
+  "settingsLoadFailed": {
+    "message": "Einstellungen konnten nicht geladen werden."
+  },
+  "settingsSaveFailed": {
+    "message": "Einstellungen konnten nicht gespeichert werden."
+  },
+  "settingsChanged": {
+    "message": "Listen wurden anderswo geändert. Bitte Seite neu laden, bevor du speicherst."
+  },
+  "invalidHostLine": {
+    "message": "Ungültiger Hostname in Zeile $LINE$.",
+    "placeholders": {
+      "line": {
+        "content": "$1"
+      }
+    }
+  },
+  "hostLimit": {
+    "message": "Maximal 500 Hostnamen pro Liste."
+  },
+  "hostFormatHint": {
+    "message": "Keine URLs, Pfade, Ports oder Platzhalter. Beispiel: login.example.com"
+  },
+  "exactHostExample": {
+    "message": "login.google.de und google.de sind verschiedene Hostnamen und brauchen getrennte Freigaben."
+  },
+  "risk_shortLink": {
+    "message": "Kurzlink: Ziel verborgen."
+  },
+  "riskInline_shortLink": {
+    "message": "⚠ Kurzlink"
+  },
+  "riskyApprovalWarning": {
+    "message": "Kurzlink verbirgt das Ziel. Wirklich für diese Mail freigeben?"
+  },
+  "riskyApprovalConfirm": {
+    "message": "Für diese Mail freigeben"
+  },
+  "importedEnable": {
+    "message": "Liste aktivieren"
+  },
+  "listViewEdit": {
+    "message": "Liste ansehen und bearbeiten"
+  },
+  "listHosts": {
+    "message": "Exakte Hostnamen dieser Liste"
+  }
+}
