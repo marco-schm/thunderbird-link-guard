@@ -18,6 +18,9 @@ jobs:
       - name: Require YubiKey-signed release tag
         run: |
           set -eu
+          # checkout may replace the annotated tag ref with its peeled commit.
+          git fetch --force origin \
+            "refs/tags/$GITHUB_REF_NAME:refs/tags/$GITHUB_REF_NAME"
           test "$(git cat-file -t "$GITHUB_REF_NAME")" = tag
           test "$(git rev-parse "$GITHUB_REF_NAME^{commit}")" = "$(git rev-parse HEAD)"
           test "$(sha256sum release/allowed_signers | cut -d ' ' -f1)" = \

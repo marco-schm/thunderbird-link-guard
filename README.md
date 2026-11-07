@@ -18,7 +18,7 @@ Link Guard works locally on displayed messages. It does not upload mail or inspe
 
 ## Status and installation
 
-Version 0.7.2 is an early preview. Its policy tests pass. The same runtime code
+Version 0.7.3 is an early preview. Its policy tests pass. The same runtime code
 was tested manually as 0.7.1 in Thunderbird 159 on macOS. Live tests covered a
 synthetic OpenPGP message, a user-initiated HTTPS list preview, English and German UI,
 and a restored message after Thunderbird restarted. The restored message kept

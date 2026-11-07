@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.7.3 — 2026-11-07
+
+- Fetch the annotated tag object before verifying its YubiKey signature in
+  GitHub Actions. The 0.7.2 tag did not produce a release because checkout
+  replaced that tag ref with the commit during the first verification attempt.
+
 ## 0.7.2 — 2026-11-07
 
 - Require a dedicated YubiKey FIDO signature on the release tag before the
