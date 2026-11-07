@@ -149,7 +149,7 @@ async function protectOpenMessages() {
       if (probe.some(result => result.result === true)) continue;
       await messenger.scripting.insertCSS({ target, files: ["display.css"] });
       await messenger.scripting.executeScript({ target,
-        files: ["policy.js", "access.js", "display.js"] });
+        files: ["locale.js", "policy.js", "access.js", "display.js"] });
     } catch (error) {
       console.error("Link Guard could not protect an already open message", error);
     }

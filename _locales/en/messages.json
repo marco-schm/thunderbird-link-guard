@@ -70,7 +70,7 @@
     }
   },
   "panelInstruction": {
-    "message": "Check the domain and context independently of this email. Permanent approval can cover the exact host or, deliberately, its whole domain. Short links and redirects require a red confirmation per message."
+    "message": "Check the destination independently of this email. Permanent approval can cover the exact host or the entire domain. Public short links require an extra confirmation for this message."
   },
   "linksForHost": {
     "message": "Links in this email: $COUNT$",
@@ -113,7 +113,9 @@
   "linkDestinationInline": {
     "message": "↗ $HOST$",
     "placeholders": {
-      "host": { "content": "$1" }
+      "host": {
+        "content": "$1"
+      }
     }
   },
   "scopeExact": {

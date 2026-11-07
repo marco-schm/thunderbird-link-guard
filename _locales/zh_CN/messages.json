@@ -1,0 +1,420 @@
+{
+  "extensionName": {
+    "message": "Link Guard"
+  },
+  "extensionDescription": {
+    "message": "检查电子邮件中的网页链接，并要求明确批准可疑目标地址。"
+  },
+  "optionsAction": {
+    "message": "Link Guard — 打开设置"
+  },
+  "toolbarInitial": {
+    "message": "Link Guard 正在检查此邮件中的链接"
+  },
+  "toolbarDisabled": {
+    "message": "Link Guard 已关闭"
+  },
+  "toolbarOverflow": {
+    "message": "Link Guard：链接过多，其余链接已被阻止"
+  },
+  "toolbarPending": {
+    "message": "Link Guard：已阻止 $COUNT$ 个链接",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "toolbarClear": {
+    "message": "Link Guard：没有被阻止的网页链接"
+  },
+  "toolbarRisk": {
+    "message": "Link Guard：$COUNT$ 个可疑域名",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "panelTitle": {
+    "message": "检查链接"
+  },
+  "panelCompact": {
+    "message": "待确认链接：$COUNT$ 个",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "panelCompactRisk": {
+    "message": "⚠ 警告：$RISK$ 个 · 待确认：$BLOCKED$ 个",
+    "placeholders": {
+      "risk": {
+        "content": "$2"
+      },
+      "blocked": {
+        "content": "$1"
+      }
+    }
+  },
+  "panelSummary": {
+    "message": "已检查 $TOTAL$ 个网页链接 · 已阻止 $BLOCKED$ 个",
+    "placeholders": {
+      "total": {
+        "content": "$1"
+      },
+      "blocked": {
+        "content": "$2"
+      }
+    }
+  },
+  "panelInstruction": {
+    "message": "请通过这封邮件以外的途径核实目标地址。永久批准可适用于准确的主机名或整个域名。公共短链接在此邮件中需要额外确认。"
+  },
+  "linksForHost": {
+    "message": "此邮件中的链接：$COUNT$ 个",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "status_pending": {
+    "message": "未批准"
+  },
+  "status_temporary": {
+    "message": "仅限此邮件"
+  },
+  "status_permanent": {
+    "message": "已永久批准"
+  },
+  "status_broad": {
+    "message": "通过整个域名的批准而获准"
+  },
+  "status_blocked": {
+    "message": "已阻止"
+  },
+  "allowTemporary": {
+    "message": "临时允许"
+  },
+  "allowPermanent": {
+    "message": "永久允许"
+  },
+  "blockHost": {
+    "message": "阻止"
+  },
+  "scopePrompt": {
+    "message": "要永久批准哪个范围？"
+  },
+  "scopePromptShared": {
+    "message": "其他人也可以在这里发布内容。请只批准此主机名。"
+  },
+  "linkDestinationInline": {
+    "message": "↗ $HOST$",
+    "placeholders": {
+      "host": {
+        "content": "$1"
+      }
+    }
+  },
+  "scopeExact": {
+    "message": "仅限 $HOST$",
+    "placeholders": {
+      "host": {
+        "content": "$1"
+      }
+    }
+  },
+  "scopeBroad": {
+    "message": "$DOMAIN$ 及其所有子域名",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      }
+    }
+  },
+  "riskIdn": {
+    "message": "可能包含外形相似的字符。"
+  },
+  "riskLookalike": {
+    "message": "与 $DOMAIN$ 相似。",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      }
+    }
+  },
+  "riskIdnInline": {
+    "message": "⚠ 相似字符"
+  },
+  "riskLookalikeInline": {
+    "message": "⚠ 与 $DOMAIN$ 相似",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      }
+    }
+  },
+  "riskUnverified": {
+    "message": "无法检查域名。"
+  },
+  "riskUnverifiedInline": {
+    "message": "⚠ 域名未经检查"
+  },
+  "risk_insecureHttp": {
+    "message": "HTTP 未加密。"
+  },
+  "risk_credentials": {
+    "message": "URL 中含有登录凭据。"
+  },
+  "risk_ipAddress": {
+    "message": "直接使用 IP 地址。"
+  },
+  "risk_unusualPort": {
+    "message": "使用了不常见的端口。"
+  },
+  "risk_textMismatch": {
+    "message": "链接文字与实际目标地址不同。"
+  },
+  "riskInline_insecureHttp": {
+    "message": "⚠ HTTP"
+  },
+  "riskInline_credentials": {
+    "message": "⚠ URL 中含有登录凭据"
+  },
+  "riskInline_ipAddress": {
+    "message": "⚠ IP 地址"
+  },
+  "riskInline_unusualPort": {
+    "message": "⚠ 不常见的端口"
+  },
+  "riskInline_textMismatch": {
+    "message": "⚠ 文字 ≠ 目标地址"
+  },
+  "unsafeTitle": {
+    "message": "无法批准的链接"
+  },
+  "unknownHost": {
+    "message": "未知目标地址"
+  },
+  "reason_invalidUrl": {
+    "message": "链接目标无效或过长"
+  },
+  "reason_badScheme": {
+    "message": "链接使用了不支持的协议"
+  },
+  "reason_credentials": {
+    "message": "链接目标包含登录凭据"
+  },
+  "reason_ipAddress": {
+    "message": "链接直接指向 IP 地址"
+  },
+  "reason_insecureHttp": {
+    "message": "链接使用未加密的 HTTP"
+  },
+  "reason_unusualPort": {
+    "message": "链接使用不常见的端口"
+  },
+  "reason_textMismatch": {
+    "message": "显示的域名与实际域名不同"
+  },
+  "reason_redirectUnsafe": {
+    "message": "重定向目标不安全或无法检查"
+  },
+  "overflowNotice": {
+    "message": "链接超过 500 个：多出的链接仍被阻止，且不会在此列出。"
+  },
+  "exactHostNotice": {
+    "message": "主域名与子域名始终分开处理。显示的链接文字可能具有误导性。"
+  },
+  "stateUnavailable": {
+    "message": "无法加载批准记录。网页链接仍被阻止。"
+  },
+  "saveFailed": {
+    "message": "无法保存决定。链接仍被阻止。"
+  },
+  "settingsTitle": {
+    "message": "Link Guard 设置"
+  },
+  "settingsSubtitle": {
+    "message": "选择您信任的电子邮件网页链接的准确主机名。"
+  },
+  "enabledLabel": {
+    "message": "启用 Link Guard"
+  },
+  "enabledHint": {
+    "message": "关闭保护后，链接将再次可以直接点击。"
+  },
+  "hostCount": {
+    "message": "主机名：$COUNT$ 个",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "customTitle": {
+    "message": "我的永久批准"
+  },
+  "customHint": {
+    "message": "在邮件中永久批准的域名会显示在这里。您也可以直接编辑。"
+  },
+  "blockedTitle": {
+    "message": "已阻止的域名"
+  },
+  "blockedHint": {
+    "message": "此列表优先于永久批准和导入的列表。明确的临时批准仅适用于当前显示的邮件。"
+  },
+  "broadTitle": {
+    "message": "批准整个域名"
+  },
+  "broadHint": {
+    "message": "每项都涵盖可注册域名及其所有子域名。请只对您控制的域名使用这种广泛批准。"
+  },
+  "broadInvalid": {
+    "message": "根据内置的公共后缀列表，$DOMAIN$ 不是可注册域名。",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      }
+    }
+  },
+  "importsTitle": {
+    "message": "自定义和远程列表"
+  },
+  "importsHint": {
+    "message": "导入 JSON 文件或连接 HTTPS 列表。每个列表在启用前都会显示，只有经您检查后才会生效。远程变更需要再次批准。"
+  },
+  "importFileLabel": {
+    "message": "选择 JSON 文件"
+  },
+  "importUrlLabel": {
+    "message": "JSON 列表的 HTTPS URL"
+  },
+  "previewRemote": {
+    "message": "检查远程列表"
+  },
+  "importSecurityHint": {
+    "message": "远程服务器必须允许 CORS。不会发送邮件内容。最多 64 KiB、500 个主机名和 20 个列表；不允许重定向。只加载可信来源的列表。"
+  },
+  "importPreviewTitle": {
+    "message": "预览"
+  },
+  "refreshTitle": {
+    "message": "检查更新"
+  },
+  "stageImport": {
+    "message": "作为停用列表添加"
+  },
+  "stageRefresh": {
+    "message": "暂存更新"
+  },
+  "cancelPreview": {
+    "message": "取消"
+  },
+  "refreshPreview": {
+    "message": "检查远程更新"
+  },
+  "removeList": {
+    "message": "移除列表"
+  },
+  "importStaged": {
+    "message": "列表已暂存。请在下方保存以应用。"
+  },
+  "importReady": {
+    "message": "列表已检查。请在预览中核对主机名。"
+  },
+  "importLoading": {
+    "message": "正在加载并检查列表…"
+  },
+  "importTooLarge": {
+    "message": "列表过大（最多 64 KiB）。"
+  },
+  "importFormat": {
+    "message": "列表格式无效。应包含 format、version、name、category 和 hosts。"
+  },
+  "importDuplicate": {
+    "message": "列表包含重复的主机名。"
+  },
+  "importUrl": {
+    "message": "仅允许不含登录凭据、端口、查询参数或片段的 HTTPS 文件 URL。"
+  },
+  "importFetch": {
+    "message": "无法安全加载远程列表。请检查 HTTPS、JSON、CORS 和重定向。"
+  },
+  "importListLimit": {
+    "message": "最多可导入 20 个列表。"
+  },
+  "importEmpty": {
+    "message": "导入的列表不能为空。"
+  },
+  "category_news": {
+    "message": "新闻"
+  },
+  "category_social": {
+    "message": "社交媒体"
+  },
+  "category_companies": {
+    "message": "公司"
+  },
+  "category_other": {
+    "message": "其他"
+  },
+  "hostListLabel": {
+    "message": "每行一个准确的主机名"
+  },
+  "saveSettings": {
+    "message": "保存更改"
+  },
+  "settingsSaved": {
+    "message": "设置已保存。"
+  },
+  "settingsLoadFailed": {
+    "message": "无法加载设置。"
+  },
+  "settingsSaveFailed": {
+    "message": "无法保存设置。"
+  },
+  "settingsChanged": {
+    "message": "列表已在其他位置更改。保存前请重新加载此页面。"
+  },
+  "invalidHostLine": {
+    "message": "第 $LINE$ 行的主机名无效。",
+    "placeholders": {
+      "line": {
+        "content": "$1"
+      }
+    }
+  },
+  "hostLimit": {
+    "message": "每个列表最多 500 个主机名。"
+  },
+  "hostFormatHint": {
+    "message": "不允许 URL、路径、端口或通配符。示例：login.example.com"
+  },
+  "exactHostExample": {
+    "message": "login.google.de 和 google.de 是不同的主机名，需要分别批准。"
+  },
+  "risk_shortLink": {
+    "message": "短链接：目标地址已隐藏。"
+  },
+  "riskInline_shortLink": {
+    "message": "⚠ 短链接"
+  },
+  "riskyApprovalWarning": {
+    "message": "此短链接隐藏了目标地址。是否仅在这封邮件中允许？"
+  },
+  "riskyApprovalConfirm": {
+    "message": "仅在这封邮件中允许"
+  },
+  "importedEnable": {
+    "message": "启用列表"
+  },
+  "listViewEdit": {
+    "message": "查看并编辑列表"
+  },
+  "listHosts": {
+    "message": "此列表中的准确主机名"
+  }
+}

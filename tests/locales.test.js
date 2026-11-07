@@ -5,14 +5,35 @@ const path = require("node:path");
 
 const read = language => JSON.parse(fs.readFileSync(
   path.join(__dirname, `../_locales/${language}/messages.json`), "utf8"));
+const locales = ["de", "en", "es", "fr", "it", "ja", "pl", "pt_BR", "ru", "zh_CN"];
+const { effectiveUiLocale } = require("../locale.js");
 
-test("German and English catalogs have the same nonempty keys", () => {
-  const de = read("de");
+test("unsupported Thunderbird UI locales fall back to English", () => {
+  assert.equal(effectiveUiLocale("nl-NL"), "en");
+  assert.equal(effectiveUiLocale("tr-TR"), "en");
+  assert.equal(effectiveUiLocale(""), "en");
+  assert.equal(effectiveUiLocale("es-MX"), "es");
+  assert.equal(effectiveUiLocale("de-DE"), "de");
+  assert.equal(effectiveUiLocale("pt-BR"), "pt-BR");
+  assert.equal(effectiveUiLocale("zh-CN"), "zh-CN");
+});
+
+test("ten locale catalogs have complete keys and unchanged substitutions", () => {
   const en = read("en");
-  assert.deepEqual(Object.keys(de).sort(), Object.keys(en).sort());
-  for (const [key, entry] of Object.entries(de)) {
-    assert.ok(entry.message, key);
-    assert.ok(en[key].message, key);
+  const actual = fs.readdirSync(path.join(__dirname, "../_locales"))
+    .filter(name => fs.existsSync(path.join(__dirname, "../_locales", name, "messages.json")));
+  assert.deepEqual(actual.sort(), [...locales].sort());
+  assert.equal(require("../manifest.json").default_locale, "en");
+  for (const locale of locales) {
+    const catalog = read(locale);
+    assert.deepEqual(Object.keys(catalog).sort(), Object.keys(en).sort(), locale);
+    for (const [key, entry] of Object.entries(en)) {
+      const translated = catalog[key];
+      assert.ok(translated.message?.trim(), `${locale}: ${key}`);
+      assert.deepEqual(translated.placeholders, entry.placeholders, `${locale}: ${key} placeholders`);
+      const tokens = message => [...message.matchAll(/\$[A-Z][A-Z0-9_]*\$/g)].map(match => match[0]).sort();
+      assert.deepEqual(tokens(translated.message), tokens(entry.message), `${locale}: ${key} tokens`);
+    }
   }
 });
 

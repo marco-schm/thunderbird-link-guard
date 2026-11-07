@@ -1,0 +1,420 @@
+{
+  "extensionName": {
+    "message": "Link Guard"
+  },
+  "extensionDescription": {
+    "message": "Sprawdza odnośniki internetowe w wiadomościach e-mail i wymaga wyraźnej zgody na podejrzane adresy docelowe."
+  },
+  "optionsAction": {
+    "message": "Link Guard – otwórz ustawienia"
+  },
+  "toolbarInitial": {
+    "message": "Link Guard sprawdza odnośniki w tej wiadomości"
+  },
+  "toolbarDisabled": {
+    "message": "Link Guard jest wyłączony"
+  },
+  "toolbarOverflow": {
+    "message": "Link Guard: zbyt wiele odnośników; pozostałe są zablokowane"
+  },
+  "toolbarPending": {
+    "message": "Link Guard: zablokowane odnośniki: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "toolbarClear": {
+    "message": "Link Guard: brak zablokowanych odnośników internetowych"
+  },
+  "toolbarRisk": {
+    "message": "Link Guard: podejrzane domeny: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "panelTitle": {
+    "message": "Sprawdź odnośniki"
+  },
+  "panelCompact": {
+    "message": "Odnośniki oczekujące: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "panelCompactRisk": {
+    "message": "⚠ Ostrzeżenia: $RISK$ · Oczekujące: $BLOCKED$",
+    "placeholders": {
+      "risk": {
+        "content": "$2"
+      },
+      "blocked": {
+        "content": "$1"
+      }
+    }
+  },
+  "panelSummary": {
+    "message": "Sprawdzono odnośniki: $TOTAL$ · Zablokowano: $BLOCKED$",
+    "placeholders": {
+      "total": {
+        "content": "$1"
+      },
+      "blocked": {
+        "content": "$2"
+      }
+    }
+  },
+  "panelInstruction": {
+    "message": "Sprawdź adres docelowy niezależnie od tej wiadomości. Stała zgoda może dotyczyć dokładnego hosta lub całej domeny. Publiczne skracacze linków wymagają dodatkowego potwierdzenia dla tej wiadomości."
+  },
+  "linksForHost": {
+    "message": "Odnośniki w tej wiadomości: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "status_pending": {
+    "message": "Brak zgody"
+  },
+  "status_temporary": {
+    "message": "Dla tej wiadomości"
+  },
+  "status_permanent": {
+    "message": "Zatwierdzono na stałe"
+  },
+  "status_broad": {
+    "message": "Zatwierdzono przez całą domenę"
+  },
+  "status_blocked": {
+    "message": "Zablokowano"
+  },
+  "allowTemporary": {
+    "message": "Zezwól tymczasowo"
+  },
+  "allowPermanent": {
+    "message": "Zezwól na stałe"
+  },
+  "blockHost": {
+    "message": "Zablokuj"
+  },
+  "scopePrompt": {
+    "message": "Jaki zakres zatwierdzić na stałe?"
+  },
+  "scopePromptShared": {
+    "message": "Inne osoby mogą tu publikować treści. Zatwierdź tylko ten host."
+  },
+  "linkDestinationInline": {
+    "message": "↗ $HOST$",
+    "placeholders": {
+      "host": {
+        "content": "$1"
+      }
+    }
+  },
+  "scopeExact": {
+    "message": "Tylko $HOST$",
+    "placeholders": {
+      "host": {
+        "content": "$1"
+      }
+    }
+  },
+  "scopeBroad": {
+    "message": "$DOMAIN$ i wszystkie subdomeny",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      }
+    }
+  },
+  "riskIdn": {
+    "message": "Mogą występować podobnie wyglądające znaki."
+  },
+  "riskLookalike": {
+    "message": "Przypomina $DOMAIN$.",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      }
+    }
+  },
+  "riskIdnInline": {
+    "message": "⚠ Podobne znaki"
+  },
+  "riskLookalikeInline": {
+    "message": "⚠ Podobna do $DOMAIN$",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      }
+    }
+  },
+  "riskUnverified": {
+    "message": "Nie można sprawdzić domeny."
+  },
+  "riskUnverifiedInline": {
+    "message": "⚠ Domena niesprawdzona"
+  },
+  "risk_insecureHttp": {
+    "message": "HTTP nie jest szyfrowany."
+  },
+  "risk_credentials": {
+    "message": "Dane logowania w adresie URL."
+  },
+  "risk_ipAddress": {
+    "message": "Bezpośredni adres IP."
+  },
+  "risk_unusualPort": {
+    "message": "Nietypowy port."
+  },
+  "risk_textMismatch": {
+    "message": "Tekst odnośnika różni się od adresu docelowego."
+  },
+  "riskInline_insecureHttp": {
+    "message": "⚠ HTTP"
+  },
+  "riskInline_credentials": {
+    "message": "⚠ Dane logowania w URL"
+  },
+  "riskInline_ipAddress": {
+    "message": "⚠ Adres IP"
+  },
+  "riskInline_unusualPort": {
+    "message": "⚠ Nietypowy port"
+  },
+  "riskInline_textMismatch": {
+    "message": "⚠ Tekst ≠ adres docelowy"
+  },
+  "unsafeTitle": {
+    "message": "Odnośniki, których nie można zatwierdzić"
+  },
+  "unknownHost": {
+    "message": "Nieznany adres docelowy"
+  },
+  "reason_invalidUrl": {
+    "message": "Adres docelowy jest nieprawidłowy lub zbyt długi"
+  },
+  "reason_badScheme": {
+    "message": "Odnośnik używa nieobsługiwanego protokołu"
+  },
+  "reason_credentials": {
+    "message": "Adres docelowy zawiera dane logowania"
+  },
+  "reason_ipAddress": {
+    "message": "Odnośnik prowadzi bezpośrednio do adresu IP"
+  },
+  "reason_insecureHttp": {
+    "message": "Odnośnik używa nieszyfrowanego HTTP"
+  },
+  "reason_unusualPort": {
+    "message": "Odnośnik używa nietypowego portu"
+  },
+  "reason_textMismatch": {
+    "message": "Widoczna domena różni się od rzeczywistej"
+  },
+  "reason_redirectUnsafe": {
+    "message": "Cel przekierowania jest niebezpieczny lub nie można go sprawdzić"
+  },
+  "overflowNotice": {
+    "message": "Ponad 500 odnośników: dodatkowe pozostają zablokowane i nie są tu wyświetlane."
+  },
+  "exactHostNotice": {
+    "message": "Domena nadrzędna i subdomeny są zawsze traktowane osobno. Widoczny tekst odnośnika może wprowadzać w błąd."
+  },
+  "stateUnavailable": {
+    "message": "Nie udało się wczytać zgód. Odnośniki internetowe pozostają zablokowane."
+  },
+  "saveFailed": {
+    "message": "Nie udało się zapisać decyzji. Odnośnik pozostaje zablokowany."
+  },
+  "settingsTitle": {
+    "message": "Ustawienia Link Guard"
+  },
+  "settingsSubtitle": {
+    "message": "Wybierz dokładne nazwy hostów, którym ufasz w odnośnikach z wiadomości e-mail."
+  },
+  "enabledLabel": {
+    "message": "Włącz Link Guard"
+  },
+  "enabledHint": {
+    "message": "Wyłączenie ochrony sprawia, że odnośniki znów można otwierać bezpośrednio."
+  },
+  "hostCount": {
+    "message": "Nazwy hostów: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "customTitle": {
+    "message": "Moje stałe zgody"
+  },
+  "customHint": {
+    "message": "Domeny zatwierdzone na stałe w wiadomości pojawiają się tutaj. Możesz je także edytować."
+  },
+  "blockedTitle": {
+    "message": "Zablokowane domeny"
+  },
+  "blockedHint": {
+    "message": "Ta lista ma pierwszeństwo przed stałymi zgodami i importowanymi listami. Wyraźna zgoda tymczasowa dotyczy tylko aktualnie wyświetlanej wiadomości."
+  },
+  "broadTitle": {
+    "message": "Zatwierdzaj całe domeny"
+  },
+  "broadHint": {
+    "message": "Każdy wpis obejmuje domenę rejestrowalną i wszystkie subdomeny. Używaj tak szerokiej zgody tylko dla domen, które kontrolujesz."
+  },
+  "broadInvalid": {
+    "message": "$DOMAIN$ nie jest domeną rejestrowalną według dołączonej listy sufiksów publicznych.",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      }
+    }
+  },
+  "importsTitle": {
+    "message": "Listy własne i zdalne"
+  },
+  "importsHint": {
+    "message": "Zaimportuj plik JSON lub podłącz listę HTTPS. Każda lista jest pokazana przed włączeniem i działa dopiero po Twojej kontroli. Zdalne zmiany wymagają ponownej zgody."
+  },
+  "importFileLabel": {
+    "message": "Wybierz plik JSON"
+  },
+  "importUrlLabel": {
+    "message": "Adres HTTPS listy JSON"
+  },
+  "previewRemote": {
+    "message": "Sprawdź zdalną listę"
+  },
+  "importSecurityHint": {
+    "message": "Zdalny serwer musi zezwalać na CORS. Treść wiadomości nie jest wysyłana. Maksymalnie 64 KiB, 500 nazw hostów i 20 list; bez przekierowań. Wczytuj listy tylko z zaufanych źródeł."
+  },
+  "importPreviewTitle": {
+    "message": "Podgląd"
+  },
+  "refreshTitle": {
+    "message": "Sprawdź aktualizację"
+  },
+  "stageImport": {
+    "message": "Dodaj jako wyłączoną listę"
+  },
+  "stageRefresh": {
+    "message": "Przygotuj aktualizację"
+  },
+  "cancelPreview": {
+    "message": "Anuluj"
+  },
+  "refreshPreview": {
+    "message": "Sprawdź zdalną aktualizację"
+  },
+  "removeList": {
+    "message": "Usuń listę"
+  },
+  "importStaged": {
+    "message": "Lista przygotowana. Zapisz poniżej, aby zastosować."
+  },
+  "importReady": {
+    "message": "Lista sprawdzona. Przejrzyj nazwy hostów w podglądzie."
+  },
+  "importLoading": {
+    "message": "Wczytywanie i sprawdzanie listy…"
+  },
+  "importTooLarge": {
+    "message": "Lista jest zbyt duża (maksymalnie 64 KiB)."
+  },
+  "importFormat": {
+    "message": "Nieprawidłowy format listy. Wymagane: format, version, name, category i hosts."
+  },
+  "importDuplicate": {
+    "message": "Lista zawiera powtórzoną nazwę hosta."
+  },
+  "importUrl": {
+    "message": "Dozwolony jest tylko adres pliku HTTPS bez danych logowania, portu, zapytania ani fragmentu."
+  },
+  "importFetch": {
+    "message": "Nie udało się bezpiecznie wczytać zdalnej listy. Sprawdź HTTPS, JSON, CORS i przekierowania."
+  },
+  "importListLimit": {
+    "message": "Maksymalnie 20 importowanych list."
+  },
+  "importEmpty": {
+    "message": "Importowana lista nie może być pusta."
+  },
+  "category_news": {
+    "message": "Wiadomości"
+  },
+  "category_social": {
+    "message": "Media społecznościowe"
+  },
+  "category_companies": {
+    "message": "Firmy"
+  },
+  "category_other": {
+    "message": "Inne"
+  },
+  "hostListLabel": {
+    "message": "Jedna dokładna nazwa hosta w wierszu"
+  },
+  "saveSettings": {
+    "message": "Zapisz zmiany"
+  },
+  "settingsSaved": {
+    "message": "Ustawienia zapisane."
+  },
+  "settingsLoadFailed": {
+    "message": "Nie udało się wczytać ustawień."
+  },
+  "settingsSaveFailed": {
+    "message": "Nie udało się zapisać ustawień."
+  },
+  "settingsChanged": {
+    "message": "Listy zmieniono gdzie indziej. Odśwież stronę przed zapisaniem."
+  },
+  "invalidHostLine": {
+    "message": "Nieprawidłowa nazwa hosta w wierszu $LINE$.",
+    "placeholders": {
+      "line": {
+        "content": "$1"
+      }
+    }
+  },
+  "hostLimit": {
+    "message": "Do 500 nazw hostów na listę."
+  },
+  "hostFormatHint": {
+    "message": "Bez adresów URL, ścieżek, portów i symboli wieloznacznych. Przykład: login.example.com"
+  },
+  "exactHostExample": {
+    "message": "login.google.de i google.de to różne nazwy hostów i wymagają osobnych zgód."
+  },
+  "risk_shortLink": {
+    "message": "Skrócony odnośnik: ukryty adres docelowy."
+  },
+  "riskInline_shortLink": {
+    "message": "⚠ Skrócony odnośnik"
+  },
+  "riskyApprovalWarning": {
+    "message": "Ten skrócony odnośnik ukrywa adres docelowy. Zezwolić na niego w tej wiadomości?"
+  },
+  "riskyApprovalConfirm": {
+    "message": "Zezwól w tej wiadomości"
+  },
+  "importedEnable": {
+    "message": "Włącz listę"
+  },
+  "listViewEdit": {
+    "message": "Wyświetl i edytuj listę"
+  },
+  "listHosts": {
+    "message": "Dokładne nazwy hostów na tej liście"
+  }
+}

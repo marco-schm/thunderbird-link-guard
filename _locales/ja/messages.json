@@ -1,0 +1,420 @@
+{
+  "extensionName": {
+    "message": "Link Guard"
+  },
+  "extensionDescription": {
+    "message": "メール内のウェブリンクを確認し、不審なリンク先には明示的な許可を求めます。"
+  },
+  "optionsAction": {
+    "message": "Link Guard – 設定を開く"
+  },
+  "toolbarInitial": {
+    "message": "Link Guard がこのメッセージのリンクを確認しています"
+  },
+  "toolbarDisabled": {
+    "message": "Link Guard は無効です"
+  },
+  "toolbarOverflow": {
+    "message": "Link Guard: リンクが多すぎます。残りのリンクはブロックされます"
+  },
+  "toolbarPending": {
+    "message": "Link Guard: ブロックされたリンク $COUNT$ 件",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "toolbarClear": {
+    "message": "Link Guard: ブロックされたウェブリンクはありません"
+  },
+  "toolbarRisk": {
+    "message": "Link Guard: 不審なドメイン $COUNT$ 件",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "panelTitle": {
+    "message": "リンクを確認"
+  },
+  "panelCompact": {
+    "message": "確認待ちのリンク: $COUNT$ 件",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "panelCompactRisk": {
+    "message": "⚠ 警告: $RISK$ 件 · 確認待ち: $BLOCKED$ 件",
+    "placeholders": {
+      "risk": {
+        "content": "$2"
+      },
+      "blocked": {
+        "content": "$1"
+      }
+    }
+  },
+  "panelSummary": {
+    "message": "確認したウェブリンク: $TOTAL$ 件 · ブロック: $BLOCKED$ 件",
+    "placeholders": {
+      "total": {
+        "content": "$1"
+      },
+      "blocked": {
+        "content": "$2"
+      }
+    }
+  },
+  "panelInstruction": {
+    "message": "リンク先をこのメールとは別の方法で確認してください。恒久的な許可は正確なホスト名またはドメイン全体に適用できます。公開短縮リンクはこのメールで追加の確認が必要です。"
+  },
+  "linksForHost": {
+    "message": "このメールのリンク: $COUNT$ 件",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "status_pending": {
+    "message": "未許可"
+  },
+  "status_temporary": {
+    "message": "このメールのみ"
+  },
+  "status_permanent": {
+    "message": "恒久的に許可"
+  },
+  "status_broad": {
+    "message": "ドメイン全体の許可によって承認"
+  },
+  "status_blocked": {
+    "message": "ブロック済み"
+  },
+  "allowTemporary": {
+    "message": "一時的に許可"
+  },
+  "allowPermanent": {
+    "message": "恒久的に許可"
+  },
+  "blockHost": {
+    "message": "ブロック"
+  },
+  "scopePrompt": {
+    "message": "恒久的に許可する範囲を選択してください"
+  },
+  "scopePromptShared": {
+    "message": "ここには他の人もコンテンツを公開できます。このホストだけを許可してください。"
+  },
+  "linkDestinationInline": {
+    "message": "↗ $HOST$",
+    "placeholders": {
+      "host": {
+        "content": "$1"
+      }
+    }
+  },
+  "scopeExact": {
+    "message": "$HOST$ のみ",
+    "placeholders": {
+      "host": {
+        "content": "$1"
+      }
+    }
+  },
+  "scopeBroad": {
+    "message": "$DOMAIN$ とすべてのサブドメイン",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      }
+    }
+  },
+  "riskIdn": {
+    "message": "よく似た文字が含まれている可能性があります。"
+  },
+  "riskLookalike": {
+    "message": "$DOMAIN$ に似ています。",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      }
+    }
+  },
+  "riskIdnInline": {
+    "message": "⚠ 類似文字"
+  },
+  "riskLookalikeInline": {
+    "message": "⚠ $DOMAIN$ に類似",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      }
+    }
+  },
+  "riskUnverified": {
+    "message": "ドメインを確認できません。"
+  },
+  "riskUnverifiedInline": {
+    "message": "⚠ ドメイン未確認"
+  },
+  "risk_insecureHttp": {
+    "message": "HTTP は暗号化されていません。"
+  },
+  "risk_credentials": {
+    "message": "URL に認証情報が含まれています。"
+  },
+  "risk_ipAddress": {
+    "message": "IP アドレスへの直接リンクです。"
+  },
+  "risk_unusualPort": {
+    "message": "通常と異なるポートです。"
+  },
+  "risk_textMismatch": {
+    "message": "リンクの表示テキストと実際のリンク先が異なります。"
+  },
+  "riskInline_insecureHttp": {
+    "message": "⚠ HTTP"
+  },
+  "riskInline_credentials": {
+    "message": "⚠ URL 内の認証情報"
+  },
+  "riskInline_ipAddress": {
+    "message": "⚠ IP アドレス"
+  },
+  "riskInline_unusualPort": {
+    "message": "⚠ 通常と異なるポート"
+  },
+  "riskInline_textMismatch": {
+    "message": "⚠ 表示テキスト ≠ リンク先"
+  },
+  "unsafeTitle": {
+    "message": "許可できないリンク"
+  },
+  "unknownHost": {
+    "message": "リンク先が不明です"
+  },
+  "reason_invalidUrl": {
+    "message": "リンク先が無効か、長すぎます"
+  },
+  "reason_badScheme": {
+    "message": "対応していないプロトコルのリンクです"
+  },
+  "reason_credentials": {
+    "message": "リンク先に認証情報が含まれています"
+  },
+  "reason_ipAddress": {
+    "message": "IP アドレスに直接接続するリンクです"
+  },
+  "reason_insecureHttp": {
+    "message": "暗号化されていない HTTP を使用しています"
+  },
+  "reason_unusualPort": {
+    "message": "通常と異なるポートを使用しています"
+  },
+  "reason_textMismatch": {
+    "message": "表示されたドメインと実際のドメインが異なります"
+  },
+  "reason_redirectUnsafe": {
+    "message": "リダイレクト先が安全でないか、確認できません"
+  },
+  "overflowNotice": {
+    "message": "リンクが 500 件を超えています。追加のリンクはブロックされたままで、ここには表示されません。"
+  },
+  "exactHostNotice": {
+    "message": "親ドメインとサブドメインは常に別々に扱われます。リンクの表示テキストには誤解を招く内容が含まれることがあります。"
+  },
+  "stateUnavailable": {
+    "message": "許可設定を読み込めませんでした。ウェブリンクはブロックされたままです。"
+  },
+  "saveFailed": {
+    "message": "判断を保存できませんでした。リンクはブロックされたままです。"
+  },
+  "settingsTitle": {
+    "message": "Link Guard の設定"
+  },
+  "settingsSubtitle": {
+    "message": "メール内のウェブリンクで信頼する正確なホスト名を選択してください。"
+  },
+  "enabledLabel": {
+    "message": "Link Guard を有効にする"
+  },
+  "enabledHint": {
+    "message": "保護を無効にすると、リンクを確認なしで直接開けるようになります。"
+  },
+  "hostCount": {
+    "message": "ホスト名: $COUNT$ 件",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "customTitle": {
+    "message": "恒久的な許可"
+  },
+  "customHint": {
+    "message": "メール内で恒久的に許可したドメインはここに表示されます。直接編集することもできます。"
+  },
+  "blockedTitle": {
+    "message": "ブロックするドメイン"
+  },
+  "blockedHint": {
+    "message": "この一覧は恒久的な許可とインポートした一覧より優先されます。明示的な一時許可は現在表示中のメールにのみ適用されます。"
+  },
+  "broadTitle": {
+    "message": "ドメイン全体を許可"
+  },
+  "broadHint": {
+    "message": "各項目は登録可能なドメインとすべてのサブドメインに適用されます。この広い許可は自分が管理するドメインにのみ使用してください。"
+  },
+  "broadInvalid": {
+    "message": "内蔵の Public Suffix List によると、$DOMAIN$ は登録可能なドメインではありません。",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      }
+    }
+  },
+  "importsTitle": {
+    "message": "カスタムリストとリモートリスト"
+  },
+  "importsHint": {
+    "message": "JSON ファイルをインポートするか、HTTPS のリストを登録します。各リストは有効化前に表示され、確認後にのみ適用されます。リモートの変更には再度承認が必要です。"
+  },
+  "importFileLabel": {
+    "message": "JSON ファイルを選択"
+  },
+  "importUrlLabel": {
+    "message": "JSON リストの HTTPS URL"
+  },
+  "previewRemote": {
+    "message": "リモートリストを確認"
+  },
+  "importSecurityHint": {
+    "message": "リモートサーバーは CORS を許可する必要があります。メールの内容は送信されません。上限は 64 KiB、ホスト名 500 件、リスト 20 件で、リダイレクトは不可です。信頼できる提供元のリストだけを読み込んでください。"
+  },
+  "importPreviewTitle": {
+    "message": "プレビュー"
+  },
+  "refreshTitle": {
+    "message": "更新内容を確認"
+  },
+  "stageImport": {
+    "message": "無効なリストとして追加"
+  },
+  "stageRefresh": {
+    "message": "更新を準備"
+  },
+  "cancelPreview": {
+    "message": "キャンセル"
+  },
+  "refreshPreview": {
+    "message": "リモートの更新を確認"
+  },
+  "removeList": {
+    "message": "リストを削除"
+  },
+  "importStaged": {
+    "message": "リストを準備しました。適用するには下で保存してください。"
+  },
+  "importReady": {
+    "message": "リストを確認しました。プレビューでホスト名を確認してください。"
+  },
+  "importLoading": {
+    "message": "リストを読み込んで確認しています…"
+  },
+  "importTooLarge": {
+    "message": "リストが大きすぎます（最大 64 KiB）。"
+  },
+  "importFormat": {
+    "message": "リスト形式が無効です。format、version、name、category、hosts が必要です。"
+  },
+  "importDuplicate": {
+    "message": "リストに重複したホスト名があります。"
+  },
+  "importUrl": {
+    "message": "認証情報、ポート、クエリ、フラグメントを含まない HTTPS のファイル URL のみ使用できます。"
+  },
+  "importFetch": {
+    "message": "リモートリストを安全に読み込めませんでした。HTTPS、JSON、CORS、リダイレクトを確認してください。"
+  },
+  "importListLimit": {
+    "message": "インポートできるリストは最大 20 件です。"
+  },
+  "importEmpty": {
+    "message": "インポートするリストを空にはできません。"
+  },
+  "category_news": {
+    "message": "ニュース"
+  },
+  "category_social": {
+    "message": "ソーシャルメディア"
+  },
+  "category_companies": {
+    "message": "企業"
+  },
+  "category_other": {
+    "message": "その他"
+  },
+  "hostListLabel": {
+    "message": "1 行に正確なホスト名を 1 件"
+  },
+  "saveSettings": {
+    "message": "変更を保存"
+  },
+  "settingsSaved": {
+    "message": "設定を保存しました。"
+  },
+  "settingsLoadFailed": {
+    "message": "設定を読み込めませんでした。"
+  },
+  "settingsSaveFailed": {
+    "message": "設定を保存できませんでした。"
+  },
+  "settingsChanged": {
+    "message": "リストが別の場所で変更されました。保存する前にこのページを再読み込みしてください。"
+  },
+  "invalidHostLine": {
+    "message": "$LINE$ 行目のホスト名が無効です。",
+    "placeholders": {
+      "line": {
+        "content": "$1"
+      }
+    }
+  },
+  "hostLimit": {
+    "message": "リストごとにホスト名は最大 500 件です。"
+  },
+  "hostFormatHint": {
+    "message": "URL、パス、ポート、ワイルドカードは使えません。例: login.example.com"
+  },
+  "exactHostExample": {
+    "message": "login.google.de と google.de は異なるホスト名で、それぞれ個別の許可が必要です。"
+  },
+  "risk_shortLink": {
+    "message": "短縮リンク: リンク先は隠されています。"
+  },
+  "riskInline_shortLink": {
+    "message": "⚠ 短縮リンク"
+  },
+  "riskyApprovalWarning": {
+    "message": "この短縮リンクはリンク先を隠しています。このメールでのみ許可しますか？"
+  },
+  "riskyApprovalConfirm": {
+    "message": "このメールでのみ許可"
+  },
+  "importedEnable": {
+    "message": "リストを有効にする"
+  },
+  "listViewEdit": {
+    "message": "リストを表示・編集"
+  },
+  "listHosts": {
+    "message": "このリスト内の正確なホスト名"
+  }
+}

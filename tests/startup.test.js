@@ -8,7 +8,7 @@ test("message protection is registered before background startup", () => {
   const manifest = require("../manifest.json");
   assert.equal(manifest.browser_specific_settings.gecko.strict_min_version, "151.0");
   assert.deepEqual(manifest.message_display_scripts, [{
-    js: ["policy.js", "access.js", "display.js"],
+    js: ["locale.js", "policy.js", "access.js", "display.js"],
     css: ["display.css"], run_at: "document_start"
   }]);
 });
@@ -34,5 +34,5 @@ test("startup repairs an already open message tab only when unprotected", async 
   vm.runInContext(fs.readFileSync(path.join(__dirname, "../background.js"), "utf8"), context);
   await new Promise(resolve => setImmediate(resolve));
   assert.deepEqual(calls.map(call => call.kind), ["script", "css", "script"]);
-  assert.deepEqual(Array.from(calls[2].details.files), ["policy.js", "access.js", "display.js"]);
+  assert.deepEqual(Array.from(calls[2].details.files), ["locale.js", "policy.js", "access.js", "display.js"]);
 });

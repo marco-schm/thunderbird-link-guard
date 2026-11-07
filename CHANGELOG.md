@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.9.0 — 2026-11-07
+
+- Add Spanish, French, Brazilian Portuguese, Italian, Polish, Russian,
+  Japanese, and Simplified Chinese. Link Guard now has ten complete UI catalogs.
+- Use English when Thunderbird's interface language has no Link Guard catalog.
+- Clarify the short-link warning text so it matches the actual approval rule.
+
 ## 0.8.0 — 2026-11-07
 
 - Publish the first regular GitHub release with explicit installation and

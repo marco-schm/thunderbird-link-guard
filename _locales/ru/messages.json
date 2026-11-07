@@ -1,0 +1,420 @@
+{
+  "extensionName": {
+    "message": "Link Guard"
+  },
+  "extensionDescription": {
+    "message": "Проверяет веб-ссылки в письмах и требует явного разрешения для подозрительных адресов."
+  },
+  "optionsAction": {
+    "message": "Link Guard — открыть настройки"
+  },
+  "toolbarInitial": {
+    "message": "Link Guard проверяет ссылки в этом письме"
+  },
+  "toolbarDisabled": {
+    "message": "Link Guard отключён"
+  },
+  "toolbarOverflow": {
+    "message": "Link Guard: слишком много ссылок; остальные заблокированы"
+  },
+  "toolbarPending": {
+    "message": "Link Guard: заблокированных ссылок: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "toolbarClear": {
+    "message": "Link Guard: заблокированных веб-ссылок нет"
+  },
+  "toolbarRisk": {
+    "message": "Link Guard: подозрительных доменов: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "panelTitle": {
+    "message": "Проверить ссылки"
+  },
+  "panelCompact": {
+    "message": "Ссылок ожидают решения: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "panelCompactRisk": {
+    "message": "⚠ Предупреждений: $RISK$ · Ожидают: $BLOCKED$",
+    "placeholders": {
+      "risk": {
+        "content": "$2"
+      },
+      "blocked": {
+        "content": "$1"
+      }
+    }
+  },
+  "panelSummary": {
+    "message": "Проверено веб-ссылок: $TOTAL$ · Заблокировано: $BLOCKED$",
+    "placeholders": {
+      "total": {
+        "content": "$1"
+      },
+      "blocked": {
+        "content": "$2"
+      }
+    }
+  },
+  "panelInstruction": {
+    "message": "Проверьте адрес назначения отдельно от этого письма. Постоянное разрешение может охватывать точное имя хоста или весь домен. Публичные сервисы коротких ссылок требуют дополнительного подтверждения для этого письма."
+  },
+  "linksForHost": {
+    "message": "Ссылок в этом письме: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "status_pending": {
+    "message": "Не разрешено"
+  },
+  "status_temporary": {
+    "message": "Для этого письма"
+  },
+  "status_permanent": {
+    "message": "Разрешено постоянно"
+  },
+  "status_broad": {
+    "message": "Разрешено через весь домен"
+  },
+  "status_blocked": {
+    "message": "Заблокировано"
+  },
+  "allowTemporary": {
+    "message": "Разрешить временно"
+  },
+  "allowPermanent": {
+    "message": "Разрешить постоянно"
+  },
+  "blockHost": {
+    "message": "Заблокировать"
+  },
+  "scopePrompt": {
+    "message": "Что разрешить постоянно?"
+  },
+  "scopePromptShared": {
+    "message": "Здесь могут публиковать материалы другие люди. Разрешайте только этот хост."
+  },
+  "linkDestinationInline": {
+    "message": "↗ $HOST$",
+    "placeholders": {
+      "host": {
+        "content": "$1"
+      }
+    }
+  },
+  "scopeExact": {
+    "message": "Только $HOST$",
+    "placeholders": {
+      "host": {
+        "content": "$1"
+      }
+    }
+  },
+  "scopeBroad": {
+    "message": "$DOMAIN$ и все поддомены",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      }
+    }
+  },
+  "riskIdn": {
+    "message": "Адрес может содержать похожие символы."
+  },
+  "riskLookalike": {
+    "message": "Похоже на $DOMAIN$.",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      }
+    }
+  },
+  "riskIdnInline": {
+    "message": "⚠ Похожие символы"
+  },
+  "riskLookalikeInline": {
+    "message": "⚠ Похоже на $DOMAIN$",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      }
+    }
+  },
+  "riskUnverified": {
+    "message": "Не удалось проверить домен."
+  },
+  "riskUnverifiedInline": {
+    "message": "⚠ Домен не проверен"
+  },
+  "risk_insecureHttp": {
+    "message": "HTTP не шифруется."
+  },
+  "risk_credentials": {
+    "message": "Учётные данные в URL."
+  },
+  "risk_ipAddress": {
+    "message": "Прямой IP-адрес."
+  },
+  "risk_unusualPort": {
+    "message": "Необычный порт."
+  },
+  "risk_textMismatch": {
+    "message": "Текст ссылки отличается от адреса назначения."
+  },
+  "riskInline_insecureHttp": {
+    "message": "⚠ HTTP"
+  },
+  "riskInline_credentials": {
+    "message": "⚠ Учётные данные в URL"
+  },
+  "riskInline_ipAddress": {
+    "message": "⚠ IP-адрес"
+  },
+  "riskInline_unusualPort": {
+    "message": "⚠ Необычный порт"
+  },
+  "riskInline_textMismatch": {
+    "message": "⚠ Текст ≠ адрес назначения"
+  },
+  "unsafeTitle": {
+    "message": "Ссылки, которые нельзя разрешить"
+  },
+  "unknownHost": {
+    "message": "Неизвестный адрес назначения"
+  },
+  "reason_invalidUrl": {
+    "message": "Адрес ссылки недействителен или слишком длинный"
+  },
+  "reason_badScheme": {
+    "message": "Ссылка использует неподдерживаемый протокол"
+  },
+  "reason_credentials": {
+    "message": "Адрес ссылки содержит учётные данные"
+  },
+  "reason_ipAddress": {
+    "message": "Ссылка ведёт прямо на IP-адрес"
+  },
+  "reason_insecureHttp": {
+    "message": "Ссылка использует незашифрованный HTTP"
+  },
+  "reason_unusualPort": {
+    "message": "Ссылка использует необычный порт"
+  },
+  "reason_textMismatch": {
+    "message": "Показанный домен отличается от фактического"
+  },
+  "reason_redirectUnsafe": {
+    "message": "Адрес перенаправления небезопасен или его нельзя проверить"
+  },
+  "overflowNotice": {
+    "message": "Более 500 ссылок: дополнительные ссылки остаются заблокированными и здесь не показаны."
+  },
+  "exactHostNotice": {
+    "message": "Родительский домен и поддомены всегда рассматриваются отдельно. Видимый текст ссылки может вводить в заблуждение."
+  },
+  "stateUnavailable": {
+    "message": "Не удалось загрузить разрешения. Веб-ссылки остаются заблокированными."
+  },
+  "saveFailed": {
+    "message": "Не удалось сохранить решение. Ссылка остаётся заблокированной."
+  },
+  "settingsTitle": {
+    "message": "Настройки Link Guard"
+  },
+  "settingsSubtitle": {
+    "message": "Выберите точные имена хостов, которым доверяете в ссылках из писем."
+  },
+  "enabledLabel": {
+    "message": "Включить Link Guard"
+  },
+  "enabledHint": {
+    "message": "При отключении защиты ссылки снова становятся доступны без подтверждения."
+  },
+  "hostCount": {
+    "message": "Имена хостов: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "customTitle": {
+    "message": "Мои постоянные разрешения"
+  },
+  "customHint": {
+    "message": "Домены, постоянно разрешённые в письме, появятся здесь. Их также можно изменить вручную."
+  },
+  "blockedTitle": {
+    "message": "Заблокированные домены"
+  },
+  "blockedHint": {
+    "message": "Этот список имеет приоритет над постоянными разрешениями и импортированными списками. Явное временное разрешение действует только в открытом письме."
+  },
+  "broadTitle": {
+    "message": "Разрешить целые домены"
+  },
+  "broadHint": {
+    "message": "Каждая запись охватывает регистрируемый домен и все поддомены. Используйте такое широкое разрешение только для доменов, которыми управляете."
+  },
+  "broadInvalid": {
+    "message": "$DOMAIN$ не является регистрируемым доменом согласно встроенному списку публичных суффиксов.",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      }
+    }
+  },
+  "importsTitle": {
+    "message": "Собственные и удалённые списки"
+  },
+  "importsHint": {
+    "message": "Импортируйте файл JSON или подключите список HTTPS. Каждый список показывается до включения и начинает действовать только после вашей проверки. Изменения удалённого списка требуют нового разрешения."
+  },
+  "importFileLabel": {
+    "message": "Выберите файл JSON"
+  },
+  "importUrlLabel": {
+    "message": "HTTPS-адрес списка JSON"
+  },
+  "previewRemote": {
+    "message": "Проверить удалённый список"
+  },
+  "importSecurityHint": {
+    "message": "Удалённый сервер должен разрешать CORS. Содержимое писем не передаётся. Не более 64 КиБ, 500 имён хостов и 20 списков; перенаправления запрещены. Загружайте списки только из доверенных источников."
+  },
+  "importPreviewTitle": {
+    "message": "Предпросмотр"
+  },
+  "refreshTitle": {
+    "message": "Проверить обновление"
+  },
+  "stageImport": {
+    "message": "Добавить как отключённый список"
+  },
+  "stageRefresh": {
+    "message": "Подготовить обновление"
+  },
+  "cancelPreview": {
+    "message": "Отмена"
+  },
+  "refreshPreview": {
+    "message": "Проверить удалённое обновление"
+  },
+  "removeList": {
+    "message": "Удалить список"
+  },
+  "importStaged": {
+    "message": "Список подготовлен. Сохраните изменения ниже, чтобы применить его."
+  },
+  "importReady": {
+    "message": "Список проверен. Просмотрите имена хостов перед применением."
+  },
+  "importLoading": {
+    "message": "Загрузка и проверка списка…"
+  },
+  "importTooLarge": {
+    "message": "Список слишком велик (не более 64 КиБ)."
+  },
+  "importFormat": {
+    "message": "Неверный формат списка. Требуются поля: format, version, name, category и hosts."
+  },
+  "importDuplicate": {
+    "message": "В списке повторяется имя хоста."
+  },
+  "importUrl": {
+    "message": "Допускается только HTTPS-адрес файла без учётных данных, порта, запроса и фрагмента."
+  },
+  "importFetch": {
+    "message": "Не удалось безопасно загрузить удалённый список. Проверьте HTTPS, JSON, CORS и перенаправления."
+  },
+  "importListLimit": {
+    "message": "Не более 20 импортированных списков."
+  },
+  "importEmpty": {
+    "message": "Импортированный список не должен быть пустым."
+  },
+  "category_news": {
+    "message": "Новости"
+  },
+  "category_social": {
+    "message": "Социальные сети"
+  },
+  "category_companies": {
+    "message": "Компании"
+  },
+  "category_other": {
+    "message": "Другое"
+  },
+  "hostListLabel": {
+    "message": "Одно точное имя хоста в строке"
+  },
+  "saveSettings": {
+    "message": "Сохранить изменения"
+  },
+  "settingsSaved": {
+    "message": "Настройки сохранены."
+  },
+  "settingsLoadFailed": {
+    "message": "Не удалось загрузить настройки."
+  },
+  "settingsSaveFailed": {
+    "message": "Не удалось сохранить настройки."
+  },
+  "settingsChanged": {
+    "message": "Списки изменились в другом месте. Обновите страницу перед сохранением."
+  },
+  "invalidHostLine": {
+    "message": "Неверное имя хоста в строке $LINE$.",
+    "placeholders": {
+      "line": {
+        "content": "$1"
+      }
+    }
+  },
+  "hostLimit": {
+    "message": "Не более 500 имён хостов на список."
+  },
+  "hostFormatHint": {
+    "message": "Без URL, путей, портов и шаблонов. Пример: login.example.com"
+  },
+  "exactHostExample": {
+    "message": "login.google.de и google.de — разные имена хостов; для каждого нужно отдельное разрешение."
+  },
+  "risk_shortLink": {
+    "message": "Короткая ссылка: адрес назначения скрыт."
+  },
+  "riskInline_shortLink": {
+    "message": "⚠ Короткая ссылка"
+  },
+  "riskyApprovalWarning": {
+    "message": "Эта короткая ссылка скрывает адрес назначения. Разрешить её для этого письма?"
+  },
+  "riskyApprovalConfirm": {
+    "message": "Разрешить для этого письма"
+  },
+  "importedEnable": {
+    "message": "Включить список"
+  },
+  "listViewEdit": {
+    "message": "Просмотреть и изменить список"
+  },
+  "listHosts": {
+    "message": "Точные имена хостов в этом списке"
+  }
+}

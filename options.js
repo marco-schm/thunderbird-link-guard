@@ -20,7 +20,8 @@ function snapshot(value) {
   return JSON.stringify(Object.fromEntries(Object.keys(storedKeys).map(key => [key, value[key]])));
 }
 
-document.documentElement.lang = messenger.i18n.getUILanguage();
+document.documentElement.lang = globalThis.LinkGuardLocale.effectiveUiLocale(
+  messenger.i18n.getUILanguage());
 document.title = t("settingsTitle");
 for (const element of document.querySelectorAll("[data-i18n]")) {
   element.textContent = t(element.dataset.i18n);

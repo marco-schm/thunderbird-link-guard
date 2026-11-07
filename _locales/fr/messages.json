@@ -1,0 +1,420 @@
+{
+  "extensionName": {
+    "message": "Garde de lien"
+  },
+  "extensionDescription": {
+    "message": "Vérifie les liens Web dans les e-mails et exige une approbation explicite pour les destinations suspectes."
+  },
+  "optionsAction": {
+    "message": "Link Guard – ouvrir les paramètres"
+  },
+  "toolbarInitial": {
+    "message": "Link Guard vérifie les liens dans ce message"
+  },
+  "toolbarDisabled": {
+    "message": "Link Guard est désactivé"
+  },
+  "toolbarOverflow": {
+    "message": "Link Guard : trop de liens ; les liens restants sont bloqués"
+  },
+  "toolbarPending": {
+    "message": "Link Guard : $COUNT$ liens bloqués",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "toolbarClear": {
+    "message": "Link Guard : aucun lien Web bloqué"
+  },
+  "toolbarRisk": {
+    "message": "Link Guard : $COUNT$ domaines suspects",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "panelTitle": {
+    "message": "Liens de révision"
+  },
+  "panelCompact": {
+    "message": "Liens en attente : $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "panelCompactRisk": {
+    "message": "⚠ Avertissements : $RISK$ · En attente : $BLOCKED$",
+    "placeholders": {
+      "risk": {
+        "content": "$2"
+      },
+      "blocked": {
+        "content": "$1"
+      }
+    }
+  },
+  "panelSummary": {
+    "message": "$TOTAL$ liens Web vérifiés · $BLOCKED$ bloqués",
+    "placeholders": {
+      "total": {
+        "content": "$1"
+      },
+      "blocked": {
+        "content": "$2"
+      }
+    }
+  },
+  "panelInstruction": {
+    "message": "Vérifiez la destination indépendamment de cet e-mail. Une autorisation permanente peut couvrir l'hôte exact ou tout le domaine. Les liens courts publics exigent une confirmation supplémentaire pour ce message."
+  },
+  "linksForHost": {
+    "message": "Liens dans cet e-mail : $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "status_pending": {
+    "message": "Non approuvé"
+  },
+  "status_temporary": {
+    "message": "Pour ce message"
+  },
+  "status_permanent": {
+    "message": "Approuvé définitivement"
+  },
+  "status_broad": {
+    "message": "Approuvé sur tout le domaine"
+  },
+  "status_blocked": {
+    "message": "Bloqué"
+  },
+  "allowTemporary": {
+    "message": "Autoriser temporairement"
+  },
+  "allowPermanent": {
+    "message": "Autoriser définitivement"
+  },
+  "blockHost": {
+    "message": "Bloquer"
+  },
+  "scopePrompt": {
+    "message": "Quel champ d’application doit être approuvé de façon permanente ?"
+  },
+  "scopePromptShared": {
+    "message": "D'autres peuvent publier du contenu ici. Approuvez uniquement cet hôte."
+  },
+  "linkDestinationInline": {
+    "message": "↗ $HOST$",
+    "placeholders": {
+      "host": {
+        "content": "$1"
+      }
+    }
+  },
+  "scopeExact": {
+    "message": "Seulement $HOST$",
+    "placeholders": {
+      "host": {
+        "content": "$1"
+      }
+    }
+  },
+  "scopeBroad": {
+    "message": "$DOMAIN$ et tous les sous-domaines",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      }
+    }
+  },
+  "riskIdn": {
+    "message": "Des caractères similaires peuvent être présents."
+  },
+  "riskLookalike": {
+    "message": "Ressemble à $DOMAIN$.",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      }
+    }
+  },
+  "riskIdnInline": {
+    "message": "⚠ Caractères similaires"
+  },
+  "riskLookalikeInline": {
+    "message": "⚠ Semblable à $DOMAIN$",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      }
+    }
+  },
+  "riskUnverified": {
+    "message": "Vérification de domaine indisponible."
+  },
+  "riskUnverifiedInline": {
+    "message": "⚠ Domaine non vérifié"
+  },
+  "risk_insecureHttp": {
+    "message": "HTTP n'est pas chiffré."
+  },
+  "risk_credentials": {
+    "message": "Informations d'identification dans l'URL."
+  },
+  "risk_ipAddress": {
+    "message": "Adresse IP directe."
+  },
+  "risk_unusualPort": {
+    "message": "Port insolite."
+  },
+  "risk_textMismatch": {
+    "message": "Le texte du lien et la destination diffèrent."
+  },
+  "riskInline_insecureHttp": {
+    "message": "⚠ HTTP"
+  },
+  "riskInline_credentials": {
+    "message": "⚠ Informations d'identification dans l'URL"
+  },
+  "riskInline_ipAddress": {
+    "message": "⚠ Adresse IP"
+  },
+  "riskInline_unusualPort": {
+    "message": "⚠ Port insolite"
+  },
+  "riskInline_textMismatch": {
+    "message": "⚠ Texte ≠ destination"
+  },
+  "unsafeTitle": {
+    "message": "Liens qui ne peuvent pas être approuvés"
+  },
+  "unknownHost": {
+    "message": "Destination inconnue"
+  },
+  "reason_invalidUrl": {
+    "message": "La cible du lien n'est pas valide ou est trop longue"
+  },
+  "reason_badScheme": {
+    "message": "Le lien utilise un protocole non pris en charge"
+  },
+  "reason_credentials": {
+    "message": "La cible du lien contient des informations d'identification"
+  },
+  "reason_ipAddress": {
+    "message": "Le lien mène directement à une adresse IP"
+  },
+  "reason_insecureHttp": {
+    "message": "Le lien utilise HTTP non chiffré"
+  },
+  "reason_unusualPort": {
+    "message": "Le lien utilise un port inhabituel"
+  },
+  "reason_textMismatch": {
+    "message": "Les domaines affichés et réels diffèrent"
+  },
+  "reason_redirectUnsafe": {
+    "message": "La cible de redirection n'est pas sûre ou ne peut pas être vérifiée"
+  },
+  "overflowNotice": {
+    "message": "Plus de 500 liens : les liens supplémentaires restent bloqués et ne sont pas répertoriés ici."
+  },
+  "exactHostNotice": {
+    "message": "Le parent et les sous-domaines sont toujours séparés. Le texte du lien affiché peut être trompeur."
+  },
+  "stateUnavailable": {
+    "message": "Les approbations n'ont pas pu être chargées. Les liens Web restent bloqués."
+  },
+  "saveFailed": {
+    "message": "La décision n'a pas pu être enregistrée. Le lien reste bloqué."
+  },
+  "settingsTitle": {
+    "message": "Paramètres de protection des liens"
+  },
+  "settingsSubtitle": {
+    "message": "Choisissez les noms d'hôtes exacts auxquels vous faites confiance pour les liens Web dans les e-mails."
+  },
+  "enabledLabel": {
+    "message": "Activer Link Guard"
+  },
+  "enabledHint": {
+    "message": "La désactivation de la protection rend les liens directement cliquables."
+  },
+  "hostCount": {
+    "message": "Noms d'hôtes : $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "customTitle": {
+    "message": "Mes autorisations permanentes"
+  },
+  "customHint": {
+    "message": "Les domaines approuvés définitivement dans un message apparaissent ici. Vous pouvez également les modifier directement."
+  },
+  "blockedTitle": {
+    "message": "Domaines bloqués"
+  },
+  "blockedHint": {
+    "message": "Cette liste remplace les approbations permanentes et les listes importées. L'approbation temporaire explicite s'applique uniquement au message actuellement affiché."
+  },
+  "broadTitle": {
+    "message": "Approuver des domaines entiers"
+  },
+  "broadHint": {
+    "message": "Chaque entrée couvre le domaine enregistrable et tous les sous-domaines. Utilisez cette approbation large uniquement pour les domaines que vous contrôlez."
+  },
+  "broadInvalid": {
+    "message": "$DOMAIN$ n'est pas un domaine enregistrable selon la liste des suffixes publics fournie.",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      }
+    }
+  },
+  "importsTitle": {
+    "message": "Listes personnalisées et distantes"
+  },
+  "importsHint": {
+    "message": "Importez un fichier JSON ou liez une liste HTTPS. Chaque liste est affichée avant l'activation et appliquée uniquement après votre examen. Les modifications à distance nécessitent à nouveau votre approbation."
+  },
+  "importFileLabel": {
+    "message": "Choisissez un fichier JSON"
+  },
+  "importUrlLabel": {
+    "message": "URL HTTPS d'une liste JSON"
+  },
+  "previewRemote": {
+    "message": "Vérifier la liste distante"
+  },
+  "importSecurityHint": {
+    "message": "Les serveurs distants doivent autoriser CORS. Aucun contenu de message n'est envoyé. Au maximum 64 Ko, 500 noms d'hôtes et 20 listes ; aucune redirection. Chargez des listes uniquement à partir de sources fiables."
+  },
+  "importPreviewTitle": {
+    "message": "Aperçu"
+  },
+  "refreshTitle": {
+    "message": "Mise à jour de l'examen"
+  },
+  "stageImport": {
+    "message": "Étape en tant que liste désactivée"
+  },
+  "stageRefresh": {
+    "message": "Mise à jour de l'étape"
+  },
+  "cancelPreview": {
+    "message": "Annuler"
+  },
+  "refreshPreview": {
+    "message": "Vérifier la mise à jour à distance"
+  },
+  "removeList": {
+    "message": "Supprimer la liste"
+  },
+  "importStaged": {
+    "message": "Liste préparée. Enregistrez les modifications ci-dessous pour l’appliquer."
+  },
+  "importReady": {
+    "message": "Liste vérifiée. Vérifiez les noms d’hôtes dans l’aperçu."
+  },
+  "importLoading": {
+    "message": "Chargement et vérification de la liste…"
+  },
+  "importTooLarge": {
+    "message": "La liste est trop volumineuse (maximum 64 Ko)."
+  },
+  "importFormat": {
+    "message": "Format de liste invalide. Champs requis : format, version, name, category et hosts."
+  },
+  "importDuplicate": {
+    "message": "La liste contient un nom d'hôte en double."
+  },
+  "importUrl": {
+    "message": "Seule une URL de fichier HTTPS sans informations d'identification, port, requête ou fragment est autorisée."
+  },
+  "importFetch": {
+    "message": "La liste distante n'a pas pu être chargée en toute sécurité. Vérifiez HTTPS, JSON, CORS et les redirections."
+  },
+  "importListLimit": {
+    "message": "Au maximum 20 listes importées."
+  },
+  "importEmpty": {
+    "message": "Une liste importée ne doit pas être vide."
+  },
+  "category_news": {
+    "message": "Actualités"
+  },
+  "category_social": {
+    "message": "Médias sociaux"
+  },
+  "category_companies": {
+    "message": "Entreprises"
+  },
+  "category_other": {
+    "message": "Autre"
+  },
+  "hostListLabel": {
+    "message": "Un nom d'hôte exact par ligne"
+  },
+  "saveSettings": {
+    "message": "Enregistrer les modifications"
+  },
+  "settingsSaved": {
+    "message": "Paramètres enregistrés."
+  },
+  "settingsLoadFailed": {
+    "message": "Les paramètres n'ont pas pu être chargés."
+  },
+  "settingsSaveFailed": {
+    "message": "Les paramètres n'ont pas pu être enregistrés."
+  },
+  "settingsChanged": {
+    "message": "Listes modifiées ailleurs. Rechargez cette page avant de sauvegarder."
+  },
+  "invalidHostLine": {
+    "message": "Nom d'hôte invalide sur la ligne $LINE$.",
+    "placeholders": {
+      "line": {
+        "content": "$1"
+      }
+    }
+  },
+  "hostLimit": {
+    "message": "Jusqu'à 500 noms d'hôtes par liste."
+  },
+  "hostFormatHint": {
+    "message": "Pas d'URL, de chemins, de ports ou de caractères génériques. Exemple : login.example.com"
+  },
+  "exactHostExample": {
+    "message": "login.google.de et google.de sont des noms d'hôte différents et nécessitent des approbations distinctes."
+  },
+  "risk_shortLink": {
+    "message": "Lien court : destination masquée."
+  },
+  "riskInline_shortLink": {
+    "message": "⚠ Lien court"
+  },
+  "riskyApprovalWarning": {
+    "message": "Ce lien court cache sa destination. L'autoriser pour ce message ?"
+  },
+  "riskyApprovalConfirm": {
+    "message": "Autoriser pour ce message"
+  },
+  "importedEnable": {
+    "message": "Activer la liste"
+  },
+  "listViewEdit": {
+    "message": "Afficher et modifier la liste"
+  },
+  "listHosts": {
+    "message": "Noms d'hôtes exacts dans cette liste"
+  }
+}

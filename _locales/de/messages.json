@@ -70,7 +70,7 @@
     }
   },
   "panelInstruction": {
-    "message": "Prüfe Domain und Anlass unabhängig von dieser E-Mail. Eine dauerhafte Freigabe kann für den exakten Host oder bewusst für seine ganze Domain gelten. Kurzlinks und Weiterleitungen erfordern eine rote Warnbestätigung pro Mail."
+    "message": "Prüfe das Linkziel unabhängig von dieser Mail. Eine dauerhafte Freigabe kann den exakten Host oder die ganze Domain umfassen. Öffentliche Kurzlinks erfordern eine zusätzliche Bestätigung für diese Mail."
   },
   "linksForHost": {
     "message": "Links in dieser Mail: $COUNT$",
@@ -113,7 +113,9 @@
   "linkDestinationInline": {
     "message": "↗ $HOST$",
     "placeholders": {
-      "host": { "content": "$1" }
+      "host": {
+        "content": "$1"
+      }
     }
   },
   "scopeExact": {

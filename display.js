@@ -23,6 +23,8 @@
   let errorKey = "";
 
   const t = (key, values) => messenger.i18n.getMessage(key, values) || key;
+  const panelLanguage = globalThis.LinkGuardLocale.effectiveUiLocale(
+    messenger.i18n.getUILanguage());
 
   function getOriginalHref(anchor) {
     const current = anchor.getAttribute("href");
@@ -224,6 +226,7 @@
     if (!panel || !panel.isConnected) {
       panel = document.createElement("details");
       panel.className = "link-guard-panel";
+      panel.lang = panelLanguage;
       panel.tabIndex = -1;
       document.body.prepend(panel);
     }
