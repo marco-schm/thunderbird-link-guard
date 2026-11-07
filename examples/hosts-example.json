@@ -1,0 +1,7 @@
+{
+  "format": "link-guard-hosts",
+  "version": 1,
+  "name": "Example only — do not enable",
+  "category": "other",
+  "hosts": ["example.org", "www.example.org"]
+}
