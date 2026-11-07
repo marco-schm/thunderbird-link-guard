@@ -18,9 +18,9 @@ Link Guard works locally on displayed messages. It does not upload mail or inspe
 
 ## Status and installation
 
-Version 0.7.1 is an early preview. Its policy tests pass, and its link display
-was tested manually in Thunderbird 159 on macOS. Live tests covered a synthetic
-OpenPGP message, a user-initiated HTTPS list preview, English and German UI,
+Version 0.7.2 is an early preview. Its policy tests pass. The same runtime code
+was tested manually as 0.7.1 in Thunderbird 159 on macOS. Live tests covered a
+synthetic OpenPGP message, a user-initiated HTTPS list preview, English and German UI,
 and a restored message after Thunderbird restarted. The restored message kept
 its links inactive until approved. Other Thunderbird versions and operating
 systems have not been tested live.
@@ -63,6 +63,10 @@ npm run package
 Node.js 20 or newer is needed only to run tests and build the XPI. There are no npm dependencies. The package script writes `dist/link-guard-<version>.xpi`; `dist/` is ignored by Git. Keep `package.json` and `manifest.json` versions equal. Run the tests and inspect the XPI contents before publishing. A [changelog](CHANGELOG.md) records user-visible changes.
 
 The Public Suffix List is bundled under its MPL 2.0 license. Its source, version, and checksum are in [vendor/README.md](vendor/README.md). Link Guard's own source is MIT licensed; see [LICENSE](LICENSE).
+
+Official releases require a [YubiKey-signed tag](release/README.md); source
+builds and ordinary CI do not. The release workflow verifies the tag before
+building the published XPI.
 
 ## Maintenance
 

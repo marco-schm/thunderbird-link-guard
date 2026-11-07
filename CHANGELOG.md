@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.7.2 — 2026-11-07
+
+- Require a dedicated YubiKey FIDO signature on the release tag before the
+  official GitHub workflow builds and publishes an XPI. Runtime behavior is
+  unchanged from 0.7.1.
+
 ## 0.7.1 — 2026-11-07
 
 - Register message protection in the manifest so Thunderbird can apply it as
