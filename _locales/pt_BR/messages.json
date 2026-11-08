@@ -264,10 +264,16 @@
     "message": "Os domínios aprovados permanentemente em uma mensagem aparecem aqui. Você também pode editá-los diretamente."
   },
   "blockedTitle": {
-    "message": "Domínios bloqueados"
+    "message": "Hosts bloqueados"
   },
   "blockedHint": {
-    "message": "Esta lista prevalece sobre aprovações e importações. *.example.com bloqueia o domínio e todos os subdomínios; uma aprovação temporária vale só para esta mensagem."
+    "message": "Bloqueia exatamente estes hosts. Esta lista prevalece sobre aprovações e importações; uma aprovação temporária vale só para esta mensagem."
+  },
+  "blockedDomainsTitle": {
+    "message": "Bloquear domínios inteiros"
+  },
+  "blockedDomainsHint": {
+    "message": "Use *.example.com para bloquear o domínio e todos os subdomínios, incluindo example.com. Esta lista prevalece sobre aprovações e importações."
   },
   "broadTitle": {
     "message": "Aprovar domínios inteiros"

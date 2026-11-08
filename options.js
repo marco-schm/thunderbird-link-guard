@@ -8,6 +8,7 @@ const enabledInput = document.getElementById("enabled");
 const customInput = document.getElementById("customHosts");
 const blockedInput = document.getElementById("blockedHosts");
 const broadInput = document.getElementById("broadDomains");
+const blockedDomainsInput = document.getElementById("blockedDomains");
 const status = document.getElementById("status");
 const storedKeys = { enabled: true, customAllowedHosts: [], blockedHosts: [],
   blockedDomains: [], broadAllowedDomains: [], importedLists: [] };
@@ -218,8 +219,9 @@ async function load() {
     baseline = snapshot(saved);
     enabledInput.checked = saved.enabled !== false;
     customInput.value = (saved.customAllowedHosts || []).join("\n");
-    blockedInput.value = formatRuleList(saved.blockedHosts || [], saved.blockedDomains || []);
+    blockedInput.value = (saved.blockedHosts || []).join("\n");
     broadInput.value = formatRuleList([], saved.broadAllowedDomains || []);
+    blockedDomainsInput.value = formatRuleList([], saved.blockedDomains || []);
     const imported = document.getElementById("importedLists");
     imported.replaceChildren();
     importedInputs.clear();
@@ -269,9 +271,8 @@ messenger.storage.onChanged.addListener((changes, area) => {
 document.getElementById("save").addEventListener("click", async () => {
   try {
     const customAllowedHosts = readHosts(customInput, t("customTitle"));
-    const blockedRules = readRules(blockedInput, t("blockedTitle"));
-    const blockedHosts = blockedRules.hosts;
-    const blockedDomains = blockedRules.domains;
+    const blockedHosts = readHosts(blockedInput, t("blockedTitle"));
+    const blockedDomains = readRules(blockedDomainsInput, t("blockedDomainsTitle"), true).domains;
     const broadAllowedDomains = readRules(broadInput, t("broadTitle"), true).domains;
     const importedLists = [];
     const importedWildcards = [];
@@ -306,8 +307,9 @@ document.getElementById("save").addEventListener("click", async () => {
     baseline = snapshot(updated);
     dirty = false;
     customInput.value = customAllowedHosts.join("\n");
-    blockedInput.value = formatRuleList(blockedHosts, blockedDomains);
+    blockedInput.value = blockedHosts.join("\n");
     broadInput.value = formatRuleList([], broadAllowedDomains);
+    blockedDomainsInput.value = formatRuleList([], blockedDomains);
     showStatus(t("settingsSaved"));
   } catch (error) {
     showStatus(error.message?.includes(": ") ? error.message : t("settingsSaveFailed"), true);

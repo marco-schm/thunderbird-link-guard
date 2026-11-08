@@ -264,10 +264,16 @@
     "message": "您在郵件中永久核准的網域會顯示在此處。您也可以直接編輯。"
   },
   "blockedTitle": {
-    "message": "已封鎖的網域"
+    "message": "已封鎖的主機"
   },
   "blockedHint": {
-    "message": "此清單優先於核准與匯入項目。使用 *.example.com 可封鎖該網域及所有子網域；暫時核准僅適用於此郵件。"
+    "message": "僅封鎖這些確切的主機。此清單優先於核准與匯入項目；暫時核准僅適用於此郵件。"
+  },
+  "blockedDomainsTitle": {
+    "message": "封鎖整個網域"
+  },
+  "blockedDomainsHint": {
+    "message": "使用 *.example.com 可封鎖該網域及所有子網域，包含 example.com。此清單優先於核准與匯入項目。"
   },
   "broadTitle": {
     "message": "核准整個網域"

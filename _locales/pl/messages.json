@@ -264,10 +264,16 @@
     "message": "Domeny zatwierdzone na stałe w wiadomości pojawiają się tutaj. Możesz je także edytować."
   },
   "blockedTitle": {
-    "message": "Zablokowane domeny"
+    "message": "Zablokowane hosty"
   },
   "blockedHint": {
-    "message": "Ta lista ma pierwszeństwo przed zgodami i importami. *.example.com blokuje domenę i wszystkie subdomeny; zgoda tymczasowa dotyczy tylko tej wiadomości."
+    "message": "Blokuje dokładnie te hosty. Ta lista ma pierwszeństwo przed zgodami i importami; zgoda tymczasowa dotyczy tylko tej wiadomości."
+  },
+  "blockedDomainsTitle": {
+    "message": "Blokuj całe domeny"
+  },
+  "blockedDomainsHint": {
+    "message": "Użyj *.example.com, aby zablokować domenę i wszystkie subdomeny, w tym example.com. Ta lista ma pierwszeństwo przed zgodami i importami."
   },
   "broadTitle": {
     "message": "Zatwierdzaj całe domeny"

@@ -264,10 +264,16 @@
     "message": "Hier erscheinen Domains, die du in einer Mail dauerhaft freigibst. Du kannst sie auch selbst bearbeiten."
   },
   "blockedTitle": {
-    "message": "Blockierte Domains"
+    "message": "Blockierte Hosts"
   },
   "blockedHint": {
-    "message": "Diese Liste hat Vorrang vor Freigaben und Importen. *.example.com blockiert die Domain und alle Subdomains; eine temporäre Freigabe gilt nur für diese Mail."
+    "message": "Blockiert genau diese Hosts. Diese Liste hat Vorrang vor Freigaben und Importen; eine temporäre Freigabe gilt nur für diese Mail."
+  },
+  "blockedDomainsTitle": {
+    "message": "Ganze Domains blockieren"
+  },
+  "blockedDomainsHint": {
+    "message": "Mit *.example.com werden die Domain und alle Subdomains einschließlich example.com blockiert. Diese Liste hat Vorrang vor Freigaben und Importen."
   },
   "broadTitle": {
     "message": "Ganze Domains freigeben"

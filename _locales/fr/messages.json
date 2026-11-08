@@ -264,10 +264,16 @@
     "message": "Les domaines approuvés définitivement dans un message apparaissent ici. Vous pouvez également les modifier directement."
   },
   "blockedTitle": {
-    "message": "Domaines bloqués"
+    "message": "Hôtes bloqués"
   },
   "blockedHint": {
-    "message": "Cette liste prime sur les autorisations et les imports. *.example.com bloque le domaine et tous ses sous-domaines ; une autorisation temporaire ne vaut que pour ce message."
+    "message": "Bloque exactement ces hôtes. Cette liste prime sur les autorisations et les imports ; une autorisation temporaire ne vaut que pour ce message."
+  },
+  "blockedDomainsTitle": {
+    "message": "Bloquer des domaines entiers"
+  },
+  "blockedDomainsHint": {
+    "message": "Utilisez *.example.com pour bloquer le domaine et tous ses sous-domaines, y compris example.com. Cette liste prime sur les autorisations et les imports."
   },
   "broadTitle": {
     "message": "Approuver des domaines entiers"

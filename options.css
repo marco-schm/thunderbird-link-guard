@@ -50,7 +50,6 @@ input[type="checkbox"] { width: 21px; height: 21px; accent-color: #27538e; curso
 .imported-card textarea { margin-top: 8px; min-height: 98px; }
 .two-column { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
 .list-card { padding: 19px; }
-.list-card:last-child { grid-column: 1 / -1; }
 .list-card p { margin-bottom: 12px; font-size: 13px; }
 .list-card label { display: block; margin-bottom: 6px; font-weight: 650; }
 textarea { display: block; width: 100%; resize: vertical; padding: 10px 11px; border: 1px solid var(--line); border-radius: 7px; background: var(--card); color: var(--text); font: 13px/1.55 ui-monospace, SFMono-Regular, Menlo, monospace; }
@@ -73,4 +72,4 @@ input[type="url"]:focus-visible, input[type="file"]:focus-visible { outline: 2px
 #status { margin: 0; min-height: 1.5em; white-space: pre-line; color: var(--muted); }
 #status.error { color: #b02e3e; }
 #save { border: 0; border-radius: 7px; padding: 10px 16px; background: #27538e; color: #fff; font: 650 14px system-ui, sans-serif; cursor: pointer; white-space: nowrap; }
-@media (max-width: 650px) { main { padding: 22px 14px 35px; } .two-column { grid-template-columns: 1fr; } .list-card:last-child { grid-column: auto; } .save-bar, .import-url-row { align-items: stretch; flex-direction: column; } }
+@media (max-width: 650px) { main { padding: 22px 14px 35px; } .two-column { grid-template-columns: 1fr; } .save-bar, .import-url-row { align-items: stretch; flex-direction: column; } }

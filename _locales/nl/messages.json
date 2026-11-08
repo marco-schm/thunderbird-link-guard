@@ -264,10 +264,16 @@
     "message": "Domeinen die je permanent in een bericht goedkeurt, verschijnen hier. Je kunt ze ook direct bewerken."
   },
   "blockedTitle": {
-    "message": "Geblokkeerde domeinen"
+    "message": "Geblokkeerde hosts"
   },
   "blockedHint": {
-    "message": "Deze lijst heeft voorrang op goedkeuringen en imports. Gebruik *.example.com om het domein en alle subdomeinen te blokkeren; een tijdelijke goedkeuring geldt alleen voor dit bericht."
+    "message": "Blokkeert precies deze hosts. Deze lijst heeft voorrang op goedkeuringen en imports; een tijdelijke goedkeuring geldt alleen voor dit bericht."
+  },
+  "blockedDomainsTitle": {
+    "message": "Hele domeinen blokkeren"
+  },
+  "blockedDomainsHint": {
+    "message": "Gebruik *.example.com om het domein en alle subdomeinen te blokkeren, inclusief example.com. Deze lijst heeft voorrang op goedkeuringen en imports."
   },
   "broadTitle": {
     "message": "Hele domeinen goedkeuren"
