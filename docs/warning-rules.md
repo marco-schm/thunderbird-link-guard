@@ -121,7 +121,55 @@ rather than passing unchecked.
 
 Rules can only say *"warn if this matches"*. A rule such as *"warn about every host of
 our domain except the login host"* would need lookahead, which is not supported; write
-a rule for the hosts you want to warn about instead.
+a rule for the hosts you want to warn about instead – as in the recommended rule below.
+
+## Recommended: protect your organisation's name
+
+Phishing mail often uses domains that *contain* a well-known name but do not belong to
+its owner: `nullringresearch-support.de`, `my-nullringresearch.de`,
+`nullringresearch.com` or `nullringresearch.de.evil.example`. If your organisation's
+domain is `nullringresearch.de`, this rule warns about every such host while
+`nullringresearch.de` itself and all its subdomains stay quiet:
+
+- **Label:** `Uses our name, but not our domain`
+- **Checks:** *Host*
+- **Pattern:**
+
+  ```text
+  [a-z0-9-]nullringresearch|nullringresearch([a-z0-9-]|\.([^d]|d[^e]|d$|de.))
+  ```
+
+The name is suspicious when the character right **before** it is a letter, digit or
+hyphen (`my-nullringresearch`), or when anything other than exactly `.de` at the end
+**follows** it:
+
+| Part | Catches |
+| --- | --- |
+| `[a-z0-9-]nullringresearch` | `my-nullringresearch.de`, `xnullringresearch.de` |
+| `nullringresearch[a-z0-9-]` | `nullringresearch-support.de`, `nullringresearchs.de` |
+| `nullringresearch\.[^d]` | `nullringresearch.com`, `nullringresearch.net` |
+| `nullringresearch\.d[^e]`, `nullringresearch\.d$` | `nullringresearch.dk` |
+| `nullringresearch\.de.` | `nullringresearch.de.evil.example`, `nullringresearch.dev` |
+
+It stays quiet for `nullringresearch.de`, `www.nullringresearch.de` and
+`mail.nullringresearch.de`, because there the name is preceded by nothing or a dot and
+followed by exactly `.de`. Patterns are case-insensitive, so `NullRingResearch-Login.net`
+warns too.
+
+**For another domain**, replace the name in both places and spell out its top-level
+domain letter by letter in the last group: every shorter or different ending, and the
+full ending followed by more. For `example.com`:
+
+```text
+[a-z0-9-]example|example([a-z0-9-]|\.([^c]|c[^o]|co[^m]|c$|co$|com.))
+```
+
+The rule complements the built-in warnings: typing errors such as `nullringreseach.de`
+are caught by the [lookalike warning](warnings.md#lookalike-domain) once your domain is
+approved, and look-alike letters from other alphabets by the
+[internationalized domain name](warnings.md#internationalized-domain-name) warning.
+Mail from partners whose domains legitimately contain your name will warn as well;
+approve those hosts exactly.
 
 ## Warning list format
 
