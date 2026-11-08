@@ -8,6 +8,7 @@
 - Remove the "Unusual port" warning. A link with an explicit port, such as
   `https://example.org:8443/`, now follows the approval of its host like any other
   link. A stored setting that switched this warning off is ignored.
+- Docs: refresh all screenshots, taken in Thunderbird with synthetic data.
 - Settings: switch off the destination label shown next to links whose text does
   not name their target, for messages whose layout it disturbs. It is on by
   default. Warning labels and the panel are not affected.
