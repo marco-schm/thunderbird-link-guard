@@ -453,5 +453,154 @@
   },
   "autoRefreshReview": {
     "message": "自动更新未被应用，因为它过大，或会屏蔽你已批准的内容。之前的列表仍然有效；请使用“检查远程更新”。"
+  },
+  "warningsTitle": {
+    "message": "警告"
+  },
+  "warningsHint": {
+    "message": "选择哪些检查会发出警告，并添加你自己的警告。带警告的链接在你批准其确切主机之前保持停用。"
+  },
+  "builtinWarningsTitle": {
+    "message": "内置警告"
+  },
+  "builtinWarningsHint": {
+    "message": "关闭某个警告后，它要求的额外批准也随之取消。检查失败的链接始终显示警告。"
+  },
+  "warn_lookalike": {
+    "message": "域名与已批准的域名相似"
+  },
+  "warn_idn": {
+    "message": "国际化域名"
+  },
+  "warn_textMismatch": {
+    "message": "链接文本显示了另一个主机"
+  },
+  "warn_credentials": {
+    "message": "链接中包含用户名或密码"
+  },
+  "warn_ipAddress": {
+    "message": "使用 IP 地址而非主机名"
+  },
+  "warn_unusualPort": {
+    "message": "不常见的端口"
+  },
+  "warn_shortLink": {
+    "message": "公共短链接服务"
+  },
+  "customRulesTitle": {
+    "message": "我的警告规则"
+  },
+  "customRulesHint": {
+    "message": "当规则的模式匹配主机、完整 URL 或链接文本时，会以警告形式显示规则标签。模式是不区分大小写、最多 200 个字符的正则表达式，不支持反向引用、环视和 \\b，并以线性时间匹配。"
+  },
+  "ruleLabel": {
+    "message": "标签"
+  },
+  "ruleTarget": {
+    "message": "检查对象"
+  },
+  "rulePattern": {
+    "message": "模式"
+  },
+  "ruleTarget_host": {
+    "message": "主机"
+  },
+  "ruleTarget_url": {
+    "message": "完整 URL"
+  },
+  "ruleTarget_text": {
+    "message": "链接文本"
+  },
+  "addRule": {
+    "message": "添加规则"
+  },
+  "removeRule": {
+    "message": "删除"
+  },
+  "ruleInvalid": {
+    "message": "规则 $NUMBER$：$REASON$",
+    "placeholders": {
+      "number": {
+        "content": "$1"
+      },
+      "reason": {
+        "content": "$2"
+      }
+    }
+  },
+  "regexSyntax": {
+    "message": "模式不是有效的正则表达式。"
+  },
+  "regexTooLong": {
+    "message": "模式超过 200 个字符。"
+  },
+  "regexUnsupported": {
+    "message": "不支持反向引用、环视、\\b 和 \\u 转义。"
+  },
+  "regexTooComplex": {
+    "message": "模式过于复杂。"
+  },
+  "labelInvalid": {
+    "message": "标签需要 1 到 60 个字符，且不含控制字符。"
+  },
+  "ruleFormat": {
+    "message": "规则不完整。"
+  },
+  "warningRuleLimit": {
+    "message": "警告规则过多：自己的规则最多 50 条，生效规则最多 200 条。"
+  },
+  "warningListsTitle": {
+    "message": "警告列表"
+  },
+  "warningListsHint": {
+    "message": "从 JSON 文件或 HTTPS URL 导入规则。列表会先显示供你审核，并以停用状态开始。它们只能添加警告，绝不会批准链接；远程列表只有在你刷新时才会更改。"
+  },
+  "warningListFormat": {
+    "message": "警告列表无效。应包含：format \"link-guard-warnings\"、version 1、name 和 rules。"
+  },
+  "warningListLimit": {
+    "message": "最多 10 个警告列表。"
+  },
+  "ruleCount": {
+    "message": "规则：$COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "warningListPreviewTitle": {
+    "message": "警告列表预览"
+  },
+  "riskCustom": {
+    "message": "$SOURCE$：$LABEL$",
+    "placeholders": {
+      "label": {
+        "content": "$1"
+      },
+      "source": {
+        "content": "$2"
+      }
+    }
+  },
+  "riskCustomInline": {
+    "message": "⚠ $LABEL$",
+    "placeholders": {
+      "label": {
+        "content": "$1"
+      }
+    }
+  },
+  "ruleSourceOwn": {
+    "message": "我的规则"
+  },
+  "riskCustomSkipped": {
+    "message": "无法为此链接检查警告规则。"
+  },
+  "riskCustomSkippedInline": {
+    "message": "⚠ 规则未检查"
+  },
+  "showRules": {
+    "message": "显示规则"
   }
 }

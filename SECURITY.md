@@ -64,6 +64,19 @@ panel does not defend against a message that deliberately draws other content
 over it with a higher stacking order; the per-link inline warnings and the
 toolbar badge stay as independent signals.
 
+Warning settings can only add warnings or remove built-in ones the user switched
+off; nothing in them approves a link. Custom and imported rules are regular
+expressions from a restricted syntax that is compiled to an automaton and matched
+in linear time, never by the backtracking JavaScript engine, so a hostile rule
+or message cannot cause catastrophic backtracking. Patterns are limited to 200
+characters and 512 compiled instructions, repetition counts to 50, and the work
+per message scan is capped; a link that could not be checked within the cap gets
+a warning and stays inactive. Imported warning lists use the same transport
+restrictions as host lists, are previewed, start disabled and are never refreshed
+automatically. Rule labels and patterns may not contain control, bidirectional or
+zero-width characters, and labels are always shown together with their source.
+A hostile warning list can at most add misleading or excessive warnings.
+
 No built-in trust list is shipped. Only reviewed public URL shorteners are
 special warning signals and require a second, red confirmation for temporary
 approval in the current message. Branded email tracking, shared-content hosts

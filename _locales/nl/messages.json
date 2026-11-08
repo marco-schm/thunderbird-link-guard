@@ -453,5 +453,154 @@
   },
   "autoRefreshReview": {
     "message": "De automatische update is niet toegepast omdat die groot is of iets zou blokkeren wat je hebt goedgekeurd. De vorige lijst blijft actief; gebruik \"Externe update controleren\"."
+  },
+  "warningsTitle": {
+    "message": "Waarschuwingen"
+  },
+  "warningsHint": {
+    "message": "Kies welke controles een waarschuwing geven en voeg je eigen toe. Een link met een waarschuwing blijft inactief tot je de exacte host goedkeurt."
+  },
+  "builtinWarningsTitle": {
+    "message": "Ingebouwde waarschuwingen"
+  },
+  "builtinWarningsHint": {
+    "message": "Als je een waarschuwing uitschakelt, vervalt ook de extra goedkeuring die ze vereist. Een link waarvan de controle mislukte, geeft altijd een waarschuwing."
+  },
+  "warn_lookalike": {
+    "message": "Domein lijkt op een goedgekeurd domein"
+  },
+  "warn_idn": {
+    "message": "Geïnternationaliseerde domeinnaam"
+  },
+  "warn_textMismatch": {
+    "message": "Linktekst toont een andere host"
+  },
+  "warn_credentials": {
+    "message": "Gebruikersnaam of wachtwoord in de link"
+  },
+  "warn_ipAddress": {
+    "message": "IP-adres in plaats van een hostnaam"
+  },
+  "warn_unusualPort": {
+    "message": "Ongebruikelijke poort"
+  },
+  "warn_shortLink": {
+    "message": "Openbare URL-verkorter"
+  },
+  "customRulesTitle": {
+    "message": "Mijn waarschuwingsregels"
+  },
+  "customRulesHint": {
+    "message": "Een regel toont zijn label als waarschuwing wanneer het patroon overeenkomt met de host, de volledige URL of de linktekst. Patronen zijn hoofdletterongevoelige reguliere expressies van maximaal 200 tekens zonder terugverwijzingen, lookaround of \\b, en worden in lineaire tijd gecontroleerd."
+  },
+  "ruleLabel": {
+    "message": "Label"
+  },
+  "ruleTarget": {
+    "message": "Controleert"
+  },
+  "rulePattern": {
+    "message": "Patroon"
+  },
+  "ruleTarget_host": {
+    "message": "Host"
+  },
+  "ruleTarget_url": {
+    "message": "Volledige URL"
+  },
+  "ruleTarget_text": {
+    "message": "Linktekst"
+  },
+  "addRule": {
+    "message": "Regel toevoegen"
+  },
+  "removeRule": {
+    "message": "Verwijderen"
+  },
+  "ruleInvalid": {
+    "message": "Regel $NUMBER$: $REASON$",
+    "placeholders": {
+      "number": {
+        "content": "$1"
+      },
+      "reason": {
+        "content": "$2"
+      }
+    }
+  },
+  "regexSyntax": {
+    "message": "het patroon is geen geldige reguliere expressie."
+  },
+  "regexTooLong": {
+    "message": "het patroon is langer dan 200 tekens."
+  },
+  "regexUnsupported": {
+    "message": "terugverwijzingen, lookaround, \\b en \\u-escapes worden niet ondersteund."
+  },
+  "regexTooComplex": {
+    "message": "het patroon is te complex."
+  },
+  "labelInvalid": {
+    "message": "het label heeft 1 tot 60 tekens nodig zonder stuurtekens."
+  },
+  "ruleFormat": {
+    "message": "de regel is onvolledig."
+  },
+  "warningRuleLimit": {
+    "message": "Te veel waarschuwingsregels: maximaal 50 eigen en 200 actief."
+  },
+  "warningListsTitle": {
+    "message": "Waarschuwingslijsten"
+  },
+  "warningListsHint": {
+    "message": "Importeer regels uit een JSON-bestand of via een HTTPS-URL. Lijsten worden ter controle getoond en starten uitgeschakeld. Ze kunnen alleen waarschuwingen toevoegen, nooit een link goedkeuren, en externe lijsten veranderen alleen als je ze vernieuwt."
+  },
+  "warningListFormat": {
+    "message": "Ongeldige waarschuwingslijst. Verwacht: format \"link-guard-warnings\", version 1, name en rules."
+  },
+  "warningListLimit": {
+    "message": "Maximaal 10 waarschuwingslijsten."
+  },
+  "ruleCount": {
+    "message": "Regels: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "warningListPreviewTitle": {
+    "message": "Voorbeeld van waarschuwingslijst"
+  },
+  "riskCustom": {
+    "message": "$SOURCE$: $LABEL$",
+    "placeholders": {
+      "label": {
+        "content": "$1"
+      },
+      "source": {
+        "content": "$2"
+      }
+    }
+  },
+  "riskCustomInline": {
+    "message": "⚠ $LABEL$",
+    "placeholders": {
+      "label": {
+        "content": "$1"
+      }
+    }
+  },
+  "ruleSourceOwn": {
+    "message": "Eigen regel"
+  },
+  "riskCustomSkipped": {
+    "message": "De waarschuwingsregels konden voor deze link niet worden gecontroleerd."
+  },
+  "riskCustomSkippedInline": {
+    "message": "⚠ Regels niet gecontroleerd"
+  },
+  "showRules": {
+    "message": "Regels tonen"
   }
 }

@@ -453,5 +453,154 @@
   },
   "autoRefreshReview": {
     "message": "Автоматическое обновление не применено: оно слишком велико или заблокировало бы то, что вы одобрили. Прежний список остаётся активным; используйте «Проверить удалённое обновление»."
+  },
+  "warningsTitle": {
+    "message": "Предупреждения"
+  },
+  "warningsHint": {
+    "message": "Выберите, какие проверки выдают предупреждение, и добавьте свои. Ссылка с предупреждением остаётся неактивной, пока вы не разрешите её точный узел."
+  },
+  "builtinWarningsTitle": {
+    "message": "Встроенные предупреждения"
+  },
+  "builtinWarningsHint": {
+    "message": "Отключение предупреждения отменяет и требуемое им дополнительное разрешение. Ссылка, проверка которой не удалась, всегда показывает предупреждение."
+  },
+  "warn_lookalike": {
+    "message": "Домен похож на разрешённый домен"
+  },
+  "warn_idn": {
+    "message": "Интернационализированное доменное имя"
+  },
+  "warn_textMismatch": {
+    "message": "Текст ссылки показывает другой узел"
+  },
+  "warn_credentials": {
+    "message": "Имя пользователя или пароль в ссылке"
+  },
+  "warn_ipAddress": {
+    "message": "IP-адрес вместо имени узла"
+  },
+  "warn_unusualPort": {
+    "message": "Необычный порт"
+  },
+  "warn_shortLink": {
+    "message": "Публичный сокращатель ссылок"
+  },
+  "customRulesTitle": {
+    "message": "Мои правила предупреждений"
+  },
+  "customRulesHint": {
+    "message": "Правило показывает свою метку как предупреждение, если его шаблон совпадает с узлом, полным URL или текстом ссылки. Шаблоны — регулярные выражения без учёта регистра длиной до 200 символов без обратных ссылок, lookaround и \\b; проверка выполняется за линейное время."
+  },
+  "ruleLabel": {
+    "message": "Метка"
+  },
+  "ruleTarget": {
+    "message": "Проверяет"
+  },
+  "rulePattern": {
+    "message": "Шаблон"
+  },
+  "ruleTarget_host": {
+    "message": "Узел"
+  },
+  "ruleTarget_url": {
+    "message": "Полный URL"
+  },
+  "ruleTarget_text": {
+    "message": "Текст ссылки"
+  },
+  "addRule": {
+    "message": "Добавить правило"
+  },
+  "removeRule": {
+    "message": "Удалить"
+  },
+  "ruleInvalid": {
+    "message": "Правило $NUMBER$: $REASON$",
+    "placeholders": {
+      "number": {
+        "content": "$1"
+      },
+      "reason": {
+        "content": "$2"
+      }
+    }
+  },
+  "regexSyntax": {
+    "message": "шаблон не является допустимым регулярным выражением."
+  },
+  "regexTooLong": {
+    "message": "шаблон длиннее 200 символов."
+  },
+  "regexUnsupported": {
+    "message": "обратные ссылки, lookaround, \\b и экранирование \\u не поддерживаются."
+  },
+  "regexTooComplex": {
+    "message": "шаблон слишком сложный."
+  },
+  "labelInvalid": {
+    "message": "метка должна содержать от 1 до 60 символов без управляющих символов."
+  },
+  "ruleFormat": {
+    "message": "правило неполное."
+  },
+  "warningRuleLimit": {
+    "message": "Слишком много правил предупреждений: не более 50 своих и 200 действующих."
+  },
+  "warningListsTitle": {
+    "message": "Списки предупреждений"
+  },
+  "warningListsHint": {
+    "message": "Импортируйте правила из JSON-файла или по HTTPS-адресу. Списки показываются для проверки и изначально отключены. Они могут только добавлять предупреждения, но никогда не разрешают ссылку, а удалённые списки меняются только при обновлении вами."
+  },
+  "warningListFormat": {
+    "message": "Недопустимый список предупреждений. Ожидается: format \"link-guard-warnings\", version 1, name и rules."
+  },
+  "warningListLimit": {
+    "message": "Не более 10 списков предупреждений."
+  },
+  "ruleCount": {
+    "message": "Правил: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "warningListPreviewTitle": {
+    "message": "Предпросмотр списка предупреждений"
+  },
+  "riskCustom": {
+    "message": "$SOURCE$: $LABEL$",
+    "placeholders": {
+      "label": {
+        "content": "$1"
+      },
+      "source": {
+        "content": "$2"
+      }
+    }
+  },
+  "riskCustomInline": {
+    "message": "⚠ $LABEL$",
+    "placeholders": {
+      "label": {
+        "content": "$1"
+      }
+    }
+  },
+  "ruleSourceOwn": {
+    "message": "Моё правило"
+  },
+  "riskCustomSkipped": {
+    "message": "Не удалось проверить правила предупреждений для этой ссылки."
+  },
+  "riskCustomSkippedInline": {
+    "message": "⚠ Правила не проверены"
+  },
+  "showRules": {
+    "message": "Показать правила"
   }
 }

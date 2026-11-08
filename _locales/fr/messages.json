@@ -453,5 +453,154 @@
   },
   "autoRefreshReview": {
     "message": "La mise à jour automatique n'a pas été appliquée, car elle est importante ou bloquerait quelque chose que vous avez approuvé. La liste précédente reste active ; utilisez « Vérifier la mise à jour à distance »."
+  },
+  "warningsTitle": {
+    "message": "Avertissements"
+  },
+  "warningsHint": {
+    "message": "Choisissez les contrôles qui déclenchent un avertissement et ajoutez les vôtres. Un lien averti reste inactif jusqu’à ce que vous autorisiez son hôte exact."
+  },
+  "builtinWarningsTitle": {
+    "message": "Avertissements intégrés"
+  },
+  "builtinWarningsHint": {
+    "message": "Désactiver un avertissement supprime aussi l’autorisation supplémentaire qu’il exige. Un lien dont la vérification a échoué affiche toujours un avertissement."
+  },
+  "warn_lookalike": {
+    "message": "Domaine ressemblant à un domaine autorisé"
+  },
+  "warn_idn": {
+    "message": "Nom de domaine internationalisé"
+  },
+  "warn_textMismatch": {
+    "message": "Le texte du lien affiche un autre hôte"
+  },
+  "warn_credentials": {
+    "message": "Nom d’utilisateur ou mot de passe dans le lien"
+  },
+  "warn_ipAddress": {
+    "message": "Adresse IP au lieu d’un nom d’hôte"
+  },
+  "warn_unusualPort": {
+    "message": "Port inhabituel"
+  },
+  "warn_shortLink": {
+    "message": "Raccourcisseur d’URL public"
+  },
+  "customRulesTitle": {
+    "message": "Mes règles d’avertissement"
+  },
+  "customRulesHint": {
+    "message": "Une règle affiche son libellé comme avertissement quand son motif correspond à l’hôte, à l’URL complète ou au texte du lien. Les motifs sont des expressions régulières insensibles à la casse de 200 caractères au plus, sans références arrière, lookaround ni \\b, évaluées en temps linéaire."
+  },
+  "ruleLabel": {
+    "message": "Libellé"
+  },
+  "ruleTarget": {
+    "message": "Vérifie"
+  },
+  "rulePattern": {
+    "message": "Motif"
+  },
+  "ruleTarget_host": {
+    "message": "Hôte"
+  },
+  "ruleTarget_url": {
+    "message": "URL complète"
+  },
+  "ruleTarget_text": {
+    "message": "Texte du lien"
+  },
+  "addRule": {
+    "message": "Ajouter une règle"
+  },
+  "removeRule": {
+    "message": "Supprimer"
+  },
+  "ruleInvalid": {
+    "message": "Règle $NUMBER$ : $REASON$",
+    "placeholders": {
+      "number": {
+        "content": "$1"
+      },
+      "reason": {
+        "content": "$2"
+      }
+    }
+  },
+  "regexSyntax": {
+    "message": "le motif n’est pas une expression régulière valide."
+  },
+  "regexTooLong": {
+    "message": "le motif dépasse 200 caractères."
+  },
+  "regexUnsupported": {
+    "message": "les références arrière, le lookaround, \\b et les échappements \\u ne sont pas pris en charge."
+  },
+  "regexTooComplex": {
+    "message": "le motif est trop complexe."
+  },
+  "labelInvalid": {
+    "message": "le libellé doit comporter 1 à 60 caractères sans caractères de contrôle."
+  },
+  "ruleFormat": {
+    "message": "la règle est incomplète."
+  },
+  "warningRuleLimit": {
+    "message": "Trop de règles d’avertissement : 50 personnelles et 200 actives au maximum."
+  },
+  "warningListsTitle": {
+    "message": "Listes d’avertissement"
+  },
+  "warningListsHint": {
+    "message": "Importez des règles depuis un fichier JSON ou une URL HTTPS. Les listes sont affichées pour vérification et commencent désactivées. Elles ne peuvent qu’ajouter des avertissements, jamais autoriser un lien, et les listes distantes ne changent que lorsque vous les actualisez."
+  },
+  "warningListFormat": {
+    "message": "Liste d’avertissement invalide. Attendu : format \"link-guard-warnings\", version 1, name et rules."
+  },
+  "warningListLimit": {
+    "message": "10 listes d’avertissement au maximum."
+  },
+  "ruleCount": {
+    "message": "Règles : $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "warningListPreviewTitle": {
+    "message": "Aperçu de la liste d’avertissement"
+  },
+  "riskCustom": {
+    "message": "$SOURCE$ : $LABEL$",
+    "placeholders": {
+      "label": {
+        "content": "$1"
+      },
+      "source": {
+        "content": "$2"
+      }
+    }
+  },
+  "riskCustomInline": {
+    "message": "⚠ $LABEL$",
+    "placeholders": {
+      "label": {
+        "content": "$1"
+      }
+    }
+  },
+  "ruleSourceOwn": {
+    "message": "Ma règle"
+  },
+  "riskCustomSkipped": {
+    "message": "Les règles d’avertissement n’ont pas pu être vérifiées pour ce lien."
+  },
+  "riskCustomSkippedInline": {
+    "message": "⚠ Règles non vérifiées"
+  },
+  "showRules": {
+    "message": "Afficher les règles"
   }
 }

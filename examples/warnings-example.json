@@ -1,0 +1,11 @@
+{
+  "format": "link-guard-warnings",
+  "version": 1,
+  "name": "Example warning rules",
+  "rules": [
+    { "label": "Login page outside the usual path", "target": "url", "pattern": "/(login|signin|verify)[-./]" },
+    { "label": "Archive download", "target": "url", "pattern": "\\.(zip|rar|7z|iso)$" },
+    { "label": "Payment request", "target": "text", "pattern": "pay\\s*now|invoice|overdue" },
+    { "label": "Free hosting subdomain", "target": "host", "pattern": "\\.(web\\.app|pages\\.dev|netlify\\.app)$" }
+  ]
+}

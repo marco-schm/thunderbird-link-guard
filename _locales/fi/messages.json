@@ -453,5 +453,154 @@
   },
   "autoRefreshReview": {
     "message": "Automaattista päivitystä ei otettu käyttöön, koska se on suuri tai estäisi jotain, minkä olet hyväksynyt. Edellinen luettelo pysyy käytössä; käytä kohtaa \"Tarkista etäpäivitys\"."
+  },
+  "warningsTitle": {
+    "message": "Varoitukset"
+  },
+  "warningsHint": {
+    "message": "Valitse, mitkä tarkistukset antavat varoituksen, ja lisää omia. Varoituksen saanut linkki pysyy passiivisena, kunnes hyväksyt sen tarkan isännän."
+  },
+  "builtinWarningsTitle": {
+    "message": "Sisäänrakennetut varoitukset"
+  },
+  "builtinWarningsHint": {
+    "message": "Kun poistat varoituksen käytöstä, myös sen vaatima lisähyväksyntä poistuu. Linkki, jonka tarkistus epäonnistui, näyttää aina varoituksen."
+  },
+  "warn_lookalike": {
+    "message": "Verkkotunnus muistuttaa hyväksyttyä verkkotunnusta"
+  },
+  "warn_idn": {
+    "message": "Kansainvälistetty verkkotunnus"
+  },
+  "warn_textMismatch": {
+    "message": "Linkin teksti näyttää eri isännän"
+  },
+  "warn_credentials": {
+    "message": "Käyttäjänimi tai salasana linkissä"
+  },
+  "warn_ipAddress": {
+    "message": "IP-osoite isäntänimen sijaan"
+  },
+  "warn_unusualPort": {
+    "message": "Epätavallinen portti"
+  },
+  "warn_shortLink": {
+    "message": "Julkinen URL-lyhentäjä"
+  },
+  "customRulesTitle": {
+    "message": "Omat varoitussäännöt"
+  },
+  "customRulesHint": {
+    "message": "Sääntö näyttää nimensä varoituksena, kun sen kuvio vastaa isäntää, koko URL-osoitetta tai linkin tekstiä. Kuviot ovat kirjainkoosta riippumattomia, enintään 200 merkin säännöllisiä lausekkeita ilman takaisinviittauksia, lookaroundia tai \\b:tä, ja ne tarkistetaan lineaarisessa ajassa."
+  },
+  "ruleLabel": {
+    "message": "Nimi"
+  },
+  "ruleTarget": {
+    "message": "Tarkistaa"
+  },
+  "rulePattern": {
+    "message": "Kuvio"
+  },
+  "ruleTarget_host": {
+    "message": "Isäntä"
+  },
+  "ruleTarget_url": {
+    "message": "Koko URL"
+  },
+  "ruleTarget_text": {
+    "message": "Linkin teksti"
+  },
+  "addRule": {
+    "message": "Lisää sääntö"
+  },
+  "removeRule": {
+    "message": "Poista"
+  },
+  "ruleInvalid": {
+    "message": "Sääntö $NUMBER$: $REASON$",
+    "placeholders": {
+      "number": {
+        "content": "$1"
+      },
+      "reason": {
+        "content": "$2"
+      }
+    }
+  },
+  "regexSyntax": {
+    "message": "kuvio ei ole kelvollinen säännöllinen lauseke."
+  },
+  "regexTooLong": {
+    "message": "kuvio on yli 200 merkkiä pitkä."
+  },
+  "regexUnsupported": {
+    "message": "takaisinviittauksia, lookaroundia, \\b:tä ja \\u-koodinvaihtoja ei tueta."
+  },
+  "regexTooComplex": {
+    "message": "kuvio on liian monimutkainen."
+  },
+  "labelInvalid": {
+    "message": "nimessä on oltava 1–60 merkkiä ilman ohjausmerkkejä."
+  },
+  "ruleFormat": {
+    "message": "sääntö on puutteellinen."
+  },
+  "warningRuleLimit": {
+    "message": "Liikaa varoitussääntöjä: enintään 50 omaa ja 200 käytössä."
+  },
+  "warningListsTitle": {
+    "message": "Varoitusluettelot"
+  },
+  "warningListsHint": {
+    "message": "Tuo sääntöjä JSON-tiedostosta tai HTTPS-osoitteesta. Luettelot näytetään tarkistettaviksi ja ovat aluksi pois käytöstä. Ne voivat vain lisätä varoituksia, eivät koskaan hyväksyä linkkiä, ja etäluettelot muuttuvat vain, kun päivität ne."
+  },
+  "warningListFormat": {
+    "message": "Virheellinen varoitusluettelo. Odotettiin: format \"link-guard-warnings\", version 1, name ja rules."
+  },
+  "warningListLimit": {
+    "message": "Enintään 10 varoitusluetteloa."
+  },
+  "ruleCount": {
+    "message": "Sääntöjä: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "warningListPreviewTitle": {
+    "message": "Varoitusluettelon esikatselu"
+  },
+  "riskCustom": {
+    "message": "$SOURCE$: $LABEL$",
+    "placeholders": {
+      "label": {
+        "content": "$1"
+      },
+      "source": {
+        "content": "$2"
+      }
+    }
+  },
+  "riskCustomInline": {
+    "message": "⚠ $LABEL$",
+    "placeholders": {
+      "label": {
+        "content": "$1"
+      }
+    }
+  },
+  "ruleSourceOwn": {
+    "message": "Oma sääntö"
+  },
+  "riskCustomSkipped": {
+    "message": "Varoitussääntöjä ei voitu tarkistaa tälle linkille."
+  },
+  "riskCustomSkippedInline": {
+    "message": "⚠ Sääntöjä ei tarkistettu"
+  },
+  "showRules": {
+    "message": "Näytä säännöt"
   }
 }

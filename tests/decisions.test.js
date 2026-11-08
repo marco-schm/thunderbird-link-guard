@@ -6,6 +6,8 @@ const vm = require("node:vm");
 const policy = require("../policy.js");
 const listImport = require("../import-list.js");
 const domainScope = require("../domain-scope.js");
+const safeRegex = require("../safe-regex.js");
+const warnings = require("../warning-rules.js");
 
 // Exact membership in a list of hosts (not a substring test on a URL).
 const has = (list, value) => [...list].some(item => item === value);
@@ -39,6 +41,7 @@ function harness() {
   };
   const context = vm.createContext({ messenger, LinkGuardPolicy: policy,
     LinkGuardImport: listImport, LinkGuardDomainScope: domainScope,
+    LinkGuardRegex: safeRegex, LinkGuardWarnings: warnings,
     fetch: async (url, options) => {
       if (!String(url).includes("public_suffix_list")) {
         remote.calls.push(String(url));
@@ -410,4 +413,25 @@ test("no storage work or fetch happens when no enabled list opted in to auto-ref
   await settle(h);
   assert.deepEqual(h.remote.calls, []);
   assert.equal(JSON.stringify(original.importedLists), before);
+});
+
+test("warning settings are cleaned before they reach message pages", async () => {
+  const h = harness();
+  const rule = (label, pattern) => ({ label, target: "url", pattern });
+  h.local.disabledWarnings = ["idn", "bogus"];
+  h.local.customWarnings = [rule("Own", "login"), rule("Broken", "(a)\\1"), rule("x\u202e", "a")];
+  h.local.warningLists = [
+    { id: "12345678-1234-1234-1234-123456789001", name: "Enabled", rules: [rule("From list", "verify")],
+      sourceUrl: "", enabled: true },
+    { id: "12345678-1234-1234-1234-123456789002", name: "Disabled", rules: [rule("Off", "off")],
+      sourceUrl: "", enabled: false }];
+  h.local.customAllowedHosts = ["shop.example.com"];
+  const state = await h.send({ type: "link-guard-state" });
+  assert.deepEqual([...state.disabledWarnings], ["idn"]);
+  assert.deepEqual(JSON.parse(JSON.stringify(state.warningRules)), [
+    { label: "Own", target: "url", pattern: "login", source: "" },
+    { label: "From list", target: "url", pattern: "verify", source: "Enabled" }]);
+  // Warning rules never change what is approved.
+  assert.deepEqual([...state.allowedHosts], ["shop.example.com"]);
+  assert.equal(state.warningLists, undefined);
 });

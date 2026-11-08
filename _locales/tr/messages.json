@@ -453,5 +453,154 @@
   },
   "autoRefreshReview": {
     "message": "Otomatik güncelleme büyük olduğu veya onayladığınız bir şeyi engelleyeceği için uygulanmadı. Önceki liste etkin kalıyor; \"Uzak güncellemeyi incele\" düğmesini kullanın."
+  },
+  "warningsTitle": {
+    "message": "Uyarılar"
+  },
+  "warningsHint": {
+    "message": "Hangi denetimlerin uyarı vereceğini seçin ve kendi uyarılarınızı ekleyin. Uyarılı bir bağlantı, tam ana bilgisayarını onaylayana kadar etkisiz kalır."
+  },
+  "builtinWarningsTitle": {
+    "message": "Yerleşik uyarılar"
+  },
+  "builtinWarningsHint": {
+    "message": "Bir uyarıyı kapatmak, gerektirdiği ek onayı da kaldırır. Denetimi başarısız olan bir bağlantı her zaman uyarı gösterir."
+  },
+  "warn_lookalike": {
+    "message": "Alan adı onaylı bir alan adına benziyor"
+  },
+  "warn_idn": {
+    "message": "Uluslararasılaştırılmış alan adı"
+  },
+  "warn_textMismatch": {
+    "message": "Bağlantı metni başka bir ana bilgisayar gösteriyor"
+  },
+  "warn_credentials": {
+    "message": "Bağlantıda kullanıcı adı veya parola"
+  },
+  "warn_ipAddress": {
+    "message": "Ana bilgisayar adı yerine IP adresi"
+  },
+  "warn_unusualPort": {
+    "message": "Olağandışı bağlantı noktası"
+  },
+  "warn_shortLink": {
+    "message": "Herkese açık URL kısaltıcı"
+  },
+  "customRulesTitle": {
+    "message": "Uyarı kurallarım"
+  },
+  "customRulesHint": {
+    "message": "Bir kural, deseni ana bilgisayarla, tam URL ile veya bağlantı metniyle eşleştiğinde etiketini uyarı olarak gösterir. Desenler büyük/küçük harfe duyarsız, en fazla 200 karakterlik, geri başvuru, lookaround ve \\b içermeyen düzenli ifadelerdir ve doğrusal sürede denetlenir."
+  },
+  "ruleLabel": {
+    "message": "Etiket"
+  },
+  "ruleTarget": {
+    "message": "Denetler"
+  },
+  "rulePattern": {
+    "message": "Desen"
+  },
+  "ruleTarget_host": {
+    "message": "Ana bilgisayar"
+  },
+  "ruleTarget_url": {
+    "message": "Tam URL"
+  },
+  "ruleTarget_text": {
+    "message": "Bağlantı metni"
+  },
+  "addRule": {
+    "message": "Kural ekle"
+  },
+  "removeRule": {
+    "message": "Kaldır"
+  },
+  "ruleInvalid": {
+    "message": "Kural $NUMBER$: $REASON$",
+    "placeholders": {
+      "number": {
+        "content": "$1"
+      },
+      "reason": {
+        "content": "$2"
+      }
+    }
+  },
+  "regexSyntax": {
+    "message": "desen geçerli bir düzenli ifade değil."
+  },
+  "regexTooLong": {
+    "message": "desen 200 karakterden uzun."
+  },
+  "regexUnsupported": {
+    "message": "geri başvurular, lookaround, \\b ve \\u kaçışları desteklenmez."
+  },
+  "regexTooComplex": {
+    "message": "desen çok karmaşık."
+  },
+  "labelInvalid": {
+    "message": "etiket, denetim karakteri içermeyen 1 ile 60 karakter arasında olmalıdır."
+  },
+  "ruleFormat": {
+    "message": "kural eksik."
+  },
+  "warningRuleLimit": {
+    "message": "Çok fazla uyarı kuralı: en fazla 50 kendi kuralınız ve toplam 200 etkin kural."
+  },
+  "warningListsTitle": {
+    "message": "Uyarı listeleri"
+  },
+  "warningListsHint": {
+    "message": "Kuralları bir JSON dosyasından veya HTTPS adresinden içe aktarın. Listeler inceleme için gösterilir ve devre dışı başlar. Yalnızca uyarı ekleyebilir, hiçbir bağlantıyı onaylayamaz; uzak listeler yalnızca siz yenilediğinizde değişir."
+  },
+  "warningListFormat": {
+    "message": "Geçersiz uyarı listesi. Beklenen: format \"link-guard-warnings\", version 1, name ve rules."
+  },
+  "warningListLimit": {
+    "message": "En fazla 10 uyarı listesi."
+  },
+  "ruleCount": {
+    "message": "Kurallar: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "warningListPreviewTitle": {
+    "message": "Uyarı listesi önizlemesi"
+  },
+  "riskCustom": {
+    "message": "$SOURCE$: $LABEL$",
+    "placeholders": {
+      "label": {
+        "content": "$1"
+      },
+      "source": {
+        "content": "$2"
+      }
+    }
+  },
+  "riskCustomInline": {
+    "message": "⚠ $LABEL$",
+    "placeholders": {
+      "label": {
+        "content": "$1"
+      }
+    }
+  },
+  "ruleSourceOwn": {
+    "message": "Kendi kuralım"
+  },
+  "riskCustomSkipped": {
+    "message": "Bu bağlantı için uyarı kuralları denetlenemedi."
+  },
+  "riskCustomSkippedInline": {
+    "message": "⚠ Kurallar denetlenmedi"
+  },
+  "showRules": {
+    "message": "Kuralları göster"
   }
 }

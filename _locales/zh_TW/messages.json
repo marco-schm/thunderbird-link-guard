@@ -453,5 +453,154 @@
   },
   "autoRefreshReview": {
     "message": "自動更新未套用，因為它過大，或會封鎖您已核准的內容。先前的清單仍然有效；請使用「檢閱遠端更新」。"
+  },
+  "warningsTitle": {
+    "message": "警告"
+  },
+  "warningsHint": {
+    "message": "選擇哪些檢查會發出警告，並新增你自己的警告。有警告的連結在你核准其確切主機前會保持停用。"
+  },
+  "builtinWarningsTitle": {
+    "message": "內建警告"
+  },
+  "builtinWarningsHint": {
+    "message": "關閉某項警告後，它所要求的額外核准也會一併取消。檢查失敗的連結一律顯示警告。"
+  },
+  "warn_lookalike": {
+    "message": "網域與已核准的網域相似"
+  },
+  "warn_idn": {
+    "message": "國際化網域名稱"
+  },
+  "warn_textMismatch": {
+    "message": "連結文字顯示了另一個主機"
+  },
+  "warn_credentials": {
+    "message": "連結中含有使用者名稱或密碼"
+  },
+  "warn_ipAddress": {
+    "message": "使用 IP 位址而非主機名稱"
+  },
+  "warn_unusualPort": {
+    "message": "不常見的連接埠"
+  },
+  "warn_shortLink": {
+    "message": "公開短網址服務"
+  },
+  "customRulesTitle": {
+    "message": "我的警告規則"
+  },
+  "customRulesHint": {
+    "message": "當規則的模式符合主機、完整 URL 或連結文字時，會以警告顯示規則標籤。模式是不分大小寫、最多 200 個字元的正規表示式，不支援反向參照、環顧與 \\b，並以線性時間比對。"
+  },
+  "ruleLabel": {
+    "message": "標籤"
+  },
+  "ruleTarget": {
+    "message": "檢查對象"
+  },
+  "rulePattern": {
+    "message": "模式"
+  },
+  "ruleTarget_host": {
+    "message": "主機"
+  },
+  "ruleTarget_url": {
+    "message": "完整 URL"
+  },
+  "ruleTarget_text": {
+    "message": "連結文字"
+  },
+  "addRule": {
+    "message": "新增規則"
+  },
+  "removeRule": {
+    "message": "移除"
+  },
+  "ruleInvalid": {
+    "message": "規則 $NUMBER$：$REASON$",
+    "placeholders": {
+      "number": {
+        "content": "$1"
+      },
+      "reason": {
+        "content": "$2"
+      }
+    }
+  },
+  "regexSyntax": {
+    "message": "模式不是有效的正規表示式。"
+  },
+  "regexTooLong": {
+    "message": "模式超過 200 個字元。"
+  },
+  "regexUnsupported": {
+    "message": "不支援反向參照、環顧、\\b 與 \\u 跳脫。"
+  },
+  "regexTooComplex": {
+    "message": "模式過於複雜。"
+  },
+  "labelInvalid": {
+    "message": "標籤需要 1 到 60 個字元，且不含控制字元。"
+  },
+  "ruleFormat": {
+    "message": "規則不完整。"
+  },
+  "warningRuleLimit": {
+    "message": "警告規則過多：自己的規則最多 50 條，生效規則最多 200 條。"
+  },
+  "warningListsTitle": {
+    "message": "警告清單"
+  },
+  "warningListsHint": {
+    "message": "從 JSON 檔案或 HTTPS URL 匯入規則。清單會先顯示供你檢閱，並以停用狀態開始。它們只能新增警告，絕不會核准連結；遠端清單只有在你重新整理時才會變更。"
+  },
+  "warningListFormat": {
+    "message": "警告清單無效。應包含：format \"link-guard-warnings\"、version 1、name 與 rules。"
+  },
+  "warningListLimit": {
+    "message": "最多 10 個警告清單。"
+  },
+  "ruleCount": {
+    "message": "規則：$COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "warningListPreviewTitle": {
+    "message": "警告清單預覽"
+  },
+  "riskCustom": {
+    "message": "$SOURCE$：$LABEL$",
+    "placeholders": {
+      "label": {
+        "content": "$1"
+      },
+      "source": {
+        "content": "$2"
+      }
+    }
+  },
+  "riskCustomInline": {
+    "message": "⚠ $LABEL$",
+    "placeholders": {
+      "label": {
+        "content": "$1"
+      }
+    }
+  },
+  "ruleSourceOwn": {
+    "message": "我的規則"
+  },
+  "riskCustomSkipped": {
+    "message": "無法為此連結檢查警告規則。"
+  },
+  "riskCustomSkippedInline": {
+    "message": "⚠ 規則未檢查"
+  },
+  "showRules": {
+    "message": "顯示規則"
   }
 }

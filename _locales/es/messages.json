@@ -453,5 +453,154 @@
   },
   "autoRefreshReview": {
     "message": "No se aplicó la actualización automática porque es grande o bloquearía algo que aprobaste. La lista anterior sigue activa; usa «Revisar actualización remota»."
+  },
+  "warningsTitle": {
+    "message": "Advertencias"
+  },
+  "warningsHint": {
+    "message": "Elija qué comprobaciones generan una advertencia y añada las suyas. Un enlace con advertencia sigue inactivo hasta que apruebe su host exacto."
+  },
+  "builtinWarningsTitle": {
+    "message": "Advertencias integradas"
+  },
+  "builtinWarningsHint": {
+    "message": "Desactivar una advertencia también elimina la aprobación adicional que exige. Un enlace cuya comprobación falló siempre muestra una advertencia."
+  },
+  "warn_lookalike": {
+    "message": "Dominio parecido a un dominio aprobado"
+  },
+  "warn_idn": {
+    "message": "Nombre de dominio internacionalizado"
+  },
+  "warn_textMismatch": {
+    "message": "El texto del enlace muestra otro host"
+  },
+  "warn_credentials": {
+    "message": "Usuario o contraseña en el enlace"
+  },
+  "warn_ipAddress": {
+    "message": "Dirección IP en lugar de un nombre de host"
+  },
+  "warn_unusualPort": {
+    "message": "Puerto inusual"
+  },
+  "warn_shortLink": {
+    "message": "Acortador de URL público"
+  },
+  "customRulesTitle": {
+    "message": "Mis reglas de advertencia"
+  },
+  "customRulesHint": {
+    "message": "Una regla muestra su etiqueta como advertencia cuando su patrón coincide con el host, la URL completa o el texto del enlace. Los patrones son expresiones regulares sin distinción de mayúsculas, de hasta 200 caracteres, sin referencias inversas, lookaround ni \\b, y se evalúan en tiempo lineal."
+  },
+  "ruleLabel": {
+    "message": "Etiqueta"
+  },
+  "ruleTarget": {
+    "message": "Comprueba"
+  },
+  "rulePattern": {
+    "message": "Patrón"
+  },
+  "ruleTarget_host": {
+    "message": "Host"
+  },
+  "ruleTarget_url": {
+    "message": "URL completa"
+  },
+  "ruleTarget_text": {
+    "message": "Texto del enlace"
+  },
+  "addRule": {
+    "message": "Añadir regla"
+  },
+  "removeRule": {
+    "message": "Quitar"
+  },
+  "ruleInvalid": {
+    "message": "Regla $NUMBER$: $REASON$",
+    "placeholders": {
+      "number": {
+        "content": "$1"
+      },
+      "reason": {
+        "content": "$2"
+      }
+    }
+  },
+  "regexSyntax": {
+    "message": "el patrón no es una expresión regular válida."
+  },
+  "regexTooLong": {
+    "message": "el patrón supera los 200 caracteres."
+  },
+  "regexUnsupported": {
+    "message": "no se admiten referencias inversas, lookaround, \\b ni escapes \\u."
+  },
+  "regexTooComplex": {
+    "message": "el patrón es demasiado complejo."
+  },
+  "labelInvalid": {
+    "message": "la etiqueta necesita de 1 a 60 caracteres sin caracteres de control."
+  },
+  "ruleFormat": {
+    "message": "la regla está incompleta."
+  },
+  "warningRuleLimit": {
+    "message": "Demasiadas reglas de advertencia: como máximo 50 propias y 200 activas."
+  },
+  "warningListsTitle": {
+    "message": "Listas de advertencias"
+  },
+  "warningListsHint": {
+    "message": "Importe reglas desde un archivo JSON o una URL HTTPS. Las listas se muestran para revisarlas y empiezan desactivadas. Solo pueden añadir advertencias, nunca aprobar un enlace, y las listas remotas solo cambian cuando las actualiza."
+  },
+  "warningListFormat": {
+    "message": "Lista de advertencias no válida. Se esperaba: format \"link-guard-warnings\", version 1, name y rules."
+  },
+  "warningListLimit": {
+    "message": "Como máximo 10 listas de advertencias."
+  },
+  "ruleCount": {
+    "message": "Reglas: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "warningListPreviewTitle": {
+    "message": "Vista previa de la lista de advertencias"
+  },
+  "riskCustom": {
+    "message": "$SOURCE$: $LABEL$",
+    "placeholders": {
+      "label": {
+        "content": "$1"
+      },
+      "source": {
+        "content": "$2"
+      }
+    }
+  },
+  "riskCustomInline": {
+    "message": "⚠ $LABEL$",
+    "placeholders": {
+      "label": {
+        "content": "$1"
+      }
+    }
+  },
+  "ruleSourceOwn": {
+    "message": "Mi regla"
+  },
+  "riskCustomSkipped": {
+    "message": "No se pudieron comprobar las reglas de advertencia para este enlace."
+  },
+  "riskCustomSkippedInline": {
+    "message": "⚠ Reglas sin comprobar"
+  },
+  "showRules": {
+    "message": "Mostrar reglas"
   }
 }

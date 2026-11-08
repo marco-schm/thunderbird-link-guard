@@ -453,5 +453,154 @@
   },
   "autoRefreshReview": {
     "message": "Das automatische Update wurde nicht übernommen, weil es groß ist oder etwas sperren würde, das du freigegeben hast. Die bisherige Liste bleibt aktiv; nutze „Remote-Änderung prüfen“."
+  },
+  "warningsTitle": {
+    "message": "Warnungen"
+  },
+  "warningsHint": {
+    "message": "Lege fest, welche Prüfungen warnen, und ergänze eigene. Ein Link mit Warnung bleibt inaktiv, bis du seinen exakten Host freigibst."
+  },
+  "builtinWarningsTitle": {
+    "message": "Eingebaute Warnungen"
+  },
+  "builtinWarningsHint": {
+    "message": "Wird eine Warnung ausgeschaltet, entfällt auch die zusätzliche Freigabe, die sie verlangt. Ein Link, dessen Prüfung fehlschlug, warnt immer."
+  },
+  "warn_lookalike": {
+    "message": "Domain ähnelt einer freigegebenen Domain"
+  },
+  "warn_idn": {
+    "message": "Internationalisierter Domainname"
+  },
+  "warn_textMismatch": {
+    "message": "Linktext zeigt einen anderen Host"
+  },
+  "warn_credentials": {
+    "message": "Benutzername oder Passwort im Link"
+  },
+  "warn_ipAddress": {
+    "message": "IP-Adresse statt Hostname"
+  },
+  "warn_unusualPort": {
+    "message": "Ungewöhnlicher Port"
+  },
+  "warn_shortLink": {
+    "message": "Öffentlicher Kurzlink-Dienst"
+  },
+  "customRulesTitle": {
+    "message": "Meine Warnregeln"
+  },
+  "customRulesHint": {
+    "message": "Eine Regel zeigt ihre Bezeichnung als Warnung, wenn ihr Muster auf den Host, die vollständige URL oder den Linktext passt. Muster sind reguläre Ausdrücke ohne Groß-/Kleinschreibung mit höchstens 200 Zeichen, ohne Rückverweise, Lookaround oder \\b, und werden in linearer Zeit geprüft."
+  },
+  "ruleLabel": {
+    "message": "Bezeichnung"
+  },
+  "ruleTarget": {
+    "message": "Prüft"
+  },
+  "rulePattern": {
+    "message": "Muster"
+  },
+  "ruleTarget_host": {
+    "message": "Host"
+  },
+  "ruleTarget_url": {
+    "message": "Vollständige URL"
+  },
+  "ruleTarget_text": {
+    "message": "Linktext"
+  },
+  "addRule": {
+    "message": "Regel hinzufügen"
+  },
+  "removeRule": {
+    "message": "Entfernen"
+  },
+  "ruleInvalid": {
+    "message": "Regel $NUMBER$: $REASON$",
+    "placeholders": {
+      "number": {
+        "content": "$1"
+      },
+      "reason": {
+        "content": "$2"
+      }
+    }
+  },
+  "regexSyntax": {
+    "message": "das Muster ist kein gültiger regulärer Ausdruck."
+  },
+  "regexTooLong": {
+    "message": "das Muster ist länger als 200 Zeichen."
+  },
+  "regexUnsupported": {
+    "message": "Rückverweise, Lookaround, \\b und \\u-Escapes werden nicht unterstützt."
+  },
+  "regexTooComplex": {
+    "message": "das Muster ist zu komplex."
+  },
+  "labelInvalid": {
+    "message": "die Bezeichnung braucht 1 bis 60 Zeichen ohne Steuerzeichen."
+  },
+  "ruleFormat": {
+    "message": "die Regel ist unvollständig."
+  },
+  "warningRuleLimit": {
+    "message": "Zu viele Warnregeln: höchstens 50 eigene und 200 insgesamt aktiv."
+  },
+  "warningListsTitle": {
+    "message": "Warnlisten"
+  },
+  "warningListsHint": {
+    "message": "Importiere Regeln aus einer JSON-Datei oder über eine HTTPS-URL. Listen werden zur Prüfung angezeigt und starten deaktiviert. Sie können nur Warnungen hinzufügen, nie einen Link freigeben, und Remote-Listen ändern sich nur, wenn du sie aktualisierst."
+  },
+  "warningListFormat": {
+    "message": "Ungültige Warnliste. Erwartet: format \"link-guard-warnings\", version 1, name und rules."
+  },
+  "warningListLimit": {
+    "message": "Höchstens 10 Warnlisten."
+  },
+  "ruleCount": {
+    "message": "Regeln: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "warningListPreviewTitle": {
+    "message": "Vorschau der Warnliste"
+  },
+  "riskCustom": {
+    "message": "$SOURCE$: $LABEL$",
+    "placeholders": {
+      "label": {
+        "content": "$1"
+      },
+      "source": {
+        "content": "$2"
+      }
+    }
+  },
+  "riskCustomInline": {
+    "message": "⚠ $LABEL$",
+    "placeholders": {
+      "label": {
+        "content": "$1"
+      }
+    }
+  },
+  "ruleSourceOwn": {
+    "message": "Eigene Regel"
+  },
+  "riskCustomSkipped": {
+    "message": "Die Warnregeln konnten für diesen Link nicht geprüft werden."
+  },
+  "riskCustomSkippedInline": {
+    "message": "⚠ Regeln nicht geprüft"
+  },
+  "showRules": {
+    "message": "Regeln anzeigen"
   }
 }

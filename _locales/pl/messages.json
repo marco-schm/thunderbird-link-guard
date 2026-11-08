@@ -453,5 +453,154 @@
   },
   "autoRefreshReview": {
     "message": "Automatyczna aktualizacja nie została zastosowana, ponieważ jest duża lub zablokowałaby coś, co zatwierdziłeś. Poprzednia lista pozostaje aktywna; użyj „Sprawdź zdalną aktualizację”."
+  },
+  "warningsTitle": {
+    "message": "Ostrzeżenia"
+  },
+  "warningsHint": {
+    "message": "Wybierz, które kontrole zgłaszają ostrzeżenie, i dodaj własne. Link z ostrzeżeniem pozostaje nieaktywny, dopóki nie zatwierdzisz jego dokładnego hosta."
+  },
+  "builtinWarningsTitle": {
+    "message": "Wbudowane ostrzeżenia"
+  },
+  "builtinWarningsHint": {
+    "message": "Wyłączenie ostrzeżenia usuwa też dodatkową zgodę, której ono wymaga. Link, którego sprawdzenie się nie powiodło, zawsze pokazuje ostrzeżenie."
+  },
+  "warn_lookalike": {
+    "message": "Domena przypomina zatwierdzoną domenę"
+  },
+  "warn_idn": {
+    "message": "Umiędzynarodowiona nazwa domeny"
+  },
+  "warn_textMismatch": {
+    "message": "Tekst linku pokazuje inny host"
+  },
+  "warn_credentials": {
+    "message": "Nazwa użytkownika lub hasło w linku"
+  },
+  "warn_ipAddress": {
+    "message": "Adres IP zamiast nazwy hosta"
+  },
+  "warn_unusualPort": {
+    "message": "Nietypowy port"
+  },
+  "warn_shortLink": {
+    "message": "Publiczny skracacz adresów URL"
+  },
+  "customRulesTitle": {
+    "message": "Moje reguły ostrzeżeń"
+  },
+  "customRulesHint": {
+    "message": "Reguła pokazuje swoją etykietę jako ostrzeżenie, gdy jej wzorzec pasuje do hosta, pełnego adresu URL lub tekstu linku. Wzorce to wyrażenia regularne bez rozróżniania wielkości liter, do 200 znaków, bez odwołań wstecznych, lookaround ani \\b, sprawdzane w czasie liniowym."
+  },
+  "ruleLabel": {
+    "message": "Etykieta"
+  },
+  "ruleTarget": {
+    "message": "Sprawdza"
+  },
+  "rulePattern": {
+    "message": "Wzorzec"
+  },
+  "ruleTarget_host": {
+    "message": "Host"
+  },
+  "ruleTarget_url": {
+    "message": "Pełny URL"
+  },
+  "ruleTarget_text": {
+    "message": "Tekst linku"
+  },
+  "addRule": {
+    "message": "Dodaj regułę"
+  },
+  "removeRule": {
+    "message": "Usuń"
+  },
+  "ruleInvalid": {
+    "message": "Reguła $NUMBER$: $REASON$",
+    "placeholders": {
+      "number": {
+        "content": "$1"
+      },
+      "reason": {
+        "content": "$2"
+      }
+    }
+  },
+  "regexSyntax": {
+    "message": "wzorzec nie jest prawidłowym wyrażeniem regularnym."
+  },
+  "regexTooLong": {
+    "message": "wzorzec ma ponad 200 znaków."
+  },
+  "regexUnsupported": {
+    "message": "odwołania wsteczne, lookaround, \\b i sekwencje \\u nie są obsługiwane."
+  },
+  "regexTooComplex": {
+    "message": "wzorzec jest zbyt złożony."
+  },
+  "labelInvalid": {
+    "message": "etykieta musi mieć od 1 do 60 znaków bez znaków sterujących."
+  },
+  "ruleFormat": {
+    "message": "reguła jest niekompletna."
+  },
+  "warningRuleLimit": {
+    "message": "Za dużo reguł ostrzeżeń: najwyżej 50 własnych i 200 aktywnych."
+  },
+  "warningListsTitle": {
+    "message": "Listy ostrzeżeń"
+  },
+  "warningListsHint": {
+    "message": "Importuj reguły z pliku JSON lub adresu HTTPS. Listy są wyświetlane do przejrzenia i startują wyłączone. Mogą tylko dodawać ostrzeżenia, nigdy zatwierdzać linków, a listy zdalne zmieniają się tylko po odświeżeniu."
+  },
+  "warningListFormat": {
+    "message": "Nieprawidłowa lista ostrzeżeń. Oczekiwano: format \"link-guard-warnings\", version 1, name i rules."
+  },
+  "warningListLimit": {
+    "message": "Najwyżej 10 list ostrzeżeń."
+  },
+  "ruleCount": {
+    "message": "Reguły: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "warningListPreviewTitle": {
+    "message": "Podgląd listy ostrzeżeń"
+  },
+  "riskCustom": {
+    "message": "$SOURCE$: $LABEL$",
+    "placeholders": {
+      "label": {
+        "content": "$1"
+      },
+      "source": {
+        "content": "$2"
+      }
+    }
+  },
+  "riskCustomInline": {
+    "message": "⚠ $LABEL$",
+    "placeholders": {
+      "label": {
+        "content": "$1"
+      }
+    }
+  },
+  "ruleSourceOwn": {
+    "message": "Moja reguła"
+  },
+  "riskCustomSkipped": {
+    "message": "Nie udało się sprawdzić reguł ostrzeżeń dla tego linku."
+  },
+  "riskCustomSkippedInline": {
+    "message": "⚠ Reguły nie sprawdzone"
+  },
+  "showRules": {
+    "message": "Pokaż reguły"
   }
 }

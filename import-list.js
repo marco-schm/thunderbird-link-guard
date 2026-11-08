@@ -73,6 +73,13 @@
   }
 
   async function fetchRemote(input, fetcher = fetch) {
+    const { text, sourceUrl } = await fetchText(input, fetcher);
+    return { ...parse(text), sourceUrl };
+  }
+
+  // Shared by host lists and warning lists: HTTPS only, CORS, no credentials, no
+  // redirects, bounded in time and bytes, strict UTF-8.
+  async function fetchText(input, fetcher = fetch) {
     const url = parseRemoteUrl(input);
     const controller = new AbortController();
     const timer = setTimeout(() => controller.abort(), 10000);
@@ -100,7 +107,7 @@
       const bytes = new Uint8Array(size);
       let offset = 0;
       for (const chunk of chunks) { bytes.set(chunk, offset); offset += chunk.byteLength; }
-      return { ...parse(new TextDecoder("utf-8", { fatal: true }).decode(bytes)), sourceUrl: url };
+      return { text: new TextDecoder("utf-8", { fatal: true }).decode(bytes), sourceUrl: url };
     } finally { clearTimeout(timer); }
   }
 
@@ -158,7 +165,7 @@
     return added.some(entry => blocksApproval(entry, approvedHosts, approvedDomains)) ? "review" : "ok";
   }
 
-  const api = Object.freeze({ parse, parseRemoteUrl, fetchRemote, cleanStored, autoRefreshDue, assessAutoUpdate, MAX_BYTES, MAX_LISTS,
+  const api = Object.freeze({ parse, parseRemoteUrl, fetchRemote, fetchText, cleanStored, autoRefreshDue, assessAutoUpdate, MAX_BYTES, MAX_LISTS,
     MAX_HOSTS: 500 });
   root.LinkGuardImport = api;
   if (typeof module !== "undefined" && module.exports) module.exports = api;
