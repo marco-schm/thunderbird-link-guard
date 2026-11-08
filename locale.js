@@ -1,12 +1,14 @@
 "use strict";
 
 (function (root) {
-  const baseLocales = new Set(["de", "en", "es", "fr", "it", "ja", "pl", "ru"]);
+  const baseLocales = new Set(["cs", "da", "de", "en", "es", "fi", "fr", "hu", "it", "ja", "ko",
+    "nl", "pl", "ru", "sv", "tr", "uk"]);
 
   function effectiveUiLocale(uiLanguage) {
     const locale = String(uiLanguage || "").replaceAll("_", "-").toLowerCase();
     if (locale === "pt-br") return "pt-BR";
     if (locale === "zh-cn") return "zh-CN";
+    if (locale === "zh-tw") return "zh-TW";
     const base = locale.split("-")[0];
     return baseLocales.has(base) ? base : "en";
   }

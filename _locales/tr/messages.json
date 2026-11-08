@@ -1,0 +1,460 @@
+{
+  "extensionName": {
+    "message": "Link Guard"
+  },
+  "extensionDescription": {
+    "message": "E-postadaki web bağlantılarını denetler ve şüpheli hedefler için açık onay ister."
+  },
+  "optionsAction": {
+    "message": "Link Guard – ayarları aç"
+  },
+  "toolbarInitial": {
+    "message": "Link Guard bu iletideki bağlantıları denetliyor"
+  },
+  "toolbarDisabled": {
+    "message": "Link Guard devre dışı"
+  },
+  "toolbarOverflow": {
+    "message": "Link Guard: çok fazla bağlantı var; kalan bağlantılar engellendi"
+  },
+  "toolbarPending": {
+    "message": "Link Guard: $COUNT$ engellenen bağlantı",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "toolbarClear": {
+    "message": "Link Guard: engellenen web bağlantısı yok"
+  },
+  "toolbarRisk": {
+    "message": "Link Guard: $COUNT$ şüpheli alan adı",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "panelTitle": {
+    "message": "Bağlantıları gözden geçir"
+  },
+  "panelCompact": {
+    "message": "Bekleyen bağlantılar: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "panelCompactRisk": {
+    "message": "⚠ Uyarılar: $RISK$ · Bekleyen: $BLOCKED$",
+    "placeholders": {
+      "risk": {
+        "content": "$2"
+      },
+      "blocked": {
+        "content": "$1"
+      }
+    }
+  },
+  "panelSummary": {
+    "message": "$TOTAL$ web bağlantısı denetlendi · $BLOCKED$ engellendi",
+    "placeholders": {
+      "total": {
+        "content": "$1"
+      },
+      "blocked": {
+        "content": "$2"
+      }
+    }
+  },
+  "panelInstruction": {
+    "message": "Hedefi bu e-postadan bağımsız olarak kontrol edin. Kalıcı onay, tam ana bilgisayarı veya alan adının tamamını kapsayabilir. Herkese açık kısaltılmış bağlantılar bu ileti için ek onay gerektirir."
+  },
+  "linksForHost": {
+    "message": "Bu e-postadaki bağlantılar: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "status_pending": {
+    "message": "Onaylanmadı"
+  },
+  "status_temporary": {
+    "message": "Bu ileti için"
+  },
+  "status_permanent": {
+    "message": "Kalıcı olarak onaylandı"
+  },
+  "status_broad": {
+    "message": "Alan adının tamamı üzerinden onaylandı"
+  },
+  "status_blocked": {
+    "message": "Engellendi"
+  },
+  "allowTemporary": {
+    "message": "Geçici olarak izin ver"
+  },
+  "allowPermanent": {
+    "message": "Kalıcı olarak izin ver"
+  },
+  "blockHost": {
+    "message": "Engelle"
+  },
+  "scopePrompt": {
+    "message": "Hangi kapsam kalıcı olarak onaylansın?"
+  },
+  "blockScopePrompt": {
+    "message": "Hangi kapsam engellensin?"
+  },
+  "scopePromptShared": {
+    "message": "Başkaları burada içerik yayımlayabilir. Yalnızca bu ana bilgisayarı onaylayın."
+  },
+  "linkDestinationInline": {
+    "message": "↗ $HOST$",
+    "placeholders": {
+      "host": {
+        "content": "$1"
+      }
+    }
+  },
+  "scopeExact": {
+    "message": "Yalnızca $HOST$",
+    "placeholders": {
+      "host": {
+        "content": "$1"
+      }
+    }
+  },
+  "scopeBroad": {
+    "message": "$DOMAIN$ ve tüm alt alan adları",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      }
+    }
+  },
+  "riskIdn": {
+    "message": "Birbirine benzeyen karakterler bulunabilir."
+  },
+  "riskLookalike": {
+    "message": "$DOMAIN$ alan adına benziyor.",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      }
+    }
+  },
+  "riskIdnInline": {
+    "message": "⚠ Benzer karakterler"
+  },
+  "riskLookalikeInline": {
+    "message": "⚠ $DOMAIN$ alan adına benziyor",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      }
+    }
+  },
+  "riskUnverified": {
+    "message": "Alan adı denetimi kullanılamıyor."
+  },
+  "riskUnverifiedInline": {
+    "message": "⚠ Alan adı denetlenmedi"
+  },
+  "risk_insecureHttp": {
+    "message": "HTTP şifrelenmemiştir."
+  },
+  "risk_credentials": {
+    "message": "URL içinde kimlik bilgileri var."
+  },
+  "risk_ipAddress": {
+    "message": "Doğrudan IP adresi."
+  },
+  "risk_unusualPort": {
+    "message": "Olağandışı bağlantı noktası."
+  },
+  "risk_textMismatch": {
+    "message": "Bağlantı metni ile hedef farklı."
+  },
+  "riskInline_insecureHttp": {
+    "message": "⚠ HTTP"
+  },
+  "riskInline_credentials": {
+    "message": "⚠ URL'de kimlik bilgileri"
+  },
+  "riskInline_ipAddress": {
+    "message": "⚠ IP adresi"
+  },
+  "riskInline_unusualPort": {
+    "message": "⚠ Olağandışı bağlantı noktası"
+  },
+  "riskInline_textMismatch": {
+    "message": "⚠ Metin ≠ hedef"
+  },
+  "unsafeTitle": {
+    "message": "Onaylanamayan bağlantılar"
+  },
+  "unknownHost": {
+    "message": "Bilinmeyen hedef"
+  },
+  "reason_invalidUrl": {
+    "message": "Bağlantı hedefi geçersiz veya çok uzun"
+  },
+  "reason_badScheme": {
+    "message": "Bağlantı desteklenmeyen bir protokol kullanıyor"
+  },
+  "reason_credentials": {
+    "message": "Bağlantı hedefi kimlik bilgileri içeriyor"
+  },
+  "reason_ipAddress": {
+    "message": "Bağlantı doğrudan bir IP adresine gidiyor"
+  },
+  "reason_insecureHttp": {
+    "message": "Bağlantı şifrelenmemiş HTTP kullanıyor"
+  },
+  "reason_unusualPort": {
+    "message": "Bağlantı olağandışı bir bağlantı noktası kullanıyor"
+  },
+  "reason_textMismatch": {
+    "message": "Görüntülenen ve gerçek alan adları farklı"
+  },
+  "reason_redirectUnsafe": {
+    "message": "Yönlendirme hedefi güvensiz veya denetlenemiyor"
+  },
+  "overflowNotice": {
+    "message": "500'den fazla bağlantı: Ek bağlantılar engelli kalır ve burada listelenmez."
+  },
+  "exactHostNotice": {
+    "message": "Üst alan adları ve alt alan adları her zaman ayrıdır. Görüntülenen bağlantı metni yanıltıcı olabilir."
+  },
+  "stateUnavailable": {
+    "message": "Onaylar yüklenemedi. Web bağlantıları engelli kalıyor."
+  },
+  "saveFailed": {
+    "message": "Karar kaydedilemedi. Bağlantı engelli kalıyor."
+  },
+  "settingsTitle": {
+    "message": "Link Guard ayarları"
+  },
+  "settingsSubtitle": {
+    "message": "E-postadaki web bağlantıları için hangi tam ana bilgisayar adlarına güvendiğinizi seçin."
+  },
+  "enabledLabel": {
+    "message": "Link Guard'ı etkinleştir"
+  },
+  "enabledHint": {
+    "message": "Korumayı kapatmak, bağlantıları yeniden doğrudan tıklanabilir yapar."
+  },
+  "hostCount": {
+    "message": "Ana bilgisayar adları: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "customTitle": {
+    "message": "Kalıcı onaylarım"
+  },
+  "customHint": {
+    "message": "Bir iletide kalıcı olarak onayladığınız alan adları burada görünür. Bunları doğrudan da düzenleyebilirsiniz."
+  },
+  "blockedTitle": {
+    "message": "Engellenen alan adları"
+  },
+  "blockedHint": {
+    "message": "Bu liste onayları ve içe aktarılanları geçersiz kılar. Alan adını ve tüm alt alan adlarını engellemek için *.example.com kullanın; geçici onay yalnızca bu ileti için geçerlidir."
+  },
+  "broadTitle": {
+    "message": "Alan adlarının tamamını onayla"
+  },
+  "broadHint": {
+    "message": "Alan adını ve alt alan adlarını, example.com dahil, onaylamak için *.example.com kullanın. Paylaşılan içerik barındıran ana bilgisayarlar ayrı kalır; geniş onayı yalnızca yönettiğiniz alan adları için kullanın."
+  },
+  "broadInvalid": {
+    "message": "$DOMAIN$, birlikte gelen Public Suffix List'e göre kaydedilebilir bir alan adı değil.",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      }
+    }
+  },
+  "importsTitle": {
+    "message": "Özel ve uzak listeler"
+  },
+  "importsHint": {
+    "message": "Bir JSON dosyası içe aktarın veya bir HTTPS listesi bağlayın. Her liste etkinleştirmeden önce gösterilir ve yalnızca sizin incelemenizden sonra uygulanır. İzin listelerindeki uzak değişiklikler yeniden onayınızı gerektirir."
+  },
+  "importFileLabel": {
+    "message": "Bir JSON dosyası seçin"
+  },
+  "importUrlLabel": {
+    "message": "Bir JSON listesinin HTTPS URL'si"
+  },
+  "previewRemote": {
+    "message": "Uzak listeyi denetle"
+  },
+  "importSecurityHint": {
+    "message": "Uzak sunucular CORS'a izin vermelidir. İleti içeriği gönderilmez. En fazla 64 KiB, 500 ana bilgisayar adı ve 20 liste; yönlendirme yok. Listeleri yalnızca güvendiğiniz kaynaklardan yükleyin."
+  },
+  "importPreviewTitle": {
+    "message": "Önizleme"
+  },
+  "refreshTitle": {
+    "message": "Güncellemeyi incele"
+  },
+  "stageImport": {
+    "message": "Devre dışı liste olarak hazırla"
+  },
+  "stageRefresh": {
+    "message": "Güncellemeyi hazırla"
+  },
+  "cancelPreview": {
+    "message": "İptal"
+  },
+  "refreshPreview": {
+    "message": "Uzak güncellemeyi incele"
+  },
+  "removeList": {
+    "message": "Listeyi kaldır"
+  },
+  "importStaged": {
+    "message": "Liste hazırlandı. Uygulamak için aşağıdan kaydedin."
+  },
+  "importReady": {
+    "message": "Liste denetlendi. Önizlemede ana bilgisayar adlarını inceleyin."
+  },
+  "importLoading": {
+    "message": "Liste yükleniyor ve denetleniyor …"
+  },
+  "importTooLarge": {
+    "message": "Liste çok büyük (en fazla 64 KiB)."
+  },
+  "importFormat": {
+    "message": "Geçersiz liste biçimi. Beklenen: format, version, name, category ve hosts."
+  },
+  "importDuplicate": {
+    "message": "Liste yinelenen bir ana bilgisayar adı içeriyor."
+  },
+  "importUrl": {
+    "message": "Yalnızca kimlik bilgisi, bağlantı noktası, sorgu veya parça içermeyen bir HTTPS dosya URL'sine izin verilir."
+  },
+  "importFetch": {
+    "message": "Uzak liste güvenli şekilde yüklenemedi. HTTPS, JSON, CORS ve yönlendirmeleri kontrol edin."
+  },
+  "importListLimit": {
+    "message": "En fazla 20 içe aktarılmış liste."
+  },
+  "importEmpty": {
+    "message": "İçe aktarılan liste boş olamaz."
+  },
+  "category_news": {
+    "message": "Haberler"
+  },
+  "category_social": {
+    "message": "Sosyal medya"
+  },
+  "category_companies": {
+    "message": "Şirketler"
+  },
+  "category_other": {
+    "message": "Diğer"
+  },
+  "hostListLabel": {
+    "message": "Her satıra bir kural"
+  },
+  "saveSettings": {
+    "message": "Değişiklikleri kaydet"
+  },
+  "settingsSaved": {
+    "message": "Ayarlar kaydedildi."
+  },
+  "settingsLoadFailed": {
+    "message": "Ayarlar yüklenemedi."
+  },
+  "settingsSaveFailed": {
+    "message": "Ayarlar kaydedilemedi."
+  },
+  "settingsChanged": {
+    "message": "Listeler başka yerde değiştirildi. Kaydetmeden önce bu sayfayı yeniden yükleyin."
+  },
+  "invalidHostLine": {
+    "message": "$LINE$. satırda geçersiz ana bilgisayar adı.",
+    "placeholders": {
+      "line": {
+        "content": "$1"
+      }
+    }
+  },
+  "hostLimit": {
+    "message": "Liste başına en fazla 500 ana bilgisayar adı."
+  },
+  "hostFormatHint": {
+    "message": "Tam ana bilgisayarlarda joker karakter yoktur. Alan adının tamamı için kural *.example.com biçimindedir ve example.com'un kendisini de kapsar."
+  },
+  "exactHostExample": {
+    "message": "login.google.de ve google.de farklı ana bilgisayar adlarıdır ve ayrı onay gerektirir."
+  },
+  "risk_shortLink": {
+    "message": "Kısaltılmış bağlantı: hedef gizli."
+  },
+  "riskInline_shortLink": {
+    "message": "⚠ Kısaltılmış bağlantı"
+  },
+  "riskyApprovalWarning": {
+    "message": "Bu kısaltılmış bağlantı hedefini gizliyor. Bu ileti için izin verilsin mi?"
+  },
+  "riskyApprovalConfirm": {
+    "message": "Bu ileti için izin ver"
+  },
+  "importedEnable": {
+    "message": "Listeyi etkinleştir"
+  },
+  "listViewEdit": {
+    "message": "Listeyi görüntüle ve düzenle"
+  },
+  "listHosts": {
+    "message": "Bu listedeki tam ana bilgisayar adları"
+  },
+  "kind_allow": {
+    "message": "İzin listesi"
+  },
+  "kind_block": {
+    "message": "Engelleme listesi"
+  },
+  "listBlockedHosts": {
+    "message": "Bu listedeki engellenen girdiler (*.example.com alan adını ve tüm alt alan adlarını engeller)"
+  },
+  "importBlockHint": {
+    "message": "\"kind\": \"block\" içeren bir liste engelleme listesidir. Etkinleştirildiğinde onayları ve içe aktarılan izin listelerini geçersiz kılar ve *.example.com girdileri içerebilir. Engelleme listeleri isteğe bağlı olarak günde yaklaşık bir kez kendini güncelleyebilir; izin listeleri asla."
+  },
+  "autoRefreshLabel": {
+    "message": "Günde yaklaşık bir kez otomatik güncelle (yerel düzenlemelerin yerini alır)"
+  },
+  "autoRefreshKind": {
+    "message": "Kaynak artık farklı bir liste türü bildiriyor, bu yüzden liste değiştirilmedi. Lütfen elle inceleyin."
+  },
+  "autoRefreshOk": {
+    "message": "Son otomatik denetim: $DATE$",
+    "placeholders": {
+      "date": {
+        "content": "$1"
+      }
+    }
+  },
+  "autoRefreshFailed": {
+    "message": "Otomatik güncelleme $DATE$ tarihinde başarısız oldu. Önceki liste etkin kalıyor.",
+    "placeholders": {
+      "date": {
+        "content": "$1"
+      }
+    }
+  },
+  "autoRefreshReview": {
+    "message": "Otomatik güncelleme büyük olduğu veya onayladığınız bir şeyi engelleyeceği için uygulanmadı. Önceki liste etkin kalıyor; \"Uzak güncellemeyi incele\" düğmesini kullanın."
+  }
+}

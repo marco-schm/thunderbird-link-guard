@@ -1,0 +1,460 @@
+{
+  "extensionName": {
+    "message": "Link Guard"
+  },
+  "extensionDescription": {
+    "message": "Tarkistaa sähköpostin verkkolinkit ja vaatii nimenomaisen hyväksynnän epäilyttäville kohteille."
+  },
+  "optionsAction": {
+    "message": "Link Guard – avaa asetukset"
+  },
+  "toolbarInitial": {
+    "message": "Link Guard tarkistaa tämän viestin linkit"
+  },
+  "toolbarDisabled": {
+    "message": "Link Guard on pois käytöstä"
+  },
+  "toolbarOverflow": {
+    "message": "Link Guard: liikaa linkkejä; loput linkit estetään"
+  },
+  "toolbarPending": {
+    "message": "Link Guard: $COUNT$ estettyä linkkiä",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "toolbarClear": {
+    "message": "Link Guard: ei estettyjä verkkolinkkejä"
+  },
+  "toolbarRisk": {
+    "message": "Link Guard: $COUNT$ epäilyttävää verkkotunnusta",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "panelTitle": {
+    "message": "Tarkista linkit"
+  },
+  "panelCompact": {
+    "message": "Odottavia linkkejä: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "panelCompactRisk": {
+    "message": "⚠ Varoituksia: $RISK$ · Odottaa: $BLOCKED$",
+    "placeholders": {
+      "risk": {
+        "content": "$2"
+      },
+      "blocked": {
+        "content": "$1"
+      }
+    }
+  },
+  "panelSummary": {
+    "message": "$TOTAL$ verkkolinkkiä tarkistettu · $BLOCKED$ estetty",
+    "placeholders": {
+      "total": {
+        "content": "$1"
+      },
+      "blocked": {
+        "content": "$2"
+      }
+    }
+  },
+  "panelInstruction": {
+    "message": "Tarkista kohde erillään tästä sähköpostista. Pysyvä hyväksyntä voi koskea tarkkaa isäntää tai koko verkkotunnusta. Julkiset lyhennetyt linkit vaativat tässä viestissä lisävahvistuksen."
+  },
+  "linksForHost": {
+    "message": "Linkkejä tässä sähköpostissa: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "status_pending": {
+    "message": "Ei hyväksytty"
+  },
+  "status_temporary": {
+    "message": "Tälle viestille"
+  },
+  "status_permanent": {
+    "message": "Hyväksytty pysyvästi"
+  },
+  "status_broad": {
+    "message": "Hyväksytty koko verkkotunnuksen kautta"
+  },
+  "status_blocked": {
+    "message": "Estetty"
+  },
+  "allowTemporary": {
+    "message": "Salli väliaikaisesti"
+  },
+  "allowPermanent": {
+    "message": "Salli pysyvästi"
+  },
+  "blockHost": {
+    "message": "Estä"
+  },
+  "scopePrompt": {
+    "message": "Mikä laajuus hyväksytään pysyvästi?"
+  },
+  "blockScopePrompt": {
+    "message": "Mikä laajuus estetään?"
+  },
+  "scopePromptShared": {
+    "message": "Muut voivat julkaista tässä sisältöä. Hyväksy vain tämä isäntä."
+  },
+  "linkDestinationInline": {
+    "message": "↗ $HOST$",
+    "placeholders": {
+      "host": {
+        "content": "$1"
+      }
+    }
+  },
+  "scopeExact": {
+    "message": "Vain $HOST$",
+    "placeholders": {
+      "host": {
+        "content": "$1"
+      }
+    }
+  },
+  "scopeBroad": {
+    "message": "$DOMAIN$ ja kaikki aliverkkotunnukset",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      }
+    }
+  },
+  "riskIdn": {
+    "message": "Mukana voi olla samannäköisiä merkkejä."
+  },
+  "riskLookalike": {
+    "message": "Muistuttaa verkkotunnusta $DOMAIN$.",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      }
+    }
+  },
+  "riskIdnInline": {
+    "message": "⚠ Samannäköisiä merkkejä"
+  },
+  "riskLookalikeInline": {
+    "message": "⚠ Muistuttaa: $DOMAIN$",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      }
+    }
+  },
+  "riskUnverified": {
+    "message": "Verkkotunnuksen tarkistus ei ole käytettävissä."
+  },
+  "riskUnverifiedInline": {
+    "message": "⚠ Verkkotunnusta ei tarkistettu"
+  },
+  "risk_insecureHttp": {
+    "message": "HTTP ei ole salattu."
+  },
+  "risk_credentials": {
+    "message": "URL-osoitteessa on tunnistetietoja."
+  },
+  "risk_ipAddress": {
+    "message": "Suora IP-osoite."
+  },
+  "risk_unusualPort": {
+    "message": "Epätavallinen portti."
+  },
+  "risk_textMismatch": {
+    "message": "Linkin teksti ja kohde eroavat toisistaan."
+  },
+  "riskInline_insecureHttp": {
+    "message": "⚠ HTTP"
+  },
+  "riskInline_credentials": {
+    "message": "⚠ Tunnistetiedot URL-osoitteessa"
+  },
+  "riskInline_ipAddress": {
+    "message": "⚠ IP-osoite"
+  },
+  "riskInline_unusualPort": {
+    "message": "⚠ Epätavallinen portti"
+  },
+  "riskInline_textMismatch": {
+    "message": "⚠ Teksti ≠ kohde"
+  },
+  "unsafeTitle": {
+    "message": "Linkit, joita ei voi hyväksyä"
+  },
+  "unknownHost": {
+    "message": "Tuntematon kohde"
+  },
+  "reason_invalidUrl": {
+    "message": "Linkin kohde on virheellinen tai liian pitkä"
+  },
+  "reason_badScheme": {
+    "message": "Linkki käyttää protokollaa, jota ei tueta"
+  },
+  "reason_credentials": {
+    "message": "Linkin kohde sisältää tunnistetietoja"
+  },
+  "reason_ipAddress": {
+    "message": "Linkki johtaa suoraan IP-osoitteeseen"
+  },
+  "reason_insecureHttp": {
+    "message": "Linkki käyttää salaamatonta HTTP:tä"
+  },
+  "reason_unusualPort": {
+    "message": "Linkki käyttää epätavallista porttia"
+  },
+  "reason_textMismatch": {
+    "message": "Näytetty ja todellinen verkkotunnus eroavat toisistaan"
+  },
+  "reason_redirectUnsafe": {
+    "message": "Uudelleenohjauksen kohde on vaarallinen tai sitä ei voi tarkistaa"
+  },
+  "overflowNotice": {
+    "message": "Yli 500 linkkiä: lisälinkit pysyvät estettyinä, eikä niitä luetella tässä."
+  },
+  "exactHostNotice": {
+    "message": "Ylätason verkkotunnukset ja aliverkkotunnukset ovat aina erillisiä. Näytetty linkin teksti voi olla harhaanjohtava."
+  },
+  "stateUnavailable": {
+    "message": "Hyväksyntöjä ei voitu ladata. Verkkolinkit pysyvät estettyinä."
+  },
+  "saveFailed": {
+    "message": "Päätöstä ei voitu tallentaa. Linkki pysyy estettynä."
+  },
+  "settingsTitle": {
+    "message": "Link Guardin asetukset"
+  },
+  "settingsSubtitle": {
+    "message": "Valitse, mihin tarkkoihin isäntänimiin luotat sähköpostin verkkolinkeissä."
+  },
+  "enabledLabel": {
+    "message": "Ota Link Guard käyttöön"
+  },
+  "enabledHint": {
+    "message": "Suojauksen poistaminen käytöstä tekee linkeistä taas suoraan napsautettavia."
+  },
+  "hostCount": {
+    "message": "Isäntänimiä: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "customTitle": {
+    "message": "Omat pysyvät hyväksyntäni"
+  },
+  "customHint": {
+    "message": "Verkkotunnukset, jotka hyväksyt viestissä pysyvästi, näkyvät tässä. Voit myös muokata niitä suoraan."
+  },
+  "blockedTitle": {
+    "message": "Estetyt verkkotunnukset"
+  },
+  "blockedHint": {
+    "message": "Tämä luettelo ohittaa hyväksynnät ja tuonnit. Käytä muotoa *.example.com estääksesi verkkotunnuksen ja kaikki aliverkkotunnukset; väliaikainen hyväksyntä koskee vain tätä viestiä."
+  },
+  "broadTitle": {
+    "message": "Hyväksy kokonaisia verkkotunnuksia"
+  },
+  "broadHint": {
+    "message": "Käytä muotoa *.example.com hyväksyäksesi verkkotunnuksen ja sen aliverkkotunnukset, myös example.comin. Jaetun sisällön isännät pysyvät erillisinä; käytä laajaa hyväksyntää vain verkkotunnuksille, joita hallitset itse."
+  },
+  "broadInvalid": {
+    "message": "$DOMAIN$ ei ole rekisteröitävissä oleva verkkotunnus mukana toimitetun Public Suffix Listin mukaan.",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      }
+    }
+  },
+  "importsTitle": {
+    "message": "Omat ja etäluettelot"
+  },
+  "importsHint": {
+    "message": "Tuo JSON-tiedosto tai liitä HTTPS-luettelo. Jokainen luettelo näytetään ennen käyttöönottoa ja otetaan käyttöön vasta tarkistuksesi jälkeen. Sallittujen luetteloiden etämuutokset vaativat hyväksyntäsi uudelleen."
+  },
+  "importFileLabel": {
+    "message": "Valitse JSON-tiedosto"
+  },
+  "importUrlLabel": {
+    "message": "JSON-luettelon HTTPS-osoite"
+  },
+  "previewRemote": {
+    "message": "Tarkista etäluettelo"
+  },
+  "importSecurityHint": {
+    "message": "Etäpalvelimien on sallittava CORS. Viestien sisältöä ei lähetetä. Enintään 64 KiB, 500 isäntänimeä ja 20 luetteloa; ei uudelleenohjauksia. Lataa luetteloita vain luotetuista lähteistä."
+  },
+  "importPreviewTitle": {
+    "message": "Esikatselu"
+  },
+  "refreshTitle": {
+    "message": "Tarkista päivitys"
+  },
+  "stageImport": {
+    "message": "Valmistele käytöstä poistettuna luettelona"
+  },
+  "stageRefresh": {
+    "message": "Valmistele päivitys"
+  },
+  "cancelPreview": {
+    "message": "Peruuta"
+  },
+  "refreshPreview": {
+    "message": "Tarkista etäpäivitys"
+  },
+  "removeList": {
+    "message": "Poista luettelo"
+  },
+  "importStaged": {
+    "message": "Luettelo on valmisteltu. Ota se käyttöön tallentamalla alla."
+  },
+  "importReady": {
+    "message": "Luettelo on tarkistettu. Tarkista isäntänimet esikatselussa."
+  },
+  "importLoading": {
+    "message": "Ladataan ja tarkistetaan luetteloa …"
+  },
+  "importTooLarge": {
+    "message": "Luettelo on liian suuri (enintään 64 KiB)."
+  },
+  "importFormat": {
+    "message": "Virheellinen luettelomuoto. Odotettu: format, version, name, category ja hosts."
+  },
+  "importDuplicate": {
+    "message": "Luettelossa on kaksoiskappale isäntänimestä."
+  },
+  "importUrl": {
+    "message": "Vain HTTPS-tiedostoosoite ilman tunnistetietoja, porttia, kyselyä tai fragmenttia on sallittu."
+  },
+  "importFetch": {
+    "message": "Etäluetteloa ei voitu ladata turvallisesti. Tarkista HTTPS, JSON, CORS ja uudelleenohjaukset."
+  },
+  "importListLimit": {
+    "message": "Enintään 20 tuotua luetteloa."
+  },
+  "importEmpty": {
+    "message": "Tuotu luettelo ei saa olla tyhjä."
+  },
+  "category_news": {
+    "message": "Uutiset"
+  },
+  "category_social": {
+    "message": "Sosiaalinen media"
+  },
+  "category_companies": {
+    "message": "Yritykset"
+  },
+  "category_other": {
+    "message": "Muu"
+  },
+  "hostListLabel": {
+    "message": "Yksi sääntö riville"
+  },
+  "saveSettings": {
+    "message": "Tallenna muutokset"
+  },
+  "settingsSaved": {
+    "message": "Asetukset tallennettu."
+  },
+  "settingsLoadFailed": {
+    "message": "Asetuksia ei voitu ladata."
+  },
+  "settingsSaveFailed": {
+    "message": "Asetuksia ei voitu tallentaa."
+  },
+  "settingsChanged": {
+    "message": "Luetteloita on muutettu muualla. Lataa tämä sivu uudelleen ennen tallennusta."
+  },
+  "invalidHostLine": {
+    "message": "Virheellinen isäntänimi rivillä $LINE$.",
+    "placeholders": {
+      "line": {
+        "content": "$1"
+      }
+    }
+  },
+  "hostLimit": {
+    "message": "Enintään 500 isäntänimeä luetteloa kohti."
+  },
+  "hostFormatHint": {
+    "message": "Tarkoissa isännissä ei ole jokerimerkkiä. Koko verkkotunnuksen sääntö on muotoa *.example.com, ja se kattaa myös example.comin itsensä."
+  },
+  "exactHostExample": {
+    "message": "login.google.de ja google.de ovat eri isäntänimiä, ja ne vaativat erilliset hyväksynnät."
+  },
+  "risk_shortLink": {
+    "message": "Lyhennetty linkki: kohde on piilotettu."
+  },
+  "riskInline_shortLink": {
+    "message": "⚠ Lyhennetty linkki"
+  },
+  "riskyApprovalWarning": {
+    "message": "Tämä lyhennetty linkki piilottaa kohteensa. Sallitaanko se tälle viestille?"
+  },
+  "riskyApprovalConfirm": {
+    "message": "Salli tälle viestille"
+  },
+  "importedEnable": {
+    "message": "Ota luettelo käyttöön"
+  },
+  "listViewEdit": {
+    "message": "Näytä ja muokkaa luetteloa"
+  },
+  "listHosts": {
+    "message": "Tämän luettelon tarkat isäntänimet"
+  },
+  "kind_allow": {
+    "message": "Sallittujen luettelo"
+  },
+  "kind_block": {
+    "message": "Estoluettelo"
+  },
+  "listBlockedHosts": {
+    "message": "Tämän luettelon estetyt merkinnät (*.example.com estää verkkotunnuksen ja kaikki aliverkkotunnukset)"
+  },
+  "importBlockHint": {
+    "message": "Luettelo, jossa on \"kind\": \"block\", on estoluettelo. Käyttöön otettuna se ohittaa hyväksynnät ja tuodut sallittujen luettelot, ja siinä voi olla *.example.com-merkintöjä. Estoluettelot voivat halutessasi päivittää itsensä noin kerran päivässä; sallittujen luettelot eivät koskaan."
+  },
+  "autoRefreshLabel": {
+    "message": "Päivitä automaattisesti noin kerran päivässä (korvaa paikalliset muokkaukset)"
+  },
+  "autoRefreshKind": {
+    "message": "Lähde ilmoittaa nyt eri luettelotyypin, joten luetteloa ei muutettu. Tarkista se manuaalisesti."
+  },
+  "autoRefreshOk": {
+    "message": "Viimeisin automaattinen tarkistus: $DATE$",
+    "placeholders": {
+      "date": {
+        "content": "$1"
+      }
+    }
+  },
+  "autoRefreshFailed": {
+    "message": "Automaattinen päivitys epäonnistui $DATE$. Edellinen luettelo pysyy käytössä.",
+    "placeholders": {
+      "date": {
+        "content": "$1"
+      }
+    }
+  },
+  "autoRefreshReview": {
+    "message": "Automaattista päivitystä ei otettu käyttöön, koska se on suuri tai estäisi jotain, minkä olet hyväksynyt. Edellinen luettelo pysyy käytössä; käytä kohtaa \"Tarkista etäpäivitys\"."
+  }
+}

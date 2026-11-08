@@ -1,0 +1,460 @@
+{
+  "extensionName": {
+    "message": "Link Guard"
+  },
+  "extensionDescription": {
+    "message": "Kontrollerar webblänkar i e-post och kräver uttryckligt godkännande för misstänkta mål."
+  },
+  "optionsAction": {
+    "message": "Link Guard – öppna inställningar"
+  },
+  "toolbarInitial": {
+    "message": "Link Guard kontrollerar länkarna i det här meddelandet"
+  },
+  "toolbarDisabled": {
+    "message": "Link Guard är inaktiverat"
+  },
+  "toolbarOverflow": {
+    "message": "Link Guard: för många länkar; övriga länkar blockeras"
+  },
+  "toolbarPending": {
+    "message": "Link Guard: $COUNT$ blockerade länkar",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "toolbarClear": {
+    "message": "Link Guard: inga blockerade webblänkar"
+  },
+  "toolbarRisk": {
+    "message": "Link Guard: $COUNT$ misstänkta domäner",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "panelTitle": {
+    "message": "Granska länkar"
+  },
+  "panelCompact": {
+    "message": "Väntande länkar: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "panelCompactRisk": {
+    "message": "⚠ Varningar: $RISK$ · Väntar: $BLOCKED$",
+    "placeholders": {
+      "risk": {
+        "content": "$2"
+      },
+      "blocked": {
+        "content": "$1"
+      }
+    }
+  },
+  "panelSummary": {
+    "message": "$TOTAL$ webblänkar kontrollerade · $BLOCKED$ blockerade",
+    "placeholders": {
+      "total": {
+        "content": "$1"
+      },
+      "blocked": {
+        "content": "$2"
+      }
+    }
+  },
+  "panelInstruction": {
+    "message": "Kontrollera målet oberoende av det här e-postmeddelandet. Permanent godkännande kan gälla den exakta värden eller hela domänen. Offentliga förkortade länkar kräver ytterligare bekräftelse för det här meddelandet."
+  },
+  "linksForHost": {
+    "message": "Länkar i det här e-postmeddelandet: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "status_pending": {
+    "message": "Inte godkänd"
+  },
+  "status_temporary": {
+    "message": "För det här meddelandet"
+  },
+  "status_permanent": {
+    "message": "Permanent godkänd"
+  },
+  "status_broad": {
+    "message": "Godkänd via hela domänen"
+  },
+  "status_blocked": {
+    "message": "Blockerad"
+  },
+  "allowTemporary": {
+    "message": "Tillåt tillfälligt"
+  },
+  "allowPermanent": {
+    "message": "Tillåt permanent"
+  },
+  "blockHost": {
+    "message": "Blockera"
+  },
+  "scopePrompt": {
+    "message": "Vilket omfång ska godkännas permanent?"
+  },
+  "blockScopePrompt": {
+    "message": "Vilket omfång ska blockeras?"
+  },
+  "scopePromptShared": {
+    "message": "Andra kan publicera innehåll här. Godkänn bara den här värden."
+  },
+  "linkDestinationInline": {
+    "message": "↗ $HOST$",
+    "placeholders": {
+      "host": {
+        "content": "$1"
+      }
+    }
+  },
+  "scopeExact": {
+    "message": "Endast $HOST$",
+    "placeholders": {
+      "host": {
+        "content": "$1"
+      }
+    }
+  },
+  "scopeBroad": {
+    "message": "$DOMAIN$ och alla underdomäner",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      }
+    }
+  },
+  "riskIdn": {
+    "message": "Tecken som liknar varandra kan förekomma."
+  },
+  "riskLookalike": {
+    "message": "Liknar $DOMAIN$.",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      }
+    }
+  },
+  "riskIdnInline": {
+    "message": "⚠ Liknande tecken"
+  },
+  "riskLookalikeInline": {
+    "message": "⚠ Liknar $DOMAIN$",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      }
+    }
+  },
+  "riskUnverified": {
+    "message": "Domänkontroll är inte tillgänglig."
+  },
+  "riskUnverifiedInline": {
+    "message": "⚠ Domänen är inte kontrollerad"
+  },
+  "risk_insecureHttp": {
+    "message": "HTTP är okrypterat."
+  },
+  "risk_credentials": {
+    "message": "Inloggningsuppgifter i URL:en."
+  },
+  "risk_ipAddress": {
+    "message": "Direkt IP-adress."
+  },
+  "risk_unusualPort": {
+    "message": "Ovanlig port."
+  },
+  "risk_textMismatch": {
+    "message": "Länktext och mål skiljer sig åt."
+  },
+  "riskInline_insecureHttp": {
+    "message": "⚠ HTTP"
+  },
+  "riskInline_credentials": {
+    "message": "⚠ Inloggningsuppgifter i URL"
+  },
+  "riskInline_ipAddress": {
+    "message": "⚠ IP-adress"
+  },
+  "riskInline_unusualPort": {
+    "message": "⚠ Ovanlig port"
+  },
+  "riskInline_textMismatch": {
+    "message": "⚠ Text ≠ mål"
+  },
+  "unsafeTitle": {
+    "message": "Länkar som inte kan godkännas"
+  },
+  "unknownHost": {
+    "message": "Okänt mål"
+  },
+  "reason_invalidUrl": {
+    "message": "Länkmålet är ogiltigt eller för långt"
+  },
+  "reason_badScheme": {
+    "message": "Länken använder ett protokoll som inte stöds"
+  },
+  "reason_credentials": {
+    "message": "Länkmålet innehåller inloggningsuppgifter"
+  },
+  "reason_ipAddress": {
+    "message": "Länken leder direkt till en IP-adress"
+  },
+  "reason_insecureHttp": {
+    "message": "Länken använder okrypterat HTTP"
+  },
+  "reason_unusualPort": {
+    "message": "Länken använder en ovanlig port"
+  },
+  "reason_textMismatch": {
+    "message": "Visad och faktisk domän skiljer sig åt"
+  },
+  "reason_redirectUnsafe": {
+    "message": "Omdirigeringsmålet är osäkert eller kan inte kontrolleras"
+  },
+  "overflowNotice": {
+    "message": "Fler än 500 länkar: Ytterligare länkar förblir blockerade och visas inte här."
+  },
+  "exactHostNotice": {
+    "message": "Överordnade domäner och underdomäner är alltid separata. Visad länktext kan vara vilseledande."
+  },
+  "stateUnavailable": {
+    "message": "Godkännandena kunde inte läsas in. Webblänkar förblir blockerade."
+  },
+  "saveFailed": {
+    "message": "Beslutet kunde inte sparas. Länken förblir blockerad."
+  },
+  "settingsTitle": {
+    "message": "Inställningar för Link Guard"
+  },
+  "settingsSubtitle": {
+    "message": "Välj vilka exakta värdnamn du litar på för webblänkar i e-post."
+  },
+  "enabledLabel": {
+    "message": "Aktivera Link Guard"
+  },
+  "enabledHint": {
+    "message": "Om du inaktiverar skyddet blir länkarna direkt klickbara igen."
+  },
+  "hostCount": {
+    "message": "Värdnamn: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "customTitle": {
+    "message": "Mina permanenta godkännanden"
+  },
+  "customHint": {
+    "message": "Domäner som du godkänner permanent i ett meddelande visas här. Du kan också redigera dem direkt."
+  },
+  "blockedTitle": {
+    "message": "Blockerade domäner"
+  },
+  "blockedHint": {
+    "message": "Den här listan går före godkännanden och importer. Använd *.example.com för att blockera domänen och alla underdomäner; ett tillfälligt godkännande gäller bara det här meddelandet."
+  },
+  "broadTitle": {
+    "message": "Godkänn hela domäner"
+  },
+  "broadHint": {
+    "message": "Använd *.example.com för att godkänna domänen och dess underdomäner, inklusive example.com. Värdar med delat innehåll förblir separata; använd brett godkännande bara för domäner du själv kontrollerar."
+  },
+  "broadInvalid": {
+    "message": "$DOMAIN$ är inte en registrerbar domän enligt den medföljande Public Suffix List.",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      }
+    }
+  },
+  "importsTitle": {
+    "message": "Egna och fjärrlistor"
+  },
+  "importsHint": {
+    "message": "Importera en JSON-fil eller länka en HTTPS-lista. Varje lista visas före aktivering och tillämpas först efter din granskning. Ändringar på distans i tillåtlistor kräver ditt godkännande på nytt."
+  },
+  "importFileLabel": {
+    "message": "Välj en JSON-fil"
+  },
+  "importUrlLabel": {
+    "message": "HTTPS-URL till en JSON-lista"
+  },
+  "previewRemote": {
+    "message": "Kontrollera fjärrlista"
+  },
+  "importSecurityHint": {
+    "message": "Fjärrservrar måste tillåta CORS. Inget meddelandeinnehåll skickas. Högst 64 KiB, 500 värdnamn och 20 listor; inga omdirigeringar. Läs bara in listor från betrodda källor."
+  },
+  "importPreviewTitle": {
+    "message": "Förhandsgranskning"
+  },
+  "refreshTitle": {
+    "message": "Granska uppdatering"
+  },
+  "stageImport": {
+    "message": "Förbered som inaktiverad lista"
+  },
+  "stageRefresh": {
+    "message": "Förbered uppdatering"
+  },
+  "cancelPreview": {
+    "message": "Avbryt"
+  },
+  "refreshPreview": {
+    "message": "Granska fjärruppdatering"
+  },
+  "removeList": {
+    "message": "Ta bort lista"
+  },
+  "importStaged": {
+    "message": "Listan är förberedd. Spara nedan för att tillämpa."
+  },
+  "importReady": {
+    "message": "Listan har kontrollerats. Granska värdnamnen i förhandsgranskningen."
+  },
+  "importLoading": {
+    "message": "Läser in och kontrollerar lista …"
+  },
+  "importTooLarge": {
+    "message": "Listan är för stor (högst 64 KiB)."
+  },
+  "importFormat": {
+    "message": "Ogiltigt listformat. Förväntas: format, version, name, category och hosts."
+  },
+  "importDuplicate": {
+    "message": "Listan innehåller ett dubblerat värdnamn."
+  },
+  "importUrl": {
+    "message": "Endast en HTTPS-fil-URL utan inloggningsuppgifter, port, fråga eller fragment tillåts."
+  },
+  "importFetch": {
+    "message": "Fjärrlistan kunde inte läsas in på ett säkert sätt. Kontrollera HTTPS, JSON, CORS och omdirigeringar."
+  },
+  "importListLimit": {
+    "message": "Högst 20 importerade listor."
+  },
+  "importEmpty": {
+    "message": "En importerad lista får inte vara tom."
+  },
+  "category_news": {
+    "message": "Nyheter"
+  },
+  "category_social": {
+    "message": "Sociala medier"
+  },
+  "category_companies": {
+    "message": "Företag"
+  },
+  "category_other": {
+    "message": "Övrigt"
+  },
+  "hostListLabel": {
+    "message": "En regel per rad"
+  },
+  "saveSettings": {
+    "message": "Spara ändringar"
+  },
+  "settingsSaved": {
+    "message": "Inställningarna har sparats."
+  },
+  "settingsLoadFailed": {
+    "message": "Inställningarna kunde inte läsas in."
+  },
+  "settingsSaveFailed": {
+    "message": "Inställningarna kunde inte sparas."
+  },
+  "settingsChanged": {
+    "message": "Listorna har ändrats någon annanstans. Läs in sidan igen innan du sparar."
+  },
+  "invalidHostLine": {
+    "message": "Ogiltigt värdnamn på rad $LINE$.",
+    "placeholders": {
+      "line": {
+        "content": "$1"
+      }
+    }
+  },
+  "hostLimit": {
+    "message": "Högst 500 värdnamn per lista."
+  },
+  "hostFormatHint": {
+    "message": "Exakta värdar har inget jokertecken. En regel för hela domänen använder *.example.com och omfattar även själva example.com."
+  },
+  "exactHostExample": {
+    "message": "login.google.de och google.de är olika värdnamn och kräver separata godkännanden."
+  },
+  "risk_shortLink": {
+    "message": "Förkortad länk: målet är dolt."
+  },
+  "riskInline_shortLink": {
+    "message": "⚠ Förkortad länk"
+  },
+  "riskyApprovalWarning": {
+    "message": "Den här förkortade länken döljer sitt mål. Tillåta den för det här meddelandet?"
+  },
+  "riskyApprovalConfirm": {
+    "message": "Tillåt för det här meddelandet"
+  },
+  "importedEnable": {
+    "message": "Aktivera lista"
+  },
+  "listViewEdit": {
+    "message": "Visa och redigera lista"
+  },
+  "listHosts": {
+    "message": "Exakta värdnamn i den här listan"
+  },
+  "kind_allow": {
+    "message": "Tillåtlista"
+  },
+  "kind_block": {
+    "message": "Blockeringslista"
+  },
+  "listBlockedHosts": {
+    "message": "Blockerade poster i den här listan (*.example.com blockerar domänen och alla underdomäner)"
+  },
+  "importBlockHint": {
+    "message": "En lista med \"kind\": \"block\" är en blockeringslista. När den är aktiverad går den före godkännanden och importerade tillåtlistor och kan innehålla poster av typen *.example.com. Blockeringslistor kan valfritt uppdatera sig själva ungefär en gång per dygn; tillåtlistor gör aldrig det."
+  },
+  "autoRefreshLabel": {
+    "message": "Uppdatera automatiskt ungefär en gång per dygn (ersätter lokala ändringar)"
+  },
+  "autoRefreshKind": {
+    "message": "Källan anger nu en annan listtyp, så listan ändrades inte. Granska den manuellt."
+  },
+  "autoRefreshOk": {
+    "message": "Senaste automatiska kontroll: $DATE$",
+    "placeholders": {
+      "date": {
+        "content": "$1"
+      }
+    }
+  },
+  "autoRefreshFailed": {
+    "message": "Den automatiska uppdateringen misslyckades den $DATE$. Den tidigare listan förblir aktiv.",
+    "placeholders": {
+      "date": {
+        "content": "$1"
+      }
+    }
+  },
+  "autoRefreshReview": {
+    "message": "Den automatiska uppdateringen tillämpades inte eftersom den är stor eller skulle blockera något du har godkänt. Den tidigare listan förblir aktiv; använd \"Granska fjärruppdatering\"."
+  }
+}

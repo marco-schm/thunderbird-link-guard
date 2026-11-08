@@ -6,22 +6,30 @@ const vm = require("node:vm");
 
 const read = language => JSON.parse(fs.readFileSync(
   path.join(__dirname, `../_locales/${language}/messages.json`), "utf8"));
-const locales = ["de", "en", "es", "fr", "it", "ja", "pl", "pt_BR", "ru", "zh_CN"];
+const locales = ["cs", "da", "de", "en", "es", "fi", "fr", "hu", "it", "ja", "ko", "nl", "pl",
+  "pt_BR", "ru", "sv", "tr", "uk", "zh_CN", "zh_TW"];
 const { effectiveUiLocale } = require("../locale.js");
 
 test("unsupported Thunderbird UI locales fall back to English", () => {
-  assert.equal(effectiveUiLocale("nl-NL"), "en");
-  assert.equal(effectiveUiLocale("tr-TR"), "en");
+  assert.equal(effectiveUiLocale("ar"), "en");
+  assert.equal(effectiveUiLocale("he-IL"), "en");
+  assert.equal(effectiveUiLocale("zh"), "en");
   assert.equal(effectiveUiLocale(""), "en");
   assert.equal(effectiveUiLocale("es-MX"), "es");
   assert.equal(effectiveUiLocale("de-DE"), "de");
   assert.equal(effectiveUiLocale("pt-BR"), "pt-BR");
   assert.equal(effectiveUiLocale("zh-CN"), "zh-CN");
+  assert.equal(effectiveUiLocale("zh-TW"), "zh-TW");
+  assert.equal(effectiveUiLocale("zh_tw"), "zh-TW");
+  for (const [ui, expected] of [["nl-NL", "nl"], ["tr-TR", "tr"], ["ko-KR", "ko"], ["cs", "cs"],
+    ["sv-SE", "sv"], ["uk-UA", "uk"], ["da-DK", "da"], ["fi", "fi"], ["hu-HU", "hu"]]) {
+    assert.equal(effectiveUiLocale(ui), expected, ui);
+  }
 });
 
 test("English fallback ignores a supported secondary Thunderbird language", () => {
   const context = vm.createContext({ messenger: { i18n: {
-    getUILanguage: () => "nl",
+    getUILanguage: () => "ar",
     getMessage: () => "Spanish secondary language"
   } } });
   for (const file of ["english.js", "locale.js"]) {
@@ -32,11 +40,11 @@ test("English fallback ignores a supported secondary Thunderbird language", () =
     "Link Guard: 3 blocked links");
   assert.equal(context.LinkGuardLocale.getMessage("panelCompactRisk", ["2", "1"]),
     "⚠ Warnings: 1 · Pending: 2");
-  assert.equal(context.LinkGuardLocale.effectiveUiLocale("nl"), "en");
+  assert.equal(context.LinkGuardLocale.effectiveUiLocale("ar"), "en");
   assert.deepEqual(JSON.parse(JSON.stringify(context.LinkGuardEnglish)), read("en"));
 });
 
-test("ten locale catalogs have complete keys and unchanged substitutions", () => {
+test("twenty locale catalogs have complete keys and unchanged substitutions", () => {
   const en = read("en");
   const actual = fs.readdirSync(path.join(__dirname, "../_locales"))
     .filter(name => fs.existsSync(path.join(__dirname, "../_locales", name, "messages.json")));
@@ -79,5 +87,12 @@ test("every manifest placeholder and code message key exists", () => {
   const options = fs.readFileSync(path.join(__dirname, "../options.html"), "utf8");
   for (const match of options.matchAll(/data-i18n="([A-Za-z0-9_]+)"/g)) {
     assert.ok(catalog[match[1]], `options.html: ${match[1]}`);
+  }
+});
+
+test("the package script ships every locale catalog", () => {
+  const script = fs.readFileSync(path.join(__dirname, "../scripts/package.sh"), "utf8");
+  for (const locale of locales) {
+    assert.ok(script.includes(`_locales/${locale}/messages.json`), locale);
   }
 });

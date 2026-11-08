@@ -1,0 +1,460 @@
+{
+  "extensionName": {
+    "message": "Link Guard"
+  },
+  "extensionDescription": {
+    "message": "Ellenőrzi az e-mailekben található webes hivatkozásokat, és a gyanús célokhoz kifejezett jóváhagyást kér."
+  },
+  "optionsAction": {
+    "message": "Link Guard – beállítások megnyitása"
+  },
+  "toolbarInitial": {
+    "message": "A Link Guard ellenőrzi az üzenet hivatkozásait"
+  },
+  "toolbarDisabled": {
+    "message": "A Link Guard ki van kapcsolva"
+  },
+  "toolbarOverflow": {
+    "message": "Link Guard: túl sok hivatkozás; a többi hivatkozás le van tiltva"
+  },
+  "toolbarPending": {
+    "message": "Link Guard: $COUNT$ letiltott hivatkozás",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "toolbarClear": {
+    "message": "Link Guard: nincs letiltott webes hivatkozás"
+  },
+  "toolbarRisk": {
+    "message": "Link Guard: $COUNT$ gyanús tartomány",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "panelTitle": {
+    "message": "Hivatkozások áttekintése"
+  },
+  "panelCompact": {
+    "message": "Függőben lévő hivatkozások: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "panelCompactRisk": {
+    "message": "⚠ Figyelmeztetések: $RISK$ · Függőben: $BLOCKED$",
+    "placeholders": {
+      "risk": {
+        "content": "$2"
+      },
+      "blocked": {
+        "content": "$1"
+      }
+    }
+  },
+  "panelSummary": {
+    "message": "$TOTAL$ webes hivatkozás ellenőrizve · $BLOCKED$ letiltva",
+    "placeholders": {
+      "total": {
+        "content": "$1"
+      },
+      "blocked": {
+        "content": "$2"
+      }
+    }
+  },
+  "panelInstruction": {
+    "message": "A célt ettől az e-mailtől függetlenül ellenőrizze. A végleges jóváhagyás vonatkozhat a pontos gazdagépre vagy a teljes tartományra. A nyilvános rövidített hivatkozásokhoz ennél az üzenetnél további megerősítés szükséges."
+  },
+  "linksForHost": {
+    "message": "Hivatkozások ebben az e-mailben: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "status_pending": {
+    "message": "Nincs jóváhagyva"
+  },
+  "status_temporary": {
+    "message": "Ehhez az üzenethez"
+  },
+  "status_permanent": {
+    "message": "Véglegesen jóváhagyva"
+  },
+  "status_broad": {
+    "message": "Jóváhagyva a teljes tartományon keresztül"
+  },
+  "status_blocked": {
+    "message": "Letiltva"
+  },
+  "allowTemporary": {
+    "message": "Engedélyezés ideiglenesen"
+  },
+  "allowPermanent": {
+    "message": "Engedélyezés véglegesen"
+  },
+  "blockHost": {
+    "message": "Letiltás"
+  },
+  "scopePrompt": {
+    "message": "Melyik hatókört hagyja jóvá véglegesen?"
+  },
+  "blockScopePrompt": {
+    "message": "Melyik hatókört tiltsa le?"
+  },
+  "scopePromptShared": {
+    "message": "Mások is közzétehetnek itt tartalmat. Csak ezt a gazdagépet hagyja jóvá."
+  },
+  "linkDestinationInline": {
+    "message": "↗ $HOST$",
+    "placeholders": {
+      "host": {
+        "content": "$1"
+      }
+    }
+  },
+  "scopeExact": {
+    "message": "Csak $HOST$",
+    "placeholders": {
+      "host": {
+        "content": "$1"
+      }
+    }
+  },
+  "scopeBroad": {
+    "message": "$DOMAIN$ és minden altartomány",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      }
+    }
+  },
+  "riskIdn": {
+    "message": "Előfordulhatnak hasonlónak látszó karakterek."
+  },
+  "riskLookalike": {
+    "message": "Hasonlít erre: $DOMAIN$.",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      }
+    }
+  },
+  "riskIdnInline": {
+    "message": "⚠ Hasonló karakterek"
+  },
+  "riskLookalikeInline": {
+    "message": "⚠ Hasonlít erre: $DOMAIN$",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      }
+    }
+  },
+  "riskUnverified": {
+    "message": "A tartomány ellenőrzése nem érhető el."
+  },
+  "riskUnverifiedInline": {
+    "message": "⚠ A tartomány nincs ellenőrizve"
+  },
+  "risk_insecureHttp": {
+    "message": "A HTTP nem titkosított."
+  },
+  "risk_credentials": {
+    "message": "Hitelesítő adatok az URL-ben."
+  },
+  "risk_ipAddress": {
+    "message": "Közvetlen IP-cím."
+  },
+  "risk_unusualPort": {
+    "message": "Szokatlan port."
+  },
+  "risk_textMismatch": {
+    "message": "A hivatkozás szövege és a cél eltér."
+  },
+  "riskInline_insecureHttp": {
+    "message": "⚠ HTTP"
+  },
+  "riskInline_credentials": {
+    "message": "⚠ Hitelesítő adatok az URL-ben"
+  },
+  "riskInline_ipAddress": {
+    "message": "⚠ IP-cím"
+  },
+  "riskInline_unusualPort": {
+    "message": "⚠ Szokatlan port"
+  },
+  "riskInline_textMismatch": {
+    "message": "⚠ Szöveg ≠ cél"
+  },
+  "unsafeTitle": {
+    "message": "Nem jóváhagyható hivatkozások"
+  },
+  "unknownHost": {
+    "message": "Ismeretlen cél"
+  },
+  "reason_invalidUrl": {
+    "message": "A hivatkozás célja érvénytelen vagy túl hosszú"
+  },
+  "reason_badScheme": {
+    "message": "A hivatkozás nem támogatott protokollt használ"
+  },
+  "reason_credentials": {
+    "message": "A hivatkozás célja hitelesítő adatokat tartalmaz"
+  },
+  "reason_ipAddress": {
+    "message": "A hivatkozás közvetlenül IP-címre mutat"
+  },
+  "reason_insecureHttp": {
+    "message": "A hivatkozás titkosítatlan HTTP-t használ"
+  },
+  "reason_unusualPort": {
+    "message": "A hivatkozás szokatlan portot használ"
+  },
+  "reason_textMismatch": {
+    "message": "A megjelenített és a tényleges tartomány eltér"
+  },
+  "reason_redirectUnsafe": {
+    "message": "Az átirányítás célja nem biztonságos, vagy nem ellenőrizhető"
+  },
+  "overflowNotice": {
+    "message": "500-nál több hivatkozás: a további hivatkozások le vannak tiltva, és itt nem szerepelnek."
+  },
+  "exactHostNotice": {
+    "message": "A szülőtartományok és az altartományok mindig különállóak. A megjelenített hivatkozásszöveg félrevezető lehet."
+  },
+  "stateUnavailable": {
+    "message": "A jóváhagyásokat nem sikerült betölteni. A webes hivatkozások le vannak tiltva."
+  },
+  "saveFailed": {
+    "message": "A döntést nem sikerült menteni. A hivatkozás le van tiltva."
+  },
+  "settingsTitle": {
+    "message": "Link Guard beállításai"
+  },
+  "settingsSubtitle": {
+    "message": "Válassza ki, mely pontos gazdagépnevekben bízik az e-mailekben található webes hivatkozásoknál."
+  },
+  "enabledLabel": {
+    "message": "Link Guard engedélyezése"
+  },
+  "enabledHint": {
+    "message": "A védelem kikapcsolása után a hivatkozások ismét közvetlenül kattinthatók."
+  },
+  "hostCount": {
+    "message": "Gazdagépnevek: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "customTitle": {
+    "message": "Saját végleges jóváhagyásaim"
+  },
+  "customHint": {
+    "message": "Az üzenetben véglegesen jóváhagyott tartományok itt jelennek meg. Közvetlenül is szerkesztheti őket."
+  },
+  "blockedTitle": {
+    "message": "Letiltott tartományok"
+  },
+  "blockedHint": {
+    "message": "Ez a lista felülírja a jóváhagyásokat és az importokat. A *.example.com a tartományt és minden altartományt letilt; az ideiglenes jóváhagyás csak erre az üzenetre vonatkozik."
+  },
+  "broadTitle": {
+    "message": "Teljes tartományok jóváhagyása"
+  },
+  "broadHint": {
+    "message": "A *.example.com a tartományt és altartományait hagyja jóvá, az example.comot is beleértve. A megosztott tartalmú gazdagépek különállóak maradnak; széles körű jóváhagyást csak a saját kezelésű tartományokhoz használjon."
+  },
+  "broadInvalid": {
+    "message": "A mellékelt Public Suffix List szerint a(z) $DOMAIN$ nem regisztrálható tartomány.",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      }
+    }
+  },
+  "importsTitle": {
+    "message": "Egyéni és távoli listák"
+  },
+  "importsHint": {
+    "message": "Importáljon JSON-fájlt, vagy kapcsoljon be egy HTTPS-listát. Minden lista az aktiválás előtt megjelenik, és csak az Ön ellenőrzése után lép érvénybe. Az engedélyezési listák távoli módosításaihoz újra jóváhagyás kell."
+  },
+  "importFileLabel": {
+    "message": "JSON-fájl kiválasztása"
+  },
+  "importUrlLabel": {
+    "message": "JSON-lista HTTPS URL-je"
+  },
+  "previewRemote": {
+    "message": "Távoli lista ellenőrzése"
+  },
+  "importSecurityHint": {
+    "message": "A távoli szervereknek engedélyezniük kell a CORS-t. Üzenettartalom nem kerül elküldésre. Legfeljebb 64 KiB, 500 gazdagépnév és 20 lista; átirányítás nélkül. Listákat csak megbízható forrásból töltsön be."
+  },
+  "importPreviewTitle": {
+    "message": "Előnézet"
+  },
+  "refreshTitle": {
+    "message": "Frissítés ellenőrzése"
+  },
+  "stageImport": {
+    "message": "Előkészítés letiltott listaként"
+  },
+  "stageRefresh": {
+    "message": "Frissítés előkészítése"
+  },
+  "cancelPreview": {
+    "message": "Mégse"
+  },
+  "refreshPreview": {
+    "message": "Távoli frissítés ellenőrzése"
+  },
+  "removeList": {
+    "message": "Lista eltávolítása"
+  },
+  "importStaged": {
+    "message": "A lista előkészítve. Az alkalmazáshoz mentsen lent."
+  },
+  "importReady": {
+    "message": "A lista ellenőrizve. Nézze át a gazdagépneveket az előnézetben."
+  },
+  "importLoading": {
+    "message": "Lista betöltése és ellenőrzése …"
+  },
+  "importTooLarge": {
+    "message": "A lista túl nagy (legfeljebb 64 KiB)."
+  },
+  "importFormat": {
+    "message": "Érvénytelen listaformátum. Elvárt mezők: format, version, name, category és hosts."
+  },
+  "importDuplicate": {
+    "message": "A lista ismétlődő gazdagépnevet tartalmaz."
+  },
+  "importUrl": {
+    "message": "Csak HTTPS-fájl URL engedélyezett, hitelesítő adatok, port, lekérdezés és töredék nélkül."
+  },
+  "importFetch": {
+    "message": "A távoli listát nem sikerült biztonságosan betölteni. Ellenőrizze a HTTPS-t, a JSON-t, a CORS-t és az átirányításokat."
+  },
+  "importListLimit": {
+    "message": "Legfeljebb 20 importált lista."
+  },
+  "importEmpty": {
+    "message": "Az importált lista nem lehet üres."
+  },
+  "category_news": {
+    "message": "Hírek"
+  },
+  "category_social": {
+    "message": "Közösségi média"
+  },
+  "category_companies": {
+    "message": "Cégek"
+  },
+  "category_other": {
+    "message": "Egyéb"
+  },
+  "hostListLabel": {
+    "message": "Soronként egy szabály"
+  },
+  "saveSettings": {
+    "message": "Módosítások mentése"
+  },
+  "settingsSaved": {
+    "message": "A beállítások mentve."
+  },
+  "settingsLoadFailed": {
+    "message": "A beállításokat nem sikerült betölteni."
+  },
+  "settingsSaveFailed": {
+    "message": "A beállításokat nem sikerült menteni."
+  },
+  "settingsChanged": {
+    "message": "A listák máshol módosultak. Mentés előtt töltse újra az oldalt."
+  },
+  "invalidHostLine": {
+    "message": "Érvénytelen gazdagépnév a(z) $LINE$. sorban.",
+    "placeholders": {
+      "line": {
+        "content": "$1"
+      }
+    }
+  },
+  "hostLimit": {
+    "message": "Listánként legfeljebb 500 gazdagépnév."
+  },
+  "hostFormatHint": {
+    "message": "A pontos gazdagépekben nincs helyettesítő karakter. A teljes tartományra vonatkozó szabály formátuma *.example.com, és magát az example.comot is magában foglalja."
+  },
+  "exactHostExample": {
+    "message": "A login.google.de és a google.de különböző gazdagépnevek, ezért külön jóváhagyást igényelnek."
+  },
+  "risk_shortLink": {
+    "message": "Rövidített hivatkozás: a cél rejtett."
+  },
+  "riskInline_shortLink": {
+    "message": "⚠ Rövidített hivatkozás"
+  },
+  "riskyApprovalWarning": {
+    "message": "Ez a rövidített hivatkozás elrejti a célját. Engedélyezi ehhez az üzenethez?"
+  },
+  "riskyApprovalConfirm": {
+    "message": "Engedélyezés ehhez az üzenethez"
+  },
+  "importedEnable": {
+    "message": "Lista engedélyezése"
+  },
+  "listViewEdit": {
+    "message": "Lista megtekintése és szerkesztése"
+  },
+  "listHosts": {
+    "message": "A lista pontos gazdagépnevei"
+  },
+  "kind_allow": {
+    "message": "Engedélyezési lista"
+  },
+  "kind_block": {
+    "message": "Tiltólista"
+  },
+  "listBlockedHosts": {
+    "message": "A lista letiltott bejegyzései (a *.example.com a tartományt és minden altartományt letilt)"
+  },
+  "importBlockHint": {
+    "message": "A \"kind\": \"block\" értékű lista tiltólista. Engedélyezve felülírja a jóváhagyásokat és az importált engedélyezési listákat, és tartalmazhat *.example.com bejegyzéseket. A tiltólisták kérésre naponta nagyjából egyszer maguktól frissülhetnek; az engedélyezési listák soha."
+  },
+  "autoRefreshLabel": {
+    "message": "Automatikus frissítés naponta nagyjából egyszer (felülírja a helyi módosításokat)"
+  },
+  "autoRefreshKind": {
+    "message": "A forrás most más listatípust jelez, ezért a lista nem változott. Ellenőrizze kézzel."
+  },
+  "autoRefreshOk": {
+    "message": "Utolsó automatikus ellenőrzés: $DATE$",
+    "placeholders": {
+      "date": {
+        "content": "$1"
+      }
+    }
+  },
+  "autoRefreshFailed": {
+    "message": "Az automatikus frissítés sikertelen volt ekkor: $DATE$. Az előző lista aktív marad.",
+    "placeholders": {
+      "date": {
+        "content": "$1"
+      }
+    }
+  },
+  "autoRefreshReview": {
+    "message": "Az automatikus frissítést nem alkalmaztuk, mert nagy, vagy letiltana valamit, amit Ön jóváhagyott. Az előző lista aktív marad; használja a(z) „Távoli frissítés ellenőrzése” lehetőséget."
+  }
+}

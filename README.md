@@ -18,7 +18,7 @@ Link Guard makes web links in displayed email inactive until you approve their d
 - **Phishing signals.** Prominent warnings for lookalike and internationalized domains, insecure HTTP, URL credentials, IP addresses, unusual ports, misleading link text, and public URL shorteners. Links with descriptive text also show their real host.
 - **Safer defaults.** Shorteners can only be approved for one message, and shared-content hosts such as `docs.google.com` are excluded from broad domain approvals.
 - **Allowlists and blocklists.** Import hosts from a JSON file or an HTTPS URL. Remote blocklists can update themselves daily within strict limits. See [Lists](#lists).
-- **Localized.** English, German, Spanish, French, Italian, Polish, Brazilian Portuguese, Russian, Japanese and Simplified Chinese, following Thunderbird's interface language.
+- **Localized.** 20 languages follow Thunderbird's interface language, and others fall back to English: Chinese (Simplified and Traditional), Czech, Danish, Dutch, English, Finnish, French, German, Hungarian, Italian, Japanese, Korean, Polish, Portuguese (Brazil), Russian, Spanish, Swedish, Turkish and Ukrainian.
 
 <p align="center">
   <img src="docs/screenshots/scope-choice.png" alt="Choosing between approving only shop.example.org or example.org and all subdomains" width="720">
