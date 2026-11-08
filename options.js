@@ -61,6 +61,26 @@ function formatRuleList(hosts, domains) {
   return [...hosts, ...domains.map(domain => `*.${domain}`)].sort().join("\n");
 }
 
+function listSummary(item, count) {
+  return `${t(`kind_${item.kind || "allow"}`)} · ${t(`category_${item.category}`)} · ${t("hostCount", [String(count)])}`;
+}
+
+function refreshOutcome(item) {
+  if (!item.refreshStatus) return "";
+  const date = item.refreshedAt ?
+    new Date(item.refreshedAt).toLocaleString(document.documentElement.lang) : "";
+  if (item.refreshStatus === "kindChanged") return t("autoRefreshKind");
+  if (item.refreshStatus === "review") return t("autoRefreshReview");
+  return t(item.refreshStatus === "ok" ? "autoRefreshOk" : "autoRefreshFailed", [date]);
+}
+
+// Block lists may hold `*.example.org` entries; allow lists hold exact hosts only.
+function readListEntries(view) {
+  if (view.item.kind !== "block") return readHosts(view.textarea, view.item.name);
+  const rules = readRules(view.textarea, view.item.name);
+  return [...rules.hosts, ...rules.domains.map(domain => `*.${domain}`)].sort();
+}
+
 function createImported(item) {
   const card = document.createElement("article");
   card.className = "card imported-card";
@@ -72,7 +92,7 @@ function createImported(item) {
   name.textContent = item.name;
   const count = document.createElement("div");
   count.className = "imported-count";
-  count.textContent = `${t(`category_${item.category}`)} · ${t("hostCount", [String(item.hosts.length)])}`;
+  count.textContent = listSummary(item, item.hosts.length);
   heading.append(name, count);
   const toggle = document.createElement("label");
   toggle.className = "imported-toggle";
@@ -90,9 +110,10 @@ function createImported(item) {
   textarea.rows = 5;
   textarea.spellcheck = false;
   textarea.value = item.hosts.join("\n");
-  textarea.setAttribute("aria-label", `${item.name}: ${t("listHosts")}`);
+  textarea.setAttribute("aria-label",
+    `${item.name}: ${t(item.kind === "block" ? "listBlockedHosts" : "listHosts")}`);
   textarea.addEventListener("input", () => {
-    count.textContent = `${t(`category_${item.category}`)} · ${t("hostCount", [String(textarea.value.split(/\r?\n/).filter(x => x.trim()).length)])}`;
+    count.textContent = listSummary(item, textarea.value.split(/\r?\n/).filter(x => x.trim()).length);
   });
   details.append(summary, textarea);
   if (item.sourceUrl) {
@@ -123,8 +144,29 @@ function createImported(item) {
     dirty = true;
   });
   details.append(remove);
-  card.append(top, details);
-  importedInputs.set(item.id, { item, checkbox, textarea, card });
+  card.append(top);
+  // Only remote blocklists can update themselves; allowlists never do.
+  let auto = null;
+  if (item.kind === "block" && item.sourceUrl) {
+    const autoRow = document.createElement("label");
+    autoRow.className = "imported-toggle";
+    auto = document.createElement("input");
+    auto.type = "checkbox";
+    auto.checked = item.autoRefresh !== false;
+    const autoText = document.createElement("span");
+    autoText.textContent = t("autoRefreshLabel");
+    autoRow.append(auto, autoText);
+    card.append(autoRow);
+    const outcome = refreshOutcome(item);
+    if (outcome) {
+      const note = document.createElement("p");
+      note.className = "import-source";
+      note.textContent = outcome;
+      card.append(note);
+    }
+  }
+  card.append(details);
+  importedInputs.set(item.id, { item, checkbox, textarea, card, auto });
   return card;
 }
 
@@ -134,7 +176,7 @@ function showPreview(item, replacingId = null) {
   const title = document.createElement("h3");
   title.textContent = `${replacingId ? t("refreshTitle") : t("importPreviewTitle")}: ${item.name}`;
   const info = document.createElement("p");
-  info.textContent = `${t(`category_${item.category}`)} · ${t("hostCount", [String(item.hosts.length)])}`;
+  info.textContent = listSummary(item, item.hosts.length);
   const textarea = document.createElement("textarea");
   textarea.readOnly = true;
   textarea.rows = 8;
@@ -151,8 +193,9 @@ function showPreview(item, replacingId = null) {
     const old = replacingId ? importedInputs.get(replacingId) : null;
     const id = replacingId || crypto.randomUUID();
     const next = { id, name: pendingImport.name, category: pendingImport.category,
-      hosts: pendingImport.hosts, sourceUrl: pendingImport.sourceUrl || "",
-      enabled: false };
+      kind: pendingImport.kind, hosts: pendingImport.hosts, sourceUrl: pendingImport.sourceUrl || "",
+      enabled: false, autoRefresh: old ? old.auto?.checked === true : true,
+      refreshedAt: pendingImport.sourceUrl ? Date.now() : 0, refreshStatus: "" };
     const card = createImported(next);
     if (old) old.card.replaceWith(card);
     else document.getElementById("importedLists").append(card);
@@ -230,15 +273,25 @@ document.getElementById("save").addEventListener("click", async () => {
     const blockedHosts = blockedRules.hosts;
     const blockedDomains = blockedRules.domains;
     const broadAllowedDomains = readRules(broadInput, t("broadTitle"), true).domains;
+    const importedLists = [];
+    const importedWildcards = [];
+    for (const [id, view] of importedInputs) {
+      const hosts = readListEntries(view);
+      if (!hosts.length) throw new Error(t("importEmpty"));
+      const wildcards = hosts.filter(host => host.startsWith("*.")).map(host => host.slice(2));
+      if (wildcards.length) importedWildcards.push([view.item.name, wildcards]);
+      importedLists.push({ ...view.item, id, hosts, enabled: view.checkbox.checked,
+        autoRefresh: view.auto ? view.auto.checked : false });
+    }
     const invalidBroad = await messenger.runtime.sendMessage({
       type: "link-guard-validate-broad", hosts: [...broadAllowedDomains, ...blockedDomains]
     });
     if (invalidBroad) throw new Error(`${t("broadTitle")}: ${t("broadInvalid", [invalidBroad])}`);
-    const importedLists = [];
-    for (const [id, view] of importedInputs) {
-      const hosts = readHosts(view.textarea, view.item.name);
-      if (!hosts.length) throw new Error(t("importEmpty"));
-      importedLists.push({ ...view.item, id, hosts, enabled: view.checkbox.checked });
+    for (const [listName, domains] of importedWildcards) {
+      const invalid = await messenger.runtime.sendMessage({
+        type: "link-guard-validate-broad", hosts: domains
+      });
+      if (invalid) throw new Error(`${listName}: ${t("broadInvalid", [invalid])}`);
     }
     const current = await messenger.storage.local.get(storedKeys);
     if (snapshot(current) !== baseline) {

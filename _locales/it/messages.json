@@ -287,7 +287,7 @@
     "message": "Elenchi personalizzati e remoti"
   },
   "importsHint": {
-    "message": "Importa un file JSON o collega un elenco HTTPS. Ogni elenco viene visualizzato prima dell'attivazione e applicato solo dopo la tua revisione. Le modifiche remote richiedono nuovamente la tua approvazione."
+    "message": "Importa un file JSON o collega un elenco HTTPS. Ogni elenco viene visualizzato prima dell'attivazione e applicato solo dopo la tua revisione. Le modifiche remote agli elenchi consentiti richiedono nuovamente la tua approvazione."
   },
   "importFileLabel": {
     "message": "Scegli un file JSON"
@@ -419,5 +419,42 @@
   },
   "listHosts": {
     "message": "Nomi host esatti in questo elenco"
+  },
+  "kind_allow": {
+    "message": "Elenco consentiti"
+  },
+  "kind_block": {
+    "message": "Elenco di blocco"
+  },
+  "listBlockedHosts": {
+    "message": "Voci bloccate di questo elenco (*.example.com blocca il dominio e tutti i sottodomini)"
+  },
+  "importBlockHint": {
+    "message": "Un elenco con \"kind\": \"block\" è un elenco di blocco. Una volta attivato prevale sulle approvazioni e sugli elenchi consentiti importati e può contenere voci *.example.com. Gli elenchi di blocco possono aggiornarsi da soli circa una volta al giorno, se lo attivi; gli elenchi consentiti mai."
+  },
+  "autoRefreshLabel": {
+    "message": "Aggiorna automaticamente circa una volta al giorno (sostituisce le modifiche locali)"
+  },
+  "autoRefreshKind": {
+    "message": "La fonte dichiara ora un altro tipo di elenco, quindi l'elenco non è stato modificato. Verificalo manualmente."
+  },
+  "autoRefreshOk": {
+    "message": "Ultimo controllo automatico: $DATE$",
+    "placeholders": {
+      "date": {
+        "content": "$1"
+      }
+    }
+  },
+  "autoRefreshFailed": {
+    "message": "Aggiornamento automatico non riuscito il $DATE$. L'elenco precedente resta attivo.",
+    "placeholders": {
+      "date": {
+        "content": "$1"
+      }
+    }
+  },
+  "autoRefreshReview": {
+    "message": "L'aggiornamento automatico non è stato applicato perché è grande o bloccherebbe qualcosa che hai approvato. L'elenco precedente resta attivo; usa «Esaminare l'aggiornamento remoto»."
   }
 }

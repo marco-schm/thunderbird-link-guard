@@ -287,7 +287,7 @@
     "message": "カスタムリストとリモートリスト"
   },
   "importsHint": {
-    "message": "JSON ファイルをインポートするか、HTTPS のリストを登録します。各リストは有効化前に表示され、確認後にのみ適用されます。リモートの変更には再度承認が必要です。"
+    "message": "JSON ファイルをインポートするか、HTTPS のリストを登録します。各リストは有効化前に表示され、確認後にのみ適用されます。許可リストのリモート変更には再度承認が必要です。"
   },
   "importFileLabel": {
     "message": "JSON ファイルを選択"
@@ -419,5 +419,42 @@
   },
   "listHosts": {
     "message": "このリスト内の正確なホスト名"
+  },
+  "kind_allow": {
+    "message": "許可リスト"
+  },
+  "kind_block": {
+    "message": "ブロックリスト"
+  },
+  "listBlockedHosts": {
+    "message": "このリストのブロック対象（*.example.com はドメインとすべてのサブドメインをブロックします）"
+  },
+  "importBlockHint": {
+    "message": "\"kind\": \"block\" のリストはブロックリストです。有効にすると、承認とインポートした許可リストより優先され、*.example.com 形式のエントリを含められます。 ブロックリストは、設定すれば約1日に1回自動更新できます。許可リストは自動更新されません。"
+  },
+  "autoRefreshLabel": {
+    "message": "約1日に1回自動で更新する（ローカルでの編集は置き換えられます）"
+  },
+  "autoRefreshKind": {
+    "message": "取得元が別のリスト種別を示しているため、リストは変更されませんでした。手動で確認してください。"
+  },
+  "autoRefreshOk": {
+    "message": "最後の自動確認: $DATE$",
+    "placeholders": {
+      "date": {
+        "content": "$1"
+      }
+    }
+  },
+  "autoRefreshFailed": {
+    "message": "$DATE$ の自動更新に失敗しました。以前のリストが引き続き有効です。",
+    "placeholders": {
+      "date": {
+        "content": "$1"
+      }
+    }
+  },
+  "autoRefreshReview": {
+    "message": "自動更新は、規模が大きいか、承認済みのものをブロックしてしまうため適用されませんでした。以前のリストが引き続き有効です。「リモートの更新を確認」を使ってください。"
   }
 }

@@ -1,0 +1,8 @@
+{
+  "format": "link-guard-hosts",
+  "version": 1,
+  "kind": "block",
+  "name": "Example blocklist only — do not enable",
+  "category": "other",
+  "hosts": ["phishing.example.org", "*.example.net"]
+}

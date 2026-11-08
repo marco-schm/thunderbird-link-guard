@@ -289,7 +289,7 @@ globalThis.LinkGuardEnglish = {
     "message": "Custom and remote lists"
   },
   "importsHint": {
-    "message": "Import a JSON file or link an HTTPS list. Each list is displayed before activation and applied only after your review. Remote changes require your approval again."
+    "message": "Import a JSON file or link an HTTPS list. Each list is displayed before activation and applied only after your review. Remote allowlist changes require your approval again."
   },
   "importFileLabel": {
     "message": "Choose a JSON file"
@@ -421,5 +421,42 @@ globalThis.LinkGuardEnglish = {
   },
   "listHosts": {
     "message": "Exact hostnames in this list"
+  },
+  "kind_allow": {
+    "message": "Allowlist"
+  },
+  "kind_block": {
+    "message": "Blocklist"
+  },
+  "listBlockedHosts": {
+    "message": "Blocked entries in this list (*.example.com blocks the domain and all subdomains)"
+  },
+  "importBlockHint": {
+    "message": "A list with \"kind\": \"block\" is a blocklist. Once enabled, it overrides approvals and imported allowlists, and may contain *.example.com entries. Blocklists can optionally update themselves about once a day; allowlists never do."
+  },
+  "autoRefreshLabel": {
+    "message": "Update automatically about once a day (replaces local edits)"
+  },
+  "autoRefreshKind": {
+    "message": "The source now declares a different list type, so the list was not changed. Review it manually."
+  },
+  "autoRefreshOk": {
+    "message": "Last automatic check: $DATE$",
+    "placeholders": {
+      "date": {
+        "content": "$1"
+      }
+    }
+  },
+  "autoRefreshFailed": {
+    "message": "Automatic update failed on $DATE$. The previous list stays active.",
+    "placeholders": {
+      "date": {
+        "content": "$1"
+      }
+    }
+  },
+  "autoRefreshReview": {
+    "message": "The automatic update was not applied because it is large or would block something you approved. The previous list stays active; use \"Review remote update\"."
   }
 };

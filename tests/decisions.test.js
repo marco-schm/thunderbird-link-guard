@@ -9,6 +9,7 @@ const domainScope = require("../domain-scope.js");
 
 function harness() {
   const local = { trustedHosts: ["old.example.com"] };
+  const remote = { calls: [], handler: null };
   let onMessage;
   const storageArea = values => ({
     async get(defaults) { return { ...defaults, ...values }; },
@@ -35,11 +36,18 @@ function harness() {
   };
   const context = vm.createContext({ messenger, LinkGuardPolicy: policy,
     LinkGuardImport: listImport, LinkGuardDomainScope: domainScope,
-    fetch: async () => ({ ok: true, text: async () => "com\nde\nuk\nco.uk\nio\ngithub.io\n" }),
+    fetch: async (url, options) => {
+      if (!String(url).includes("public_suffix_list")) {
+        remote.calls.push(String(url));
+        if (!remote.handler) throw new Error("no remote handler");
+        return remote.handler(String(url), options);
+      }
+      return { ok: true, text: async () => "com\nde\nuk\nco.uk\nio\ngithub.io\n" };
+    },
     console, URL, Promise, Set, Object });
   vm.runInContext(fs.readFileSync(path.join(__dirname, "../background.js"), "utf8"), context);
   const send = (message) => onMessage(message, { tab: { id: 1 } });
-  return { local, send };
+  return { local, send, remote, context };
 }
 
 test("legacy host list is not silently approved and hostnames do not inherit", async () => {
@@ -173,4 +181,230 @@ test("a typo in an unknown suffix is compared with approved domains", async () =
   const result = await h.send({ type: "link-guard-analyze", hosts: ["google.cmo"] });
   assert.equal(result["google.cmo"].kind, "lookalike");
   assert.equal(result["google.cmo"].similarTo, "google.com");
+});
+
+const blockList = (hosts, enabled = true, id = "12345678-1234-1234-1234-123456789abc") =>
+  ({ id, name: "Blocks", category: "other", kind: "block", hosts, sourceUrl: "", enabled });
+
+test("imported block lists block only while enabled and never enter the user's own rules", async () => {
+  const h = harness();
+  h.local.importedLists = [blockList(["phish.example.org", "*.google.de"], false)];
+  let state = await h.send({ type: "link-guard-state" });
+  assert.deepEqual([...state.blockedHosts], []);
+  assert.deepEqual([...state.blockedDomains], []);
+
+  h.local.importedLists[0].enabled = true;
+  state = await h.send({ type: "link-guard-state" });
+  assert.deepEqual([...state.blockedHosts], ["phish.example.org"]);
+  assert.deepEqual([...state.blockedDomains], ["google.de"]);
+
+  state = await h.send({ type: "link-guard-decision", host: "www.example.com", decision: "block" });
+  assert.deepEqual([...state.blockedHosts], ["phish.example.org", "www.example.com"]);
+  assert.deepEqual([...h.local.blockedHosts], ["www.example.com"]);
+  assert.deepEqual([...(h.local.blockedDomains ?? [])], []);
+});
+
+test("imported block lists override approvals and imported allow lists", async () => {
+  const h = harness();
+  h.local.customAllowedHosts = ["login.google.de", "ok.example.org"];
+  h.local.broadAllowedDomains = ["google.de"];
+  h.local.importedLists = [blockList(["ok.example.org", "*.google.de"]),
+    { id: "22345678-1234-1234-1234-123456789abc", name: "Allow", category: "other",
+      kind: "allow", hosts: ["www.google.de", "fine.example.org"], sourceUrl: "", enabled: true }];
+  const state = await h.send({ type: "link-guard-state" });
+  assert.deepEqual([...state.allowedHosts], ["fine.example.org"]);
+  assert.ok(state.blockedHosts.includes("ok.example.org"));
+  assert.ok(state.blockedDomains.includes("google.de"));
+});
+
+test("a wildcard that is not a registrable domain in an imported block list is ignored", async () => {
+  const h = harness();
+  h.local.importedLists = [blockList(["*.co.uk", "*.github.io", "*.unknown.invalid", "*.google.de"])];
+  const state = await h.send({ type: "link-guard-state" });
+  assert.deepEqual([...state.blockedDomains], ["google.de"]);
+});
+
+test("approving a host blocked by an imported list is refused instead of silently ignored", async () => {
+  const h = harness();
+  h.local.importedLists = [blockList(["phish.example.org", "*.google.de"])];
+  await assert.rejects(h.send({ type: "link-guard-decision", host: "phish.example.org",
+    decision: "permanent", scope: "exact" }), /imported list/);
+  await assert.rejects(h.send({ type: "link-guard-decision", host: "login.google.de",
+    decision: "permanent", scope: "exact" }));
+  await assert.rejects(h.send({ type: "link-guard-decision", host: "www.google.de",
+    decision: "permanent", scope: "domain" }), /imported list/);
+  assert.deepEqual([...(h.local.customAllowedHosts ?? [])], []);
+  assert.deepEqual([...(h.local.broadAllowedDomains ?? [])], []);
+  // Other hosts, and the user's own blocks, are unaffected.
+  const state = await h.send({ type: "link-guard-decision", host: "other.example.org",
+    decision: "permanent", scope: "exact" });
+  assert.ok(state.allowedHosts.includes("other.example.org"));
+});
+
+const SOURCE = "https://lists.example.org/block.json";
+const remoteResponse = (body, url = SOURCE) => {
+  const data = new TextEncoder().encode(JSON.stringify(body));
+  return { ok: true, url, headers: { get: name => name === "content-type" ? "application/json" : null },
+    body: { getReader() { let done = false; return { async read() {
+      if (done) return { done: true }; done = true; return { done: false, value: data };
+    } }; } } };
+};
+const remoteList = (extra = {}) => ({ ...blockList(["old.example.org"]), sourceUrl: SOURCE,
+  autoRefresh: true, refreshedAt: 1, refreshStatus: "ok", ...extra });
+// Wait for the startup run, ask for the state (which starts a run) and wait for that run.
+const settle = async h => {
+  await vm.runInContext("refreshPromise", h.context);
+  await h.send({ type: "link-guard-state" });
+  await vm.runInContext("refreshPromise", h.context);
+  return h.send({ type: "link-guard-state" });
+};
+
+test("an enabled auto-refresh blocklist is replaced by the fetched hosts and stays enabled", async () => {
+  const h = harness();
+  h.local.importedLists = [remoteList()];
+  h.remote.handler = async url => remoteResponse({ format: "link-guard-hosts", version: 1,
+    kind: "block", name: "Renamed by source", category: "news",
+    hosts: ["new.example.org", "*.google.de"] }, url);
+  const state = await settle(h);
+  const [list] = h.local.importedLists;
+  assert.deepEqual([...list.hosts], ["*.google.de", "new.example.org"]);
+  assert.equal(list.name, "Blocks");
+  assert.equal(list.enabled, true);
+  assert.equal(list.refreshStatus, "ok");
+  assert.ok(list.refreshedAt > 1);
+  assert.deepEqual([...state.blockedHosts], ["new.example.org"]);
+  assert.deepEqual([...state.blockedDomains], ["google.de"]);
+});
+
+test("auto-refresh skips lists that are disabled, not due, not opted in or not blocklists", async () => {
+  const h = harness();
+  h.remote.handler = async url => remoteResponse({ format: "link-guard-hosts", version: 1,
+    kind: "block", name: "X", category: "other", hosts: ["new.example.org"] }, url);
+  const id = n => `${n}2345678-1234-1234-1234-123456789abc`;
+  h.local.importedLists = [
+    remoteList({ id: id(1), enabled: false }),
+    remoteList({ id: id(2), refreshedAt: Date.now() }),
+    remoteList({ id: id(3), autoRefresh: false }),
+    { ...remoteList({ id: id(4) }), kind: "allow", hosts: ["old.example.org"] }
+  ];
+  await settle(h);
+  assert.deepEqual(h.remote.calls, []);
+  assert.ok(h.local.importedLists.every(list => !list.hosts.includes("new.example.org")));
+});
+
+test("auto-refresh is on by default for a remote blocklist and can be switched off per list", async () => {
+  const h = harness();
+  const { autoRefresh: _omitted, ...unset } = remoteList();
+  h.local.importedLists = [unset, remoteList({ id: "22345678-1234-1234-1234-123456789abc",
+    autoRefresh: false })];
+  h.remote.handler = async url => remoteResponse({ format: "link-guard-hosts", version: 1,
+    kind: "block", name: "X", category: "other", hosts: ["new.example.org"] }, url);
+  await settle(h);
+  const [first, second] = h.local.importedLists;
+  assert.deepEqual([...first.hosts], ["new.example.org"]);
+  assert.deepEqual([...second.hosts], ["old.example.org"]);
+  assert.equal(h.remote.calls.length, 1);
+});
+
+test("a failed or type-changing auto-refresh keeps the stored list and delays the retry", async () => {
+  const h = harness();
+  h.local.importedLists = [remoteList()];
+  await settle(h);
+  let [list] = h.local.importedLists;
+  assert.equal(list.refreshStatus, "failed");
+  assert.deepEqual([...list.hosts], ["old.example.org"]);
+  assert.equal(list.enabled, true);
+  const calls = h.remote.calls.length;
+  await settle(h);
+  assert.equal(h.remote.calls.length, calls, "no retry within the hour");
+
+  h.local.importedLists = [remoteList()];
+  h.remote.handler = async url => remoteResponse({ format: "link-guard-hosts", version: 1,
+    kind: "allow", name: "X", category: "other", hosts: ["evil.example.org"] }, url);
+  await settle(h);
+  [list] = h.local.importedLists;
+  assert.equal(list.refreshStatus, "kindChanged");
+  assert.deepEqual([...list.hosts], ["old.example.org"]);
+  assert.ok(!(await h.send({ type: "link-guard-state" })).allowedHosts.includes("evil.example.org"));
+});
+
+test("an imported block cannot shrink the lookalike references of approved domains", async () => {
+  const h = harness();
+  await h.send({ type: "link-guard-decision", host: "login.bank.com", decision: "permanent" });
+  h.local.importedLists = [blockList(["login.bank.com", "*.bank.com"])];
+  const state = await h.send({ type: "link-guard-state" });
+  assert.ok(!state.allowedHosts.includes("login.bank.com"), "still blocked");
+  assert.ok(state.trustedDomains.includes("bank.com"));
+  const result = await h.send({ type: "link-guard-analyze", hosts: ["bnak.com"] });
+  assert.equal(result["bnak.com"].kind, "lookalike");
+  // The user's own block still removes the approval and its reference, as before.
+  await h.send({ type: "link-guard-decision", host: "login.bank.com", decision: "block" });
+  h.local.importedLists = [];
+  assert.ok(!(await h.send({ type: "link-guard-state" })).trustedDomains.includes("bank.com"));
+});
+
+test("the public state does not carry the imported lists themselves", async () => {
+  const h = harness();
+  h.local.importedLists = [blockList(["a.example.org"])];
+  const state = await h.send({ type: "link-guard-state" });
+  assert.equal(state.importedLists, undefined);
+  assert.equal(state.ownBlockedHosts, undefined);
+  assert.deepEqual([...state.blockedHosts], ["a.example.org"]);
+});
+
+const autoResponse = hosts => async url => remoteResponse({ format: "link-guard-hosts",
+  version: 1, kind: "block", name: "X", category: "other", hosts }, url);
+const manyHosts = (n, prefix) => Array.from({ length: n }, (_, i) => `${prefix}${i}.example.org`);
+
+test("an automatic update that would block an approved host or domain is held for review", async () => {
+  for (const hosts of [["old.example.org", "login.google.de"], ["old.example.org", "*.google.de"],
+    ["old.example.org", "www.shop.com"]]) {
+    const h = harness();
+    h.local.customAllowedHosts = ["login.google.de"];
+    h.local.broadAllowedDomains = ["shop.com"];
+    h.local.importedLists = [remoteList()];
+    h.remote.handler = autoResponse(hosts);
+    await settle(h);
+    const [list] = h.local.importedLists;
+    assert.equal(list.refreshStatus, "review", hosts.join());
+    assert.deepEqual([...list.hosts], ["old.example.org"]);
+    assert.equal(list.enabled, true);
+  }
+});
+
+test("an automatic update that adds many entries, doubles the list or gutts it is held for review", async () => {
+  const big = manyHosts(10, "keep");
+  for (const [old, next] of [
+    [["old.example.org"], manyHosts(60, "new")],
+    [["old.example.org"], manyHosts(30, "new")],
+    [big, manyHosts(3, "keep")]]) {
+    const h = harness();
+    h.local.importedLists = [remoteList({ hosts: old })];
+    h.remote.handler = autoResponse(next);
+    await settle(h);
+    const [list] = h.local.importedLists;
+    assert.equal(list.refreshStatus, "review");
+    assert.deepEqual([...list.hosts], old);
+  }
+  // A modest change that touches nothing approved is still applied automatically.
+  const h = harness();
+  h.local.customAllowedHosts = ["login.google.de"];
+  h.local.importedLists = [remoteList({ hosts: big })];
+  h.remote.handler = autoResponse([...big.slice(1), "added.example.org"]);
+  await settle(h);
+  assert.equal(h.local.importedLists[0].refreshStatus, "ok");
+  assert.ok(h.local.importedLists[0].hosts.includes("added.example.org"));
+});
+
+test("no storage work or fetch happens when no enabled list opted in to auto-refresh", async () => {
+  const h = harness();
+  let writes = 0;
+  const original = h.local;
+  h.local.importedLists = [remoteList({ autoRefresh: false }), blockList(["a.example.org"], true,
+    "22345678-1234-1234-1234-123456789abc")];
+  h.remote.handler = autoResponse(["x.example.org"]);
+  const before = JSON.stringify(original.importedLists);
+  await settle(h);
+  assert.deepEqual(h.remote.calls, []);
+  assert.equal(JSON.stringify(original.importedLists), before);
 });
