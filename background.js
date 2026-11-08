@@ -48,10 +48,11 @@ function cleanHosts(value) {
 async function readState() {
   const local = await messenger.storage.local.get({
     enabled: true, customAllowedHosts: [], blockedHosts: [],
-    importedLists: [], broadAllowedDomains: []
+    blockedDomains: [], importedLists: [], broadAllowedDomains: []
   });
   const customAllowedHosts = cleanHosts(local.customAllowedHosts);
   const blockedHosts = cleanHosts(local.blockedHosts);
+  const blockedDomains = await cleanBroadDomains(local.blockedDomains);
   const broadAllowedDomains = await cleanBroadDomains(local.broadAllowedDomains);
   const importedLists = listImport.cleanStored(local.importedLists);
   const effective = new Set(customAllowedHosts);
@@ -59,13 +60,17 @@ async function readState() {
     if (list.enabled) for (const host of list.hosts) effective.add(host);
   }
   for (const host of blockedHosts) effective.delete(host);
+  for (const host of effective) {
+    if (blockedDomains.some(domain => host === domain || host.endsWith(`.${domain}`)))
+      effective.delete(host);
+  }
   const rules = await publicSuffixRules();
   const trustedDomains = new Set(broadAllowedDomains);
   for (const host of effective) {
     const root = domainScope.registrableDomain(host, rules);
     if (root) trustedDomains.add(root);
   }
-  return { enabled: local.enabled !== false, customAllowedHosts, blockedHosts,
+  return { enabled: local.enabled !== false, customAllowedHosts, blockedHosts, blockedDomains,
     importedLists, broadAllowedDomains,
     allowedHosts: [...effective], trustedDomains: [...trustedDomains] };
 }
@@ -105,30 +110,47 @@ async function setDecision(host, decision, scope = "exact") {
   const custom = new Set(state.customAllowedHosts);
   const broad = new Set(state.broadAllowedDomains);
   const blocked = new Set(state.blockedHosts);
+  const blockedDomains = new Set(state.blockedDomains);
   if (decision === "permanent") {
     if (scope === "domain") {
       if (policy.isSharedContentHost(normalized)) throw new Error("shared host cannot grant broad access");
       const root = await scopeRoot(normalized);
       if (!root) throw new Error("domain scope unavailable");
       broad.add(root);
+      blockedDomains.delete(root);
       blocked.delete(normalized);
     } else if (scope === "exact") {
+      if ([...blockedDomains].some(domain =>
+        normalized === domain || normalized.endsWith(`.${domain}`))) {
+        throw new Error("remove whole-domain block before approving an exact host");
+      }
       custom.add(normalized);
       blocked.delete(normalized);
     } else throw new Error("invalid scope");
   } else if (decision === "block") {
-    blocked.add(normalized);
-    custom.delete(normalized);
+    if (scope === "domain") {
+      const root = await scopeRoot(normalized);
+      if (!root) throw new Error("domain scope unavailable");
+      blockedDomains.add(root);
+      broad.delete(root);
+      for (const allowed of custom) {
+        if (allowed === root || allowed.endsWith(`.${root}`)) custom.delete(allowed);
+      }
+    } else if (scope === "exact") {
+      blocked.add(normalized);
+      custom.delete(normalized);
+    } else throw new Error("invalid scope");
   } else {
+    if (scope !== "exact") throw new Error("invalid scope");
     custom.delete(normalized);
     blocked.delete(normalized);
   }
-  if (custom.size > 500 || blocked.size > 500 || broad.size > 500) {
+  if (custom.size > 500 || blocked.size + blockedDomains.size > 500 || broad.size > 500) {
     throw new Error("host limit reached");
   }
   await messenger.storage.local.set({
     customAllowedHosts: [...custom].sort(), broadAllowedDomains: [...broad].sort(),
-    blockedHosts: [...blocked].sort()
+    blockedHosts: [...blocked].sort(), blockedDomains: [...blockedDomains].sort()
   });
   return readState();
 }

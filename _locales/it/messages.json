@@ -107,6 +107,9 @@
   "scopePrompt": {
     "message": "Quale ambito dovrebbe essere approvato in modo permanente?"
   },
+  "blockScopePrompt": {
+    "message": "Quale ambito deve essere bloccato?"
+  },
   "scopePromptShared": {
     "message": "Altri possono pubblicare contenuti qui. Approva solo questo host."
   },
@@ -264,13 +267,13 @@
     "message": "Domini bloccati"
   },
   "blockedHint": {
-    "message": "Questo elenco sovrascrive le approvazioni permanenti e gli elenchi importati. L'approvazione temporanea esplicita si applica solo al messaggio attualmente visualizzato."
+    "message": "Questo elenco prevale su approvazioni e importazioni. *.example.com blocca il dominio e tutti i sottodomini; un’approvazione temporanea vale solo per questo messaggio."
   },
   "broadTitle": {
     "message": "Approva interi domini"
   },
   "broadHint": {
-    "message": "Ogni voce copre il dominio registrabile e tutti i sottodomini. Utilizza questa ampia approvazione solo per i domini che controlli."
+    "message": "Usa *.example.com per approvare il dominio e i suoi sottodomini, incluso example.com. Gli host con contenuti condivisi restano separati; fallo solo per domini che controlli."
   },
   "broadInvalid": {
     "message": "$DOMAIN$ non è un dominio registrabile secondo l'elenco dei suffissi pubblici in bundle.",
@@ -362,7 +365,7 @@
     "message": "Altro"
   },
   "hostListLabel": {
-    "message": "Un nome host esatto per riga"
+    "message": "Una regola per riga"
   },
   "saveSettings": {
     "message": "Salva modifiche"
@@ -391,7 +394,7 @@
     "message": "Fino a 500 nomi host per elenco."
   },
   "hostFormatHint": {
-    "message": "Nessun URL, percorso, porta o carattere jolly. Esempio: login.example.com"
+    "message": "Gli host esatti non usano caratteri jolly. Una regola per tutto il dominio usa *.example.com e include example.com."
   },
   "exactHostExample": {
     "message": "login.google.de e google.de sono nomi host diversi e richiedono approvazioni separate."

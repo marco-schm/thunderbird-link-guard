@@ -4,6 +4,7 @@
   const policy = root.LinkGuardPolicy || (typeof require !== "undefined" ? require("./policy.js") : null);
   function hostAllowed(host, state, temporaryHosts, warningFor) {
     if (temporaryHosts.has(host)) return true;
+    if (state.blockedDomains?.some(domain => host === domain || host.endsWith(`.${domain}`))) return false;
     if (state.blockedHosts.includes(host)) return false;
     if (state.customAllowedHosts.includes(host)) return true;
     const warning = warningFor(host);

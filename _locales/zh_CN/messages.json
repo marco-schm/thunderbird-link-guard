@@ -107,6 +107,9 @@
   "scopePrompt": {
     "message": "要永久批准哪个范围？"
   },
+  "blockScopePrompt": {
+    "message": "要阻止哪个范围？"
+  },
   "scopePromptShared": {
     "message": "其他人也可以在这里发布内容。请只批准此主机名。"
   },
@@ -264,13 +267,13 @@
     "message": "已阻止的域名"
   },
   "blockedHint": {
-    "message": "此列表优先于永久批准和导入的列表。明确的临时批准仅适用于当前显示的邮件。"
+    "message": "此列表优先于批准和导入。*.example.com 会阻止域名及所有子域名；临时批准仅适用于当前邮件。"
   },
   "broadTitle": {
     "message": "批准整个域名"
   },
   "broadHint": {
-    "message": "每项都涵盖可注册域名及其所有子域名。请只对您控制的域名使用这种广泛批准。"
+    "message": "使用 *.example.com 批准域名及其子域名，包括 example.com 本身。共享内容主机仍需单独批准；仅用于您控制的域名。"
   },
   "broadInvalid": {
     "message": "根据内置的公共后缀列表，$DOMAIN$ 不是可注册域名。",
@@ -362,7 +365,7 @@
     "message": "其他"
   },
   "hostListLabel": {
-    "message": "每行一个准确的主机名"
+    "message": "每行一条规则"
   },
   "saveSettings": {
     "message": "保存更改"
@@ -391,7 +394,7 @@
     "message": "每个列表最多 500 个主机名。"
   },
   "hostFormatHint": {
-    "message": "不允许 URL、路径、端口或通配符。示例：login.example.com"
+    "message": "精确主机不使用通配符。整个域名的规则写作 *.example.com，也包括 example.com 本身。"
   },
   "exactHostExample": {
     "message": "login.google.de 和 google.de 是不同的主机名，需要分别批准。"

@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.10.1 — 2026-11-08
+
+- Correct the rule-list labels so whole-domain `*.` entries are not described
+  as exact hostnames.
+
+## 0.10.0 — 2026-11-08
+
+- Ask whether a block applies to one exact host or its registrable domain.
+- Show whole-domain approval and block rules as `*.example.com` in Settings;
+  this notation also covers `example.com` itself.
+- Keep existing exact-host blocks exact, and give whole-domain blocks priority
+  over saved and imported approvals.
+
 ## 0.9.1 — 2026-11-08
 
 - Make the English fallback independent of Thunderbird's secondary languages.

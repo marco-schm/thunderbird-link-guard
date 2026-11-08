@@ -107,6 +107,9 @@
   "scopePrompt": {
     "message": "恒久的に許可する範囲を選択してください"
   },
+  "blockScopePrompt": {
+    "message": "ブロックする範囲を選択してください"
+  },
   "scopePromptShared": {
     "message": "ここには他の人もコンテンツを公開できます。このホストだけを許可してください。"
   },
@@ -264,13 +267,13 @@
     "message": "ブロックするドメイン"
   },
   "blockedHint": {
-    "message": "この一覧は恒久的な許可とインポートした一覧より優先されます。明示的な一時許可は現在表示中のメールにのみ適用されます。"
+    "message": "この一覧は許可とインポートより優先されます。*.example.com はドメインと全サブドメインをブロックします。一時許可はこのメールだけに適用されます。"
   },
   "broadTitle": {
     "message": "ドメイン全体を許可"
   },
   "broadHint": {
-    "message": "各項目は登録可能なドメインとすべてのサブドメインに適用されます。この広い許可は自分が管理するドメインにのみ使用してください。"
+    "message": "*.example.com は example.com 自体を含むドメインとそのサブドメインを許可します。共有コンテンツのホストは別扱いです。管理するドメインにのみ使用してください。"
   },
   "broadInvalid": {
     "message": "内蔵の Public Suffix List によると、$DOMAIN$ は登録可能なドメインではありません。",
@@ -362,7 +365,7 @@
     "message": "その他"
   },
   "hostListLabel": {
-    "message": "1 行に正確なホスト名を 1 件"
+    "message": "1 行に 1 つのルール"
   },
   "saveSettings": {
     "message": "変更を保存"
@@ -391,7 +394,7 @@
     "message": "リストごとにホスト名は最大 500 件です。"
   },
   "hostFormatHint": {
-    "message": "URL、パス、ポート、ワイルドカードは使えません。例: login.example.com"
+    "message": "個別ホストにはワイルドカードを付けません。ドメイン全体のルールは *.example.com と記し、example.com 自体も含みます。"
   },
   "exactHostExample": {
     "message": "login.google.de と google.de は異なるホスト名で、それぞれ個別の許可が必要です。"

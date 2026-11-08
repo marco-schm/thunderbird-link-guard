@@ -1,6 +1,6 @@
 const test = require("node:test");
 const assert = require("node:assert/strict");
-const { normalizeHost, parseHostList, inspectLink,
+const { normalizeHost, parseHostList, parseRuleList, inspectLink,
   lookalikeDomain, isInternationalizedHost, isSharedContentHost,
   apparentHost } = require("../policy.js");
 
@@ -16,6 +16,16 @@ test("host list rejects URL syntax, wildcards, IP addresses and duplicates", () 
   const result = parseHostList("Login.Google.De\nlogin.google.de\n*.google.de\nhttps://google.de\n127.0.0.1");
   assert.deepEqual(result.hosts, ["login.google.de"]);
   assert.deepEqual(result.errors, [3, 4, 5]);
+});
+
+test("editable rules distinguish exact hosts from whole-domain wildcards", () => {
+  const rules = parseRuleList("login.google.de\n*.Google.De\n*.co.uk\n*.*.google.de\nhttps://google.de");
+  assert.deepEqual(rules.hosts, ["login.google.de"]);
+  assert.deepEqual(rules.domains, ["co.uk", "google.de"]);
+  assert.deepEqual(rules.errors, [4, 5]);
+  assert.deepEqual(parseRuleList("google.de\n*.google.de", true), {
+    hosts: [], domains: ["google.de"], errors: [1]
+  });
 });
 
 test("ordinary HTTPS links expose their exact host", () => {

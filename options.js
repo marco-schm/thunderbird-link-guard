@@ -10,7 +10,7 @@ const blockedInput = document.getElementById("blockedHosts");
 const broadInput = document.getElementById("broadDomains");
 const status = document.getElementById("status");
 const storedKeys = { enabled: true, customAllowedHosts: [], blockedHosts: [],
-  broadAllowedDomains: [], importedLists: [] };
+  blockedDomains: [], broadAllowedDomains: [], importedLists: [] };
 let baseline = "";
 let dirty = false;
 let saving = false;
@@ -45,6 +45,20 @@ function readHosts(input, label) {
     throw new Error(`${label}: ${reason}`);
   }
   return result.hosts;
+}
+
+function readRules(input, label, wholeDomainOnly = false) {
+  const result = policy.parseRuleList(input.value, wholeDomainOnly);
+  if (result.errors.length) {
+    const issue = result.errors[0];
+    const reason = issue === "limit" ? t("hostLimit") : t("invalidHostLine", [String(issue)]);
+    throw new Error(`${label}: ${reason}`);
+  }
+  return result;
+}
+
+function formatRuleList(hosts, domains) {
+  return [...hosts, ...domains.map(domain => `*.${domain}`)].sort().join("\n");
 }
 
 function createImported(item) {
@@ -161,8 +175,8 @@ async function load() {
     baseline = snapshot(saved);
     enabledInput.checked = saved.enabled !== false;
     customInput.value = (saved.customAllowedHosts || []).join("\n");
-    blockedInput.value = (saved.blockedHosts || []).join("\n");
-    broadInput.value = (saved.broadAllowedDomains || []).join("\n");
+    blockedInput.value = formatRuleList(saved.blockedHosts || [], saved.blockedDomains || []);
+    broadInput.value = formatRuleList([], saved.broadAllowedDomains || []);
     const imported = document.getElementById("importedLists");
     imported.replaceChildren();
     importedInputs.clear();
@@ -212,10 +226,12 @@ messenger.storage.onChanged.addListener((changes, area) => {
 document.getElementById("save").addEventListener("click", async () => {
   try {
     const customAllowedHosts = readHosts(customInput, t("customTitle"));
-    const blockedHosts = readHosts(blockedInput, t("blockedTitle"));
-    const broadAllowedDomains = readHosts(broadInput, t("broadTitle"));
+    const blockedRules = readRules(blockedInput, t("blockedTitle"));
+    const blockedHosts = blockedRules.hosts;
+    const blockedDomains = blockedRules.domains;
+    const broadAllowedDomains = readRules(broadInput, t("broadTitle"), true).domains;
     const invalidBroad = await messenger.runtime.sendMessage({
-      type: "link-guard-validate-broad", hosts: broadAllowedDomains
+      type: "link-guard-validate-broad", hosts: [...broadAllowedDomains, ...blockedDomains]
     });
     if (invalidBroad) throw new Error(`${t("broadTitle")}: ${t("broadInvalid", [invalidBroad])}`);
     const importedLists = [];
@@ -230,15 +246,15 @@ document.getElementById("save").addEventListener("click", async () => {
       return;
     }
     const updated = { enabled: enabledInput.checked,
-      customAllowedHosts, blockedHosts, broadAllowedDomains,
+      customAllowedHosts, blockedHosts, blockedDomains, broadAllowedDomains,
       importedLists };
     saving = true;
     await messenger.storage.local.set(updated);
     baseline = snapshot(updated);
     dirty = false;
     customInput.value = customAllowedHosts.join("\n");
-    blockedInput.value = blockedHosts.join("\n");
-    broadInput.value = broadAllowedDomains.join("\n");
+    blockedInput.value = formatRuleList(blockedHosts, blockedDomains);
+    broadInput.value = formatRuleList([], broadAllowedDomains);
     showStatus(t("settingsSaved"));
   } catch (error) {
     showStatus(error.message?.includes(": ") ? error.message : t("settingsSaveFailed"), true);

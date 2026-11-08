@@ -107,6 +107,9 @@
   "scopePrompt": {
     "message": "Welcher Bereich soll dauerhaft freigegeben werden?"
   },
+  "blockScopePrompt": {
+    "message": "Welcher Bereich soll blockiert werden?"
+  },
   "scopePromptShared": {
     "message": "Hier können andere Inhalte veröffentlichen. Nur diesen Host freigeben."
   },
@@ -264,13 +267,13 @@
     "message": "Blockierte Domains"
   },
   "blockedHint": {
-    "message": "Diese Liste hat Vorrang vor dauerhaften Freigaben und importierten Listen. Eine ausdrückliche temporäre Freigabe gilt nur in der gerade geöffneten Mail."
+    "message": "Diese Liste hat Vorrang vor Freigaben und Importen. *.example.com blockiert die Domain und alle Subdomains; eine temporäre Freigabe gilt nur für diese Mail."
   },
   "broadTitle": {
     "message": "Ganze Domains freigeben"
   },
   "broadHint": {
-    "message": "Jeder Eintrag gilt für die registrierbare Domain und alle Subdomains. Diese breite Freigabe nur bei eigener Kontrolle der Domain nutzen."
+    "message": "Mit *.example.com werden die Domain und ihre Subdomains einschließlich example.com freigegeben. Gemeinsam genutzte Hosts bleiben getrennt; breite Freigaben nur für selbst kontrollierte Domains nutzen."
   },
   "broadInvalid": {
     "message": "$DOMAIN$ ist keine registrierbare Domain laut gebündelter Public Suffix List.",
@@ -362,7 +365,7 @@
     "message": "Sonstiges"
   },
   "hostListLabel": {
-    "message": "Ein exakter Hostname pro Zeile"
+    "message": "Eine Regel pro Zeile"
   },
   "saveSettings": {
     "message": "Änderungen speichern"
@@ -391,7 +394,7 @@
     "message": "Maximal 500 Hostnamen pro Liste."
   },
   "hostFormatHint": {
-    "message": "Keine URLs, Pfade, Ports oder Platzhalter. Beispiel: login.example.com"
+    "message": "Exakte Hosts haben keinen Platzhalter. Eine Regel für die ganze Domain nutzt *.example.com und umfasst auch example.com."
   },
   "exactHostExample": {
     "message": "login.google.de und google.de sind verschiedene Hostnamen und brauchen getrennte Freigaben."

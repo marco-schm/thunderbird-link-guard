@@ -2,7 +2,7 @@
 
 ## Supported version and reporting
 
-The current 0.9.x line is supported. Earlier local development builds are not
+The current 0.10.x line is supported. Earlier local development builds are not
 maintained. Please use GitHub's **Report a vulnerability** entry in the
 repository's Security tab when available. If that entry is unavailable, open
 a public Issue that asks for a private contact channel **without** including
@@ -60,6 +60,12 @@ Unknown suffixes do not receive a whole-domain option. Typos and Punycode
 domains receive prominent warnings, but visual similarity detection is
 heuristic and can have false positives or miss attacks. A red warning does
 not disappear merely because the user has approved the exact hostname.
+
+An exact block covers one host. A whole-domain block is displayed as
+`*.example.com` and covers `example.com` and every subdomain; it takes priority
+over both saved and imported approvals. The `*.` syntax is accepted only in
+the editable whole-domain rules and is checked against the bundled Public
+Suffix List. Imported JSON lists remain exact-host-only.
 
 Please report security issues privately to the maintainers before publishing
 details. Use synthetic messages and remove real URLs, tokens and mail contents

@@ -107,6 +107,9 @@
   "scopePrompt": {
     "message": "¿Qué alcance debería aprobarse permanentemente?"
   },
+  "blockScopePrompt": {
+    "message": "¿Qué alcance se debe bloquear?"
+  },
   "scopePromptShared": {
     "message": "Otros pueden publicar contenido aquí. Aprobar sólo este host."
   },
@@ -264,13 +267,13 @@
     "message": "Dominios bloqueados"
   },
   "blockedHint": {
-    "message": "Esta lista anula las aprobaciones permanentes y las listas importadas. La aprobación temporal explícita se aplica solo al mensaje que se muestra actualmente."
+    "message": "Esta lista prevalece sobre las aprobaciones e importaciones. *.example.com bloquea el dominio y todos sus subdominios; una aprobación temporal solo se aplica a este mensaje."
   },
   "broadTitle": {
     "message": "Aprobar dominios completos"
   },
   "broadHint": {
-    "message": "Cada entrada cubre el dominio registrable y todos los subdominios. Utilice esta aprobación amplia solo para los dominios que controle."
+    "message": "Use *.example.com para aprobar el dominio y sus subdominios, incluido example.com. Los hosts de contenido compartido siguen separados; úselo solo en dominios que controle."
   },
   "broadInvalid": {
     "message": "$DOMAIN$ no es un dominio registrable según la Lista pública de sufijos incluida.",
@@ -362,7 +365,7 @@
     "message": "Otro"
   },
   "hostListLabel": {
-    "message": "Un nombre de host exacto por línea"
+    "message": "Una regla por línea"
   },
   "saveSettings": {
     "message": "Guardar cambios"
@@ -391,7 +394,7 @@
     "message": "Hasta 500 nombres de host por lista."
   },
   "hostFormatHint": {
-    "message": "Sin URL, rutas, puertos ni comodines. Ejemplo: login.example.com"
+    "message": "Los hosts exactos no usan comodines. Una regla de dominio completo usa *.example.com e incluye example.com."
   },
   "exactHostExample": {
     "message": "login.google.de y google.de son nombres de host diferentes y requieren aprobaciones independientes."

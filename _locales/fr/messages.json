@@ -107,6 +107,9 @@
   "scopePrompt": {
     "message": "Quel champ d’application doit être approuvé de façon permanente ?"
   },
+  "blockScopePrompt": {
+    "message": "Quelle portée faut-il bloquer ?"
+  },
   "scopePromptShared": {
     "message": "D'autres peuvent publier du contenu ici. Approuvez uniquement cet hôte."
   },
@@ -264,13 +267,13 @@
     "message": "Domaines bloqués"
   },
   "blockedHint": {
-    "message": "Cette liste remplace les approbations permanentes et les listes importées. L'approbation temporaire explicite s'applique uniquement au message actuellement affiché."
+    "message": "Cette liste prime sur les autorisations et les imports. *.example.com bloque le domaine et tous ses sous-domaines ; une autorisation temporaire ne vaut que pour ce message."
   },
   "broadTitle": {
     "message": "Approuver des domaines entiers"
   },
   "broadHint": {
-    "message": "Chaque entrée couvre le domaine enregistrable et tous les sous-domaines. Utilisez cette approbation large uniquement pour les domaines que vous contrôlez."
+    "message": "Utilisez *.example.com pour autoriser le domaine et ses sous-domaines, y compris example.com. Les hôtes de contenu partagé restent séparés ; réservez cela aux domaines que vous contrôlez."
   },
   "broadInvalid": {
     "message": "$DOMAIN$ n'est pas un domaine enregistrable selon la liste des suffixes publics fournie.",
@@ -362,7 +365,7 @@
     "message": "Autre"
   },
   "hostListLabel": {
-    "message": "Un nom d'hôte exact par ligne"
+    "message": "Une règle par ligne"
   },
   "saveSettings": {
     "message": "Enregistrer les modifications"
@@ -391,7 +394,7 @@
     "message": "Jusqu'à 500 noms d'hôtes par liste."
   },
   "hostFormatHint": {
-    "message": "Pas d'URL, de chemins, de ports ou de caractères génériques. Exemple : login.example.com"
+    "message": "Les hôtes exacts ne comportent pas de joker. Une règle globale utilise *.example.com et inclut example.com."
   },
   "exactHostExample": {
     "message": "login.google.de et google.de sont des noms d'hôte différents et nécessitent des approbations distinctes."

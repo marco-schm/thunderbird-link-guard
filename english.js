@@ -109,6 +109,9 @@ globalThis.LinkGuardEnglish = {
   "scopePrompt": {
     "message": "Which scope should be approved permanently?"
   },
+  "blockScopePrompt": {
+    "message": "Which scope should be blocked?"
+  },
   "scopePromptShared": {
     "message": "Others can publish content here. Approve only this host."
   },
@@ -266,13 +269,13 @@ globalThis.LinkGuardEnglish = {
     "message": "Blocked domains"
   },
   "blockedHint": {
-    "message": "This list overrides permanent approvals and imported lists. Explicit temporary approval applies only to the currently displayed message."
+    "message": "This list overrides approvals and imports. Use *.example.com to block the domain and all subdomains; a temporary approval applies only to this message."
   },
   "broadTitle": {
     "message": "Approve whole domains"
   },
   "broadHint": {
-    "message": "Each entry covers the registrable domain and all subdomains. Use this broad approval only for domains you control."
+    "message": "Use *.example.com to approve the domain and its subdomains, including example.com. Shared-content hosts stay separate; use broad approval only for domains you control."
   },
   "broadInvalid": {
     "message": "$DOMAIN$ is not a registrable domain according to the bundled Public Suffix List.",
@@ -364,7 +367,7 @@ globalThis.LinkGuardEnglish = {
     "message": "Other"
   },
   "hostListLabel": {
-    "message": "One exact hostname per line"
+    "message": "One rule per line"
   },
   "saveSettings": {
     "message": "Save changes"
@@ -393,7 +396,7 @@ globalThis.LinkGuardEnglish = {
     "message": "Up to 500 hostnames per list."
   },
   "hostFormatHint": {
-    "message": "No URLs, paths, ports or wildcards. Example: login.example.com"
+    "message": "Exact hosts have no wildcard. A whole-domain rule uses *.example.com and includes example.com itself."
   },
   "exactHostExample": {
     "message": "login.google.de and google.de are different hostnames and require separate approvals."

@@ -52,3 +52,16 @@ test("broad provider approval cannot approve shared content hosts", () => {
   assert.equal(linkAllowed(inspectLink("https://docs.google.com/document/d/id"), broad,
     new Set(), noWarning, true), true);
 });
+
+test("whole-domain block overrides exact and broad approvals, with one-message escape", () => {
+  const blocked = { ...state, allowedHosts: ["login.google.com"],
+    customAllowedHosts: ["login.google.com"],
+    broadAllowedDomains: ["google.com"], blockedDomains: ["google.com"] };
+  const target = inspectLink("https://login.google.com/reset");
+  assert.equal(linkAllowed(target, blocked, new Set(), noWarning, true), false);
+  assert.equal(linkAllowed(inspectLink("https://google.com/"), blocked,
+    new Set(), noWarning, true), false);
+  assert.equal(linkAllowed(target, blocked, new Set(["login.google.com"]), noWarning, true), true);
+  assert.equal(linkAllowed(inspectLink("https://google.org/"), blocked,
+    new Set(), noWarning, true), false);
+});

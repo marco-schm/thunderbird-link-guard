@@ -60,6 +60,29 @@
     return { hosts: [...hosts].sort(), errors };
   }
 
+  // The only wildcard accepted in editable rules denotes a whole registrable
+  // domain, including its apex. Imported lists remain exact-host-only.
+  function parseRuleList(text, wholeDomainOnly = false) {
+    const hosts = new Set();
+    const domains = new Set();
+    const errors = [];
+    const lines = String(text).split(/\r?\n/);
+    for (let index = 0; index < lines.length; index++) {
+      const entry = lines[index].trim();
+      if (!entry) continue;
+      try {
+        if (entry.startsWith("*.")) domains.add(normalizeHost(entry.slice(2)));
+        else if (!wholeDomainOnly) hosts.add(normalizeHost(entry));
+        else throw new Error("wildcard required");
+      } catch { errors.push(index + 1); }
+      if (hosts.size + domains.size > MAX_HOSTS) {
+        errors.push("limit");
+        break;
+      }
+    }
+    return { hosts: [...hosts].sort(), domains: [...domains].sort(), errors };
+  }
+
   function oneEditOrSwap(a, b) {
     if (a === b || Math.abs(a.length - b.length) > 1) return false;
     let left = 0;
@@ -151,7 +174,7 @@
     return result;
   }
 
-  const api = Object.freeze({ canonicalHost, isIpAddress, normalizeHost, parseHostList, inspectLink,
+  const api = Object.freeze({ canonicalHost, isIpAddress, normalizeHost, parseHostList, parseRuleList, inspectLink,
     lookalikeDomain, isInternationalizedHost, hostServiceRisk, isSharedContentHost,
     apparentHost });
   root.LinkGuardPolicy = api;

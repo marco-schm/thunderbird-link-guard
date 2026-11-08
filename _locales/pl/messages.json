@@ -107,6 +107,9 @@
   "scopePrompt": {
     "message": "Jaki zakres zatwierdzić na stałe?"
   },
+  "blockScopePrompt": {
+    "message": "Jaki zakres zablokować?"
+  },
   "scopePromptShared": {
     "message": "Inne osoby mogą tu publikować treści. Zatwierdź tylko ten host."
   },
@@ -264,13 +267,13 @@
     "message": "Zablokowane domeny"
   },
   "blockedHint": {
-    "message": "Ta lista ma pierwszeństwo przed stałymi zgodami i importowanymi listami. Wyraźna zgoda tymczasowa dotyczy tylko aktualnie wyświetlanej wiadomości."
+    "message": "Ta lista ma pierwszeństwo przed zgodami i importami. *.example.com blokuje domenę i wszystkie subdomeny; zgoda tymczasowa dotyczy tylko tej wiadomości."
   },
   "broadTitle": {
     "message": "Zatwierdzaj całe domeny"
   },
   "broadHint": {
-    "message": "Każdy wpis obejmuje domenę rejestrowalną i wszystkie subdomeny. Używaj tak szerokiej zgody tylko dla domen, które kontrolujesz."
+    "message": "Użyj *.example.com, aby zatwierdzić domenę i jej subdomeny, w tym example.com. Hosty z treściami współdzielonymi pozostają osobne; rób to tylko dla domen pod swoją kontrolą."
   },
   "broadInvalid": {
     "message": "$DOMAIN$ nie jest domeną rejestrowalną według dołączonej listy sufiksów publicznych.",
@@ -362,7 +365,7 @@
     "message": "Inne"
   },
   "hostListLabel": {
-    "message": "Jedna dokładna nazwa hosta w wierszu"
+    "message": "Jedna reguła w wierszu"
   },
   "saveSettings": {
     "message": "Zapisz zmiany"
@@ -391,7 +394,7 @@
     "message": "Do 500 nazw hostów na listę."
   },
   "hostFormatHint": {
-    "message": "Bez adresów URL, ścieżek, portów i symboli wieloznacznych. Przykład: login.example.com"
+    "message": "Dokładne hosty nie mają symbolu wieloznacznego. Reguła całej domeny używa *.example.com i obejmuje też example.com."
   },
   "exactHostExample": {
     "message": "login.google.de i google.de to różne nazwy hostów i wymagają osobnych zgód."

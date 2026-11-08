@@ -107,6 +107,9 @@
   "scopePrompt": {
     "message": "Qual escopo deve ser aprovado permanentemente?"
   },
+  "blockScopePrompt": {
+    "message": "Qual escopo deve ser bloqueado?"
+  },
   "scopePromptShared": {
     "message": "Outros podem publicar conteúdo aqui. Aprove apenas este host."
   },
@@ -264,13 +267,13 @@
     "message": "Domínios bloqueados"
   },
   "blockedHint": {
-    "message": "Esta lista substitui aprovações permanentes e listas importadas. A aprovação temporária explícita se aplica somente à mensagem exibida no momento."
+    "message": "Esta lista prevalece sobre aprovações e importações. *.example.com bloqueia o domínio e todos os subdomínios; uma aprovação temporária vale só para esta mensagem."
   },
   "broadTitle": {
     "message": "Aprovar domínios inteiros"
   },
   "broadHint": {
-    "message": "Cada entrada cobre o domínio registrável e todos os subdomínios. Use esta aprovação ampla apenas para domínios que você controla."
+    "message": "Use *.example.com para aprovar o domínio e seus subdomínios, incluindo example.com. Hosts de conteúdo compartilhado continuam separados; use apenas em domínios que você controla."
   },
   "broadInvalid": {
     "message": "$DOMAIN$ não é um domínio registrável de acordo com a lista pública de sufixos incluída.",
@@ -362,7 +365,7 @@
     "message": "Outro"
   },
   "hostListLabel": {
-    "message": "Um nome de host exato por linha"
+    "message": "Uma regra por linha"
   },
   "saveSettings": {
     "message": "Salvar alterações"
@@ -391,7 +394,7 @@
     "message": "Até 500 nomes de host por lista."
   },
   "hostFormatHint": {
-    "message": "Sem URLs, caminhos, portas ou curingas. Exemplo: login.example.com"
+    "message": "Hosts exatos não usam curinga. Uma regra para todo o domínio usa *.example.com e inclui example.com."
   },
   "exactHostExample": {
     "message": "login.google.de e google.de são nomes de host diferentes e exigem aprovações separadas."

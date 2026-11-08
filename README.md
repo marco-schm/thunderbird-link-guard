@@ -6,7 +6,7 @@ Link Guard makes web links in displayed email inactive until you approve their d
 
 ## What it does
 
-- Approves exact hosts, or an explicitly chosen registrable domain and its subdomains. `login.example.org` and `example.org` are separate exact decisions.
+- Approves or blocks an exact host, or an explicitly chosen registrable domain and its subdomains. `login.example.org` and `example.org` are separate exact decisions. Whole-domain rules appear as `*.example.org` and include `example.org` itself.
 - Keeps temporary approvals in the current message only. Permanent approvals and blocks are editable in Settings.
 - Displays prominent warnings for lookalike and internationalized domains, insecure HTTP, URL credentials, direct IP addresses, unusual ports, misleading visible URLs, and known public shorteners.
 - Requires a second confirmation for public shorteners such as `bit.ly`; these can only be approved for the current message.
@@ -20,7 +20,7 @@ Link Guard works locally on displayed messages. It does not upload mail or inspe
 
 ## Status and installation
 
-Version 0.9.1 supports ten UI languages. Spanish and the English fallback for
+Version 0.10.1 supports ten UI languages. Spanish and the English fallback for
 an unsupported Thunderbird language were tested live in Thunderbird 159 on
 macOS. The link policy was tested manually
 in Thunderbird 159 on macOS with a synthetic OpenPGP message, a user-initiated
@@ -31,7 +31,7 @@ Download the XPI from a [GitHub release](https://github.com/marco-schm/thunderbi
 
 ## Trust decisions
 
-A permanent exact-host approval covers that hostname. A separate whole-domain choice covers the registrable domain and all subdomains, except the selected shared-content hosts. Broad approval is intentionally a wider permission. Exact blocks override persistent approvals and imported lists; a temporary approval can override a block only in the current message.
+A permanent exact-host approval covers that hostname. A separate `*.example.org` approval covers the registrable domain and its subdomains, except selected shared-content hosts. Both exact and whole-domain blocks override persistent approvals and imported lists. Temporary approval can override a block only in the current message. The `*.` notation in Settings includes the bare domain; imported JSON lists still contain exact hosts only.
 
 The add-on removes the `href` of unapproved HTML anchors and image-map areas and intercepts ordinary clicks. It checks up to 500 links per displayed message; additional links remain inactive. `mailto:`, `tel:`, `cid:`, and in-message fragments are outside web-domain approval. The notice disappears when all web links are approved and have no active warning.
 

@@ -10,7 +10,7 @@
   const originalHrefs = new WeakMap();
   const inlineWarnings = new WeakMap();
   const trackedAnchors = new Set();
-  let state = { enabled: true, allowedHosts: [], blockedHosts: [],
+  let state = { enabled: true, allowedHosts: [], blockedHosts: [], blockedDomains: [],
     customAllowedHosts: [], broadAllowedDomains: [], trustedDomains: [] };
   const temporaryHosts = new Set();
   const analyzedHosts = new Map();
@@ -80,6 +80,8 @@
 
   function statusFor(host) {
     if (temporaryHosts.has(host)) return "temporary";
+    if (state.blockedDomains?.some(domain => host === domain || host.endsWith(`.${domain}`)))
+      return "blocked";
     if (state.blockedHosts.includes(host)) return "blocked";
     if (state.customAllowedHosts.includes(host)) return "permanent";
     const warning = warningFor(host);
@@ -138,26 +140,27 @@
     actions.replaceChildren(chooser);
   }
 
-  async function choosePermanent(host, actions) {
+  async function chooseScope(host, actions, decision) {
     const chooser = document.createElement("div");
     chooser.className = "link-guard-scope-choice";
     const explanation = document.createElement("p");
-    explanation.textContent = t(policy.isSharedContentHost(host) ? "scopePromptShared" : "scopePrompt");
+    explanation.textContent = t(decision === "block" ? "blockScopePrompt" :
+      policy.isSharedContentHost(host) ? "scopePromptShared" : "scopePrompt");
     const exact = document.createElement("button");
     exact.type = "button";
     exact.textContent = t("scopeExact", [host]);
-    exact.addEventListener("click", () => decide(host, "permanent", "exact"));
+    exact.addEventListener("click", () => decide(host, decision, "exact"));
     chooser.append(explanation, exact);
     try {
       const root = await messenger.runtime.sendMessage({ type: "link-guard-scope", host });
-      if (root && !policy.isSharedContentHost(host)) {
+      if (root && (decision === "block" || !policy.isSharedContentHost(host))) {
         const broad = document.createElement("button");
         broad.type = "button";
         broad.textContent = t("scopeBroad", [root]);
-        broad.addEventListener("click", () => decide(host, "permanent", "domain"));
+        broad.addEventListener("click", () => decide(host, decision, "domain"));
         chooser.append(broad);
       }
-    } catch { /* Exact approval remains available if the suffix list fails. */ }
+    } catch { /* Exact decision remains available if the suffix list fails. */ }
     actions.replaceChildren(chooser);
   }
 
@@ -170,7 +173,8 @@
     name.textContent = host;
     const status = document.createElement("span");
     const temporaryOnly = risks?.has("shortLink");
-    const statusKey = temporaryOnly && !temporaryHosts.has(host) ? "pending" :
+    const statusKey = statusFor(host) === "blocked" ? "blocked" :
+      temporaryOnly && !temporaryHosts.has(host) ? "pending" :
       risks?.size && !temporaryHosts.has(host) &&
       !state.customAllowedHosts.includes(host) ? "pending" : statusFor(host);
     status.className = `link-guard-state link-guard-state-${statusKey}`;
@@ -207,10 +211,15 @@
         permanent.type = "button";
         permanent.textContent = t("allowPermanent");
         permanent.disabled = !stateReady;
-        permanent.addEventListener("click", () => choosePermanent(host, actions));
+        permanent.addEventListener("click", () => chooseScope(host, actions, "permanent"));
         actions.append(permanent);
       }
-      actions.append(button("blockHost", host, "block"));
+      const block = document.createElement("button");
+      block.type = "button";
+      block.textContent = t("blockHost");
+      block.disabled = !stateReady;
+      block.addEventListener("click", () => chooseScope(host, actions, "block"));
+      actions.append(block);
     }
     row.append(information, actions);
     return row;
@@ -385,8 +394,7 @@
         }
       }
       if (!approved) {
-        if (inspection.hosts.some(host =>
-          state.blockedHosts.includes(host) && !temporaryHosts.has(host))) blocked++;
+        if (inspection.hosts.some(host => statusFor(host) === "blocked")) blocked++;
         else pending++;
       }
     }

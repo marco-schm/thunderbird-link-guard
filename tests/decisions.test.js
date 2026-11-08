@@ -94,6 +94,61 @@ test("whole-domain approval is separate from exact approval and uses public suff
   assert.equal(await h.send({ type: "link-guard-validate-broad", hosts: ["co.uk"] }), "co.uk");
 });
 
+test("block decision asks for exact or registrable-domain scope", async () => {
+  const h = harness();
+  await h.send({ type: "link-guard-decision", host: "login.google.de",
+    decision: "block", scope: "exact" });
+  let state = await h.send({ type: "link-guard-state" });
+  assert.deepEqual([...state.blockedHosts], ["login.google.de"]);
+  assert.deepEqual([...state.blockedDomains], []);
+
+  await h.send({ type: "link-guard-decision", host: "login.google.de",
+    decision: "block", scope: "domain" });
+  state = await h.send({ type: "link-guard-state" });
+  assert.deepEqual([...state.blockedDomains], ["google.de"]);
+  await assert.rejects(h.send({ type: "link-guard-decision", host: "accounts.google.de",
+    decision: "permanent", scope: "exact" }));
+  await assert.rejects(h.send({ type: "link-guard-decision", host: "co.uk",
+    decision: "block", scope: "domain" }));
+  await assert.rejects(h.send({ type: "link-guard-decision", host: "google.de",
+    decision: "block", scope: "invalid" }));
+});
+
+test("whole-domain blocks remove local approvals but never widen a private suffix", async () => {
+  const h = harness();
+  await h.send({ type: "link-guard-decision", host: "login.google.de",
+    decision: "permanent", scope: "exact" });
+  await h.send({ type: "link-guard-decision", host: "www.google.de",
+    decision: "permanent", scope: "domain" });
+  await h.send({ type: "link-guard-decision", host: "alice.github.io",
+    decision: "block", scope: "domain" });
+  await h.send({ type: "link-guard-decision", host: "login.google.de",
+    decision: "block", scope: "domain" });
+  const state = await h.send({ type: "link-guard-state" });
+  assert.deepEqual([...state.blockedDomains], ["alice.github.io", "google.de"]);
+  assert.deepEqual([...state.customAllowedHosts], []);
+  assert.deepEqual([...state.broadAllowedDomains], []);
+  assert.ok(!state.blockedDomains.includes("github.io"));
+});
+
+test("whole-domain blocks override imported hosts and later whole-domain approval", async () => {
+  const h = harness();
+  h.local.importedLists = [{ id: "12345678-1234-1234-1234-123456789abc",
+    name: "Example", category: "other", hosts: ["google.de", "login.google.de"],
+    sourceUrl: "", enabled: true }];
+  await h.send({ type: "link-guard-decision", host: "login.google.de",
+    decision: "block", scope: "domain" });
+  let state = await h.send({ type: "link-guard-state" });
+  assert.deepEqual([...state.allowedHosts], []);
+  assert.deepEqual([...state.blockedDomains], ["google.de"]);
+
+  await h.send({ type: "link-guard-decision", host: "login.google.de",
+    decision: "permanent", scope: "domain" });
+  state = await h.send({ type: "link-guard-state" });
+  assert.deepEqual([...state.blockedDomains], []);
+  assert.ok(state.broadAllowedDomains.includes("google.de"));
+});
+
 test("shared publishing hosts cannot request broad approval through background messages", async () => {
   const h = harness();
   await assert.rejects(h.send({ type: "link-guard-decision", host: "docs.google.com",
