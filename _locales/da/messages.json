@@ -240,6 +240,12 @@
   "enabledHint": {
     "message": "Hvis du deaktiverer beskyttelsen, kan links igen klikkes direkte."
   },
+  "destinationsLabel": {
+    "message": "Vis linkdestinationer"
+  },
+  "destinationsHint": {
+    "message": "Viser det rigtige domæne ved links, hvis tekst ikke nævner det. Slå det fra, hvis det forstyrrer en meddelelses layout. Advarsler vises altid, og panelet nævner altid alle destinationer."
+  },
   "hostCount": {
     "message": "Værtsnavne: $COUNT$",
     "placeholders": {

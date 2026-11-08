@@ -240,6 +240,12 @@
   "enabledHint": {
     "message": "Disabling protection makes links directly clickable again."
   },
+  "destinationsLabel": {
+    "message": "Show link destinations"
+  },
+  "destinationsHint": {
+    "message": "Shows the real domain next to links whose text does not name it. Turn it off if it breaks a message's layout. Warnings are always shown, and the panel always names every destination."
+  },
   "hostCount": {
     "message": "Hostnames: $COUNT$",
     "placeholders": {

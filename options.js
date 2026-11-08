@@ -8,12 +8,13 @@ const warningListViews = new Map();
 const t = globalThis.LinkGuardLocale.getMessage;
 const importedInputs = new Map();
 const enabledInput = document.getElementById("enabled");
+const destinationsInput = document.getElementById("showDestinations");
 const customInput = document.getElementById("customHosts");
 const blockedInput = document.getElementById("blockedHosts");
 const broadInput = document.getElementById("broadDomains");
 const blockedDomainsInput = document.getElementById("blockedDomains");
 const status = document.getElementById("status");
-const storedKeys = { enabled: true, customAllowedHosts: [], blockedHosts: [],
+const storedKeys = { enabled: true, showDestinations: true, customAllowedHosts: [], blockedHosts: [],
   blockedDomains: [], broadAllowedDomains: [], importedLists: [],
   disabledWarnings: [], customWarnings: [], warningLists: [] };
 let baseline = "";
@@ -446,6 +447,7 @@ async function load() {
     const saved = await messenger.storage.local.get(storedKeys);
     baseline = snapshot(saved);
     enabledInput.checked = saved.enabled !== false;
+    destinationsInput.checked = saved.showDestinations !== false;
     customInput.value = (saved.customAllowedHosts || []).join("\n");
     blockedInput.value = (saved.blockedHosts || []).join("\n");
     broadInput.value = formatRuleList([], saved.broadAllowedDomains || []);
@@ -543,7 +545,7 @@ document.getElementById("save").addEventListener("click", async () => {
       showStatus(t("settingsChanged"), true);
       return;
     }
-    const updated = { enabled: enabledInput.checked,
+    const updated = { enabled: enabledInput.checked, showDestinations: destinationsInput.checked,
       customAllowedHosts, blockedHosts, blockedDomains, broadAllowedDomains,
       importedLists, disabledWarnings, customWarnings, warningLists };
     saving = true;

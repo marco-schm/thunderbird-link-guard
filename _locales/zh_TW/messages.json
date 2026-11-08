@@ -240,6 +240,12 @@
   "enabledHint": {
     "message": "停用保護後，連結將可再次直接點擊。"
   },
+  "destinationsLabel": {
+    "message": "顯示連結目標"
+  },
+  "destinationsHint": {
+    "message": "在文字未標明目標的連結旁顯示實際網域。若影響郵件版面，可將其關閉。警告一律會顯示，面板也一律列出所有目標。"
+  },
   "hostCount": {
     "message": "主機名稱：$COUNT$",
     "placeholders": {

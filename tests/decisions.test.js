@@ -108,6 +108,18 @@ test("whole-domain approval is separate from exact approval and uses public suff
   assert.equal(await h.send({ type: "link-guard-validate-broad", hosts: ["co.uk"] }), "co.uk");
 });
 
+// Destination labels next to links are on unless the user explicitly switched them off.
+test("destination labels default to on and only an explicit false hides them", async () => {
+  const h = harness();
+  assert.equal((await h.send({ type: "link-guard-state" })).showDestinations, true);
+  h.local.showDestinations = false;
+  assert.equal((await h.send({ type: "link-guard-state" })).showDestinations, false);
+  for (const value of [true, "false", 0, null]) {
+    h.local.showDestinations = value;
+    assert.equal((await h.send({ type: "link-guard-state" })).showDestinations, true, String(value));
+  }
+});
+
 // Message pages compare a domain named in link text with the destination by registrable
 // domain. Anything that is not a hostname under a known suffix has no root.
 test("registrable domains for link text are looked up against public suffix rules", async () => {

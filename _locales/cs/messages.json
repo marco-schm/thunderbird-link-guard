@@ -240,6 +240,12 @@
   "enabledHint": {
     "message": "Po vypnutí ochrany lze odkazy opět přímo otevírat kliknutím."
   },
+  "destinationsLabel": {
+    "message": "Zobrazit cíle odkazů"
+  },
+  "destinationsHint": {
+    "message": "Zobrazí skutečnou doménu vedle odkazů, jejichž text ji neuvádí. Vypněte, pokud narušuje vzhled zprávy. Varování se zobrazují vždy a panel vždy uvádí všechny cíle."
+  },
   "hostCount": {
     "message": "Názvy hostitelů: $COUNT$",
     "placeholders": {

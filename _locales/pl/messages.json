@@ -240,6 +240,12 @@
   "enabledHint": {
     "message": "Wyłączenie ochrony sprawia, że odnośniki znów można otwierać bezpośrednio."
   },
+  "destinationsLabel": {
+    "message": "Pokazuj cele linków"
+  },
+  "destinationsHint": {
+    "message": "Pokazuje rzeczywistą domenę obok linków, których tekst jej nie podaje. Wyłącz, jeśli psuje układ wiadomości. Ostrzeżenia są zawsze widoczne, a panel zawsze wymienia wszystkie cele."
+  },
   "hostCount": {
     "message": "Nazwy hostów: $COUNT$",
     "placeholders": {

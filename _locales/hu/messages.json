@@ -240,6 +240,12 @@
   "enabledHint": {
     "message": "A védelem kikapcsolása után a hivatkozások ismét közvetlenül kattinthatók."
   },
+  "destinationsLabel": {
+    "message": "Hivatkozások céljának megjelenítése"
+  },
+  "destinationsHint": {
+    "message": "Megjeleníti a valódi domaint azon hivatkozások mellett, amelyek szövege nem tartalmazza. Kapcsolja ki, ha megbontja egy levél elrendezését. A figyelmeztetések mindig megjelennek, és a panel mindig felsorolja az összes célt."
+  },
   "hostCount": {
     "message": "Gazdagépnevek: $COUNT$",
     "placeholders": {

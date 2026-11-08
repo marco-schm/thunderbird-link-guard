@@ -240,6 +240,12 @@
   "enabledHint": {
     "message": "Korumayı kapatmak, bağlantıları yeniden doğrudan tıklanabilir yapar."
   },
+  "destinationsLabel": {
+    "message": "Bağlantı hedeflerini göster"
+  },
+  "destinationsHint": {
+    "message": "Metni hedefi belirtmeyen bağlantıların yanında gerçek alan adını gösterir. Bir iletinin düzenini bozuyorsa kapatın. Uyarılar her zaman gösterilir ve panel her zaman tüm hedefleri listeler."
+  },
   "hostCount": {
     "message": "Ana bilgisayar adları: $COUNT$",
     "placeholders": {
