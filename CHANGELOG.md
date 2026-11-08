@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 0.12.0 — 2026-11-08
 
 - Settings: choose which built-in warnings are shown. Switching one off also
   removes the extra exact-host approval it requires.
