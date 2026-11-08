@@ -240,6 +240,12 @@
   "enabledHint": {
     "message": "保護を無効にすると、リンクを確認なしで直接開けるようになります。"
   },
+  "destinationsLabel": {
+    "message": "リンク先を表示"
+  },
+  "destinationsHint": {
+    "message": "テキストにリンク先が示されていないリンクの横に、実際のドメインを表示します。メールのレイアウトが崩れる場合はオフにしてください。警告は常に表示され、パネルには常にすべてのリンク先が表示されます。"
+  },
   "hostCount": {
     "message": "ホスト名: $COUNT$ 件",
     "placeholders": {

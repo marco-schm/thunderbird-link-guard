@@ -240,6 +240,12 @@
   "enabledHint": {
     "message": "La désactivation de la protection rend les liens directement cliquables."
   },
+  "destinationsLabel": {
+    "message": "Afficher la destination des liens"
+  },
+  "destinationsHint": {
+    "message": "Affiche le domaine réel à côté des liens dont le texte ne l'indique pas. Désactivez-le s'il perturbe la mise en page d'un message. Les avertissements restent toujours affichés et le panneau indique toujours toutes les destinations."
+  },
   "hostCount": {
     "message": "Noms d'hôtes : $COUNT$",
     "placeholders": {

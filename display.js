@@ -17,7 +17,7 @@
   const originalHrefs = new WeakMap();
   const inlineWarnings = new WeakMap();
   const trackedAnchors = new Set();
-  let state = { enabled: true, allowedHosts: [], blockedHosts: [], blockedDomains: [],
+  let state = { enabled: true, showDestinations: true, allowedHosts: [], blockedHosts: [], blockedDomains: [],
     customAllowedHosts: [], broadAllowedDomains: [], trustedDomains: [],
     disabledWarnings: [], warningRules: [] };
   let warningSettings = { key: "", disabled: new Set(), evaluator: null };
@@ -551,7 +551,11 @@
     const existing = inlineWarnings.get(anchor);
     const risky = Boolean(risks?.length || (warning && warning.kind !== "none"));
     const showHost = host && !policy.apparentHost((anchor.textContent || "").slice(0, 1024));
-    if (anchor.tagName !== "A" || (!risky && !showHost)) {
+    // The setting only drops the neutral "↗ host" label of an unremarkable link, which can
+    // disturb a message's layout. A warning label is always shown, destination included.
+    const destinationOnly = !risky && showHost;
+    if (anchor.tagName !== "A" || (!risky && !showHost) ||
+        (destinationOnly && state.showDestinations === false)) {
       existing?.remove();
       inlineWarnings.delete(anchor);
       return;

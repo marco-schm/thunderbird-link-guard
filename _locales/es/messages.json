@@ -240,6 +240,12 @@
   "enabledHint": {
     "message": "Al desactivar la protección, se puede volver a hacer clic directamente en los enlaces."
   },
+  "destinationsLabel": {
+    "message": "Mostrar destinos de enlaces"
+  },
+  "destinationsHint": {
+    "message": "Muestra el dominio real junto a los enlaces cuyo texto no lo indica. Desactívalo si altera el diseño de un mensaje. Las advertencias se muestran siempre y el panel siempre indica todos los destinos."
+  },
   "hostCount": {
     "message": "Nombres de host: $COUNT$",
     "placeholders": {

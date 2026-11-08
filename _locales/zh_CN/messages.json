@@ -240,6 +240,12 @@
   "enabledHint": {
     "message": "关闭保护后，链接将再次可以直接点击。"
   },
+  "destinationsLabel": {
+    "message": "显示链接目标"
+  },
+  "destinationsHint": {
+    "message": "在文本未注明目标的链接旁显示实际域名。如果影响邮件排版，可将其关闭。警告始终显示，面板也始终列出所有目标。"
+  },
   "hostCount": {
     "message": "主机名：$COUNT$ 个",
     "placeholders": {

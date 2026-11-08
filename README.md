@@ -15,7 +15,7 @@ Link Guard makes web links in displayed email inactive until you approve their d
 
 - **Per-host approval.** Allow or block an exact host, or a whole registrable domain (`*.example.org`, which includes `example.org`). `login.example.org` and `example.org` are separate decisions.
 - **Temporary or permanent.** A temporary approval applies to the current message only. Permanent rules are editable in Settings.
-- **Phishing signals.** Prominent warnings for lookalike and internationalized domains, URL credentials, IP addresses, unusual ports, misleading link text, and public URL shorteners. Links with descriptive text also show their real host.
+- **Phishing signals.** Prominent warnings for lookalike and internationalized domains, URL credentials, IP addresses, unusual ports, misleading link text, and public URL shorteners. Links with descriptive text also show their real host; this label can be switched off in Settings if it disturbs a message's layout.
 - **Safer defaults.** Shorteners can only be approved for one message, and shared-content hosts such as `docs.google.com` are excluded from broad domain approvals.
 - **Configurable warnings.** Switch built-in warnings off, or add your own as regular expressions for the host, URL or link text, also from imported warning lists. See [Warnings](#warnings).
 - **Allowlists and blocklists.** Import hosts from a JSON file or an HTTPS URL. Remote blocklists can update themselves daily within strict limits. See [Lists](#lists).

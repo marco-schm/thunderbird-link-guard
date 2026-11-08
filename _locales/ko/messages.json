@@ -240,6 +240,12 @@
   "enabledHint": {
     "message": "보호를 끄면 링크를 다시 바로 클릭할 수 있습니다."
   },
+  "destinationsLabel": {
+    "message": "링크 대상 표시"
+  },
+  "destinationsHint": {
+    "message": "텍스트에 대상이 나타나지 않는 링크 옆에 실제 도메인을 표시합니다. 메일 레이아웃이 깨지면 끄세요. 경고는 항상 표시되며 패널에는 항상 모든 대상이 표시됩니다."
+  },
   "hostCount": {
     "message": "호스트 이름: $COUNT$",
     "placeholders": {

@@ -240,6 +240,12 @@
   "enabledHint": {
     "message": "Suojauksen poistaminen käytöstä tekee linkeistä taas suoraan napsautettavia."
   },
+  "destinationsLabel": {
+    "message": "Näytä linkkien kohteet"
+  },
+  "destinationsHint": {
+    "message": "Näyttää todellisen verkkotunnuksen linkkien vieressä, joiden teksti ei mainitse sitä. Poista käytöstä, jos se rikkoo viestin asettelun. Varoitukset näytetään aina, ja paneeli nimeää aina kaikki kohteet."
+  },
   "hostCount": {
     "message": "Isäntänimiä: $COUNT$",
     "placeholders": {

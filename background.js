@@ -100,7 +100,7 @@ async function importedData(raw) {
 // apart so a decision never copies an imported entry into the user's stored lists.
 async function readFullState() {
   const local = await messenger.storage.local.get({
-    enabled: true, customAllowedHosts: [], blockedHosts: [],
+    enabled: true, showDestinations: true, customAllowedHosts: [], blockedHosts: [],
     blockedDomains: [], importedLists: [], broadAllowedDomains: [],
     disabledWarnings: [], customWarnings: [], warningLists: []
   });
@@ -132,7 +132,9 @@ async function readFullState() {
   for (const host of effective) {
     if (covers(imported.domains, host)) effective.delete(host);
   }
-  return { enabled: local.enabled !== false, customAllowedHosts,
+  // Only an explicit false hides the destination labels; anything else keeps the default.
+  return { enabled: local.enabled !== false, showDestinations: local.showDestinations !== false,
+    customAllowedHosts,
     blockedHosts: allBlockedHosts, blockedDomains: allBlockedDomains,
     broadAllowedDomains,
     allowedHosts: [...effective], trustedDomains: [...trustedDomains],

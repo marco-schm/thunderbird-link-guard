@@ -240,6 +240,12 @@
   "enabledHint": {
     "message": "Om du inaktiverar skyddet blir länkarna direkt klickbara igen."
   },
+  "destinationsLabel": {
+    "message": "Visa länkmål"
+  },
+  "destinationsHint": {
+    "message": "Visar den verkliga domänen bredvid länkar vars text inte nämner den. Stäng av om det stör ett meddelandes layout. Varningar visas alltid och panelen anger alltid alla mål."
+  },
   "hostCount": {
     "message": "Värdnamn: $COUNT$",
     "placeholders": {

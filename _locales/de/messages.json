@@ -240,6 +240,12 @@
   "enabledHint": {
     "message": "Bei deaktiviertem Schutz werden Links wieder direkt klickbar."
   },
+  "destinationsLabel": {
+    "message": "Linkziele anzeigen"
+  },
+  "destinationsHint": {
+    "message": "Zeigt neben Links, deren Text das Ziel nicht nennt, die tatsächliche Domain an. Abschalten, wenn es das Layout einer Mail stört. Warnungen werden immer angezeigt, und das Panel nennt immer alle Ziele."
+  },
   "hostCount": {
     "message": "Hostnamen: $COUNT$",
     "placeholders": {

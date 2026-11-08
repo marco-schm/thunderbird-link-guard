@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- Settings: switch off the destination label shown next to links whose text does
+  not name their target, for messages whose layout it disturbs. It is on by
+  default. Warning labels and the panel are not affected.
 - Security: decide a link's destination from the URL it resolves to instead of
   from its `href` attribute. A message that carried a `<base href>` could point
   an empty `href` or a bare `#fragment` at the web, and those were treated as

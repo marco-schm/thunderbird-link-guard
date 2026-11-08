@@ -35,6 +35,8 @@ h2 { margin-bottom: 5px; font-size: 19px; }
 .card { background: var(--card); border: 1px solid var(--line); border-radius: 13px; box-shadow: 0 3px 12px #0000000b; }
 .protect-card { padding: 18px 22px; }
 .switch-row { display: flex; align-items: center; justify-content: space-between; gap: 20px; cursor: pointer; }
+.switch-row + .switch-row { margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--line); }
+.switch-row input { flex-shrink: 0; }
 .switch-row strong, .switch-row small { display: block; }
 .switch-row strong { font-size: 16px; }
 .switch-row small { margin-top: 2px; color: var(--muted); }

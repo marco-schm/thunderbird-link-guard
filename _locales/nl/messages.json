@@ -240,6 +240,12 @@
   "enabledHint": {
     "message": "Als je de bescherming uitschakelt, zijn links weer direct aanklikbaar."
   },
+  "destinationsLabel": {
+    "message": "Linkbestemmingen tonen"
+  },
+  "destinationsHint": {
+    "message": "Toont het echte domein naast links waarvan de tekst het niet noemt. Zet dit uit als het de opmaak van een bericht verstoort. Waarschuwingen worden altijd getoond en het paneel noemt altijd alle bestemmingen."
+  },
   "hostCount": {
     "message": "Hostnamen: $COUNT$",
     "placeholders": {
