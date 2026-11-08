@@ -10,6 +10,23 @@
   as well, so they are offered for approval instead of being refused as
   malformed. Genuine in-message anchors, `mailto:`, `tel:` and `cid:` are
   unaffected. Own warning rules are matched against the resolved destination.
+- Security: cover every element Thunderbird opens as a link. MathML elements with
+  an `href` and links inside open or closed shadow trees were neither inspected
+  nor disabled and opened without approval. HTML `<link>` elements, which a
+  message could style into a clickable box, are now hidden; their stylesheets
+  still apply.
+- Security: harden the inline labels next to links like the panel. Message CSS
+  could fade, shrink or move them (`opacity`, size, `position`), and inject text
+  into them or into the panel through `::before`/`::after` or fade it through
+  `::first-line`. Labels now use inline `!important` styles and a closed shadow
+  root, and labels inside shadow trees are styled as well.
+- Warn when link text names a bare domain (`sparkasse.de`) of a different
+  registrable domain than the destination. Before, only text with a scheme or
+  `www.` was compared. Names that are not real domains (`datei.pdf`) are
+  recognised through the Public Suffix List and do not warn.
+- Bound the work per message by the 500-link limit: links beyond it are disabled
+  without rule matching or inline labels. A message with 60,000 links became
+  protected in about 10 instead of 46 seconds.
 
 ## 0.12.1 — 2026-11-08
 

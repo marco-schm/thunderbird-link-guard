@@ -34,7 +34,7 @@ Thunderbird 151 or newer is required. Link Guard requests only `messagesRead`, `
 
 ## How it works
 
-Link Guard removes the `href` of unapproved links in HTML anchors and image maps and intercepts clicks on them. It checks up to 500 links per message; further links stay inactive. `mailto:`, `tel:`, `cid:` and in-message fragments are not subject to host approval. The notice disappears once every web link is approved and has no warning.
+Link Guard removes the `href` of unapproved links and intercepts clicks on them. It covers every element Thunderbird itself opens as a link: HTML anchors and image maps, SVG anchors, MathML elements with an `href`, and links inside shadow trees. HTML `<link>` elements, which a message could style into a clickable box, are hidden. Each destination is taken as Thunderbird resolves it, including a `<base href>` in the message, so a `#fragment` or empty `href` that a base points at the web is treated as a web link. It checks up to 500 links per message; further links stay inactive. `mailto:`, `tel:`, `cid:` and fragments within the message are not subject to host approval. The notice disappears once every web link is approved and has no warning.
 
 Rules are evaluated in this order:
 
@@ -93,6 +93,8 @@ If a fetch fails, the source changes the list type, or an update is held, the st
 
 Settings lets you switch each built-in warning off: lookalike domains, internationalized domain names, misleading link text, credentials in the URL, IP addresses, unusual ports and URL shorteners. Switching a warning off also removes the extra exact-host approval it requires. A link whose analysis failed always warns.
 
+**Misleading link text** compares the destination with a URL or domain shown in the link text. A text with a scheme or `www.` (`https://example.org`) must name the exact host. A bare domain (`example.org`) is checked against the Public Suffix List, so `datei.pdf` is not mistaken for one, and must belong to the same registrable domain: `example.org` linking to `www.example.org` does not warn, linking to `example.org.other.net` does.
+
 **Own rules** show their label as a warning when the pattern matches the link's host, full URL or visible text. A link with a custom warning behaves like any risky link: it opens only after its exact host is approved, and the label stays visible next to it.
 
 **Warning lists** bring rules from a JSON file or an HTTPS URL, using the same transport limits as host lists. They are shown for review, start disabled and change only when you refresh them by hand.
@@ -108,7 +110,7 @@ Settings lets you switch each built-in warning off: lookalike domains, internati
 
 `target` is `host`, `url` or `text`. Labels have 1 to 60 characters without control, bidirectional or zero-width characters. Limits: 50 own rules, 10 lists of 50 rules, 200 rules in effect. See the [example](examples/warnings-example.json).
 
-**Pattern syntax.** Patterns are case-insensitive and match anywhere unless anchored with `^` or `$`. Supported: literals, `.`, classes such as `[a-z]` and `[^/]`, `\d \w \s` and their negations, groups `(…)` and `(?:…)`, `|`, and the quantifiers `* + ? {n} {n,} {n,m}` (up to 50). Backreferences, lookaround, `\b` and `\u` escapes are rejected. Patterns have at most 200 characters. URLs are matched both as written and percent-decoded.
+**Pattern syntax.** Patterns are case-insensitive and match anywhere unless anchored with `^` or `$`. Supported: literals, `.`, classes such as `[a-z]` and `[^/]`, `\d \w \s` and their negations, groups `(…)` and `(?:…)`, `|`, and the quantifiers `* + ? {n} {n,} {n,m}` (up to 50). Backreferences, lookaround, `\b` and `\u` escapes are rejected. Unlike JavaScript, `.` also matches line breaks. Patterns have at most 200 characters. URLs are matched both as written and percent-decoded, as the destination Thunderbird would open (resolved against a `<base href>` in the message).
 
 Patterns never run on the JavaScript regular-expression engine. Link Guard compiles them into a small automaton whose matching time grows linearly with the input, so no pattern can freeze Thunderbird through catastrophic backtracking. Matching per message is additionally capped; a link that could not be checked within the cap shows a "rules not checked" warning instead of passing silently.
 

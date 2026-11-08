@@ -2,7 +2,7 @@ const test = require("node:test");
 const assert = require("node:assert/strict");
 const { normalizeHost, parseHostList, parseRuleList, inspectLink, resolveHref,
   lookalikeDomain, isInternationalizedHost, isSharedContentHost,
-  apparentHost } = require("../policy.js");
+  apparentHost, bareHostCandidate } = require("../policy.js");
 
 // A displayed message's own base URI. A `<base href>` in the message replaces it.
 const MESSAGE_BASE = "mailbox:///tmp/example.eml?type=application/x-message-display";
@@ -113,6 +113,21 @@ test("a message base URI cannot turn a fragment into an unchecked web link", () 
   assert.equal(inspectLink("javascript:alert(1)", "", base).kind, "blocked");
   assert.deepEqual(inspectLink("https://elsewhere.example.net/p", "", base).hosts,
     ["elsewhere.example.net"]);
+});
+
+// The most natural phishing text names a domain without scheme or "www.". Whether a
+// candidate is a real domain is decided later against the Public Suffix List.
+test("link text naming a bare domain yields a hostname candidate", () => {
+  for (const [text, host] of [
+    ["sparkasse.de", "sparkasse.de"], ["PAYPAL.COM", "paypal.com"],
+    ["login.microsoftonline.com", "login.microsoftonline.com"],
+    ["Besuchen Sie firma.de.", "firma.de"], ["firma.de/konto", "firma.de"],
+    ["bücher.de", "xn--bcher-kva.de"], ["datei.pdf", "datei.pdf"]
+  ]) assert.equal(bareHostCandidate(text), host, text);
+  for (const text of ["Konto prüfen", "Version 1.2.3", "z.B. heute", "info@example.org",
+    "a.b", "", "1.2.3.4", `${"x".repeat(70)}.de`])
+    assert.equal(bareHostCandidate(text), null, text);
+  assert.equal(bareHostCandidate(null), null);
 });
 
 test("the destination used for warning rules follows the base URI", () => {

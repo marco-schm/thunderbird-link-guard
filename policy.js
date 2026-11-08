@@ -133,6 +133,21 @@
     } catch { return null; }
   }
 
+  // A hostname written in visible text without a scheme or "www.", such as
+  // "sparkasse.de". Whether it is a real domain (and not "datei.pdf") is decided by the
+  // background against the Public Suffix List. Addresses like "info@example.org" are
+  // not claims about a link destination and are ignored.
+  const BARE_HOST = /(?<![\p{L}\p{N}@._-])((?:[\p{L}\p{N}](?:[\p{L}\p{N}-]{0,61}[\p{L}\p{N}])?\.)+[\p{L}]{2,63})(?![\p{L}\p{N}_-]|\.[\p{L}\p{N}])/u;
+
+  function bareHostCandidate(text) {
+    if (typeof text !== "string") return null;
+    const visible = text.trim().replace(/[\s ]+/g, " ");
+    const match = visible.match(BARE_HOST);
+    if (!match || match[1].length > 253) return null;
+    try { return canonicalHost(new URL(`https://${match[1]}/`).hostname); }
+    catch { return null; }
+  }
+
   function matchesHost(host, domains) {
     return domains.some(domain => host === domain || host.endsWith(`.${domain}`));
   }
@@ -193,7 +208,7 @@
 
   const api = Object.freeze({ canonicalHost, isIpAddress, normalizeHost, parseHostList, parseRuleList, inspectLink,
     resolveHref, lookalikeDomain, isInternationalizedHost, hostServiceRisk, isSharedContentHost,
-    apparentHost });
+    apparentHost, bareHostCandidate });
   root.LinkGuardPolicy = api;
   if (typeof module !== "undefined" && module.exports) module.exports = api;
 })(globalThis);

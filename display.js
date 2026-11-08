@@ -23,6 +23,11 @@
   let warningSettings = { key: "", disabled: new Set(), evaluator: null };
   const temporaryHosts = new Set();
   const analyzedHosts = new Map();
+  // Registrable domains from the background (Public Suffix List), for hostnames named in
+  // link text and for link destinations. They do not depend on settings, so they are
+  // kept for the lifetime of the message.
+  const registrableRoots = new Map();
+  const unknownRoots = new Set();
   let analysisPending = false;
   let stateReady = false;
   let panelHost = null;
@@ -38,6 +43,72 @@
 
   // SVG anchors may carry their destination in the legacy xlink:href attribute.
   const XLINK_NS = "http://www.w3.org/1999/xlink";
+  const MATHML_NS = "http://www.w3.org/1998/Math/MathML";
+
+  // Link Guard must recognise every element that Thunderbird's own click handling
+  // (BrowserUtils.hrefAndLinkNodeForClickEvent) opens as a link: <a> in any namespace,
+  // <area>, and any MathML element with an href. MathML elements are selected whether or
+  // not they still carry an href, so one whose href was removed can be restored later.
+  // HTML <link> elements are links to Thunderbird too; they are hidden instead (see
+  // hideLinkElements), because removing their href would also drop stylesheets.
+  const CANDIDATES = "a, area, math, math *";
+
+  function isLinkCandidate(element) {
+    return element.localName === "a" || element.localName === "area" ||
+      element.namespaceURI === MATHML_NS;
+  }
+
+  // Shadow trees, open or closed, are part of what Thunderbird follows on a click.
+  // openOrClosedShadowRoot is available to extension scripts only.
+  function shadowRootOf(element) {
+    if (element === panelHost || labelTexts.has(element)) return null;
+    try { return element.openOrClosedShadowRoot || element.shadowRoot || null; }
+    catch { return null; }
+  }
+
+  const OBSERVE = { childList: true, subtree: true, attributes: true, attributeFilter: ["href"] };
+  const listenedRoots = new WeakSet();
+  const observedRoots = new WeakSet();
+
+  function watchShadowRoot(root) {
+    if (!listenedRoots.has(root)) {
+      // A listener inside the tree sees the real click target even when the tree is
+      // closed and the event reaches the document retargeted to its host.
+      root.addEventListener("click", preventUnapprovedClick, true);
+      root.addEventListener("auxclick", preventUnapprovedClick, true);
+      listenedRoots.add(root);
+    }
+    if (observer && !observedRoots.has(root)) {
+      observer.observe(root, OBSERVE);
+      observedRoots.add(root);
+    }
+  }
+
+  // The document and every shadow tree in it, in document order of discovery.
+  function linkScopes() {
+    const scopes = [document];
+    for (let index = 0; index < scopes.length; index++) {
+      for (const element of scopes[index].querySelectorAll("*")) {
+        const root = shadowRootOf(element);
+        if (root) {
+          watchShadowRoot(root);
+          scopes.push(root);
+        }
+      }
+    }
+    return scopes;
+  }
+
+  // An HTML <link> is never meant to be shown, but message CSS can make it a clickable box
+  // that Thunderbird opens like an anchor. Hiding it keeps stylesheets working.
+  function hideLinkElements(scope) {
+    for (const element of scope.querySelectorAll("link")) {
+      if (element.style.getPropertyValue("display") !== "none" ||
+          element.style.getPropertyPriority("display") !== "important") {
+        element.style.setProperty("display", "none", "important");
+      }
+    }
+  }
 
   function liveHref(anchor) {
     const plain = anchor.getAttribute("href");
@@ -82,18 +153,46 @@
       evaluator: warningRules ? warningRules.createEvaluator(state.warningRules || []) : null };
   }
 
+  // Link text that names a bare domain ("sparkasse.de") while the link leads elsewhere.
+  // Returns "textMismatch", "pending" while the background has not yet said whether the
+  // text names a real domain, or null. Domains are compared by registrable domain, so
+  // "firma.de" linking to www.firma.de is not a mismatch; a text with a scheme or "www."
+  // keeps the exact comparison done in policy.inspectLink.
+  function bareTextRisk(inspection, text) {
+    if (inspection.kind !== "web" || policy.apparentHost(text)) return null;
+    const claimed = policy.bareHostCandidate(text);
+    if (!claimed || claimed === inspection.host) return null;
+    if (!registrableRoots.has(claimed) || !registrableRoots.has(inspection.host)) {
+      unknownRoots.add(claimed);
+      unknownRoots.add(inspection.host);
+      return "pending";
+    }
+    const claimedRoot = registrableRoots.get(claimed);
+    if (!claimedRoot) return null;
+    const actualRoot = registrableRoots.get(inspection.host);
+    return (actualRoot ? actualRoot !== claimedRoot : claimed !== inspection.host) ?
+      "textMismatch" : null;
+  }
+
   function inspectAnchor(anchor, href, budget) {
     const text = (anchor.textContent || "").slice(0, 1024);
     // The base URI is read per inspection: a message can carry a `<base href>` that
     // decides where a relative href or a bare fragment actually leads.
     const base = document.baseURI;
-    const inspection = policy.inspectLink(href, text, base);
-    if (!warningRules) return inspection;
-    // Rules are matched against the destination a click would open, not the raw
-    // attribute, so a base-relative link cannot slip past a rule written for its URL.
-    const target = policy.resolveHref(href, base)?.href || href;
-    return warningRules.applyWarnings(inspection, { disabled: warningSettings.disabled,
-      evaluator: warningSettings.evaluator, href: target, text, budget });
+    let inspection = policy.inspectLink(href, text, base);
+    const bare = bareTextRisk(inspection, text);
+    if (bare === "textMismatch" && !inspection.risks?.includes("textMismatch")) {
+      inspection = { ...inspection, risks: [...(inspection.risks || []), "textMismatch"] };
+    }
+    if (warningRules) {
+      // Rules are matched against the destination a click would open, not the raw
+      // attribute, so a base-relative link cannot slip past a rule written for its URL.
+      const target = policy.resolveHref(href, base)?.href || href;
+      inspection = warningRules.applyWarnings(inspection, { disabled: warningSettings.disabled,
+        evaluator: warningSettings.evaluator, href: target, text, budget });
+    }
+    // Until the text is checked the link stays closed, whatever its host's approval.
+    return bare === "pending" ? { ...inspection, pendingText: true } : inspection;
   }
 
   // "unverified" (the analysis failed) always warns; it is not a configurable warning.
@@ -121,16 +220,36 @@
   }
 
   function isAllowed(inspection) {
+    if (inspection.pendingText) return false;
     return access.linkAllowed(inspection, state, temporaryHosts, warningFor, stateReady);
+  }
+
+  // Mirrors Thunderbird's lookup: walk up from the real target (into shadow trees as far
+  // as this listener can see) and take the first link candidate that has a destination;
+  // a candidate without one is passed over, as Thunderbird does.
+  function clickedLink(event) {
+    for (const node of event.composedPath()) {
+      if (node === panelHost) return null;
+      if (!node || node.nodeType !== Node.ELEMENT_NODE) continue;
+      // A hidden <link> cannot normally be clicked. If a click reaches one anyway, it is
+      // checked like an anchor and passes only when its destination is approved.
+      if (node.localName === "link" && node.namespaceURI === document.documentElement.namespaceURI) {
+        const href = node.getAttribute("href");
+        if (href !== null) return { element: node, href };
+        continue;
+      }
+      if (!isLinkCandidate(node)) continue;
+      const href = getOriginalHref(node);
+      if (href !== null) return { element: node, href };
+    }
+    return null;
   }
 
   function preventUnapprovedClick(event) {
     if (stateReady && !state.enabled) return;
-    const target = event.target instanceof Element ? event.target : event.target?.parentElement;
-    const anchor = target?.closest("a, area");
-    if (!anchor || anchor === panelHost || panelHost?.contains(anchor)) return;
-    const href = getOriginalHref(anchor);
-    if (href === null) return;
+    const found = clickedLink(event);
+    if (!found) return;
+    const { element: anchor, href } = found;
     const inspection = inspectAnchor(anchor, href, { steps: RULE_BUDGET });
     if (inspection.kind === "skip") return;
     if (isAllowed(inspection) && hasHref(anchor)) return;
@@ -382,6 +501,52 @@
     panel.replaceChildren(summaryLine, content);
   }
 
+  // The inline labels sit in the message's own DOM, so they get the panel host's
+  // treatment: every property reset and then set inline with !important, which no
+  // message rule can override. A stylesheet left opacity, size, position, transform and
+  // clip-path to the message, and does not reach labels inside a shadow tree at all.
+  // `all` leaves direction and unicode-bidi alone, so those are pinned as well.
+  const LABEL_BASE = [["display", "inline-block"], ["position", "relative"],
+    ["z-index", "2147483647"], ["visibility", "visible"], ["opacity", "1"],
+    ["direction", "ltr"], ["unicode-bidi", "isolate"], ["text-decoration", "none"],
+    ["white-space", "normal"], ["pointer-events", "auto"]];
+  const LABEL_LOOK = {
+    warning: [["margin", "3px 5px"], ["padding", "3px 7px"], ["border", "2px solid #b42332"],
+      ["border-radius", "4px"], ["background", "#b42332"], ["color", "#fff"],
+      ["font", "800 13px/1.3 system-ui, sans-serif"]],
+    destination: [["margin", "2px 4px"], ["padding", "1px 4px"], ["border-radius", "3px"],
+      ["background", "#edf2f7"], ["color", "#253449"],
+      ["font", "600 11px/1.3 system-ui, sans-serif"]]
+  };
+
+  function styleLabel(marker, risky) {
+    marker.style.setProperty("all", "initial", "important");
+    for (const [property, value] of [...LABEL_BASE, ...LABEL_LOOK[risky ? "warning" : "destination"]]) {
+      marker.style.setProperty(property, value, "important");
+    }
+  }
+
+  // Inline styles cannot reach pseudo-elements, so a message could still inject text
+  // into a label with ::before/::after or fade its text with ::first-line. The text
+  // therefore lives in a closed shadow root whose !important rules outrank the
+  // message's own !important rules for the host's pseudo-elements.
+  const labelTexts = new WeakMap();
+
+  function createLabel(risky, text) {
+    const marker = document.createElement("span");
+    marker.className = risky ? "link-guard-inline-warning" : "link-guard-inline-destination";
+    styleLabel(marker, risky);
+    if (risky) marker.setAttribute("role", "alert");
+    const shadow = marker.attachShadow({ mode: "closed" });
+    const guard = document.createElement("style");
+    guard.textContent = globalThis.LinkGuardHostGuardCss || "";
+    const content = document.createElement("span");
+    content.textContent = text;
+    shadow.append(guard, content);
+    labelTexts.set(marker, content);
+    return marker;
+  }
+
   function markInline(anchor, warning, risks, host = "") {
     const existing = inlineWarnings.get(anchor);
     const risky = Boolean(risks?.length || (warning && warning.kind !== "none"));
@@ -398,29 +563,55 @@
     const label = [hostLabel, ...(risks || []).map(reason => riskText(reason, true)),
       showHost ? t("linkDestinationInline", [host]) : ""]
       .filter(Boolean).join(" · ");
-    if (existing?.isConnected) {
-      if (existing.textContent !== label) existing.textContent = label;
-      existing.className = risky ? "link-guard-inline-warning" : "link-guard-inline-destination";
+    const className = risky ? "link-guard-inline-warning" : "link-guard-inline-destination";
+    const content = existing && labelTexts.get(existing);
+    if (existing?.isConnected && content) {
+      if (content.textContent !== label) content.textContent = label;
+      if (existing.className !== className) {
+        existing.className = className;
+        styleLabel(existing, risky);
+        if (risky) existing.setAttribute("role", "alert");
+        else existing.removeAttribute("role");
+      }
       return;
     }
-    const marker = document.createElement("strong");
-    marker.className = risky ? "link-guard-inline-warning" : "link-guard-inline-destination";
-    if (risky) marker.setAttribute("role", "alert");
-    marker.textContent = label;
+    existing?.remove();
+    const marker = createLabel(risky, label);
     anchor.after(marker);
     inlineWarnings.set(anchor, marker);
   }
 
-  function analyzeUnknown(hosts) {
-    if (analysisPending || !stateReady || !hosts.length) return;
-    analysisPending = true;
-    messenger.runtime.sendMessage({ type: "link-guard-analyze", hosts }).then(result => {
+  function lookUpRoots(hosts) {
+    if (!hosts.length) return Promise.resolve();
+    return messenger.runtime.sendMessage({ type: "link-guard-roots", hosts }).then(pairs => {
+      const answered = new Map(Array.isArray(pairs) ? pairs.filter(Array.isArray) : []);
       for (const host of hosts) {
-        analyzedHosts.set(host, result?.[host] || { kind: "unverified", similarTo: "" });
+        const root = answered.get(host);
+        registrableRoots.set(host, typeof root === "string" ? root : null);
       }
     }).catch(() => {
-      for (const host of hosts) analyzedHosts.set(host, { kind: "unverified", similarTo: "" });
-    }).finally(() => { analysisPending = false; scan(); });
+      // Without an answer every named domain counts as real and different from the
+      // destination: the link warns instead of passing unchecked.
+      for (const host of hosts) registrableRoots.set(host, host);
+    });
+  }
+
+  function analyzeUnknown(hosts) {
+    if (analysisPending || !stateReady) return;
+    const roots = [...unknownRoots].filter(host => !registrableRoots.has(host)).slice(0, 500);
+    unknownRoots.clear();
+    if (!hosts.length && !roots.length) return;
+    analysisPending = true;
+    const analysis = !hosts.length ? Promise.resolve() :
+      messenger.runtime.sendMessage({ type: "link-guard-analyze", hosts }).then(result => {
+        for (const host of hosts) {
+          analyzedHosts.set(host, result?.[host] || { kind: "unverified", similarTo: "" });
+        }
+      }).catch(() => {
+        for (const host of hosts) analyzedHosts.set(host, { kind: "unverified", similarTo: "" });
+      });
+    Promise.all([analysis, lookUpRoots(roots)])
+      .finally(() => { analysisPending = false; scan(); });
   }
 
   function scan() {
@@ -446,7 +637,15 @@
     const groups = new Map();
     const hardBlocks = new Map();
     const linkRisks = new Map();
-    const anchors = document.querySelectorAll("a, area");
+    const scopes = linkScopes();
+    const anchors = [];
+    for (const scope of scopes) {
+      hideLinkElements(scope);
+      for (const element of scope.querySelectorAll(CANDIDATES)) {
+        if (isLinkCandidate(element)) anchors.push(element);
+      }
+    }
+    const base = document.baseURI;
     let totalWeb = 0;
     let pending = 0;
     let blocked = 0;
@@ -457,6 +656,17 @@
     for (const anchor of anchors) {
       const href = getOriginalHref(anchor);
       if (href === null) continue;
+      if (inspected >= MAX_LISTED_LINKS) {
+        // Past the limit every web link stays closed anyway, so only the cheap
+        // classification runs: no rule matching, no analysis, no inline labels. This
+        // keeps the work per scan bounded by the limit rather than by the message.
+        if (policy.inspectLink(href, "", base).kind === "skip") continue;
+        inspected++;
+        markInline(anchor, null, []);
+        if (hasHref(anchor)) stripHref(anchor);
+        blocked++;
+        continue;
+      }
       const inspection = inspectAnchor(anchor, href, budget);
       if (inspection.kind === "skip") continue;
       if (inspection.kind === "web") {
@@ -465,14 +675,12 @@
         }
       }
       inspected++;
-      const withinLimit = inspected <= MAX_LISTED_LINKS;
-      const approved = withinLimit && isAllowed(inspection);
+      const approved = isAllowed(inspection);
       const warning = inspection.kind === "web" ?
         inspection.hosts.map(warningFor).find(value => value && value.kind !== "none") : null;
       markInline(anchor, warning, inspection.risks || [], inspection.host);
       if (approved) restoreHref(anchor, href);
       else if (hasHref(anchor)) stripHref(anchor);
-      if (!withinLimit) { blocked++; continue; }
       if (inspection.kind === "blocked") {
         blocked++;
         const key = `${inspection.reason}|${inspection.host}`;
@@ -540,8 +748,8 @@
     observer = new MutationObserver(mutations => {
       if (mutations.some(mutation => !isOwnMutation(mutation))) scheduleScan();
     });
-    observer.observe(document.body, { childList: true, subtree: true, attributes: true,
-      attributeFilter: ["href"] });
+    // Shadow trees found by the first scan are observed from the next one on.
+    observer.observe(document.body, OBSERVE);
     loadState();
   }
 

@@ -2,8 +2,8 @@
 
 ## Supported version and reporting
 
-The current 0.11.x line is supported. Earlier local development builds are not
-maintained. Please use GitHub's **Report a vulnerability** entry in the
+Only the latest release is supported. Earlier releases and local development
+builds are not maintained. Please use GitHub's **Report a vulnerability** entry in the
 repository's Security tab when available. If that entry is unavailable, open
 a public Issue that asks for a private contact channel **without** including
 exploit details, private messages, credentials, or reset links. Ordinary bugs
@@ -56,13 +56,30 @@ text. Plain HTTP is not treated as a risk: it is neither flagged nor held back,
 so an approved host can also be opened over HTTP. Direct IP links may only be approved temporarily in the current
 message. Imported lists and broad-domain approvals do not unlock risky links.
 
-The approval panel is rendered inside a closed shadow root with its box
-properties fixed by inline `!important` styles, so message-authored CSS cannot
-hide, restyle or fade it by selector. HTML anchors, image maps and SVG anchors
-(including the legacy `xlink:href` attribute) are disabled until approved. The
-panel does not defend against a message that deliberately draws other content
-over it with a higher stacking order; the per-link inline warnings and the
-toolbar badge stay as independent signals.
+Link Guard treats as a link every element that Thunderbird itself opens on a
+click (`BrowserUtils.hrefAndLinkNodeForClickEvent`): HTML anchors and image
+maps, SVG anchors (including the legacy `xlink:href` attribute), MathML elements
+with an `href`, and any of these inside open or closed shadow trees. They are
+disabled until approved, and clicks on them are intercepted as well. HTML
+`<link>` elements, which Thunderbird also opens and which message CSS can style
+into a clickable box, are hidden with an inline `!important` rule; their `href`
+is kept so stylesheets still apply. Every destination is classified as
+Thunderbird resolves it, against the document base URI, so a `<base href>` in
+the message cannot turn a `#fragment` or an empty `href` into an unchecked web
+link. Any new element type that Thunderbird starts to open as a link would need
+to be added here as well.
+
+The approval panel and the inline labels next to links are hosts with every
+property reset and set by inline `!important` styles, and their text lives in a
+closed shadow root. Message-authored CSS therefore cannot hide, move, fade,
+resize or restyle them by selector, and shadow-scoped `!important` rules stop
+message CSS from injecting text through `::before`/`::after` or fading it through
+`::first-line`/`::first-letter`. Two limits remain, as for any content shown
+inside the message: a message can draw other content over the panel or a label
+with a higher stacking order, and it can clip a label through an ancestor while
+moving the link itself out of that ancestor. The panel still lists every host
+with its warnings, and the toolbar badge, which lives outside the message, stays
+an independent signal.
 
 Warning settings can only add warnings or remove built-in ones the user switched
 off; nothing in them approves a link. Custom and imported rules are regular

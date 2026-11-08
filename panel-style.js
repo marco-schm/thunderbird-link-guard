@@ -1,9 +1,21 @@
 "use strict";
 
+// Inline styles cannot reach a host's pseudo-elements, so message CSS could inject text
+// with ::before/::after or fade it with ::first-line/::first-letter. Rules inside the
+// host's shadow tree win over the message's rules when both are !important, so every
+// shadow root Link Guard puts on the page (panel and inline labels) starts with these.
+globalThis.LinkGuardHostGuardCss = `
+:host::before, :host::after { content: none !important; display: none !important; }
+:host::first-line, :host::first-letter {
+  color: inherit !important; background: transparent !important; font: inherit !important;
+  text-decoration: inherit !important; text-shadow: none !important;
+}
+`;
+
 // Styles for the Link Guard panel. They live in a JavaScript string because the panel is
 // rendered inside a closed shadow root, which document-level stylesheets cannot reach and
 // which message-authored CSS cannot target.
-globalThis.LinkGuardPanelCss = `
+globalThis.LinkGuardPanelCss = globalThis.LinkGuardHostGuardCss + `
 .link-guard-panel {
   box-sizing: border-box !important;
   display: block !important;
