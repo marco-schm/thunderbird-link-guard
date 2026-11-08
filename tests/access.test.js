@@ -12,6 +12,26 @@ const noWarning = () => ({ kind: "none" });
 const allowed = (url, temporary = []) => linkAllowed(
   inspectLink(url), state, new Set(temporary), noWarning, true);
 
+// A `<base href>` plus `href="#x"` used to be classified as an in-message fragment,
+// which skipped the host decision entirely.
+test("a base-relative fragment needs the same approval as any web link", () => {
+  const base = "https://base-evil.example.net/landing";
+  const inspection = inspectLink("#x", "", base);
+  assert.equal(inspection.kind, "web");
+  assert.equal(linkAllowed(inspection, state, new Set(), noWarning, true), false);
+  assert.equal(linkAllowed(inspection, state, new Set(["base-evil.example.net"]),
+    noWarning, true), true);
+  const approved = { ...state,
+    allowedHosts: [...state.allowedHosts, "base-evil.example.net"],
+    customAllowedHosts: [...state.customAllowedHosts, "base-evil.example.net"] };
+  assert.equal(linkAllowed(inspection, approved, new Set(), noWarning, true), true);
+  // An approval of the host the text advertises does not cover the real destination.
+  const wrongHost = { ...state,
+    allowedHosts: [...state.allowedHosts, "landing.example.org"],
+    customAllowedHosts: [...state.customAllowedHosts, "landing.example.org"] };
+  assert.equal(linkAllowed(inspection, wrongHost, new Set(), noWarning, true), false);
+});
+
 test("branded tracking paths follow the normal host approval", () => {
   const url = "https://url8792.mail.anthropic.com/ls/click?upn=u001.synthetic";
   const brandedState = { ...state,

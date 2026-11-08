@@ -146,19 +146,37 @@
     return matchesHost(host, SHARED_CONTENT_HOSTS);
   }
 
-  function inspectLink(href, visibleText = "") {
+  // Thunderbird resolves a clicked link against the document's base URI, and a message
+  // can repoint that with `<base href>`. Returns the URL a click would actually open,
+  // or null when the target cannot be resolved.
+  function resolveHref(href, baseUrl = "") {
+    if (typeof href !== "string") return null;
+    try { return new URL(href.trim(), baseUrl || undefined); }
+    catch { return null; }
+  }
+
+  function inspectLink(href, visibleText = "", baseUrl = "") {
     if (typeof href !== "string" || href.length > MAX_URL_LENGTH) {
       return { kind: "blocked", host: "", hosts: [], reason: "invalidUrl" };
     }
     const value = href.trim();
-    if (!value || value.startsWith("#") || /^(?:mailto|tel|cid):/i.test(value)) {
+    if (/^(?:mailto|tel|cid):/i.test(value)) {
       return { kind: "skip", host: "", hosts: [], reason: "" };
     }
-    let url;
-    try { url = new URL(value); }
-    catch { return { kind: "blocked", host: "", hosts: [], reason: "invalidUrl" }; }
+    const skip = { kind: "skip", host: "", hosts: [], reason: "" };
+    // An empty href or a bare fragment is an in-message anchor only as long as it stays
+    // inside the message. `<base href>` points both of them at the web, so the decision
+    // is made on the resolved URL and never on the shape of the attribute.
+    const inMessage = !value || value.startsWith("#");
+    const url = resolveHref(value, baseUrl);
+    if (!url) {
+      return inMessage ? skip : { kind: "blocked", host: "", hosts: [], reason: "invalidUrl" };
+    }
     if (url.protocol !== "http:" && url.protocol !== "https:") {
-      return { kind: "blocked", host: "", hosts: [], reason: "badScheme" };
+      return inMessage ? skip : { kind: "blocked", host: "", hosts: [], reason: "badScheme" };
+    }
+    if (url.href.length > MAX_URL_LENGTH) {
+      return { kind: "blocked", host: "", hosts: [], reason: "invalidUrl" };
     }
     const host = canonicalHost(url.hostname);
     const risks = [];
@@ -174,7 +192,7 @@
   }
 
   const api = Object.freeze({ canonicalHost, isIpAddress, normalizeHost, parseHostList, parseRuleList, inspectLink,
-    lookalikeDomain, isInternationalizedHost, hostServiceRisk, isSharedContentHost,
+    resolveHref, lookalikeDomain, isInternationalizedHost, hostServiceRisk, isSharedContentHost,
     apparentHost });
   root.LinkGuardPolicy = api;
   if (typeof module !== "undefined" && module.exports) module.exports = api;

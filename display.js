@@ -84,10 +84,16 @@
 
   function inspectAnchor(anchor, href, budget) {
     const text = (anchor.textContent || "").slice(0, 1024);
-    const inspection = policy.inspectLink(href, text);
+    // The base URI is read per inspection: a message can carry a `<base href>` that
+    // decides where a relative href or a bare fragment actually leads.
+    const base = document.baseURI;
+    const inspection = policy.inspectLink(href, text, base);
     if (!warningRules) return inspection;
+    // Rules are matched against the destination a click would open, not the raw
+    // attribute, so a base-relative link cannot slip past a rule written for its URL.
+    const target = policy.resolveHref(href, base)?.href || href;
     return warningRules.applyWarnings(inspection, { disabled: warningSettings.disabled,
-      evaluator: warningSettings.evaluator, href, text, budget });
+      evaluator: warningSettings.evaluator, href: target, text, budget });
   }
 
   // "unverified" (the analysis failed) always warns; it is not a configurable warning.

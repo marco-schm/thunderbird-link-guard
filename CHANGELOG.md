@@ -1,5 +1,16 @@
 # Changelog
 
+## Unreleased
+
+- Security: decide a link's destination from the URL it resolves to instead of
+  from its `href` attribute. A message that carried a `<base href>` could point
+  an empty `href` or a bare `#fragment` at the web, and those were treated as
+  in-message anchors: the destination was never checked, the host never listed
+  and the link stayed clickable. Relative targets now resolve against the base
+  as well, so they are offered for approval instead of being refused as
+  malformed. Genuine in-message anchors, `mailto:`, `tel:` and `cid:` are
+  unaffected. Own warning rules are matched against the resolved destination.
+
 ## 0.12.1 — 2026-11-08
 
 - Settings: align the input boxes. Rule cards in the same row now have their
