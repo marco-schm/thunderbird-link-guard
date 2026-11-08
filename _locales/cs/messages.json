@@ -264,10 +264,16 @@
     "message": "Domény, které ve zprávě trvale schválíte, se zobrazí zde. Můžete je také upravit přímo."
   },
   "blockedTitle": {
-    "message": "Blokované domény"
+    "message": "Blokovaní hostitelé"
   },
   "blockedHint": {
-    "message": "Tento seznam má přednost před schváleními a importy. Pomocí *.example.com zablokujete doménu a všechny subdomény; dočasné schválení platí jen pro tuto zprávu."
+    "message": "Blokuje přesně tyto hostitele. Tento seznam má přednost před schváleními a importy; dočasné schválení platí jen pro tuto zprávu."
+  },
+  "blockedDomainsTitle": {
+    "message": "Blokovat celé domény"
+  },
+  "blockedDomainsHint": {
+    "message": "Pomocí *.example.com zablokujete doménu a všechny subdomény včetně example.com. Tento seznam má přednost před schváleními a importy."
   },
   "broadTitle": {
     "message": "Schválit celé domény"

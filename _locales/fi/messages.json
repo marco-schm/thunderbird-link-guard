@@ -264,10 +264,16 @@
     "message": "Verkkotunnukset, jotka hyväksyt viestissä pysyvästi, näkyvät tässä. Voit myös muokata niitä suoraan."
   },
   "blockedTitle": {
-    "message": "Estetyt verkkotunnukset"
+    "message": "Estetyt isännät"
   },
   "blockedHint": {
-    "message": "Tämä luettelo ohittaa hyväksynnät ja tuonnit. Käytä muotoa *.example.com estääksesi verkkotunnuksen ja kaikki aliverkkotunnukset; väliaikainen hyväksyntä koskee vain tätä viestiä."
+    "message": "Estää täsmälleen nämä isännät. Tämä luettelo ohittaa hyväksynnät ja tuonnit; väliaikainen hyväksyntä koskee vain tätä viestiä."
+  },
+  "blockedDomainsTitle": {
+    "message": "Estä kokonaisia verkkotunnuksia"
+  },
+  "blockedDomainsHint": {
+    "message": "Käytä muotoa *.example.com estääksesi verkkotunnuksen ja kaikki aliverkkotunnukset, myös example.comin. Tämä luettelo ohittaa hyväksynnät ja tuonnit."
   },
   "broadTitle": {
     "message": "Hyväksy kokonaisia verkkotunnuksia"

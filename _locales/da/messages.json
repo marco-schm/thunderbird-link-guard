@@ -264,10 +264,16 @@
     "message": "Domæner, du godkender permanent i en meddelelse, vises her. Du kan også redigere dem direkte."
   },
   "blockedTitle": {
-    "message": "Blokerede domæner"
+    "message": "Blokerede værter"
   },
   "blockedHint": {
-    "message": "Denne liste har forrang over godkendelser og importer. Brug *.example.com til at blokere domænet og alle underdomæner; en midlertidig godkendelse gælder kun for denne meddelelse."
+    "message": "Blokerer præcis disse værter. Denne liste har forrang over godkendelser og importer; en midlertidig godkendelse gælder kun for denne meddelelse."
+  },
+  "blockedDomainsTitle": {
+    "message": "Bloker hele domæner"
+  },
+  "blockedDomainsHint": {
+    "message": "Brug *.example.com til at blokere domænet og alle underdomæner, inklusive example.com. Denne liste har forrang over godkendelser og importer."
   },
   "broadTitle": {
     "message": "Godkend hele domæner"

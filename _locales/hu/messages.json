@@ -264,10 +264,16 @@
     "message": "Az üzenetben véglegesen jóváhagyott tartományok itt jelennek meg. Közvetlenül is szerkesztheti őket."
   },
   "blockedTitle": {
-    "message": "Letiltott tartományok"
+    "message": "Letiltott gazdagépek"
   },
   "blockedHint": {
-    "message": "Ez a lista felülírja a jóváhagyásokat és az importokat. A *.example.com a tartományt és minden altartományt letilt; az ideiglenes jóváhagyás csak erre az üzenetre vonatkozik."
+    "message": "Pontosan ezeket a gazdagépeket tiltja le. Ez a lista felülírja a jóváhagyásokat és az importokat; az ideiglenes jóváhagyás csak erre az üzenetre vonatkozik."
+  },
+  "blockedDomainsTitle": {
+    "message": "Teljes tartományok letiltása"
+  },
+  "blockedDomainsHint": {
+    "message": "A *.example.com a tartományt és minden altartományt letilt, az example.comot is beleértve. Ez a lista felülírja a jóváhagyásokat és az importokat."
   },
   "broadTitle": {
     "message": "Teljes tartományok jóváhagyása"

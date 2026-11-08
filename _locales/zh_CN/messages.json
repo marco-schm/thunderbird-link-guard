@@ -264,10 +264,16 @@
     "message": "在邮件中永久批准的域名会显示在这里。您也可以直接编辑。"
   },
   "blockedTitle": {
-    "message": "已阻止的域名"
+    "message": "已阻止的主机"
   },
   "blockedHint": {
-    "message": "此列表优先于批准和导入。*.example.com 会阻止域名及所有子域名；临时批准仅适用于当前邮件。"
+    "message": "仅阻止这些确切的主机。此列表优先于批准和导入；临时批准仅适用于当前邮件。"
+  },
+  "blockedDomainsTitle": {
+    "message": "阻止整个域名"
+  },
+  "blockedDomainsHint": {
+    "message": "使用 *.example.com 阻止域名及所有子域名，包括 example.com 本身。此列表优先于批准和导入。"
   },
   "broadTitle": {
     "message": "批准整个域名"

@@ -264,10 +264,16 @@
     "message": "Domäner som du godkänner permanent i ett meddelande visas här. Du kan också redigera dem direkt."
   },
   "blockedTitle": {
-    "message": "Blockerade domäner"
+    "message": "Blockerade värdar"
   },
   "blockedHint": {
-    "message": "Den här listan går före godkännanden och importer. Använd *.example.com för att blockera domänen och alla underdomäner; ett tillfälligt godkännande gäller bara det här meddelandet."
+    "message": "Blockerar exakt dessa värdar. Den här listan går före godkännanden och importer; ett tillfälligt godkännande gäller bara det här meddelandet."
+  },
+  "blockedDomainsTitle": {
+    "message": "Blockera hela domäner"
+  },
+  "blockedDomainsHint": {
+    "message": "Använd *.example.com för att blockera domänen och alla underdomäner, inklusive example.com. Den här listan går före godkännanden och importer."
   },
   "broadTitle": {
     "message": "Godkänn hela domäner"

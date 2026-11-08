@@ -264,10 +264,16 @@
     "message": "메시지에서 영구 승인한 도메인이 여기에 표시됩니다. 직접 편집할 수도 있습니다."
   },
   "blockedTitle": {
-    "message": "차단된 도메인"
+    "message": "차단된 호스트"
   },
   "blockedHint": {
-    "message": "이 목록은 승인과 가져온 목록보다 우선합니다. 도메인과 모든 하위 도메인을 차단하려면 *.example.com을 사용하세요. 일시 승인은 이 메시지에만 적용됩니다."
+    "message": "정확히 이 호스트만 차단합니다. 이 목록은 승인과 가져온 목록보다 우선합니다. 일시 승인은 이 메시지에만 적용됩니다."
+  },
+  "blockedDomainsTitle": {
+    "message": "도메인 전체 차단"
+  },
+  "blockedDomainsHint": {
+    "message": "*.example.com을 사용하면 example.com을 포함한 도메인과 모든 하위 도메인을 차단합니다. 이 목록은 승인과 가져온 목록보다 우선합니다."
   },
   "broadTitle": {
     "message": "도메인 전체 승인"

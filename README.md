@@ -43,7 +43,7 @@ Rules are evaluated in this order:
 4. Everything else stays inactive until you decide.
 
 <p align="center">
-  <img src="docs/screenshots/settings-rules.png" alt="Settings page with permanent approvals, blocked domains and whole-domain approvals" width="720">
+  <img src="docs/screenshots/settings-rules.png" alt="Settings page with separate cards for approved hosts, blocked hosts, approved whole domains and blocked whole domains" width="720">
 </p>
 
 ## Lists

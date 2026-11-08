@@ -264,10 +264,16 @@
     "message": "Bir iletide kalıcı olarak onayladığınız alan adları burada görünür. Bunları doğrudan da düzenleyebilirsiniz."
   },
   "blockedTitle": {
-    "message": "Engellenen alan adları"
+    "message": "Engellenen ana bilgisayarlar"
   },
   "blockedHint": {
-    "message": "Bu liste onayları ve içe aktarılanları geçersiz kılar. Alan adını ve tüm alt alan adlarını engellemek için *.example.com kullanın; geçici onay yalnızca bu ileti için geçerlidir."
+    "message": "Yalnızca tam olarak bu ana bilgisayarları engeller. Bu liste onayları ve içe aktarılanları geçersiz kılar; geçici onay yalnızca bu ileti için geçerlidir."
+  },
+  "blockedDomainsTitle": {
+    "message": "Alan adlarının tamamını engelle"
+  },
+  "blockedDomainsHint": {
+    "message": "Alan adını ve tüm alt alan adlarını, example.com dahil, engellemek için *.example.com kullanın. Bu liste onayları ve içe aktarılanları geçersiz kılar."
   },
   "broadTitle": {
     "message": "Alan adlarının tamamını onayla"

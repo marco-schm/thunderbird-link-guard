@@ -264,10 +264,16 @@
     "message": "Domains approved permanently in a message appear here. You can also edit them directly."
   },
   "blockedTitle": {
-    "message": "Blocked domains"
+    "message": "Blocked hosts"
   },
   "blockedHint": {
-    "message": "This list overrides approvals and imports. Use *.example.com to block the domain and all subdomains; a temporary approval applies only to this message."
+    "message": "Blocks exactly these hosts. This list overrides approvals and imports; a temporary approval applies only to this message."
+  },
+  "blockedDomainsTitle": {
+    "message": "Block whole domains"
+  },
+  "blockedDomainsHint": {
+    "message": "Use *.example.com to block the domain and all its subdomains, including example.com. This list overrides approvals and imports."
   },
   "broadTitle": {
     "message": "Approve whole domains"

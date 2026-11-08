@@ -264,10 +264,16 @@
     "message": "メール内で恒久的に許可したドメインはここに表示されます。直接編集することもできます。"
   },
   "blockedTitle": {
-    "message": "ブロックするドメイン"
+    "message": "ブロックするホスト"
   },
   "blockedHint": {
-    "message": "この一覧は許可とインポートより優先されます。*.example.com はドメインと全サブドメインをブロックします。一時許可はこのメールだけに適用されます。"
+    "message": "ここに挙げたホストだけをブロックします。この一覧は許可とインポートより優先されます。一時許可はこのメールだけに適用されます。"
+  },
+  "blockedDomainsTitle": {
+    "message": "ドメイン全体をブロック"
+  },
+  "blockedDomainsHint": {
+    "message": "*.example.com は example.com 自体を含むドメインと全サブドメインをブロックします。この一覧は許可とインポートより優先されます。"
   },
   "broadTitle": {
     "message": "ドメイン全体を許可"

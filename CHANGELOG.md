@@ -1,5 +1,12 @@
 # Changelog
 
+## Unreleased
+
+- Settings: split the rule lists into four separate cards, so exact hosts and
+  whole domains are edited apart for both approvals and blocks. Stored data is
+  unchanged. Blocked whole domains (`*.example.com`) now have their own card
+  instead of sharing the blocked-hosts list.
+
 ## 0.11.0 — 2026-11-08
 
 - Add ten UI languages: Czech, Danish, Dutch, Finnish, Hungarian, Korean,
