@@ -1,0 +1,460 @@
+{
+  "extensionName": {
+    "message": "Link Guard"
+  },
+  "extensionDescription": {
+    "message": "Kontroluje webové odkazy v e-mailech a u podezřelých cílů vyžaduje výslovné schválení."
+  },
+  "optionsAction": {
+    "message": "Link Guard – otevřít nastavení"
+  },
+  "toolbarInitial": {
+    "message": "Link Guard kontroluje odkazy v této zprávě"
+  },
+  "toolbarDisabled": {
+    "message": "Link Guard je vypnutý"
+  },
+  "toolbarOverflow": {
+    "message": "Link Guard: příliš mnoho odkazů; zbývající odkazy jsou blokovány"
+  },
+  "toolbarPending": {
+    "message": "Link Guard: blokované odkazy: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "toolbarClear": {
+    "message": "Link Guard: žádné blokované webové odkazy"
+  },
+  "toolbarRisk": {
+    "message": "Link Guard: podezřelé domény: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "panelTitle": {
+    "message": "Zkontrolovat odkazy"
+  },
+  "panelCompact": {
+    "message": "Čekající odkazy: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "panelCompactRisk": {
+    "message": "⚠ Upozornění: $RISK$ · Čeká: $BLOCKED$",
+    "placeholders": {
+      "risk": {
+        "content": "$2"
+      },
+      "blocked": {
+        "content": "$1"
+      }
+    }
+  },
+  "panelSummary": {
+    "message": "Zkontrolováno webových odkazů: $TOTAL$ · blokováno: $BLOCKED$",
+    "placeholders": {
+      "total": {
+        "content": "$1"
+      },
+      "blocked": {
+        "content": "$2"
+      }
+    }
+  },
+  "panelInstruction": {
+    "message": "Cíl ověřte nezávisle na tomto e-mailu. Trvalé schválení se může vztahovat na přesný hostitel nebo na celou doménu. Veřejné zkrácené odkazy vyžadují pro tuto zprávu dodatečné potvrzení."
+  },
+  "linksForHost": {
+    "message": "Odkazy v tomto e-mailu: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "status_pending": {
+    "message": "Neschváleno"
+  },
+  "status_temporary": {
+    "message": "Pro tuto zprávu"
+  },
+  "status_permanent": {
+    "message": "Trvale schváleno"
+  },
+  "status_broad": {
+    "message": "Schváleno celou doménou"
+  },
+  "status_blocked": {
+    "message": "Blokováno"
+  },
+  "allowTemporary": {
+    "message": "Povolit dočasně"
+  },
+  "allowPermanent": {
+    "message": "Povolit trvale"
+  },
+  "blockHost": {
+    "message": "Blokovat"
+  },
+  "scopePrompt": {
+    "message": "Jaký rozsah se má trvale schválit?"
+  },
+  "blockScopePrompt": {
+    "message": "Jaký rozsah se má blokovat?"
+  },
+  "scopePromptShared": {
+    "message": "Jiní zde mohou zveřejňovat obsah. Schvalte pouze tohoto hostitele."
+  },
+  "linkDestinationInline": {
+    "message": "↗ $HOST$",
+    "placeholders": {
+      "host": {
+        "content": "$1"
+      }
+    }
+  },
+  "scopeExact": {
+    "message": "Pouze $HOST$",
+    "placeholders": {
+      "host": {
+        "content": "$1"
+      }
+    }
+  },
+  "scopeBroad": {
+    "message": "$DOMAIN$ a všechny subdomény",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      }
+    }
+  },
+  "riskIdn": {
+    "message": "Mohou být použity podobně vypadající znaky."
+  },
+  "riskLookalike": {
+    "message": "Připomíná $DOMAIN$.",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      }
+    }
+  },
+  "riskIdnInline": {
+    "message": "⚠ Podobné znaky"
+  },
+  "riskLookalikeInline": {
+    "message": "⚠ Podobné jako $DOMAIN$",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      }
+    }
+  },
+  "riskUnverified": {
+    "message": "Kontrola domény není dostupná."
+  },
+  "riskUnverifiedInline": {
+    "message": "⚠ Doména nezkontrolována"
+  },
+  "risk_insecureHttp": {
+    "message": "HTTP není šifrované."
+  },
+  "risk_credentials": {
+    "message": "Přihlašovací údaje v adrese URL."
+  },
+  "risk_ipAddress": {
+    "message": "Přímá IP adresa."
+  },
+  "risk_unusualPort": {
+    "message": "Neobvyklý port."
+  },
+  "risk_textMismatch": {
+    "message": "Text odkazu a cíl se liší."
+  },
+  "riskInline_insecureHttp": {
+    "message": "⚠ HTTP"
+  },
+  "riskInline_credentials": {
+    "message": "⚠ Přihlašovací údaje v URL"
+  },
+  "riskInline_ipAddress": {
+    "message": "⚠ IP adresa"
+  },
+  "riskInline_unusualPort": {
+    "message": "⚠ Neobvyklý port"
+  },
+  "riskInline_textMismatch": {
+    "message": "⚠ Text ≠ cíl"
+  },
+  "unsafeTitle": {
+    "message": "Odkazy, které nelze schválit"
+  },
+  "unknownHost": {
+    "message": "Neznámý cíl"
+  },
+  "reason_invalidUrl": {
+    "message": "Cíl odkazu je neplatný nebo příliš dlouhý"
+  },
+  "reason_badScheme": {
+    "message": "Odkaz používá nepodporovaný protokol"
+  },
+  "reason_credentials": {
+    "message": "Cíl odkazu obsahuje přihlašovací údaje"
+  },
+  "reason_ipAddress": {
+    "message": "Odkaz vede přímo na IP adresu"
+  },
+  "reason_insecureHttp": {
+    "message": "Odkaz používá nešifrované HTTP"
+  },
+  "reason_unusualPort": {
+    "message": "Odkaz používá neobvyklý port"
+  },
+  "reason_textMismatch": {
+    "message": "Zobrazená a skutečná doména se liší"
+  },
+  "reason_redirectUnsafe": {
+    "message": "Cíl přesměrování je nebezpečný nebo jej nelze zkontrolovat"
+  },
+  "overflowNotice": {
+    "message": "Více než 500 odkazů: Další odkazy zůstávají blokovány a nejsou zde uvedeny."
+  },
+  "exactHostNotice": {
+    "message": "Nadřazené domény a subdomény jsou vždy oddělené. Zobrazený text odkazu může být zavádějící."
+  },
+  "stateUnavailable": {
+    "message": "Schválení se nepodařilo načíst. Webové odkazy zůstávají blokovány."
+  },
+  "saveFailed": {
+    "message": "Rozhodnutí se nepodařilo uložit. Odkaz zůstává blokován."
+  },
+  "settingsTitle": {
+    "message": "Nastavení Link Guard"
+  },
+  "settingsSubtitle": {
+    "message": "Vyberte, kterým přesným názvům hostitelů důvěřujete u webových odkazů v e-mailech."
+  },
+  "enabledLabel": {
+    "message": "Zapnout Link Guard"
+  },
+  "enabledHint": {
+    "message": "Po vypnutí ochrany lze odkazy opět přímo otevírat kliknutím."
+  },
+  "hostCount": {
+    "message": "Názvy hostitelů: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "customTitle": {
+    "message": "Moje trvalá schválení"
+  },
+  "customHint": {
+    "message": "Domény, které ve zprávě trvale schválíte, se zobrazí zde. Můžete je také upravit přímo."
+  },
+  "blockedTitle": {
+    "message": "Blokované domény"
+  },
+  "blockedHint": {
+    "message": "Tento seznam má přednost před schváleními a importy. Pomocí *.example.com zablokujete doménu a všechny subdomény; dočasné schválení platí jen pro tuto zprávu."
+  },
+  "broadTitle": {
+    "message": "Schválit celé domény"
+  },
+  "broadHint": {
+    "message": "Pomocí *.example.com schválíte doménu a její subdomény včetně example.com. Hostitelé se sdíleným obsahem zůstávají oddělení; široké schválení používejte jen pro domény, které sami spravujete."
+  },
+  "broadInvalid": {
+    "message": "$DOMAIN$ není podle přibalené Public Suffix List registrovatelná doména.",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      }
+    }
+  },
+  "importsTitle": {
+    "message": "Vlastní a vzdálené seznamy"
+  },
+  "importsHint": {
+    "message": "Importujte soubor JSON nebo propojte seznam přes HTTPS. Každý seznam se před aktivací zobrazí a použije se až po vaší kontrole. Vzdálené změny seznamů povolených vyžadují opětovné schválení."
+  },
+  "importFileLabel": {
+    "message": "Vyberte soubor JSON"
+  },
+  "importUrlLabel": {
+    "message": "URL seznamu JSON přes HTTPS"
+  },
+  "previewRemote": {
+    "message": "Zkontrolovat vzdálený seznam"
+  },
+  "importSecurityHint": {
+    "message": "Vzdálené servery musí povolit CORS. Neodesílá se žádný obsah zpráv. Nejvýše 64 KiB, 500 názvů hostitelů a 20 seznamů; bez přesměrování. Seznamy načítejte jen z důvěryhodných zdrojů."
+  },
+  "importPreviewTitle": {
+    "message": "Náhled"
+  },
+  "refreshTitle": {
+    "message": "Zkontrolovat aktualizaci"
+  },
+  "stageImport": {
+    "message": "Připravit jako vypnutý seznam"
+  },
+  "stageRefresh": {
+    "message": "Připravit aktualizaci"
+  },
+  "cancelPreview": {
+    "message": "Zrušit"
+  },
+  "refreshPreview": {
+    "message": "Zkontrolovat vzdálenou aktualizaci"
+  },
+  "removeList": {
+    "message": "Odebrat seznam"
+  },
+  "importStaged": {
+    "message": "Seznam je připraven. Uložením níže jej použijete."
+  },
+  "importReady": {
+    "message": "Seznam byl zkontrolován. Prohlédněte si názvy hostitelů v náhledu."
+  },
+  "importLoading": {
+    "message": "Načítání a kontrola seznamu …"
+  },
+  "importTooLarge": {
+    "message": "Seznam je příliš velký (maximálně 64 KiB)."
+  },
+  "importFormat": {
+    "message": "Neplatný formát seznamu. Očekává se: format, version, name, category a hosts."
+  },
+  "importDuplicate": {
+    "message": "Seznam obsahuje duplicitní název hostitele."
+  },
+  "importUrl": {
+    "message": "Povolena je jen adresa URL souboru přes HTTPS bez přihlašovacích údajů, portu, dotazu a fragmentu."
+  },
+  "importFetch": {
+    "message": "Vzdálený seznam se nepodařilo bezpečně načíst. Zkontrolujte HTTPS, JSON, CORS a přesměrování."
+  },
+  "importListLimit": {
+    "message": "Nejvýše 20 importovaných seznamů."
+  },
+  "importEmpty": {
+    "message": "Importovaný seznam nesmí být prázdný."
+  },
+  "category_news": {
+    "message": "Zprávy"
+  },
+  "category_social": {
+    "message": "Sociální sítě"
+  },
+  "category_companies": {
+    "message": "Firmy"
+  },
+  "category_other": {
+    "message": "Ostatní"
+  },
+  "hostListLabel": {
+    "message": "Jedno pravidlo na řádek"
+  },
+  "saveSettings": {
+    "message": "Uložit změny"
+  },
+  "settingsSaved": {
+    "message": "Nastavení bylo uloženo."
+  },
+  "settingsLoadFailed": {
+    "message": "Nastavení se nepodařilo načíst."
+  },
+  "settingsSaveFailed": {
+    "message": "Nastavení se nepodařilo uložit."
+  },
+  "settingsChanged": {
+    "message": "Seznamy byly změněny jinde. Před uložením tuto stránku znovu načtěte."
+  },
+  "invalidHostLine": {
+    "message": "Neplatný název hostitele na řádku $LINE$.",
+    "placeholders": {
+      "line": {
+        "content": "$1"
+      }
+    }
+  },
+  "hostLimit": {
+    "message": "Nejvýše 500 názvů hostitelů na seznam."
+  },
+  "hostFormatHint": {
+    "message": "Přesní hostitelé nemají zástupný znak. Pravidlo pro celou doménu používá *.example.com a zahrnuje i samotnou doménu example.com."
+  },
+  "exactHostExample": {
+    "message": "login.google.de a google.de jsou různé názvy hostitelů a vyžadují samostatné schválení."
+  },
+  "risk_shortLink": {
+    "message": "Zkrácený odkaz: cíl je skrytý."
+  },
+  "riskInline_shortLink": {
+    "message": "⚠ Zkrácený odkaz"
+  },
+  "riskyApprovalWarning": {
+    "message": "Tento zkrácený odkaz skrývá svůj cíl. Povolit jej pro tuto zprávu?"
+  },
+  "riskyApprovalConfirm": {
+    "message": "Povolit pro tuto zprávu"
+  },
+  "importedEnable": {
+    "message": "Zapnout seznam"
+  },
+  "listViewEdit": {
+    "message": "Zobrazit a upravit seznam"
+  },
+  "listHosts": {
+    "message": "Přesné názvy hostitelů v tomto seznamu"
+  },
+  "kind_allow": {
+    "message": "Seznam povolených"
+  },
+  "kind_block": {
+    "message": "Seznam blokovaných"
+  },
+  "listBlockedHosts": {
+    "message": "Blokované položky v tomto seznamu (*.example.com blokuje doménu a všechny subdomény)"
+  },
+  "importBlockHint": {
+    "message": "Seznam s \"kind\": \"block\" je seznam blokovaných. Po zapnutí má přednost před schváleními a importovanými seznamy povolených a může obsahovat položky *.example.com. Seznamy blokovaných se mohou volitelně aktualizovat samy zhruba jednou denně; seznamy povolených nikdy."
+  },
+  "autoRefreshLabel": {
+    "message": "Aktualizovat automaticky zhruba jednou denně (nahradí místní úpravy)"
+  },
+  "autoRefreshKind": {
+    "message": "Zdroj nyní uvádí jiný typ seznamu, proto seznam nebyl změněn. Zkontrolujte jej ručně."
+  },
+  "autoRefreshOk": {
+    "message": "Poslední automatická kontrola: $DATE$",
+    "placeholders": {
+      "date": {
+        "content": "$1"
+      }
+    }
+  },
+  "autoRefreshFailed": {
+    "message": "Automatická aktualizace selhala dne $DATE$. Předchozí seznam zůstává aktivní.",
+    "placeholders": {
+      "date": {
+        "content": "$1"
+      }
+    }
+  },
+  "autoRefreshReview": {
+    "message": "Automatická aktualizace nebyla použita, protože je rozsáhlá nebo by zablokovala něco, co jste schválili. Předchozí seznam zůstává aktivní; použijte „Zkontrolovat vzdálenou aktualizaci“."
+  }
+}

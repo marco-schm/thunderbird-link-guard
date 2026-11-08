@@ -1,0 +1,460 @@
+{
+  "extensionName": {
+    "message": "Link Guard"
+  },
+  "extensionDescription": {
+    "message": "Перевіряє вебпосилання в електронній пошті та вимагає явного схвалення для підозрілих адрес призначення."
+  },
+  "optionsAction": {
+    "message": "Link Guard – відкрити налаштування"
+  },
+  "toolbarInitial": {
+    "message": "Link Guard перевіряє посилання в цьому листі"
+  },
+  "toolbarDisabled": {
+    "message": "Link Guard вимкнено"
+  },
+  "toolbarOverflow": {
+    "message": "Link Guard: забагато посилань; решту посилань заблоковано"
+  },
+  "toolbarPending": {
+    "message": "Link Guard: заблокованих посилань: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "toolbarClear": {
+    "message": "Link Guard: заблокованих вебпосилань немає"
+  },
+  "toolbarRisk": {
+    "message": "Link Guard: підозрілих доменів: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "panelTitle": {
+    "message": "Перегляд посилань"
+  },
+  "panelCompact": {
+    "message": "Посилань очікує: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "panelCompactRisk": {
+    "message": "⚠ Попередження: $RISK$ · Очікують: $BLOCKED$",
+    "placeholders": {
+      "risk": {
+        "content": "$2"
+      },
+      "blocked": {
+        "content": "$1"
+      }
+    }
+  },
+  "panelSummary": {
+    "message": "Перевірено вебпосилань: $TOTAL$ · заблоковано: $BLOCKED$",
+    "placeholders": {
+      "total": {
+        "content": "$1"
+      },
+      "blocked": {
+        "content": "$2"
+      }
+    }
+  },
+  "panelInstruction": {
+    "message": "Перевіряйте адресу призначення незалежно від цього листа. Постійне схвалення може стосуватися точного хоста або всього домену. Публічні скорочені посилання потребують додаткового підтвердження для цього листа."
+  },
+  "linksForHost": {
+    "message": "Посилань у цьому листі: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "status_pending": {
+    "message": "Не схвалено"
+  },
+  "status_temporary": {
+    "message": "Для цього листа"
+  },
+  "status_permanent": {
+    "message": "Схвалено назавжди"
+  },
+  "status_broad": {
+    "message": "Схвалено через увесь домен"
+  },
+  "status_blocked": {
+    "message": "Заблоковано"
+  },
+  "allowTemporary": {
+    "message": "Дозволити тимчасово"
+  },
+  "allowPermanent": {
+    "message": "Дозволити назавжди"
+  },
+  "blockHost": {
+    "message": "Заблокувати"
+  },
+  "scopePrompt": {
+    "message": "Який обсяг схвалити назавжди?"
+  },
+  "blockScopePrompt": {
+    "message": "Який обсяг заблокувати?"
+  },
+  "scopePromptShared": {
+    "message": "Тут можуть публікувати вміст інші люди. Схваліть лише цей хост."
+  },
+  "linkDestinationInline": {
+    "message": "↗ $HOST$",
+    "placeholders": {
+      "host": {
+        "content": "$1"
+      }
+    }
+  },
+  "scopeExact": {
+    "message": "Лише $HOST$",
+    "placeholders": {
+      "host": {
+        "content": "$1"
+      }
+    }
+  },
+  "scopeBroad": {
+    "message": "$DOMAIN$ і всі піддомени",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      }
+    }
+  },
+  "riskIdn": {
+    "message": "Можливі символи, схожі на інші."
+  },
+  "riskLookalike": {
+    "message": "Схоже на $DOMAIN$.",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      }
+    }
+  },
+  "riskIdnInline": {
+    "message": "⚠ Схожі символи"
+  },
+  "riskLookalikeInline": {
+    "message": "⚠ Схоже на $DOMAIN$",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      }
+    }
+  },
+  "riskUnverified": {
+    "message": "Перевірка домену недоступна."
+  },
+  "riskUnverifiedInline": {
+    "message": "⚠ Домен не перевірено"
+  },
+  "risk_insecureHttp": {
+    "message": "HTTP не шифрується."
+  },
+  "risk_credentials": {
+    "message": "Облікові дані в URL."
+  },
+  "risk_ipAddress": {
+    "message": "Пряма IP-адреса."
+  },
+  "risk_unusualPort": {
+    "message": "Незвичайний порт."
+  },
+  "risk_textMismatch": {
+    "message": "Текст посилання й адреса призначення відрізняються."
+  },
+  "riskInline_insecureHttp": {
+    "message": "⚠ HTTP"
+  },
+  "riskInline_credentials": {
+    "message": "⚠ Облікові дані в URL"
+  },
+  "riskInline_ipAddress": {
+    "message": "⚠ IP-адреса"
+  },
+  "riskInline_unusualPort": {
+    "message": "⚠ Незвичайний порт"
+  },
+  "riskInline_textMismatch": {
+    "message": "⚠ Текст ≠ адреса"
+  },
+  "unsafeTitle": {
+    "message": "Посилання, які не можна схвалити"
+  },
+  "unknownHost": {
+    "message": "Невідома адреса призначення"
+  },
+  "reason_invalidUrl": {
+    "message": "Адреса посилання недійсна або задовга"
+  },
+  "reason_badScheme": {
+    "message": "Посилання використовує непідтримуваний протокол"
+  },
+  "reason_credentials": {
+    "message": "Адреса посилання містить облікові дані"
+  },
+  "reason_ipAddress": {
+    "message": "Посилання веде безпосередньо на IP-адресу"
+  },
+  "reason_insecureHttp": {
+    "message": "Посилання використовує незашифрований HTTP"
+  },
+  "reason_unusualPort": {
+    "message": "Посилання використовує незвичайний порт"
+  },
+  "reason_textMismatch": {
+    "message": "Показаний і фактичний домени відрізняються"
+  },
+  "reason_redirectUnsafe": {
+    "message": "Адреса переспрямування небезпечна або її не можна перевірити"
+  },
+  "overflowNotice": {
+    "message": "Понад 500 посилань: додаткові посилання залишаються заблокованими й тут не показуються."
+  },
+  "exactHostNotice": {
+    "message": "Батьківські домени та піддомени завжди окремі. Показаний текст посилання може вводити в оману."
+  },
+  "stateUnavailable": {
+    "message": "Не вдалося завантажити схвалення. Вебпосилання залишаються заблокованими."
+  },
+  "saveFailed": {
+    "message": "Не вдалося зберегти рішення. Посилання залишається заблокованим."
+  },
+  "settingsTitle": {
+    "message": "Налаштування Link Guard"
+  },
+  "settingsSubtitle": {
+    "message": "Виберіть, яким точним іменам хостів ви довіряєте для вебпосилань в електронній пошті."
+  },
+  "enabledLabel": {
+    "message": "Увімкнути Link Guard"
+  },
+  "enabledHint": {
+    "message": "Якщо вимкнути захист, посилання знову можна буде відкривати одразу."
+  },
+  "hostCount": {
+    "message": "Імен хостів: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "customTitle": {
+    "message": "Мої постійні схвалення"
+  },
+  "customHint": {
+    "message": "Домени, які ви схвалили назавжди в листі, з’являються тут. Їх також можна редагувати безпосередньо."
+  },
+  "blockedTitle": {
+    "message": "Заблоковані домени"
+  },
+  "blockedHint": {
+    "message": "Цей список має пріоритет над схваленнями та імпортом. Використовуйте *.example.com, щоб заблокувати домен і всі піддомени; тимчасове схвалення діє лише для цього листа."
+  },
+  "broadTitle": {
+    "message": "Схвалення цілих доменів"
+  },
+  "broadHint": {
+    "message": "Використовуйте *.example.com, щоб схвалити домен і його піддомени, зокрема example.com. Хости зі спільним вмістом залишаються окремими; широке схвалення застосовуйте лише до доменів, якими ви керуєте."
+  },
+  "broadInvalid": {
+    "message": "За вбудованим Public Suffix List $DOMAIN$ не є доменом, який можна зареєструвати.",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      }
+    }
+  },
+  "importsTitle": {
+    "message": "Власні та віддалені списки"
+  },
+  "importsHint": {
+    "message": "Імпортуйте файл JSON або підключіть список за HTTPS. Кожен список показується перед активацією й застосовується лише після вашої перевірки. Віддалені зміни списків дозволених потребують вашого повторного схвалення."
+  },
+  "importFileLabel": {
+    "message": "Виберіть файл JSON"
+  },
+  "importUrlLabel": {
+    "message": "HTTPS-адреса списку JSON"
+  },
+  "previewRemote": {
+    "message": "Перевірити віддалений список"
+  },
+  "importSecurityHint": {
+    "message": "Віддалені сервери мають дозволяти CORS. Вміст листів не надсилається. Не більше 64 КіБ, 500 імен хостів і 20 списків; без переспрямувань. Завантажуйте списки лише з довірених джерел."
+  },
+  "importPreviewTitle": {
+    "message": "Попередній перегляд"
+  },
+  "refreshTitle": {
+    "message": "Перевірка оновлення"
+  },
+  "stageImport": {
+    "message": "Підготувати як вимкнений список"
+  },
+  "stageRefresh": {
+    "message": "Підготувати оновлення"
+  },
+  "cancelPreview": {
+    "message": "Скасувати"
+  },
+  "refreshPreview": {
+    "message": "Перевірити віддалене оновлення"
+  },
+  "removeList": {
+    "message": "Видалити список"
+  },
+  "importStaged": {
+    "message": "Список підготовлено. Збережіть нижче, щоб застосувати."
+  },
+  "importReady": {
+    "message": "Список перевірено. Перегляньте імена хостів у попередньому перегляді."
+  },
+  "importLoading": {
+    "message": "Завантаження й перевірка списку …"
+  },
+  "importTooLarge": {
+    "message": "Список завеликий (максимум 64 КіБ)."
+  },
+  "importFormat": {
+    "message": "Недійсний формат списку. Очікується: format, version, name, category і hosts."
+  },
+  "importDuplicate": {
+    "message": "Список містить дубльоване ім’я хоста."
+  },
+  "importUrl": {
+    "message": "Дозволено лише HTTPS-адресу файлу без облікових даних, порту, запиту чи фрагмента."
+  },
+  "importFetch": {
+    "message": "Не вдалося безпечно завантажити віддалений список. Перевірте HTTPS, JSON, CORS і переспрямування."
+  },
+  "importListLimit": {
+    "message": "Не більше 20 імпортованих списків."
+  },
+  "importEmpty": {
+    "message": "Імпортований список не може бути порожнім."
+  },
+  "category_news": {
+    "message": "Новини"
+  },
+  "category_social": {
+    "message": "Соціальні мережі"
+  },
+  "category_companies": {
+    "message": "Компанії"
+  },
+  "category_other": {
+    "message": "Інше"
+  },
+  "hostListLabel": {
+    "message": "Одне правило в рядку"
+  },
+  "saveSettings": {
+    "message": "Зберегти зміни"
+  },
+  "settingsSaved": {
+    "message": "Налаштування збережено."
+  },
+  "settingsLoadFailed": {
+    "message": "Не вдалося завантажити налаштування."
+  },
+  "settingsSaveFailed": {
+    "message": "Не вдалося зберегти налаштування."
+  },
+  "settingsChanged": {
+    "message": "Списки змінено в іншому місці. Перезавантажте цю сторінку перед збереженням."
+  },
+  "invalidHostLine": {
+    "message": "Недійсне ім’я хоста в рядку $LINE$.",
+    "placeholders": {
+      "line": {
+        "content": "$1"
+      }
+    }
+  },
+  "hostLimit": {
+    "message": "Не більше 500 імен хостів у списку."
+  },
+  "hostFormatHint": {
+    "message": "Точні хости не містять символів підстановки. Правило для всього домену має вигляд *.example.com і охоплює також сам example.com."
+  },
+  "exactHostExample": {
+    "message": "login.google.de і google.de — різні імена хостів, їх треба схвалювати окремо."
+  },
+  "risk_shortLink": {
+    "message": "Скорочене посилання: адресу призначення приховано."
+  },
+  "riskInline_shortLink": {
+    "message": "⚠ Скорочене посилання"
+  },
+  "riskyApprovalWarning": {
+    "message": "Це скорочене посилання приховує адресу призначення. Дозволити його для цього листа?"
+  },
+  "riskyApprovalConfirm": {
+    "message": "Дозволити для цього листа"
+  },
+  "importedEnable": {
+    "message": "Увімкнути список"
+  },
+  "listViewEdit": {
+    "message": "Переглянути й редагувати список"
+  },
+  "listHosts": {
+    "message": "Точні імена хостів у цьому списку"
+  },
+  "kind_allow": {
+    "message": "Список дозволених"
+  },
+  "kind_block": {
+    "message": "Список заблокованих"
+  },
+  "listBlockedHosts": {
+    "message": "Заблоковані записи в цьому списку (*.example.com блокує домен і всі піддомени)"
+  },
+  "importBlockHint": {
+    "message": "Список із \"kind\": \"block\" — це список заблокованих. Після ввімкнення він має пріоритет над схваленнями та імпортованими списками дозволених і може містити записи *.example.com. Списки заблокованих можуть за бажанням самі оновлюватися приблизно раз на добу; списки дозволених — ніколи."
+  },
+  "autoRefreshLabel": {
+    "message": "Оновлювати автоматично приблизно раз на добу (замінює локальні зміни)"
+  },
+  "autoRefreshKind": {
+    "message": "Джерело тепер указує інший тип списку, тому список не змінено. Перевірте його вручну."
+  },
+  "autoRefreshOk": {
+    "message": "Остання автоматична перевірка: $DATE$",
+    "placeholders": {
+      "date": {
+        "content": "$1"
+      }
+    }
+  },
+  "autoRefreshFailed": {
+    "message": "Автоматичне оновлення не вдалося: $DATE$. Попередній список залишається активним.",
+    "placeholders": {
+      "date": {
+        "content": "$1"
+      }
+    }
+  },
+  "autoRefreshReview": {
+    "message": "Автоматичне оновлення не застосовано, бо воно велике або заблокувало б щось, що ви схвалили. Попередній список залишається активним; скористайтеся «Перевірити віддалене оновлення»."
+  }
+}

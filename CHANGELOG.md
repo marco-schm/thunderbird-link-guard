@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- Add ten UI languages: Czech, Danish, Dutch, Finnish, Hungarian, Korean,
+  Swedish, Traditional Chinese, Turkish and Ukrainian. Link Guard now has
+  twenty complete UI catalogs. Right-to-left languages are not supported yet.
 - Support remote and local blocklists: add an optional `"kind": "block"` to the
   JSON list format. Blocklists may contain `*.example.com` whole-domain entries,
   start disabled like all imports, and override approvals and imported

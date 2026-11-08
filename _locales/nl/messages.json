@@ -1,0 +1,460 @@
+{
+  "extensionName": {
+    "message": "Link Guard"
+  },
+  "extensionDescription": {
+    "message": "Controleert weblinks in e-mail en vereist expliciete goedkeuring voor verdachte bestemmingen."
+  },
+  "optionsAction": {
+    "message": "Link Guard – instellingen openen"
+  },
+  "toolbarInitial": {
+    "message": "Link Guard controleert de links in dit bericht"
+  },
+  "toolbarDisabled": {
+    "message": "Link Guard is uitgeschakeld"
+  },
+  "toolbarOverflow": {
+    "message": "Link Guard: te veel links; de overige links worden geblokkeerd"
+  },
+  "toolbarPending": {
+    "message": "Link Guard: $COUNT$ geblokkeerde links",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "toolbarClear": {
+    "message": "Link Guard: geen geblokkeerde weblinks"
+  },
+  "toolbarRisk": {
+    "message": "Link Guard: $COUNT$ verdachte domeinen",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "panelTitle": {
+    "message": "Links controleren"
+  },
+  "panelCompact": {
+    "message": "Links in afwachting: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "panelCompactRisk": {
+    "message": "⚠ Waarschuwingen: $RISK$ · In afwachting: $BLOCKED$",
+    "placeholders": {
+      "risk": {
+        "content": "$2"
+      },
+      "blocked": {
+        "content": "$1"
+      }
+    }
+  },
+  "panelSummary": {
+    "message": "$TOTAL$ weblinks gecontroleerd · $BLOCKED$ geblokkeerd",
+    "placeholders": {
+      "total": {
+        "content": "$1"
+      },
+      "blocked": {
+        "content": "$2"
+      }
+    }
+  },
+  "panelInstruction": {
+    "message": "Controleer de bestemming los van deze e-mail. Permanente goedkeuring kan gelden voor de exacte host of het hele domein. Openbare verkorte links vereisen extra bevestiging voor dit bericht."
+  },
+  "linksForHost": {
+    "message": "Links in deze e-mail: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "status_pending": {
+    "message": "Niet goedgekeurd"
+  },
+  "status_temporary": {
+    "message": "Voor dit bericht"
+  },
+  "status_permanent": {
+    "message": "Permanent goedgekeurd"
+  },
+  "status_broad": {
+    "message": "Goedgekeurd via heel domein"
+  },
+  "status_blocked": {
+    "message": "Geblokkeerd"
+  },
+  "allowTemporary": {
+    "message": "Tijdelijk toestaan"
+  },
+  "allowPermanent": {
+    "message": "Permanent toestaan"
+  },
+  "blockHost": {
+    "message": "Blokkeren"
+  },
+  "scopePrompt": {
+    "message": "Welk bereik moet permanent worden goedgekeurd?"
+  },
+  "blockScopePrompt": {
+    "message": "Welk bereik moet worden geblokkeerd?"
+  },
+  "scopePromptShared": {
+    "message": "Anderen kunnen hier inhoud publiceren. Keur alleen deze host goed."
+  },
+  "linkDestinationInline": {
+    "message": "↗ $HOST$",
+    "placeholders": {
+      "host": {
+        "content": "$1"
+      }
+    }
+  },
+  "scopeExact": {
+    "message": "Alleen $HOST$",
+    "placeholders": {
+      "host": {
+        "content": "$1"
+      }
+    }
+  },
+  "scopeBroad": {
+    "message": "$DOMAIN$ en alle subdomeinen",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      }
+    }
+  },
+  "riskIdn": {
+    "message": "Er kunnen op elkaar lijkende tekens aanwezig zijn."
+  },
+  "riskLookalike": {
+    "message": "Lijkt op $DOMAIN$.",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      }
+    }
+  },
+  "riskIdnInline": {
+    "message": "⚠ Gelijkende tekens"
+  },
+  "riskLookalikeInline": {
+    "message": "⚠ Lijkt op $DOMAIN$",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      }
+    }
+  },
+  "riskUnverified": {
+    "message": "Domeincontrole niet beschikbaar."
+  },
+  "riskUnverifiedInline": {
+    "message": "⚠ Domein niet gecontroleerd"
+  },
+  "risk_insecureHttp": {
+    "message": "HTTP is niet versleuteld."
+  },
+  "risk_credentials": {
+    "message": "Inloggegevens in de URL."
+  },
+  "risk_ipAddress": {
+    "message": "Direct IP-adres."
+  },
+  "risk_unusualPort": {
+    "message": "Ongebruikelijke poort."
+  },
+  "risk_textMismatch": {
+    "message": "Linktekst en bestemming verschillen."
+  },
+  "riskInline_insecureHttp": {
+    "message": "⚠ HTTP"
+  },
+  "riskInline_credentials": {
+    "message": "⚠ Inloggegevens in URL"
+  },
+  "riskInline_ipAddress": {
+    "message": "⚠ IP-adres"
+  },
+  "riskInline_unusualPort": {
+    "message": "⚠ Ongebruikelijke poort"
+  },
+  "riskInline_textMismatch": {
+    "message": "⚠ Tekst ≠ bestemming"
+  },
+  "unsafeTitle": {
+    "message": "Links die niet kunnen worden goedgekeurd"
+  },
+  "unknownHost": {
+    "message": "Onbekende bestemming"
+  },
+  "reason_invalidUrl": {
+    "message": "Linkdoel is ongeldig of te lang"
+  },
+  "reason_badScheme": {
+    "message": "Link gebruikt een niet-ondersteund protocol"
+  },
+  "reason_credentials": {
+    "message": "Linkdoel bevat inloggegevens"
+  },
+  "reason_ipAddress": {
+    "message": "Link leidt rechtstreeks naar een IP-adres"
+  },
+  "reason_insecureHttp": {
+    "message": "Link gebruikt onversleuteld HTTP"
+  },
+  "reason_unusualPort": {
+    "message": "Link gebruikt een ongebruikelijke poort"
+  },
+  "reason_textMismatch": {
+    "message": "Getoonde en werkelijke domeinen verschillen"
+  },
+  "reason_redirectUnsafe": {
+    "message": "Doorverwijzing is onveilig of kan niet worden gecontroleerd"
+  },
+  "overflowNotice": {
+    "message": "Meer dan 500 links: extra links blijven geblokkeerd en worden hier niet vermeld."
+  },
+  "exactHostNotice": {
+    "message": "Hoofddomeinen en subdomeinen zijn altijd gescheiden. Getoonde linktekst kan misleidend zijn."
+  },
+  "stateUnavailable": {
+    "message": "Goedkeuringen konden niet worden geladen. Weblinks blijven geblokkeerd."
+  },
+  "saveFailed": {
+    "message": "De beslissing kon niet worden opgeslagen. De link blijft geblokkeerd."
+  },
+  "settingsTitle": {
+    "message": "Link Guard-instellingen"
+  },
+  "settingsSubtitle": {
+    "message": "Kies welke exacte hostnamen je vertrouwt voor weblinks in e-mail."
+  },
+  "enabledLabel": {
+    "message": "Link Guard inschakelen"
+  },
+  "enabledHint": {
+    "message": "Als je de bescherming uitschakelt, zijn links weer direct aanklikbaar."
+  },
+  "hostCount": {
+    "message": "Hostnamen: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "customTitle": {
+    "message": "Mijn permanente goedkeuringen"
+  },
+  "customHint": {
+    "message": "Domeinen die je permanent in een bericht goedkeurt, verschijnen hier. Je kunt ze ook direct bewerken."
+  },
+  "blockedTitle": {
+    "message": "Geblokkeerde domeinen"
+  },
+  "blockedHint": {
+    "message": "Deze lijst heeft voorrang op goedkeuringen en imports. Gebruik *.example.com om het domein en alle subdomeinen te blokkeren; een tijdelijke goedkeuring geldt alleen voor dit bericht."
+  },
+  "broadTitle": {
+    "message": "Hele domeinen goedkeuren"
+  },
+  "broadHint": {
+    "message": "Gebruik *.example.com om het domein en de subdomeinen goed te keuren, inclusief example.com. Hosts met gedeelde inhoud blijven gescheiden; gebruik brede goedkeuring alleen voor domeinen die je zelf beheert."
+  },
+  "broadInvalid": {
+    "message": "$DOMAIN$ is volgens de meegeleverde Public Suffix List geen registreerbaar domein.",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      }
+    }
+  },
+  "importsTitle": {
+    "message": "Eigen en externe lijsten"
+  },
+  "importsHint": {
+    "message": "Importeer een JSON-bestand of koppel een HTTPS-lijst. Elke lijst wordt vóór activering getoond en pas na je controle toegepast. Externe wijzigingen aan toestaanlijsten vereisen opnieuw je goedkeuring."
+  },
+  "importFileLabel": {
+    "message": "Kies een JSON-bestand"
+  },
+  "importUrlLabel": {
+    "message": "HTTPS-URL van een JSON-lijst"
+  },
+  "previewRemote": {
+    "message": "Externe lijst controleren"
+  },
+  "importSecurityHint": {
+    "message": "Externe servers moeten CORS toestaan. Er wordt geen berichtinhoud verzonden. Maximaal 64 KiB, 500 hostnamen en 20 lijsten; geen redirects. Laad lijsten alleen van vertrouwde bronnen."
+  },
+  "importPreviewTitle": {
+    "message": "Voorbeeld"
+  },
+  "refreshTitle": {
+    "message": "Update controleren"
+  },
+  "stageImport": {
+    "message": "Voorbereiden als uitgeschakelde lijst"
+  },
+  "stageRefresh": {
+    "message": "Update voorbereiden"
+  },
+  "cancelPreview": {
+    "message": "Annuleren"
+  },
+  "refreshPreview": {
+    "message": "Externe update controleren"
+  },
+  "removeList": {
+    "message": "Lijst verwijderen"
+  },
+  "importStaged": {
+    "message": "Lijst voorbereid. Sla hieronder op om toe te passen."
+  },
+  "importReady": {
+    "message": "Lijst gecontroleerd. Bekijk de hostnamen in het voorbeeld."
+  },
+  "importLoading": {
+    "message": "Lijst laden en controleren …"
+  },
+  "importTooLarge": {
+    "message": "De lijst is te groot (maximaal 64 KiB)."
+  },
+  "importFormat": {
+    "message": "Ongeldig lijstformaat. Verwacht: format, version, name, category en hosts."
+  },
+  "importDuplicate": {
+    "message": "De lijst bevat een dubbele hostnaam."
+  },
+  "importUrl": {
+    "message": "Alleen een HTTPS-bestands-URL zonder inloggegevens, poort, query of fragment is toegestaan."
+  },
+  "importFetch": {
+    "message": "De externe lijst kon niet veilig worden geladen. Controleer HTTPS, JSON, CORS en redirects."
+  },
+  "importListLimit": {
+    "message": "Maximaal 20 geïmporteerde lijsten."
+  },
+  "importEmpty": {
+    "message": "Een geïmporteerde lijst mag niet leeg zijn."
+  },
+  "category_news": {
+    "message": "Nieuws"
+  },
+  "category_social": {
+    "message": "Sociale media"
+  },
+  "category_companies": {
+    "message": "Bedrijven"
+  },
+  "category_other": {
+    "message": "Overig"
+  },
+  "hostListLabel": {
+    "message": "Eén item per regel"
+  },
+  "saveSettings": {
+    "message": "Wijzigingen opslaan"
+  },
+  "settingsSaved": {
+    "message": "Instellingen opgeslagen."
+  },
+  "settingsLoadFailed": {
+    "message": "Instellingen konden niet worden geladen."
+  },
+  "settingsSaveFailed": {
+    "message": "Instellingen konden niet worden opgeslagen."
+  },
+  "settingsChanged": {
+    "message": "Lijsten zijn elders gewijzigd. Laad deze pagina opnieuw voordat je opslaat."
+  },
+  "invalidHostLine": {
+    "message": "Ongeldige hostnaam op regel $LINE$.",
+    "placeholders": {
+      "line": {
+        "content": "$1"
+      }
+    }
+  },
+  "hostLimit": {
+    "message": "Maximaal 500 hostnamen per lijst."
+  },
+  "hostFormatHint": {
+    "message": "Exacte hosts hebben geen jokerteken. Een regel voor een heel domein gebruikt *.example.com en omvat ook example.com zelf."
+  },
+  "exactHostExample": {
+    "message": "login.google.de en google.de zijn verschillende hostnamen en vereisen aparte goedkeuringen."
+  },
+  "risk_shortLink": {
+    "message": "Verkorte link: bestemming verborgen."
+  },
+  "riskInline_shortLink": {
+    "message": "⚠ Verkorte link"
+  },
+  "riskyApprovalWarning": {
+    "message": "Deze verkorte link verbergt de bestemming. Toestaan voor dit bericht?"
+  },
+  "riskyApprovalConfirm": {
+    "message": "Toestaan voor dit bericht"
+  },
+  "importedEnable": {
+    "message": "Lijst inschakelen"
+  },
+  "listViewEdit": {
+    "message": "Lijst bekijken en bewerken"
+  },
+  "listHosts": {
+    "message": "Exacte hostnamen in deze lijst"
+  },
+  "kind_allow": {
+    "message": "Toestaanlijst"
+  },
+  "kind_block": {
+    "message": "Blokkeerlijst"
+  },
+  "listBlockedHosts": {
+    "message": "Geblokkeerde items in deze lijst (*.example.com blokkeert het domein en alle subdomeinen)"
+  },
+  "importBlockHint": {
+    "message": "Een lijst met \"kind\": \"block\" is een blokkeerlijst. Eenmaal ingeschakeld heeft ze voorrang op goedkeuringen en geïmporteerde toestaanlijsten en mag ze *.example.com-items bevatten. Blokkeerlijsten kunnen zichzelf optioneel ongeveer eens per dag bijwerken; toestaanlijsten nooit."
+  },
+  "autoRefreshLabel": {
+    "message": "Ongeveer eens per dag automatisch bijwerken (vervangt lokale wijzigingen)"
+  },
+  "autoRefreshKind": {
+    "message": "De bron meldt nu een ander lijsttype, daarom is de lijst niet gewijzigd. Controleer haar handmatig."
+  },
+  "autoRefreshOk": {
+    "message": "Laatste automatische controle: $DATE$",
+    "placeholders": {
+      "date": {
+        "content": "$1"
+      }
+    }
+  },
+  "autoRefreshFailed": {
+    "message": "Automatische update mislukt op $DATE$. De vorige lijst blijft actief.",
+    "placeholders": {
+      "date": {
+        "content": "$1"
+      }
+    }
+  },
+  "autoRefreshReview": {
+    "message": "De automatische update is niet toegepast omdat die groot is of iets zou blokkeren wat je hebt goedgekeurd. De vorige lijst blijft actief; gebruik \"Externe update controleren\"."
+  }
+}

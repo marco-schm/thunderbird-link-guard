@@ -1,0 +1,460 @@
+{
+  "extensionName": {
+    "message": "Link Guard"
+  },
+  "extensionDescription": {
+    "message": "Kontrollerer weblinks i e-mails og kræver udtrykkelig godkendelse af mistænkelige mål."
+  },
+  "optionsAction": {
+    "message": "Link Guard – åbn indstillinger"
+  },
+  "toolbarInitial": {
+    "message": "Link Guard kontrollerer links i denne meddelelse"
+  },
+  "toolbarDisabled": {
+    "message": "Link Guard er deaktiveret"
+  },
+  "toolbarOverflow": {
+    "message": "Link Guard: for mange links; de resterende links blokeres"
+  },
+  "toolbarPending": {
+    "message": "Link Guard: $COUNT$ blokerede links",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "toolbarClear": {
+    "message": "Link Guard: ingen blokerede weblinks"
+  },
+  "toolbarRisk": {
+    "message": "Link Guard: $COUNT$ mistænkelige domæner",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "panelTitle": {
+    "message": "Gennemgå links"
+  },
+  "panelCompact": {
+    "message": "Ventende links: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "panelCompactRisk": {
+    "message": "⚠ Advarsler: $RISK$ · Venter: $BLOCKED$",
+    "placeholders": {
+      "risk": {
+        "content": "$2"
+      },
+      "blocked": {
+        "content": "$1"
+      }
+    }
+  },
+  "panelSummary": {
+    "message": "$TOTAL$ weblinks kontrolleret · $BLOCKED$ blokeret",
+    "placeholders": {
+      "total": {
+        "content": "$1"
+      },
+      "blocked": {
+        "content": "$2"
+      }
+    }
+  },
+  "panelInstruction": {
+    "message": "Kontrollér målet uafhængigt af denne e-mail. Permanent godkendelse kan gælde den præcise vært eller hele domænet. Offentlige forkortede links kræver ekstra bekræftelse for denne meddelelse."
+  },
+  "linksForHost": {
+    "message": "Links i denne e-mail: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "status_pending": {
+    "message": "Ikke godkendt"
+  },
+  "status_temporary": {
+    "message": "Til denne meddelelse"
+  },
+  "status_permanent": {
+    "message": "Permanent godkendt"
+  },
+  "status_broad": {
+    "message": "Godkendt via hele domænet"
+  },
+  "status_blocked": {
+    "message": "Blokeret"
+  },
+  "allowTemporary": {
+    "message": "Tillad midlertidigt"
+  },
+  "allowPermanent": {
+    "message": "Tillad permanent"
+  },
+  "blockHost": {
+    "message": "Bloker"
+  },
+  "scopePrompt": {
+    "message": "Hvilket omfang skal godkendes permanent?"
+  },
+  "blockScopePrompt": {
+    "message": "Hvilket omfang skal blokeres?"
+  },
+  "scopePromptShared": {
+    "message": "Andre kan udgive indhold her. Godkend kun denne vært."
+  },
+  "linkDestinationInline": {
+    "message": "↗ $HOST$",
+    "placeholders": {
+      "host": {
+        "content": "$1"
+      }
+    }
+  },
+  "scopeExact": {
+    "message": "Kun $HOST$",
+    "placeholders": {
+      "host": {
+        "content": "$1"
+      }
+    }
+  },
+  "scopeBroad": {
+    "message": "$DOMAIN$ og alle underdomæner",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      }
+    }
+  },
+  "riskIdn": {
+    "message": "Der kan være tegn, der ligner hinanden."
+  },
+  "riskLookalike": {
+    "message": "Ligner $DOMAIN$.",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      }
+    }
+  },
+  "riskIdnInline": {
+    "message": "⚠ Lignende tegn"
+  },
+  "riskLookalikeInline": {
+    "message": "⚠ Ligner $DOMAIN$",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      }
+    }
+  },
+  "riskUnverified": {
+    "message": "Domænekontrol er ikke tilgængelig."
+  },
+  "riskUnverifiedInline": {
+    "message": "⚠ Domænet er ikke kontrolleret"
+  },
+  "risk_insecureHttp": {
+    "message": "HTTP er ikke krypteret."
+  },
+  "risk_credentials": {
+    "message": "Loginoplysninger i URL'en."
+  },
+  "risk_ipAddress": {
+    "message": "Direkte IP-adresse."
+  },
+  "risk_unusualPort": {
+    "message": "Usædvanlig port."
+  },
+  "risk_textMismatch": {
+    "message": "Linktekst og mål er forskellige."
+  },
+  "riskInline_insecureHttp": {
+    "message": "⚠ HTTP"
+  },
+  "riskInline_credentials": {
+    "message": "⚠ Loginoplysninger i URL"
+  },
+  "riskInline_ipAddress": {
+    "message": "⚠ IP-adresse"
+  },
+  "riskInline_unusualPort": {
+    "message": "⚠ Usædvanlig port"
+  },
+  "riskInline_textMismatch": {
+    "message": "⚠ Tekst ≠ mål"
+  },
+  "unsafeTitle": {
+    "message": "Links, der ikke kan godkendes"
+  },
+  "unknownHost": {
+    "message": "Ukendt mål"
+  },
+  "reason_invalidUrl": {
+    "message": "Linkets mål er ugyldigt eller for langt"
+  },
+  "reason_badScheme": {
+    "message": "Linket bruger en protokol, der ikke understøttes"
+  },
+  "reason_credentials": {
+    "message": "Linkets mål indeholder loginoplysninger"
+  },
+  "reason_ipAddress": {
+    "message": "Linket fører direkte til en IP-adresse"
+  },
+  "reason_insecureHttp": {
+    "message": "Linket bruger ukrypteret HTTP"
+  },
+  "reason_unusualPort": {
+    "message": "Linket bruger en usædvanlig port"
+  },
+  "reason_textMismatch": {
+    "message": "Det viste og det faktiske domæne er forskellige"
+  },
+  "reason_redirectUnsafe": {
+    "message": "Omdirigeringsmålet er usikkert eller kan ikke kontrolleres"
+  },
+  "overflowNotice": {
+    "message": "Mere end 500 links: Yderligere links forbliver blokeret og vises ikke her."
+  },
+  "exactHostNotice": {
+    "message": "Overordnede domæner og underdomæner er altid adskilte. Den viste linktekst kan være vildledende."
+  },
+  "stateUnavailable": {
+    "message": "Godkendelserne kunne ikke indlæses. Weblinks forbliver blokeret."
+  },
+  "saveFailed": {
+    "message": "Beslutningen kunne ikke gemmes. Linket forbliver blokeret."
+  },
+  "settingsTitle": {
+    "message": "Indstillinger for Link Guard"
+  },
+  "settingsSubtitle": {
+    "message": "Vælg, hvilke præcise værtsnavne du har tillid til for weblinks i e-mails."
+  },
+  "enabledLabel": {
+    "message": "Aktivér Link Guard"
+  },
+  "enabledHint": {
+    "message": "Hvis du deaktiverer beskyttelsen, kan links igen klikkes direkte."
+  },
+  "hostCount": {
+    "message": "Værtsnavne: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "customTitle": {
+    "message": "Mine permanente godkendelser"
+  },
+  "customHint": {
+    "message": "Domæner, du godkender permanent i en meddelelse, vises her. Du kan også redigere dem direkte."
+  },
+  "blockedTitle": {
+    "message": "Blokerede domæner"
+  },
+  "blockedHint": {
+    "message": "Denne liste har forrang over godkendelser og importer. Brug *.example.com til at blokere domænet og alle underdomæner; en midlertidig godkendelse gælder kun for denne meddelelse."
+  },
+  "broadTitle": {
+    "message": "Godkend hele domæner"
+  },
+  "broadHint": {
+    "message": "Brug *.example.com til at godkende domænet og dets underdomæner, inklusive example.com. Værter med delt indhold forbliver adskilte; brug bred godkendelse kun til domæner, du selv administrerer."
+  },
+  "broadInvalid": {
+    "message": "$DOMAIN$ er ikke et domæne, der kan registreres, ifølge den medfølgende Public Suffix List.",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      }
+    }
+  },
+  "importsTitle": {
+    "message": "Egne lister og fjernlister"
+  },
+  "importsHint": {
+    "message": "Importér en JSON-fil, eller tilknyt en HTTPS-liste. Hver liste vises før aktivering og anvendes først efter din gennemgang. Ændringer af tilladelseslister på afstand kræver din godkendelse igen."
+  },
+  "importFileLabel": {
+    "message": "Vælg en JSON-fil"
+  },
+  "importUrlLabel": {
+    "message": "HTTPS-URL til en JSON-liste"
+  },
+  "previewRemote": {
+    "message": "Kontrollér fjernliste"
+  },
+  "importSecurityHint": {
+    "message": "Fjernservere skal tillade CORS. Intet meddelelsesindhold sendes. Højst 64 KiB, 500 værtsnavne og 20 lister; ingen omdirigeringer. Indlæs kun lister fra pålidelige kilder."
+  },
+  "importPreviewTitle": {
+    "message": "Forhåndsvisning"
+  },
+  "refreshTitle": {
+    "message": "Gennemgå opdatering"
+  },
+  "stageImport": {
+    "message": "Forbered som deaktiveret liste"
+  },
+  "stageRefresh": {
+    "message": "Forbered opdatering"
+  },
+  "cancelPreview": {
+    "message": "Annuller"
+  },
+  "refreshPreview": {
+    "message": "Gennemgå opdatering på afstand"
+  },
+  "removeList": {
+    "message": "Fjern liste"
+  },
+  "importStaged": {
+    "message": "Listen er forberedt. Gem nedenfor for at anvende den."
+  },
+  "importReady": {
+    "message": "Listen er kontrolleret. Gennemgå værtsnavnene i forhåndsvisningen."
+  },
+  "importLoading": {
+    "message": "Indlæser og kontrollerer liste …"
+  },
+  "importTooLarge": {
+    "message": "Listen er for stor (højst 64 KiB)."
+  },
+  "importFormat": {
+    "message": "Ugyldigt listeformat. Forventet: format, version, name, category og hosts."
+  },
+  "importDuplicate": {
+    "message": "Listen indeholder et dubleret værtsnavn."
+  },
+  "importUrl": {
+    "message": "Kun en HTTPS-fil-URL uden loginoplysninger, port, forespørgsel eller fragment er tilladt."
+  },
+  "importFetch": {
+    "message": "Fjernlisten kunne ikke indlæses sikkert. Kontrollér HTTPS, JSON, CORS og omdirigeringer."
+  },
+  "importListLimit": {
+    "message": "Højst 20 importerede lister."
+  },
+  "importEmpty": {
+    "message": "En importeret liste må ikke være tom."
+  },
+  "category_news": {
+    "message": "Nyheder"
+  },
+  "category_social": {
+    "message": "Sociale medier"
+  },
+  "category_companies": {
+    "message": "Virksomheder"
+  },
+  "category_other": {
+    "message": "Andet"
+  },
+  "hostListLabel": {
+    "message": "Én regel pr. linje"
+  },
+  "saveSettings": {
+    "message": "Gem ændringer"
+  },
+  "settingsSaved": {
+    "message": "Indstillingerne er gemt."
+  },
+  "settingsLoadFailed": {
+    "message": "Indstillingerne kunne ikke indlæses."
+  },
+  "settingsSaveFailed": {
+    "message": "Indstillingerne kunne ikke gemmes."
+  },
+  "settingsChanged": {
+    "message": "Listerne er ændret et andet sted. Genindlæs denne side, før du gemmer."
+  },
+  "invalidHostLine": {
+    "message": "Ugyldigt værtsnavn på linje $LINE$.",
+    "placeholders": {
+      "line": {
+        "content": "$1"
+      }
+    }
+  },
+  "hostLimit": {
+    "message": "Op til 500 værtsnavne pr. liste."
+  },
+  "hostFormatHint": {
+    "message": "Præcise værter har ingen jokertegn. En regel for hele domænet bruger *.example.com og omfatter også selve example.com."
+  },
+  "exactHostExample": {
+    "message": "login.google.de og google.de er forskellige værtsnavne og kræver hver sin godkendelse."
+  },
+  "risk_shortLink": {
+    "message": "Forkortet link: målet er skjult."
+  },
+  "riskInline_shortLink": {
+    "message": "⚠ Forkortet link"
+  },
+  "riskyApprovalWarning": {
+    "message": "Dette forkortede link skjuler sit mål. Tillad det for denne meddelelse?"
+  },
+  "riskyApprovalConfirm": {
+    "message": "Tillad for denne meddelelse"
+  },
+  "importedEnable": {
+    "message": "Aktivér liste"
+  },
+  "listViewEdit": {
+    "message": "Vis og rediger liste"
+  },
+  "listHosts": {
+    "message": "Præcise værtsnavne i denne liste"
+  },
+  "kind_allow": {
+    "message": "Tilladelsesliste"
+  },
+  "kind_block": {
+    "message": "Blokeringsliste"
+  },
+  "listBlockedHosts": {
+    "message": "Blokerede poster i denne liste (*.example.com blokerer domænet og alle underdomæner)"
+  },
+  "importBlockHint": {
+    "message": "En liste med \"kind\": \"block\" er en blokeringsliste. Når den er aktiveret, har den forrang over godkendelser og importerede tilladelseslister og kan indeholde poster som *.example.com. Blokeringslister kan valgfrit opdatere sig selv cirka én gang om dagen; tilladelseslister gør det aldrig."
+  },
+  "autoRefreshLabel": {
+    "message": "Opdatér automatisk cirka én gang om dagen (erstatter lokale ændringer)"
+  },
+  "autoRefreshKind": {
+    "message": "Kilden angiver nu en anden listetype, så listen blev ikke ændret. Gennemgå den manuelt."
+  },
+  "autoRefreshOk": {
+    "message": "Seneste automatiske kontrol: $DATE$",
+    "placeholders": {
+      "date": {
+        "content": "$1"
+      }
+    }
+  },
+  "autoRefreshFailed": {
+    "message": "Den automatiske opdatering mislykkedes den $DATE$. Den tidligere liste forbliver aktiv.",
+    "placeholders": {
+      "date": {
+        "content": "$1"
+      }
+    }
+  },
+  "autoRefreshReview": {
+    "message": "Den automatiske opdatering blev ikke anvendt, fordi den er stor, eller fordi den ville blokere noget, du har godkendt. Den tidligere liste forbliver aktiv; brug \"Gennemgå opdatering på afstand\"."
+  }
+}

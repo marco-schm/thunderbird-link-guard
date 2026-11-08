@@ -1,0 +1,460 @@
+{
+  "extensionName": {
+    "message": "Link Guard"
+  },
+  "extensionDescription": {
+    "message": "檢查電子郵件中的網頁連結，並要求對可疑目的地明確核准。"
+  },
+  "optionsAction": {
+    "message": "Link Guard – 開啟設定"
+  },
+  "toolbarInitial": {
+    "message": "Link Guard 正在檢查此郵件中的連結"
+  },
+  "toolbarDisabled": {
+    "message": "Link Guard 已停用"
+  },
+  "toolbarOverflow": {
+    "message": "Link Guard：連結過多，其餘連結已被封鎖"
+  },
+  "toolbarPending": {
+    "message": "Link Guard：$COUNT$ 個已封鎖的連結",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "toolbarClear": {
+    "message": "Link Guard：沒有已封鎖的網頁連結"
+  },
+  "toolbarRisk": {
+    "message": "Link Guard：$COUNT$ 個可疑網域",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "panelTitle": {
+    "message": "檢閱連結"
+  },
+  "panelCompact": {
+    "message": "待處理的連結：$COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "panelCompactRisk": {
+    "message": "⚠ 警告：$RISK$ · 待處理：$BLOCKED$",
+    "placeholders": {
+      "risk": {
+        "content": "$2"
+      },
+      "blocked": {
+        "content": "$1"
+      }
+    }
+  },
+  "panelSummary": {
+    "message": "已檢查 $TOTAL$ 個網頁連結 · $BLOCKED$ 個已封鎖",
+    "placeholders": {
+      "total": {
+        "content": "$1"
+      },
+      "blocked": {
+        "content": "$2"
+      }
+    }
+  },
+  "panelInstruction": {
+    "message": "請獨立於這封郵件自行確認目的地。永久核准可套用於確切的主機或整個網域。公開的短網址在此郵件中需要額外確認。"
+  },
+  "linksForHost": {
+    "message": "此郵件中的連結：$COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "status_pending": {
+    "message": "未核准"
+  },
+  "status_temporary": {
+    "message": "僅限此郵件"
+  },
+  "status_permanent": {
+    "message": "已永久核准"
+  },
+  "status_broad": {
+    "message": "已透過整個網域核准"
+  },
+  "status_blocked": {
+    "message": "已封鎖"
+  },
+  "allowTemporary": {
+    "message": "暫時允許"
+  },
+  "allowPermanent": {
+    "message": "永久允許"
+  },
+  "blockHost": {
+    "message": "封鎖"
+  },
+  "scopePrompt": {
+    "message": "要永久核准哪個範圍？"
+  },
+  "blockScopePrompt": {
+    "message": "要封鎖哪個範圍？"
+  },
+  "scopePromptShared": {
+    "message": "其他人可以在此發布內容。請只核准這個主機。"
+  },
+  "linkDestinationInline": {
+    "message": "↗ $HOST$",
+    "placeholders": {
+      "host": {
+        "content": "$1"
+      }
+    }
+  },
+  "scopeExact": {
+    "message": "僅限 $HOST$",
+    "placeholders": {
+      "host": {
+        "content": "$1"
+      }
+    }
+  },
+  "scopeBroad": {
+    "message": "$DOMAIN$ 及所有子網域",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      }
+    }
+  },
+  "riskIdn": {
+    "message": "可能包含外觀相似的字元。"
+  },
+  "riskLookalike": {
+    "message": "與 $DOMAIN$ 相似。",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      }
+    }
+  },
+  "riskIdnInline": {
+    "message": "⚠ 相似字元"
+  },
+  "riskLookalikeInline": {
+    "message": "⚠ 與 $DOMAIN$ 相似",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      }
+    }
+  },
+  "riskUnverified": {
+    "message": "無法檢查網域。"
+  },
+  "riskUnverifiedInline": {
+    "message": "⚠ 網域未檢查"
+  },
+  "risk_insecureHttp": {
+    "message": "HTTP 未經加密。"
+  },
+  "risk_credentials": {
+    "message": "URL 中含有憑證。"
+  },
+  "risk_ipAddress": {
+    "message": "直接使用 IP 位址。"
+  },
+  "risk_unusualPort": {
+    "message": "不尋常的連接埠。"
+  },
+  "risk_textMismatch": {
+    "message": "連結文字與目的地不同。"
+  },
+  "riskInline_insecureHttp": {
+    "message": "⚠ HTTP"
+  },
+  "riskInline_credentials": {
+    "message": "⚠ URL 含憑證"
+  },
+  "riskInline_ipAddress": {
+    "message": "⚠ IP 位址"
+  },
+  "riskInline_unusualPort": {
+    "message": "⚠ 不尋常的連接埠"
+  },
+  "riskInline_textMismatch": {
+    "message": "⚠ 文字 ≠ 目的地"
+  },
+  "unsafeTitle": {
+    "message": "無法核准的連結"
+  },
+  "unknownHost": {
+    "message": "未知的目的地"
+  },
+  "reason_invalidUrl": {
+    "message": "連結目標無效或過長"
+  },
+  "reason_badScheme": {
+    "message": "連結使用了不支援的通訊協定"
+  },
+  "reason_credentials": {
+    "message": "連結目標含有憑證"
+  },
+  "reason_ipAddress": {
+    "message": "連結直接指向 IP 位址"
+  },
+  "reason_insecureHttp": {
+    "message": "連結使用未加密的 HTTP"
+  },
+  "reason_unusualPort": {
+    "message": "連結使用不尋常的連接埠"
+  },
+  "reason_textMismatch": {
+    "message": "顯示的網域與實際網域不同"
+  },
+  "reason_redirectUnsafe": {
+    "message": "重新導向目標不安全或無法檢查"
+  },
+  "overflowNotice": {
+    "message": "超過 500 個連結：其餘連結仍會被封鎖，且不會列在此處。"
+  },
+  "exactHostNotice": {
+    "message": "上層網域與子網域一律分開處理。顯示的連結文字可能具誤導性。"
+  },
+  "stateUnavailable": {
+    "message": "無法載入核准設定。網頁連結仍會被封鎖。"
+  },
+  "saveFailed": {
+    "message": "無法儲存決定。連結仍會被封鎖。"
+  },
+  "settingsTitle": {
+    "message": "Link Guard 設定"
+  },
+  "settingsSubtitle": {
+    "message": "選擇您信任哪些確切的主機名稱作為電子郵件中的網頁連結。"
+  },
+  "enabledLabel": {
+    "message": "啟用 Link Guard"
+  },
+  "enabledHint": {
+    "message": "停用保護後，連結將可再次直接點擊。"
+  },
+  "hostCount": {
+    "message": "主機名稱：$COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "customTitle": {
+    "message": "我的永久核准"
+  },
+  "customHint": {
+    "message": "您在郵件中永久核准的網域會顯示在此處。您也可以直接編輯。"
+  },
+  "blockedTitle": {
+    "message": "已封鎖的網域"
+  },
+  "blockedHint": {
+    "message": "此清單優先於核准與匯入項目。使用 *.example.com 可封鎖該網域及所有子網域；暫時核准僅適用於此郵件。"
+  },
+  "broadTitle": {
+    "message": "核准整個網域"
+  },
+  "broadHint": {
+    "message": "使用 *.example.com 可核准該網域及其子網域，包含 example.com。共用內容主機仍須分開處理；僅對您自己管理的網域使用廣泛核准。"
+  },
+  "broadInvalid": {
+    "message": "依據內建的 Public Suffix List，$DOMAIN$ 不是可註冊的網域。",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      }
+    }
+  },
+  "importsTitle": {
+    "message": "自訂與遠端清單"
+  },
+  "importsHint": {
+    "message": "匯入 JSON 檔案或連結 HTTPS 清單。每份清單在啟用前都會顯示，並且僅在您檢閱後才會套用。允許清單的遠端變更需要您再次核准。"
+  },
+  "importFileLabel": {
+    "message": "選擇 JSON 檔案"
+  },
+  "importUrlLabel": {
+    "message": "JSON 清單的 HTTPS URL"
+  },
+  "previewRemote": {
+    "message": "檢查遠端清單"
+  },
+  "importSecurityHint": {
+    "message": "遠端伺服器必須允許 CORS。不會傳送郵件內容。最多 64 KiB、500 個主機名稱與 20 份清單；不支援重新導向。請僅從信任的來源載入清單。"
+  },
+  "importPreviewTitle": {
+    "message": "預覽"
+  },
+  "refreshTitle": {
+    "message": "檢閱更新"
+  },
+  "stageImport": {
+    "message": "暫存為停用的清單"
+  },
+  "stageRefresh": {
+    "message": "暫存更新"
+  },
+  "cancelPreview": {
+    "message": "取消"
+  },
+  "refreshPreview": {
+    "message": "檢閱遠端更新"
+  },
+  "removeList": {
+    "message": "移除清單"
+  },
+  "importStaged": {
+    "message": "清單已暫存。請在下方儲存以套用。"
+  },
+  "importReady": {
+    "message": "清單已檢查。請在預覽中檢閱主機名稱。"
+  },
+  "importLoading": {
+    "message": "正在載入並檢查清單 …"
+  },
+  "importTooLarge": {
+    "message": "清單過大（上限 64 KiB）。"
+  },
+  "importFormat": {
+    "message": "清單格式無效。必須包含：format、version、name、category 與 hosts。"
+  },
+  "importDuplicate": {
+    "message": "清單含有重複的主機名稱。"
+  },
+  "importUrl": {
+    "message": "僅允許不含憑證、連接埠、查詢字串或片段的 HTTPS 檔案 URL。"
+  },
+  "importFetch": {
+    "message": "無法安全載入遠端清單。請檢查 HTTPS、JSON、CORS 與重新導向。"
+  },
+  "importListLimit": {
+    "message": "最多只能有 20 份匯入的清單。"
+  },
+  "importEmpty": {
+    "message": "匯入的清單不得為空。"
+  },
+  "category_news": {
+    "message": "新聞"
+  },
+  "category_social": {
+    "message": "社群媒體"
+  },
+  "category_companies": {
+    "message": "公司"
+  },
+  "category_other": {
+    "message": "其他"
+  },
+  "hostListLabel": {
+    "message": "每行一條規則"
+  },
+  "saveSettings": {
+    "message": "儲存變更"
+  },
+  "settingsSaved": {
+    "message": "設定已儲存。"
+  },
+  "settingsLoadFailed": {
+    "message": "無法載入設定。"
+  },
+  "settingsSaveFailed": {
+    "message": "無法儲存設定。"
+  },
+  "settingsChanged": {
+    "message": "清單已在其他地方變更。儲存前請重新載入此頁面。"
+  },
+  "invalidHostLine": {
+    "message": "第 $LINE$ 行的主機名稱無效。",
+    "placeholders": {
+      "line": {
+        "content": "$1"
+      }
+    }
+  },
+  "hostLimit": {
+    "message": "每份清單最多 500 個主機名稱。"
+  },
+  "hostFormatHint": {
+    "message": "確切的主機不含萬用字元。整個網域的規則使用 *.example.com，並包含 example.com 本身。"
+  },
+  "exactHostExample": {
+    "message": "login.google.de 與 google.de 是不同的主機名稱，需要分別核准。"
+  },
+  "risk_shortLink": {
+    "message": "短網址：目的地被隱藏。"
+  },
+  "riskInline_shortLink": {
+    "message": "⚠ 短網址"
+  },
+  "riskyApprovalWarning": {
+    "message": "這個短網址隱藏了目的地。要在此郵件中允許嗎？"
+  },
+  "riskyApprovalConfirm": {
+    "message": "僅在此郵件中允許"
+  },
+  "importedEnable": {
+    "message": "啟用清單"
+  },
+  "listViewEdit": {
+    "message": "檢視與編輯清單"
+  },
+  "listHosts": {
+    "message": "此清單中的確切主機名稱"
+  },
+  "kind_allow": {
+    "message": "允許清單"
+  },
+  "kind_block": {
+    "message": "封鎖清單"
+  },
+  "listBlockedHosts": {
+    "message": "此清單中的封鎖項目（*.example.com 會封鎖該網域及所有子網域）"
+  },
+  "importBlockHint": {
+    "message": "含有 \"kind\": \"block\" 的清單是封鎖清單。啟用後，它優先於核准與匯入的允許清單，並可包含 *.example.com 項目。封鎖清單可選擇每天自動更新一次左右；允許清單則永遠不會。"
+  },
+  "autoRefreshLabel": {
+    "message": "大約每天自動更新一次（會取代本機編輯內容）"
+  },
+  "autoRefreshKind": {
+    "message": "來源現在宣告了不同的清單類型，因此清單未被變更。請手動檢閱。"
+  },
+  "autoRefreshOk": {
+    "message": "上次自動檢查：$DATE$",
+    "placeholders": {
+      "date": {
+        "content": "$1"
+      }
+    }
+  },
+  "autoRefreshFailed": {
+    "message": "$DATE$ 的自動更新失敗。先前的清單仍然有效。",
+    "placeholders": {
+      "date": {
+        "content": "$1"
+      }
+    }
+  },
+  "autoRefreshReview": {
+    "message": "自動更新未套用，因為它過大，或會封鎖您已核准的內容。先前的清單仍然有效；請使用「檢閱遠端更新」。"
+  }
+}
