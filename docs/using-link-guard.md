@@ -18,9 +18,10 @@ destination host, sorted alphabetically. Each row shows:
 
 1. the **host name** exactly as the link resolves to it,
 2. its **status** (see below),
-3. any **warnings** for that host, in red,
+3. any **warnings** for that host, each in a red box with a red warning triangle,
 4. the **actions** you can take.
 
+Rows of hosts with a warning have a red edge, so they stand out when you scan the list.
 The notice disappears as soon as every web link in the message is approved and none of
 them has a warning.
 

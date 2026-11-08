@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- Notice: warnings are shown in red with a red warning triangle, and the rows of
+  hosts with a warning get a red edge. Before, a style conflict drew them in the
+  same dark text as host names.
 - Settings: switch off the destination label shown next to links whose text does
   not name their target, for messages whose layout it disturbs. It is on by
   default. Warning labels and the panel are not affected.

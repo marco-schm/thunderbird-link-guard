@@ -360,6 +360,46 @@
     actions.replaceChildren(chooser);
   }
 
+  // A warning in the notice: red text behind a red warning triangle. The triangle is an
+  // inline SVG rather than the ⚠ character, which some systems draw as a colour emoji.
+  const SVG_NS = "http://www.w3.org/2000/svg";
+
+  function warningIcon() {
+    const icon = document.createElementNS(SVG_NS, "svg");
+    icon.setAttribute("class", "link-guard-risk-icon");
+    icon.setAttribute("viewBox", "0 0 24 24");
+    icon.setAttribute("aria-hidden", "true");
+    const triangle = document.createElementNS(SVG_NS, "path");
+    triangle.setAttribute("d", "M10.3 3.9a2 2 0 0 1 3.4 0l8.4 14.6a2 2 0 0 1-1.7 3H3.6a2 2 0 0 1-1.7-3z");
+    triangle.setAttribute("fill", "#b42332");
+    const bar = document.createElementNS(SVG_NS, "path");
+    bar.setAttribute("d", "M12 9v5.2");
+    bar.setAttribute("stroke", "#fff");
+    bar.setAttribute("stroke-width", "2.4");
+    bar.setAttribute("stroke-linecap", "round");
+    const dot = document.createElementNS(SVG_NS, "circle");
+    dot.setAttribute("cx", "12");
+    dot.setAttribute("cy", "17.6");
+    dot.setAttribute("r", "1.4");
+    dot.setAttribute("fill", "#fff");
+    icon.append(triangle, bar, dot);
+    return icon;
+  }
+
+  // The line takes the full width so each warning starts on its own line; the red box
+  // inside it is only as wide as its text.
+  function riskLine(text) {
+    const line = document.createElement("div");
+    line.className = "link-guard-risk";
+    const box = document.createElement("span");
+    box.className = "link-guard-risk-box";
+    const label = document.createElement("span");
+    label.textContent = text;
+    box.append(warningIcon(), label);
+    line.append(box);
+    return line;
+  }
+
   function makeHostRow(host, count, risks) {
     const row = document.createElement("div");
     row.className = "link-guard-row";
@@ -378,19 +418,13 @@
     information.append(name, status);
     const warning = warningFor(host);
     if (warning && warning.kind !== "none") {
-      const risk = document.createElement("strong");
-      risk.className = "link-guard-risk";
-      risk.textContent = warning.kind === "idn" ? t("riskIdn") :
+      information.append(riskLine(warning.kind === "idn" ? t("riskIdn") :
         warning.kind === "unverified" ? t("riskUnverified") :
-          t("riskLookalike", [warning.similarTo]);
-      information.append(risk);
+          t("riskLookalike", [warning.similarTo])));
     }
-    for (const reason of risks || []) {
-      const detail = document.createElement("strong");
-      detail.className = "link-guard-risk";
-      detail.textContent = riskText(reason, false);
-      information.append(detail);
-    }
+    for (const reason of risks || []) information.append(riskLine(riskText(reason, false)));
+    // A host with a warning stands out in the list, not only through its text.
+    if ((warning && warning.kind !== "none") || risks?.size) row.classList.add("link-guard-row-risk");
     const actions = document.createElement("div");
     actions.className = "link-guard-actions";
     if (temporaryOnly) {
