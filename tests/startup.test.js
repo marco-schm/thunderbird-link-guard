@@ -54,3 +54,16 @@ test("the panel stylesheet is exposed as a string for the shadow root", () => {
   assert.match(context.LinkGuardPanelCss, /\.link-guard-actions button/);
   assert.doesNotMatch(fs.readFileSync(path.join(__dirname, "../display.css"), "utf8"), /link-guard-panel/);
 });
+
+// Inline styles cannot reach pseudo-elements; message CSS could inject text into the
+// panel host or a label with ::before/::after. Shadow-scoped !important rules win.
+test("shadow roots on the page neutralise the host's pseudo-elements", () => {
+  const context = vm.createContext({});
+  vm.runInContext(fs.readFileSync(path.join(__dirname, "../panel-style.js"), "utf8"), context);
+  const guard = context.LinkGuardHostGuardCss;
+  assert.match(guard, /:host::before,\s*:host::after\s*\{[^}]*content:\s*none !important/);
+  assert.match(guard, /:host::first-line,\s*:host::first-letter\s*\{[^}]*color:\s*inherit !important/);
+  assert.ok(context.LinkGuardPanelCss.startsWith(guard));
+  assert.match(fs.readFileSync(path.join(__dirname, "../display.js"), "utf8"),
+    /guard\.textContent = globalThis\.LinkGuardHostGuardCss/);
+});

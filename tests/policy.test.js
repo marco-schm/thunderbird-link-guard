@@ -1,8 +1,11 @@
 const test = require("node:test");
 const assert = require("node:assert/strict");
-const { normalizeHost, parseHostList, parseRuleList, inspectLink,
+const { normalizeHost, parseHostList, parseRuleList, inspectLink, resolveHref,
   lookalikeDomain, isInternationalizedHost, isSharedContentHost,
-  apparentHost } = require("../policy.js");
+  apparentHost, bareHostCandidate } = require("../policy.js");
+
+// A displayed message's own base URI. A `<base href>` in the message replaces it.
+const MESSAGE_BASE = "mailbox:///tmp/example.eml?type=application/x-message-display";
 
 test("host approval is exact in both directions", () => {
   assert.equal(normalizeHost("Login.Google.De."), "login.google.de");
@@ -83,6 +86,58 @@ test("only public shortener hosts trigger the short-link warning", () => {
 test("non-web actions and in-message fragments are outside web domain approval", () => {
   for (const url of ["mailto:help@example.com", "tel:+491234", "cid:image@example.com", "#part"])
     assert.equal(inspectLink(url).kind, "skip", url);
+  // Still in-message once the message's own base URI is taken into account.
+  for (const url of ["#part", "", "#"])
+    assert.equal(inspectLink(url, "", MESSAGE_BASE).kind, "skip", JSON.stringify(url));
+});
+
+// Thunderbird opens the URL a link resolves to, so a `<base href>` makes an empty href
+// or a bare fragment point at the web. Classifying the raw attribute let those through
+// as in-message anchors, with no approval, no warning and an intact href.
+test("a message base URI cannot turn a fragment into an unchecked web link", () => {
+  const base = "https://base-evil.example.net/landing";
+  for (const href of ["#x", "", "#"]) {
+    const result = inspectLink(href, "", base);
+    assert.equal(result.kind, "web", JSON.stringify(href));
+    assert.deepEqual(result.hosts, ["base-evil.example.net"], JSON.stringify(href));
+  }
+  // Relative and scheme-relative targets follow the same base.
+  assert.deepEqual(inspectLink("/pfad", "", base).hosts, ["base-evil.example.net"]);
+  assert.deepEqual(inspectLink("//other.example.net/p", "", base).hosts, ["other.example.net"]);
+  // A base pointing back into the message keeps those targets out of the web.
+  assert.equal(inspectLink("#x", "", MESSAGE_BASE).kind, "skip");
+  assert.equal(inspectLink("/pfad", "", MESSAGE_BASE).kind, "blocked");
+  // Absolute schemes are unaffected by the base.
+  for (const href of ["mailto:help@example.com", "tel:+491234", "cid:image@example.com"])
+    assert.equal(inspectLink(href, "", base).kind, "skip", href);
+  assert.equal(inspectLink("javascript:alert(1)", "", base).kind, "blocked");
+  assert.deepEqual(inspectLink("https://elsewhere.example.net/p", "", base).hosts,
+    ["elsewhere.example.net"]);
+});
+
+// The most natural phishing text names a domain without scheme or "www.". Whether a
+// candidate is a real domain is decided later against the Public Suffix List.
+test("link text naming a bare domain yields a hostname candidate", () => {
+  for (const [text, host] of [
+    ["sparkasse.de", "sparkasse.de"], ["PAYPAL.COM", "paypal.com"],
+    ["login.microsoftonline.com", "login.microsoftonline.com"],
+    ["Besuchen Sie firma.de.", "firma.de"], ["firma.de/konto", "firma.de"],
+    ["bücher.de", "xn--bcher-kva.de"], ["datei.pdf", "datei.pdf"]
+  ]) assert.equal(bareHostCandidate(text), host, text);
+  for (const text of ["Konto prüfen", "Version 1.2.3", "z.B. heute", "info@example.org",
+    "a.b", "", "1.2.3.4", `${"x".repeat(70)}.de`])
+    assert.equal(bareHostCandidate(text), null, text);
+  assert.equal(bareHostCandidate(null), null);
+});
+
+test("the destination used for warning rules follows the base URI", () => {
+  const base = "https://base-evil.example.net/landing";
+  assert.equal(resolveHref("#x", base).href, "https://base-evil.example.net/landing#x");
+  assert.equal(resolveHref("", base).href, "https://base-evil.example.net/landing");
+  assert.equal(resolveHref("#x", MESSAGE_BASE).href, `${MESSAGE_BASE}#x`);
+  assert.equal(resolveHref("https://example.org/p", base).href, "https://example.org/p");
+  assert.equal(resolveHref("#x"), null);
+  assert.equal(resolveHref(null, base), null);
 });
 
 test("lookalike matching catches single edits and adjacent swaps without suffix guessing", () => {

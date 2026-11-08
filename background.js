@@ -164,6 +164,19 @@ async function analyzeHosts(hosts) {
   return result;
 }
 
+// Registrable domain of each hostname, or null when it is not a valid hostname under a
+// known public suffix. Message pages use it to compare a domain named in link text
+// ("sparkasse.de") with the link's real destination. Pairs keep arbitrary input from
+// becoming object keys.
+async function registrableDomains(hosts) {
+  if (!Array.isArray(hosts) || hosts.length > 500) throw new Error("host limit");
+  const rules = await publicSuffixRules();
+  return hosts.filter(value => typeof value === "string").map(value => {
+    try { return [value, domainScope.registrableDomain(policy.normalizeHost(value), rules)]; }
+    catch { return [value, null]; }
+  });
+}
+
 async function invalidBroadDomain(hosts) {
   if (!Array.isArray(hosts) || hosts.length > 500) throw new Error("host limit");
   const rules = await publicSuffixRules();
@@ -350,6 +363,7 @@ messenger.runtime.onMessage.addListener((message, sender) => {
   }
   if (message?.type === "link-guard-scope") return scopeRoot(message.host);
   if (message?.type === "link-guard-analyze") return analyzeHosts(message.hosts);
+  if (message?.type === "link-guard-roots") return registrableDomains(message.hosts);
   if (message?.type === "link-guard-validate-broad") return invalidBroadDomain(message.hosts);
   if (message?.type === "link-guard-decision") {
     const result = updateQueue.then(() =>

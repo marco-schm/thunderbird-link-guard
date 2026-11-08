@@ -1,3 +1,6 @@
+/* The inline labels are styled by display.js with inline !important styles and a
+   closed shadow root, which override everything here. This file only remains as a
+   fallback; change the label look in LABEL_LOOK in display.js. */
 .link-guard-inline-warning {
   display: inline-block !important;
   visibility: visible !important;

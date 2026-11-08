@@ -108,6 +108,22 @@ test("whole-domain approval is separate from exact approval and uses public suff
   assert.equal(await h.send({ type: "link-guard-validate-broad", hosts: ["co.uk"] }), "co.uk");
 });
 
+// Message pages compare a domain named in link text with the destination by registrable
+// domain. Anything that is not a hostname under a known suffix has no root.
+test("registrable domains for link text are looked up against public suffix rules", async () => {
+  const h = harness();
+  const pairs = await h.send({ type: "link-guard-roots", hosts: ["sparkasse.de",
+    "www.sparkasse.de", "login.example.co.uk", "datei.pdf", "co.uk", "192.0.2.1",
+    "__proto__", "constructor", 42] });
+  assert.deepEqual(new Map(pairs), new Map([["sparkasse.de", "sparkasse.de"],
+    ["www.sparkasse.de", "sparkasse.de"], ["login.example.co.uk", "example.co.uk"],
+    ["datei.pdf", null], ["co.uk", null], ["192.0.2.1", null], ["__proto__", null],
+    ["constructor", null]]));
+  await assert.rejects(h.send({ type: "link-guard-roots",
+    hosts: Array.from({ length: 501 }, (_, i) => `h${i}.example.de`) }));
+  await assert.rejects(h.send({ type: "link-guard-roots", hosts: "sparkasse.de" }));
+});
+
 test("block decision asks for exact or registrable-domain scope", async () => {
   const h = harness();
   await h.send({ type: "link-guard-decision", host: "login.google.de",
