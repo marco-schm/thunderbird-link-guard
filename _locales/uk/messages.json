@@ -165,9 +165,6 @@
   "riskUnverifiedInline": {
     "message": "⚠ Домен не перевірено"
   },
-  "risk_insecureHttp": {
-    "message": "HTTP не шифрується."
-  },
   "risk_credentials": {
     "message": "Облікові дані в URL."
   },
@@ -179,9 +176,6 @@
   },
   "risk_textMismatch": {
     "message": "Текст посилання й адреса призначення відрізняються."
-  },
-  "riskInline_insecureHttp": {
-    "message": "⚠ HTTP"
   },
   "riskInline_credentials": {
     "message": "⚠ Облікові дані в URL"
@@ -212,9 +206,6 @@
   },
   "reason_ipAddress": {
     "message": "Посилання веде безпосередньо на IP-адресу"
-  },
-  "reason_insecureHttp": {
-    "message": "Посилання використовує незашифрований HTTP"
   },
   "reason_unusualPort": {
     "message": "Посилання використовує незвичайний порт"

@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Stop flagging plain `http://` links. They no longer show a warning or need an
+  extra exact-host approval, so an approved host can also be opened over HTTP.
 - Security: disable SVG anchors that carry their destination in `xlink:href`.
   They were previously neither inspected nor blocked.
 - Security: render the approval panel inside a closed shadow root with inline

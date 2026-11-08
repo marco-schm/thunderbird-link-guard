@@ -19,7 +19,7 @@ Link Guard is a warning aid, not a malware scanner or a guarantee that an
 approved site is trustworthy. It inspects displayed mail locally and never
 contacts link targets during analysis. A message can contain malicious QR
 codes, attachments, or links hidden behind a trusted site's redirector.
-Approving a hostname permits all eligible HTTPS URLs on that exact hostname,
+Approving a hostname permits all eligible HTTP(S) URLs on that exact hostname,
 so a compromised or multi-tenant site remains a risk. Sender identity is
 outside the current scope.
 
@@ -51,11 +51,10 @@ target is sent to a list source.
 
 Risky HTTP(S) links may be opened only after explicit approval of every
 involved exact host in the message. They retain an inline warning. This
-includes HTTP, embedded credentials, unusual ports and misleading visible
-text. Direct IP links may only be approved temporarily in the current
-message. An HTTP-to-HTTPS redirect cannot protect the first insecure request
-unless the browser already knows an HSTS policy for that host. Imported lists and
-broad-domain approvals do not unlock risky links.
+includes embedded credentials, unusual ports and misleading visible
+text. Plain HTTP is not treated as a risk: it is neither flagged nor held back,
+so an approved host can also be opened over HTTP. Direct IP links may only be approved temporarily in the current
+message. Imported lists and broad-domain approvals do not unlock risky links.
 
 The approval panel is rendered inside a closed shadow root with its box
 properties fixed by inline `!important` styles, so message-authored CSS cannot

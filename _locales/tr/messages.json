@@ -165,9 +165,6 @@
   "riskUnverifiedInline": {
     "message": "⚠ Alan adı denetlenmedi"
   },
-  "risk_insecureHttp": {
-    "message": "HTTP şifrelenmemiştir."
-  },
   "risk_credentials": {
     "message": "URL içinde kimlik bilgileri var."
   },
@@ -179,9 +176,6 @@
   },
   "risk_textMismatch": {
     "message": "Bağlantı metni ile hedef farklı."
-  },
-  "riskInline_insecureHttp": {
-    "message": "⚠ HTTP"
   },
   "riskInline_credentials": {
     "message": "⚠ URL'de kimlik bilgileri"
@@ -212,9 +206,6 @@
   },
   "reason_ipAddress": {
     "message": "Bağlantı doğrudan bir IP adresine gidiyor"
-  },
-  "reason_insecureHttp": {
-    "message": "Bağlantı şifrelenmemiş HTTP kullanıyor"
   },
   "reason_unusualPort": {
     "message": "Bağlantı olağandışı bir bağlantı noktası kullanıyor"

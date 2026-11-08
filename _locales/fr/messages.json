@@ -165,9 +165,6 @@
   "riskUnverifiedInline": {
     "message": "⚠ Domaine non vérifié"
   },
-  "risk_insecureHttp": {
-    "message": "HTTP n'est pas chiffré."
-  },
   "risk_credentials": {
     "message": "Informations d'identification dans l'URL."
   },
@@ -179,9 +176,6 @@
   },
   "risk_textMismatch": {
     "message": "Le texte du lien et la destination diffèrent."
-  },
-  "riskInline_insecureHttp": {
-    "message": "⚠ HTTP"
   },
   "riskInline_credentials": {
     "message": "⚠ Informations d'identification dans l'URL"
@@ -212,9 +206,6 @@
   },
   "reason_ipAddress": {
     "message": "Le lien mène directement à une adresse IP"
-  },
-  "reason_insecureHttp": {
-    "message": "Le lien utilise HTTP non chiffré"
   },
   "reason_unusualPort": {
     "message": "Le lien utilise un port inhabituel"

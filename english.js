@@ -167,9 +167,6 @@ globalThis.LinkGuardEnglish = {
   "riskUnverifiedInline": {
     "message": "⚠ Domain unchecked"
   },
-  "risk_insecureHttp": {
-    "message": "HTTP is unencrypted."
-  },
   "risk_credentials": {
     "message": "Credentials in the URL."
   },
@@ -181,9 +178,6 @@ globalThis.LinkGuardEnglish = {
   },
   "risk_textMismatch": {
     "message": "Link text and destination differ."
-  },
-  "riskInline_insecureHttp": {
-    "message": "⚠ HTTP"
   },
   "riskInline_credentials": {
     "message": "⚠ Credentials in URL"
@@ -214,9 +208,6 @@ globalThis.LinkGuardEnglish = {
   },
   "reason_ipAddress": {
     "message": "Link leads directly to an IP address"
-  },
-  "reason_insecureHttp": {
-    "message": "Link uses unencrypted HTTP"
   },
   "reason_unusualPort": {
     "message": "Link uses an unusual port"

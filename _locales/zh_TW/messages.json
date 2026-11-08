@@ -165,9 +165,6 @@
   "riskUnverifiedInline": {
     "message": "⚠ 網域未檢查"
   },
-  "risk_insecureHttp": {
-    "message": "HTTP 未經加密。"
-  },
   "risk_credentials": {
     "message": "URL 中含有憑證。"
   },
@@ -179,9 +176,6 @@
   },
   "risk_textMismatch": {
     "message": "連結文字與目的地不同。"
-  },
-  "riskInline_insecureHttp": {
-    "message": "⚠ HTTP"
   },
   "riskInline_credentials": {
     "message": "⚠ URL 含憑證"
@@ -212,9 +206,6 @@
   },
   "reason_ipAddress": {
     "message": "連結直接指向 IP 位址"
-  },
-  "reason_insecureHttp": {
-    "message": "連結使用未加密的 HTTP"
   },
   "reason_unusualPort": {
     "message": "連結使用不尋常的連接埠"
