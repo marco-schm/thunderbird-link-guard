@@ -2,7 +2,7 @@
 
 ## Supported version and reporting
 
-The current 0.10.x line is supported. Earlier local development builds are not
+The current 0.11.x line is supported. Earlier local development builds are not
 maintained. Please use GitHub's **Report a vulnerability** entry in the
 repository's Security tab when available. If that entry is unavailable, open
 a public Issue that asks for a private contact channel **without** including
