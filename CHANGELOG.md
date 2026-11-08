@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+- Security: disable SVG anchors that carry their destination in `xlink:href`.
+  They were previously neither inspected nor blocked.
+- Security: render the approval panel inside a closed shadow root with inline
+  `!important` box styles, so message-authored CSS can no longer hide or restyle
+  it. The panel stylesheet moved from `display.css` to `panel-style.js`.
 - Settings: split the rule lists into four separate cards, so exact hosts and
   whole domains are edited apart for both approvals and blocks. Stored data is
   unchanged. Blocked whole domains (`*.example.com`) now have their own card

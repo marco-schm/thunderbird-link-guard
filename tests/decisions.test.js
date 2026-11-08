@@ -7,6 +7,9 @@ const policy = require("../policy.js");
 const listImport = require("../import-list.js");
 const domainScope = require("../domain-scope.js");
 
+// Exact membership in a list of hosts (not a substring test on a URL).
+const has = (list, value) => [...list].some(item => item === value);
+
 function harness() {
   const local = { trustedHosts: ["old.example.com"] };
   const remote = { calls: [], handler: null };
@@ -83,11 +86,11 @@ test("imported lists cannot grant access until enabled, and block wins", async (
   h.local.importedLists = [{ id: "12345678-1234-1234-1234-123456789abc",
     name: "Example", category: "other", hosts: ["example.org"],
     sourceUrl: "https://lists.example.org/list.json", enabled: false }];
-  assert.ok(!(await h.send({ type: "link-guard-state" })).allowedHosts.includes("example.org"));
+  assert.ok(!has((await h.send({ type: "link-guard-state" })).allowedHosts, "example.org"));
   h.local.importedLists[0].enabled = true;
-  assert.ok((await h.send({ type: "link-guard-state" })).allowedHosts.includes("example.org"));
+  assert.ok(has((await h.send({ type: "link-guard-state" })).allowedHosts, "example.org"));
   const state = await h.send({ type: "link-guard-decision", host: "example.org", decision: "block" });
-  assert.ok(!state.allowedHosts.includes("example.org"));
+  assert.ok(!has(state.allowedHosts, "example.org"));
 });
 
 test("whole-domain approval is separate from exact approval and uses public suffix rules", async () => {
@@ -136,7 +139,7 @@ test("whole-domain blocks remove local approvals but never widen a private suffi
   assert.deepEqual([...state.blockedDomains], ["alice.github.io", "google.de"]);
   assert.deepEqual([...state.customAllowedHosts], []);
   assert.deepEqual([...state.broadAllowedDomains], []);
-  assert.ok(!state.blockedDomains.includes("github.io"));
+  assert.ok(!has(state.blockedDomains, "github.io"));
 });
 
 test("whole-domain blocks override imported hosts and later whole-domain approval", async () => {
@@ -213,7 +216,7 @@ test("imported block lists override approvals and imported allow lists", async (
       kind: "allow", hosts: ["www.google.de", "fine.example.org"], sourceUrl: "", enabled: true }];
   const state = await h.send({ type: "link-guard-state" });
   assert.deepEqual([...state.allowedHosts], ["fine.example.org"]);
-  assert.ok(state.blockedHosts.includes("ok.example.org"));
+  assert.ok(has(state.blockedHosts, "ok.example.org"));
   assert.ok(state.blockedDomains.includes("google.de"));
 });
 
@@ -238,7 +241,7 @@ test("approving a host blocked by an imported list is refused instead of silentl
   // Other hosts, and the user's own blocks, are unaffected.
   const state = await h.send({ type: "link-guard-decision", host: "other.example.org",
     decision: "permanent", scope: "exact" });
-  assert.ok(state.allowedHosts.includes("other.example.org"));
+  assert.ok(has(state.allowedHosts, "other.example.org"));
 });
 
 const SOURCE = "https://lists.example.org/block.json";
@@ -289,7 +292,7 @@ test("auto-refresh skips lists that are disabled, not due, not opted in or not b
   ];
   await settle(h);
   assert.deepEqual(h.remote.calls, []);
-  assert.ok(h.local.importedLists.every(list => !list.hosts.includes("new.example.org")));
+  assert.ok(h.local.importedLists.every(list => !has(list.hosts, "new.example.org")));
 });
 
 test("auto-refresh is on by default for a remote blocklist and can be switched off per list", async () => {
@@ -325,7 +328,7 @@ test("a failed or type-changing auto-refresh keeps the stored list and delays th
   [list] = h.local.importedLists;
   assert.equal(list.refreshStatus, "kindChanged");
   assert.deepEqual([...list.hosts], ["old.example.org"]);
-  assert.ok(!(await h.send({ type: "link-guard-state" })).allowedHosts.includes("evil.example.org"));
+  assert.ok(!has((await h.send({ type: "link-guard-state" })).allowedHosts, "evil.example.org"));
 });
 
 test("an imported block cannot shrink the lookalike references of approved domains", async () => {
@@ -333,14 +336,14 @@ test("an imported block cannot shrink the lookalike references of approved domai
   await h.send({ type: "link-guard-decision", host: "login.bank.com", decision: "permanent" });
   h.local.importedLists = [blockList(["login.bank.com", "*.bank.com"])];
   const state = await h.send({ type: "link-guard-state" });
-  assert.ok(!state.allowedHosts.includes("login.bank.com"), "still blocked");
-  assert.ok(state.trustedDomains.includes("bank.com"));
+  assert.ok(!has(state.allowedHosts, "login.bank.com"), "still blocked");
+  assert.ok(has(state.trustedDomains, "bank.com"));
   const result = await h.send({ type: "link-guard-analyze", hosts: ["bnak.com"] });
   assert.equal(result["bnak.com"].kind, "lookalike");
   // The user's own block still removes the approval and its reference, as before.
   await h.send({ type: "link-guard-decision", host: "login.bank.com", decision: "block" });
   h.local.importedLists = [];
-  assert.ok(!(await h.send({ type: "link-guard-state" })).trustedDomains.includes("bank.com"));
+  assert.ok(!has((await h.send({ type: "link-guard-state" })).trustedDomains, "bank.com"));
 });
 
 test("the public state does not carry the imported lists themselves", async () => {
@@ -393,7 +396,7 @@ test("an automatic update that adds many entries, doubles the list or gutts it i
   h.remote.handler = autoResponse([...big.slice(1), "added.example.org"]);
   await settle(h);
   assert.equal(h.local.importedLists[0].refreshStatus, "ok");
-  assert.ok(h.local.importedLists[0].hosts.includes("added.example.org"));
+  assert.ok(has(h.local.importedLists[0].hosts, "added.example.org"));
 });
 
 test("no storage work or fetch happens when no enabled list opted in to auto-refresh", async () => {
