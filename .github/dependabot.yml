@@ -1,0 +1,15 @@
+# Keeps the commit-pinned GitHub Actions in .github/workflows current.
+# The extension has no npm dependencies, and the bundled Public Suffix List
+# is updated by hand (see vendor/README.md), so no other ecosystem is listed.
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: monthly
+    open-pull-requests-limit: 2
+    commit-message:
+      prefix: ci
+    groups:
+      github-actions:
+        patterns: ["*"]
