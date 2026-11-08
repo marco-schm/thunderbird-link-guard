@@ -55,11 +55,19 @@ test("HTTP links keep their host and are treated like HTTPS links", () => {
 
 test("web links with risky details require explicit approval", () => {
   for (const [url, risk] of [["https://user@example.com/", "credentials"],
-    ["https://192.0.2.1/", "ipAddress"],
-    ["https://example.com:8443/", "unusualPort"]]) {
+    ["https://192.0.2.1/", "ipAddress"]]) {
     const result = inspectLink(url);
     assert.equal(result.kind, "web", url);
     assert.ok(result.risks.includes(risk), url);
+  }
+});
+
+// An explicit port is not a warning: the link follows the approval of its host.
+test("a port does not make a link risky", () => {
+  for (const url of ["https://example.com:8443/", "http://example.com:8080/x"]) {
+    const result = inspectLink(url);
+    assert.deepEqual(result.hosts, ["example.com"], url);
+    assert.equal(result.risks, undefined, url);
   }
 });
 

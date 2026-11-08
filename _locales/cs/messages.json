@@ -171,9 +171,6 @@
   "risk_ipAddress": {
     "message": "Přímá IP adresa."
   },
-  "risk_unusualPort": {
-    "message": "Neobvyklý port."
-  },
   "risk_textMismatch": {
     "message": "Text odkazu a cíl se liší."
   },
@@ -182,9 +179,6 @@
   },
   "riskInline_ipAddress": {
     "message": "⚠ IP adresa"
-  },
-  "riskInline_unusualPort": {
-    "message": "⚠ Neobvyklý port"
   },
   "riskInline_textMismatch": {
     "message": "⚠ Text ≠ cíl"
@@ -206,9 +200,6 @@
   },
   "reason_ipAddress": {
     "message": "Odkaz vede přímo na IP adresu"
-  },
-  "reason_unusualPort": {
-    "message": "Odkaz používá neobvyklý port"
   },
   "reason_textMismatch": {
     "message": "Zobrazená a skutečná doména se liší"
@@ -486,9 +477,6 @@
   },
   "warn_ipAddress": {
     "message": "IP adresa místo názvu hostitele"
-  },
-  "warn_unusualPort": {
-    "message": "Neobvyklý port"
   },
   "warn_shortLink": {
     "message": "Veřejný zkracovač URL"

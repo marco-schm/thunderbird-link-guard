@@ -171,9 +171,6 @@
   "risk_ipAddress": {
     "message": "Adresse IP directe."
   },
-  "risk_unusualPort": {
-    "message": "Port insolite."
-  },
   "risk_textMismatch": {
     "message": "Le texte du lien et la destination diffèrent."
   },
@@ -182,9 +179,6 @@
   },
   "riskInline_ipAddress": {
     "message": "⚠ Adresse IP"
-  },
-  "riskInline_unusualPort": {
-    "message": "⚠ Port insolite"
   },
   "riskInline_textMismatch": {
     "message": "⚠ Texte ≠ destination"
@@ -206,9 +200,6 @@
   },
   "reason_ipAddress": {
     "message": "Le lien mène directement à une adresse IP"
-  },
-  "reason_unusualPort": {
-    "message": "Le lien utilise un port inhabituel"
   },
   "reason_textMismatch": {
     "message": "Les domaines affichés et réels diffèrent"
@@ -486,9 +477,6 @@
   },
   "warn_ipAddress": {
     "message": "Adresse IP au lieu d’un nom d’hôte"
-  },
-  "warn_unusualPort": {
-    "message": "Port inhabituel"
   },
   "warn_shortLink": {
     "message": "Raccourcisseur d’URL public"

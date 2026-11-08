@@ -171,9 +171,6 @@
   "risk_ipAddress": {
     "message": "直接使用 IP 位址。"
   },
-  "risk_unusualPort": {
-    "message": "不尋常的連接埠。"
-  },
   "risk_textMismatch": {
     "message": "連結文字與目的地不同。"
   },
@@ -182,9 +179,6 @@
   },
   "riskInline_ipAddress": {
     "message": "⚠ IP 位址"
-  },
-  "riskInline_unusualPort": {
-    "message": "⚠ 不尋常的連接埠"
   },
   "riskInline_textMismatch": {
     "message": "⚠ 文字 ≠ 目的地"
@@ -206,9 +200,6 @@
   },
   "reason_ipAddress": {
     "message": "連結直接指向 IP 位址"
-  },
-  "reason_unusualPort": {
-    "message": "連結使用不尋常的連接埠"
   },
   "reason_textMismatch": {
     "message": "顯示的網域與實際網域不同"
@@ -486,9 +477,6 @@
   },
   "warn_ipAddress": {
     "message": "使用 IP 位址而非主機名稱"
-  },
-  "warn_unusualPort": {
-    "message": "不常見的連接埠"
   },
   "warn_shortLink": {
     "message": "公開短網址服務"

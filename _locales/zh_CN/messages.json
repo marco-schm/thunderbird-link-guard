@@ -171,9 +171,6 @@
   "risk_ipAddress": {
     "message": "直接使用 IP 地址。"
   },
-  "risk_unusualPort": {
-    "message": "使用了不常见的端口。"
-  },
   "risk_textMismatch": {
     "message": "链接文字与实际目标地址不同。"
   },
@@ -182,9 +179,6 @@
   },
   "riskInline_ipAddress": {
     "message": "⚠ IP 地址"
-  },
-  "riskInline_unusualPort": {
-    "message": "⚠ 不常见的端口"
   },
   "riskInline_textMismatch": {
     "message": "⚠ 文字 ≠ 目标地址"
@@ -206,9 +200,6 @@
   },
   "reason_ipAddress": {
     "message": "链接直接指向 IP 地址"
-  },
-  "reason_unusualPort": {
-    "message": "链接使用不常见的端口"
   },
   "reason_textMismatch": {
     "message": "显示的域名与实际域名不同"
@@ -486,9 +477,6 @@
   },
   "warn_ipAddress": {
     "message": "使用 IP 地址而非主机名"
-  },
-  "warn_unusualPort": {
-    "message": "不常见的端口"
   },
   "warn_shortLink": {
     "message": "公共短链接服务"

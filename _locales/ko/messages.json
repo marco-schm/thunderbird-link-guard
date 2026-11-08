@@ -171,9 +171,6 @@
   "risk_ipAddress": {
     "message": "IP 주소로 직접 연결됩니다."
   },
-  "risk_unusualPort": {
-    "message": "일반적이지 않은 포트입니다."
-  },
   "risk_textMismatch": {
     "message": "링크 텍스트와 대상이 다릅니다."
   },
@@ -182,9 +179,6 @@
   },
   "riskInline_ipAddress": {
     "message": "⚠ IP 주소"
-  },
-  "riskInline_unusualPort": {
-    "message": "⚠ 비정상 포트"
   },
   "riskInline_textMismatch": {
     "message": "⚠ 텍스트 ≠ 대상"
@@ -206,9 +200,6 @@
   },
   "reason_ipAddress": {
     "message": "링크가 IP 주소로 직접 연결됩니다"
-  },
-  "reason_unusualPort": {
-    "message": "링크가 일반적이지 않은 포트를 사용합니다"
   },
   "reason_textMismatch": {
     "message": "표시된 도메인과 실제 도메인이 다릅니다"
@@ -486,9 +477,6 @@
   },
   "warn_ipAddress": {
     "message": "호스트 이름 대신 IP 주소"
-  },
-  "warn_unusualPort": {
-    "message": "일반적이지 않은 포트"
   },
   "warn_shortLink": {
     "message": "공개 URL 단축 서비스"

@@ -171,9 +171,6 @@
   "risk_ipAddress": {
     "message": "Direkt IP-adress."
   },
-  "risk_unusualPort": {
-    "message": "Ovanlig port."
-  },
   "risk_textMismatch": {
     "message": "Länktext och mål skiljer sig åt."
   },
@@ -182,9 +179,6 @@
   },
   "riskInline_ipAddress": {
     "message": "⚠ IP-adress"
-  },
-  "riskInline_unusualPort": {
-    "message": "⚠ Ovanlig port"
   },
   "riskInline_textMismatch": {
     "message": "⚠ Text ≠ mål"
@@ -206,9 +200,6 @@
   },
   "reason_ipAddress": {
     "message": "Länken leder direkt till en IP-adress"
-  },
-  "reason_unusualPort": {
-    "message": "Länken använder en ovanlig port"
   },
   "reason_textMismatch": {
     "message": "Visad och faktisk domän skiljer sig åt"
@@ -486,9 +477,6 @@
   },
   "warn_ipAddress": {
     "message": "IP-adress i stället för värdnamn"
-  },
-  "warn_unusualPort": {
-    "message": "Ovanlig port"
   },
   "warn_shortLink": {
     "message": "Offentlig URL-förkortare"

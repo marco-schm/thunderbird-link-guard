@@ -15,7 +15,7 @@ Link Guard makes web links in displayed email inactive until you approve their d
 
 - **Per-host approval.** Allow or block an exact host, or a whole registrable domain (`*.example.org`, which includes `example.org`). `login.example.org` and `example.org` are separate decisions.
 - **Temporary or permanent.** A temporary approval applies to the current message only. Permanent rules are editable in Settings.
-- **Phishing signals.** Prominent warnings for lookalike and internationalized domains, URL credentials, IP addresses, unusual ports, misleading link text, and public URL shorteners. Links with descriptive text also show their real host; this label can be switched off in Settings if it disturbs a message's layout.
+- **Phishing signals.** Prominent warnings for lookalike and internationalized domains, URL credentials, IP addresses, misleading link text, and public URL shorteners. Links with descriptive text also show their real host; this label can be switched off in Settings if it disturbs a message's layout.
 - **Safer defaults.** Shorteners can only be approved for one message, and shared-content hosts such as `docs.google.com` are excluded from broad domain approvals.
 - **Configurable warnings.** Switch built-in warnings off, or add your own as regular expressions for the host, URL or link text, also from imported warning lists. See [Warnings](#warnings).
 - **Allowlists and blocklists.** Import hosts from a JSON file or an HTTPS URL. Remote blocklists can update themselves daily within strict limits. See [Lists](#lists).
@@ -40,7 +40,7 @@ Rules are evaluated in this order:
 
 1. A **temporary approval** for the current message wins.
 2. A **block** (your own, or from an enabled imported blocklist) denies the host. It overrides every permanent approval and allowlist.
-3. A **permanent approval** (exact host, whole domain, or an enabled imported allowlist) allows the host. Links with a risk such as credentials or an unusual port still need an explicit approval of their exact host.
+3. A **permanent approval** (exact host, whole domain, or an enabled imported allowlist) allows the host. Links with a risk such as credentials or misleading link text still need an explicit approval of their exact host.
 4. Everything else stays inactive until you decide.
 
 <p align="center">
@@ -91,7 +91,7 @@ If a fetch fails, the source changes the list type, or an update is held, the st
 
 ## Warnings
 
-Settings lets you switch each built-in warning off: lookalike domains, internationalized domain names, misleading link text, credentials in the URL, IP addresses, unusual ports and URL shorteners. Switching a warning off also removes the extra exact-host approval it requires. A link whose analysis failed always warns.
+Settings lets you switch each built-in warning off: lookalike domains, internationalized domain names, misleading link text, credentials in the URL, IP addresses and URL shorteners. Switching a warning off also removes the extra exact-host approval it requires. A link whose analysis failed always warns.
 
 **Misleading link text** compares the destination with a URL or domain shown in the link text. A text with a scheme or `www.` (`https://example.org`) must name the exact host. A bare domain (`example.org`) is checked against the Public Suffix List, so `datei.pdf` is not mistaken for one, and must belong to the same registrable domain: `example.org` linking to `www.example.org` does not warn, linking to `example.org.other.net` does.
 

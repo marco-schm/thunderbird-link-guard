@@ -171,9 +171,6 @@
   "risk_ipAddress": {
     "message": "Suora IP-osoite."
   },
-  "risk_unusualPort": {
-    "message": "Epätavallinen portti."
-  },
   "risk_textMismatch": {
     "message": "Linkin teksti ja kohde eroavat toisistaan."
   },
@@ -182,9 +179,6 @@
   },
   "riskInline_ipAddress": {
     "message": "⚠ IP-osoite"
-  },
-  "riskInline_unusualPort": {
-    "message": "⚠ Epätavallinen portti"
   },
   "riskInline_textMismatch": {
     "message": "⚠ Teksti ≠ kohde"
@@ -206,9 +200,6 @@
   },
   "reason_ipAddress": {
     "message": "Linkki johtaa suoraan IP-osoitteeseen"
-  },
-  "reason_unusualPort": {
-    "message": "Linkki käyttää epätavallista porttia"
   },
   "reason_textMismatch": {
     "message": "Näytetty ja todellinen verkkotunnus eroavat toisistaan"
@@ -486,9 +477,6 @@
   },
   "warn_ipAddress": {
     "message": "IP-osoite isäntänimen sijaan"
-  },
-  "warn_unusualPort": {
-    "message": "Epätavallinen portti"
   },
   "warn_shortLink": {
     "message": "Julkinen URL-lyhentäjä"

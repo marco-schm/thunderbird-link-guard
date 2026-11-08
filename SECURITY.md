@@ -51,10 +51,12 @@ target is sent to a list source.
 
 Risky HTTP(S) links may be opened only after explicit approval of every
 involved exact host in the message. They retain an inline warning. This
-includes embedded credentials, unusual ports and misleading visible
-text. Plain HTTP is not treated as a risk: it is neither flagged nor held back,
-so an approved host can also be opened over HTTP. Direct IP links may only be approved temporarily in the current
-message. Imported lists and broad-domain approvals do not unlock risky links.
+includes embedded credentials and misleading visible text. An explicit port
+is not a risk: a link to another port follows the approval of its host.
+Plain HTTP is not treated as a risk either: it is neither flagged nor held
+back, so an approved host can also be opened over HTTP. Direct IP links may
+only be approved temporarily in the current message. Imported lists and
+broad-domain approvals do not unlock risky links.
 
 Link Guard treats as a link every element that Thunderbird itself opens on a
 click (`BrowserUtils.hrefAndLinkNodeForClickEvent`): HTML anchors and image

@@ -18,13 +18,12 @@ extra approval it requires.
 | Link text shows a different host | *Link text and destination differ.* | ⚠ Text ≠ destination |
 | User name or password in the link | *Credentials in the URL.* | ⚠ Credentials in URL |
 | IP address instead of a host name | *Direct IP address.* | ⚠ IP address |
-| Unusual port | *Unusual port.* | ⚠ Unusual port |
 | Public URL shortener | *Short link: destination hidden.* | ⚠ Short link |
 | *(always on)* | *Domain check unavailable.* | ⚠ Domain unchecked |
 | *(your rules)* | *My rule: Label* or *List name: Label* | ⚠ Label |
 | *(your rules)* | *Warning rules could not be checked for this link.* | ⚠ Rules not checked |
 
-Plain `http://` links are not a warning. They are handled like `https://` links, so an
+Plain `http://` links and explicit ports are not a warning. They are handled like `https://` links, so an
 approved host can also be opened over HTTP.
 
 ## Lookalike domain
@@ -98,11 +97,11 @@ Links such as `http://192.0.2.10/login` bypass domain names entirely. They are w
 about and can only be allowed for the current message; see
 [Approvals and blocks](approvals-and-blocks.md#links-to-ip-addresses).
 
-## Unusual port
+## Ports are not a warning
 
-A link with an explicit port, such as `https://example.org:8443/`, reaches a different
-service than the normal website. Default ports (`:443` for HTTPS, `:80` for HTTP) do not
-count.
+A link with an explicit port, such as `https://example.org:8443/`, is handled like any
+other link to its host: it opens once `example.org` is approved. Approve hosts whose
+other services you do not trust exactly, rather than as part of a whole domain.
 
 ## Public URL shortener
 

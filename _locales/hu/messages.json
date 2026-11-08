@@ -171,9 +171,6 @@
   "risk_ipAddress": {
     "message": "Közvetlen IP-cím."
   },
-  "risk_unusualPort": {
-    "message": "Szokatlan port."
-  },
   "risk_textMismatch": {
     "message": "A hivatkozás szövege és a cél eltér."
   },
@@ -182,9 +179,6 @@
   },
   "riskInline_ipAddress": {
     "message": "⚠ IP-cím"
-  },
-  "riskInline_unusualPort": {
-    "message": "⚠ Szokatlan port"
   },
   "riskInline_textMismatch": {
     "message": "⚠ Szöveg ≠ cél"
@@ -206,9 +200,6 @@
   },
   "reason_ipAddress": {
     "message": "A hivatkozás közvetlenül IP-címre mutat"
-  },
-  "reason_unusualPort": {
-    "message": "A hivatkozás szokatlan portot használ"
   },
   "reason_textMismatch": {
     "message": "A megjelenített és a tényleges tartomány eltér"
@@ -486,9 +477,6 @@
   },
   "warn_ipAddress": {
     "message": "IP-cím gazdagépnév helyett"
-  },
-  "warn_unusualPort": {
-    "message": "Szokatlan port"
   },
   "warn_shortLink": {
     "message": "Nyilvános URL-rövidítő"

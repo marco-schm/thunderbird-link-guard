@@ -171,9 +171,6 @@
   "risk_ipAddress": {
     "message": "IP アドレスへの直接リンクです。"
   },
-  "risk_unusualPort": {
-    "message": "通常と異なるポートです。"
-  },
   "risk_textMismatch": {
     "message": "リンクの表示テキストと実際のリンク先が異なります。"
   },
@@ -182,9 +179,6 @@
   },
   "riskInline_ipAddress": {
     "message": "⚠ IP アドレス"
-  },
-  "riskInline_unusualPort": {
-    "message": "⚠ 通常と異なるポート"
   },
   "riskInline_textMismatch": {
     "message": "⚠ 表示テキスト ≠ リンク先"
@@ -206,9 +200,6 @@
   },
   "reason_ipAddress": {
     "message": "IP アドレスに直接接続するリンクです"
-  },
-  "reason_unusualPort": {
-    "message": "通常と異なるポートを使用しています"
   },
   "reason_textMismatch": {
     "message": "表示されたドメインと実際のドメインが異なります"
@@ -486,9 +477,6 @@
   },
   "warn_ipAddress": {
     "message": "ホスト名ではなく IP アドレス"
-  },
-  "warn_unusualPort": {
-    "message": "通常と異なるポート"
   },
   "warn_shortLink": {
     "message": "公開 URL 短縮サービス"

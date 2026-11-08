@@ -171,9 +171,6 @@
   "risk_ipAddress": {
     "message": "Direkte IP-Adresse."
   },
-  "risk_unusualPort": {
-    "message": "Ungewöhnlicher Port."
-  },
   "risk_textMismatch": {
     "message": "Linktext und Ziel unterscheiden sich."
   },
@@ -182,9 +179,6 @@
   },
   "riskInline_ipAddress": {
     "message": "⚠ IP-Adresse"
-  },
-  "riskInline_unusualPort": {
-    "message": "⚠ Ungewöhnlicher Port"
   },
   "riskInline_textMismatch": {
     "message": "⚠ Linktext ≠ Ziel"
@@ -206,9 +200,6 @@
   },
   "reason_ipAddress": {
     "message": "Link führt direkt zu einer IP-Adresse"
-  },
-  "reason_unusualPort": {
-    "message": "Link verwendet einen ungewöhnlichen Port"
   },
   "reason_textMismatch": {
     "message": "Angezeigte und tatsächliche Domain unterscheiden sich"
@@ -486,9 +477,6 @@
   },
   "warn_ipAddress": {
     "message": "IP-Adresse statt Hostname"
-  },
-  "warn_unusualPort": {
-    "message": "Ungewöhnlicher Port"
   },
   "warn_shortLink": {
     "message": "Öffentlicher Kurzlink-Dienst"
