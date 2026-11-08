@@ -165,9 +165,6 @@
   "riskUnverifiedInline": {
     "message": "⚠ ドメイン未確認"
   },
-  "risk_insecureHttp": {
-    "message": "HTTP は暗号化されていません。"
-  },
   "risk_credentials": {
     "message": "URL に認証情報が含まれています。"
   },
@@ -179,9 +176,6 @@
   },
   "risk_textMismatch": {
     "message": "リンクの表示テキストと実際のリンク先が異なります。"
-  },
-  "riskInline_insecureHttp": {
-    "message": "⚠ HTTP"
   },
   "riskInline_credentials": {
     "message": "⚠ URL 内の認証情報"
@@ -212,9 +206,6 @@
   },
   "reason_ipAddress": {
     "message": "IP アドレスに直接接続するリンクです"
-  },
-  "reason_insecureHttp": {
-    "message": "暗号化されていない HTTP を使用しています"
   },
   "reason_unusualPort": {
     "message": "通常と異なるポートを使用しています"

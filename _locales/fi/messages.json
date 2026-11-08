@@ -165,9 +165,6 @@
   "riskUnverifiedInline": {
     "message": "⚠ Verkkotunnusta ei tarkistettu"
   },
-  "risk_insecureHttp": {
-    "message": "HTTP ei ole salattu."
-  },
   "risk_credentials": {
     "message": "URL-osoitteessa on tunnistetietoja."
   },
@@ -179,9 +176,6 @@
   },
   "risk_textMismatch": {
     "message": "Linkin teksti ja kohde eroavat toisistaan."
-  },
-  "riskInline_insecureHttp": {
-    "message": "⚠ HTTP"
   },
   "riskInline_credentials": {
     "message": "⚠ Tunnistetiedot URL-osoitteessa"
@@ -212,9 +206,6 @@
   },
   "reason_ipAddress": {
     "message": "Linkki johtaa suoraan IP-osoitteeseen"
-  },
-  "reason_insecureHttp": {
-    "message": "Linkki käyttää salaamatonta HTTP:tä"
   },
   "reason_unusualPort": {
     "message": "Linkki käyttää epätavallista porttia"

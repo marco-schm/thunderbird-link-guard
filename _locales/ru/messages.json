@@ -165,9 +165,6 @@
   "riskUnverifiedInline": {
     "message": "⚠ Домен не проверен"
   },
-  "risk_insecureHttp": {
-    "message": "HTTP не шифруется."
-  },
   "risk_credentials": {
     "message": "Учётные данные в URL."
   },
@@ -179,9 +176,6 @@
   },
   "risk_textMismatch": {
     "message": "Текст ссылки отличается от адреса назначения."
-  },
-  "riskInline_insecureHttp": {
-    "message": "⚠ HTTP"
   },
   "riskInline_credentials": {
     "message": "⚠ Учётные данные в URL"
@@ -212,9 +206,6 @@
   },
   "reason_ipAddress": {
     "message": "Ссылка ведёт прямо на IP-адрес"
-  },
-  "reason_insecureHttp": {
-    "message": "Ссылка использует незашифрованный HTTP"
   },
   "reason_unusualPort": {
     "message": "Ссылка использует необычный порт"

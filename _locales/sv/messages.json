@@ -165,9 +165,6 @@
   "riskUnverifiedInline": {
     "message": "⚠ Domänen är inte kontrollerad"
   },
-  "risk_insecureHttp": {
-    "message": "HTTP är okrypterat."
-  },
   "risk_credentials": {
     "message": "Inloggningsuppgifter i URL:en."
   },
@@ -179,9 +176,6 @@
   },
   "risk_textMismatch": {
     "message": "Länktext och mål skiljer sig åt."
-  },
-  "riskInline_insecureHttp": {
-    "message": "⚠ HTTP"
   },
   "riskInline_credentials": {
     "message": "⚠ Inloggningsuppgifter i URL"
@@ -212,9 +206,6 @@
   },
   "reason_ipAddress": {
     "message": "Länken leder direkt till en IP-adress"
-  },
-  "reason_insecureHttp": {
-    "message": "Länken använder okrypterat HTTP"
   },
   "reason_unusualPort": {
     "message": "Länken använder en ovanlig port"

@@ -165,9 +165,6 @@
   "riskUnverifiedInline": {
     "message": "⚠ Domínio não verificado"
   },
-  "risk_insecureHttp": {
-    "message": "HTTP não é criptografado."
-  },
   "risk_credentials": {
     "message": "Credenciais no URL."
   },
@@ -179,9 +176,6 @@
   },
   "risk_textMismatch": {
     "message": "O texto do link e o destino são diferentes."
-  },
-  "riskInline_insecureHttp": {
-    "message": "⚠ HTTP"
   },
   "riskInline_credentials": {
     "message": "⚠ Credenciais em URL"
@@ -212,9 +206,6 @@
   },
   "reason_ipAddress": {
     "message": "O link leva diretamente a um endereço IP"
-  },
-  "reason_insecureHttp": {
-    "message": "O link usa HTTP não criptografado"
   },
   "reason_unusualPort": {
     "message": "O link usa uma porta incomum"

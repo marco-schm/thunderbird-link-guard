@@ -165,9 +165,6 @@
   "riskUnverifiedInline": {
     "message": "⚠ Domænet er ikke kontrolleret"
   },
-  "risk_insecureHttp": {
-    "message": "HTTP er ikke krypteret."
-  },
   "risk_credentials": {
     "message": "Loginoplysninger i URL'en."
   },
@@ -179,9 +176,6 @@
   },
   "risk_textMismatch": {
     "message": "Linktekst og mål er forskellige."
-  },
-  "riskInline_insecureHttp": {
-    "message": "⚠ HTTP"
   },
   "riskInline_credentials": {
     "message": "⚠ Loginoplysninger i URL"
@@ -212,9 +206,6 @@
   },
   "reason_ipAddress": {
     "message": "Linket fører direkte til en IP-adresse"
-  },
-  "reason_insecureHttp": {
-    "message": "Linket bruger ukrypteret HTTP"
   },
   "reason_unusualPort": {
     "message": "Linket bruger en usædvanlig port"

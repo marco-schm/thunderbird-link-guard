@@ -165,9 +165,6 @@
   "riskUnverifiedInline": {
     "message": "⚠ A tartomány nincs ellenőrizve"
   },
-  "risk_insecureHttp": {
-    "message": "A HTTP nem titkosított."
-  },
   "risk_credentials": {
     "message": "Hitelesítő adatok az URL-ben."
   },
@@ -179,9 +176,6 @@
   },
   "risk_textMismatch": {
     "message": "A hivatkozás szövege és a cél eltér."
-  },
-  "riskInline_insecureHttp": {
-    "message": "⚠ HTTP"
   },
   "riskInline_credentials": {
     "message": "⚠ Hitelesítő adatok az URL-ben"
@@ -212,9 +206,6 @@
   },
   "reason_ipAddress": {
     "message": "A hivatkozás közvetlenül IP-címre mutat"
-  },
-  "reason_insecureHttp": {
-    "message": "A hivatkozás titkosítatlan HTTP-t használ"
   },
   "reason_unusualPort": {
     "message": "A hivatkozás szokatlan portot használ"

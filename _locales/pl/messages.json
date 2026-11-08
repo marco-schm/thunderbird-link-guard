@@ -165,9 +165,6 @@
   "riskUnverifiedInline": {
     "message": "⚠ Domena niesprawdzona"
   },
-  "risk_insecureHttp": {
-    "message": "HTTP nie jest szyfrowany."
-  },
   "risk_credentials": {
     "message": "Dane logowania w adresie URL."
   },
@@ -179,9 +176,6 @@
   },
   "risk_textMismatch": {
     "message": "Tekst odnośnika różni się od adresu docelowego."
-  },
-  "riskInline_insecureHttp": {
-    "message": "⚠ HTTP"
   },
   "riskInline_credentials": {
     "message": "⚠ Dane logowania w URL"
@@ -212,9 +206,6 @@
   },
   "reason_ipAddress": {
     "message": "Odnośnik prowadzi bezpośrednio do adresu IP"
-  },
-  "reason_insecureHttp": {
-    "message": "Odnośnik używa nieszyfrowanego HTTP"
   },
   "reason_unusualPort": {
     "message": "Odnośnik używa nietypowego portu"

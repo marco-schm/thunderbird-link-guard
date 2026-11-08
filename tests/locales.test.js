@@ -77,10 +77,9 @@ test("every manifest placeholder and code message key exists", () => {
   }
   for (const key of ["status_pending", "status_temporary", "status_permanent",
     "status_blocked", "reason_invalidUrl", "reason_badScheme", "reason_credentials",
-    "reason_ipAddress", "reason_insecureHttp", "reason_unusualPort",
+    "reason_ipAddress", "reason_unusualPort",
     "reason_textMismatch", "status_broad",
-    ...["credentials", "ipAddress", "unusualPort", "textMismatch", "insecureHttp",
-      "shortLink"]
+    ...["credentials", "ipAddress", "unusualPort", "textMismatch", "shortLink"]
       .flatMap(reason => [`risk_${reason}`, `riskInline_${reason}`])]) {
     assert.ok(catalog[key], key);
   }

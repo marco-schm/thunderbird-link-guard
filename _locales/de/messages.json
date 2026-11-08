@@ -165,9 +165,6 @@
   "riskUnverifiedInline": {
     "message": "⚠ Domain ungeprüft"
   },
-  "risk_insecureHttp": {
-    "message": "HTTP ohne Verschlüsselung."
-  },
   "risk_credentials": {
     "message": "Zugangsdaten in der URL."
   },
@@ -179,9 +176,6 @@
   },
   "risk_textMismatch": {
     "message": "Linktext und Ziel unterscheiden sich."
-  },
-  "riskInline_insecureHttp": {
-    "message": "⚠ HTTP"
   },
   "riskInline_credentials": {
     "message": "⚠ Zugangsdaten in URL"
@@ -212,9 +206,6 @@
   },
   "reason_ipAddress": {
     "message": "Link führt direkt zu einer IP-Adresse"
-  },
-  "reason_insecureHttp": {
-    "message": "Link verwendet unverschlüsseltes HTTP"
   },
   "reason_unusualPort": {
     "message": "Link verwendet einen ungewöhnlichen Port"

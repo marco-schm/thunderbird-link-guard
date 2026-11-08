@@ -165,9 +165,6 @@
   "riskUnverifiedInline": {
     "message": "⚠ Doména nezkontrolována"
   },
-  "risk_insecureHttp": {
-    "message": "HTTP není šifrované."
-  },
   "risk_credentials": {
     "message": "Přihlašovací údaje v adrese URL."
   },
@@ -179,9 +176,6 @@
   },
   "risk_textMismatch": {
     "message": "Text odkazu a cíl se liší."
-  },
-  "riskInline_insecureHttp": {
-    "message": "⚠ HTTP"
   },
   "riskInline_credentials": {
     "message": "⚠ Přihlašovací údaje v URL"
@@ -212,9 +206,6 @@
   },
   "reason_ipAddress": {
     "message": "Odkaz vede přímo na IP adresu"
-  },
-  "reason_insecureHttp": {
-    "message": "Odkaz používá nešifrované HTTP"
   },
   "reason_unusualPort": {
     "message": "Odkaz používá neobvyklý port"

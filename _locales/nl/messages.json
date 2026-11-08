@@ -165,9 +165,6 @@
   "riskUnverifiedInline": {
     "message": "⚠ Domein niet gecontroleerd"
   },
-  "risk_insecureHttp": {
-    "message": "HTTP is niet versleuteld."
-  },
   "risk_credentials": {
     "message": "Inloggegevens in de URL."
   },
@@ -179,9 +176,6 @@
   },
   "risk_textMismatch": {
     "message": "Linktekst en bestemming verschillen."
-  },
-  "riskInline_insecureHttp": {
-    "message": "⚠ HTTP"
   },
   "riskInline_credentials": {
     "message": "⚠ Inloggegevens in URL"
@@ -212,9 +206,6 @@
   },
   "reason_ipAddress": {
     "message": "Link leidt rechtstreeks naar een IP-adres"
-  },
-  "reason_insecureHttp": {
-    "message": "Link gebruikt onversleuteld HTTP"
   },
   "reason_unusualPort": {
     "message": "Link gebruikt een ongebruikelijke poort"

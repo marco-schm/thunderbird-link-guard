@@ -40,11 +40,11 @@ test("a deceptive visible URL gets a conspicuous explicit-approval risk", () => 
   assert.ok(result.risks.includes("textMismatch"));
 });
 
-test("HTTP links retain their host and a persistent risk warning", () => {
+test("HTTP links keep their host and are treated like HTTPS links", () => {
   const result = inspectLink("http://www.anthropic.com/");
   assert.equal(result.kind, "web");
   assert.deepEqual(result.hosts, ["www.anthropic.com"]);
-  assert.ok(result.risks.includes("insecureHttp"));
+  assert.equal(result.risks, undefined);
   assert.equal(inspectLink("http://example.com/?next=/settings").kind, "web");
   assert.equal(inspectLink("https://example.com/?next=http%3A%2F%2Fother.example%2F").risks,
     undefined);
