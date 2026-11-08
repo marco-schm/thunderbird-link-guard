@@ -2,6 +2,9 @@
 
 const policy = globalThis.LinkGuardPolicy;
 const listImport = globalThis.LinkGuardImport;
+const warnings = globalThis.LinkGuardWarnings;
+const builtinInputs = new Map();
+const warningListViews = new Map();
 const t = globalThis.LinkGuardLocale.getMessage;
 const importedInputs = new Map();
 const enabledInput = document.getElementById("enabled");
@@ -11,7 +14,8 @@ const broadInput = document.getElementById("broadDomains");
 const blockedDomainsInput = document.getElementById("blockedDomains");
 const status = document.getElementById("status");
 const storedKeys = { enabled: true, customAllowedHosts: [], blockedHosts: [],
-  blockedDomains: [], broadAllowedDomains: [], importedLists: [] };
+  blockedDomains: [], broadAllowedDomains: [], importedLists: [],
+  disabledWarnings: [], customWarnings: [], warningLists: [] };
 let baseline = "";
 let dirty = false;
 let saving = false;
@@ -213,6 +217,230 @@ function showPreview(item, replacingId = null) {
   box.hidden = false;
 }
 
+// Errors whose message is already a translated sentence for the status line.
+function userError(message) {
+  const error = new Error(message);
+  error.userFacing = true;
+  return error;
+}
+
+// ----- Warnings -----------------------------------------------------------------
+
+function renderBuiltinWarnings(disabled) {
+  const box = document.getElementById("builtinWarnings");
+  box.replaceChildren();
+  builtinInputs.clear();
+  for (const kind of warnings.BUILTIN) {
+    const label = document.createElement("label");
+    const input = document.createElement("input");
+    input.type = "checkbox";
+    input.checked = !disabled.includes(kind);
+    const text = document.createElement("span");
+    text.textContent = t(`warn_${kind}`);
+    label.append(input, text);
+    box.append(label);
+    builtinInputs.set(kind, input);
+  }
+}
+
+function addRuleRow(rule = { label: "", target: "url", pattern: "" }) {
+  const row = document.createElement("div");
+  row.className = "rule-row";
+  const label = document.createElement("input");
+  label.type = "text";
+  label.className = "rule-label";
+  label.maxLength = 60;
+  label.placeholder = t("ruleLabel");
+  label.setAttribute("aria-label", t("ruleLabel"));
+  label.value = rule.label;
+  const target = document.createElement("select");
+  target.className = "rule-target";
+  target.setAttribute("aria-label", t("ruleTarget"));
+  for (const value of warnings.TARGETS) {
+    const option = document.createElement("option");
+    option.value = value;
+    option.textContent = t(`ruleTarget_${value}`);
+    target.append(option);
+  }
+  target.value = rule.target;
+  const pattern = document.createElement("input");
+  pattern.type = "text";
+  pattern.className = "rule-pattern";
+  pattern.maxLength = 200;
+  pattern.spellcheck = false;
+  pattern.autocomplete = "off";
+  pattern.placeholder = t("rulePattern");
+  pattern.setAttribute("aria-label", t("rulePattern"));
+  pattern.value = rule.pattern;
+  const remove = document.createElement("button");
+  remove.type = "button";
+  remove.className = "imported-action";
+  remove.textContent = t("removeRule");
+  remove.addEventListener("click", () => { row.remove(); dirty = true; });
+  row.append(label, target, pattern, remove);
+  document.getElementById("customRules").append(row);
+  return row;
+}
+
+function readOwnRules() {
+  const rows = [...document.querySelectorAll("#customRules .rule-row")];
+  const raw = rows.map(row => ({ label: row.querySelector(".rule-label").value,
+    target: row.querySelector(".rule-target").value, pattern: row.querySelector(".rule-pattern").value }))
+    .filter(rule => rule.label.trim() || rule.pattern);
+  if (raw.length > warnings.MAX_OWN_RULES) throw userError(t("warningRuleLimit"));
+  return raw.map((rule, index) => {
+    try { return warnings.parseRule(rule); }
+    catch (error) { throw userError(t("ruleInvalid", [String(index + 1), t(error.message)])); }
+  });
+}
+
+function ruleLines(rules) {
+  const list = document.createElement("ul");
+  list.className = "rule-lines";
+  for (const rule of rules) {
+    const item = document.createElement("li");
+    const code = document.createElement("code");
+    code.textContent = rule.pattern;
+    item.append(`${rule.label} · ${t(`ruleTarget_${rule.target}`)} · `, code);
+    list.append(item);
+  }
+  return list;
+}
+
+function showWarningError(error) {
+  if (error?.rule) {
+    showStatus(t("ruleInvalid", [String(error.rule), t(error.message)]), true);
+    return;
+  }
+  const known = new Set(["importTooLarge", "warningListFormat", "warningRuleLimit", "importUrl", "importFetch"]);
+  showStatus(t(known.has(error?.message) ? error.message : "warningListFormat"), true);
+}
+
+function createWarningList(item) {
+  const card = document.createElement("article");
+  card.className = "card imported-card";
+  const top = document.createElement("div");
+  top.className = "imported-top";
+  const heading = document.createElement("div");
+  const name = document.createElement("div");
+  name.className = "imported-name";
+  name.textContent = item.name;
+  const count = document.createElement("div");
+  count.className = "imported-count";
+  count.textContent = t("ruleCount", [String(item.rules.length)]);
+  heading.append(name, count);
+  const toggle = document.createElement("label");
+  toggle.className = "imported-toggle";
+  const checkbox = document.createElement("input");
+  checkbox.type = "checkbox";
+  checkbox.checked = item.enabled;
+  const toggleText = document.createElement("span");
+  toggleText.textContent = t("importedEnable");
+  toggle.append(checkbox, toggleText);
+  top.append(heading, toggle);
+  const details = document.createElement("details");
+  const summary = document.createElement("summary");
+  summary.textContent = t("showRules");
+  details.append(summary, ruleLines(item.rules));
+  if (item.sourceUrl) {
+    const source = document.createElement("p");
+    source.className = "import-source";
+    source.textContent = item.sourceUrl;
+    const refresh = document.createElement("button");
+    refresh.type = "button";
+    refresh.className = "imported-action";
+    refresh.textContent = t("refreshPreview");
+    refresh.addEventListener("click", async () => {
+      try {
+        showStatus(t("importLoading"));
+        showWarningPreview(await warnings.fetchList(item.sourceUrl), item.id);
+        showStatus(t("importReady"));
+      } catch (error) { showWarningError(error); }
+    });
+    details.append(source, refresh);
+  }
+  const remove = document.createElement("button");
+  remove.type = "button";
+  remove.className = "imported-action";
+  remove.textContent = t("removeList");
+  remove.addEventListener("click", () => {
+    warningListViews.delete(item.id);
+    card.remove();
+    dirty = true;
+  });
+  details.append(remove);
+  card.append(top, details);
+  warningListViews.set(item.id, { item, checkbox, card });
+  return card;
+}
+
+// A previewed list (new or refreshed) is staged disabled; it applies only once the
+// user enables it and saves.
+function showWarningPreview(list, replacingId = null) {
+  const box = document.getElementById("warningPreview");
+  const title = document.createElement("h3");
+  title.textContent = `${replacingId ? t("refreshTitle") : t("warningListPreviewTitle")}: ${list.name}`;
+  const info = document.createElement("p");
+  info.textContent = t("ruleCount", [String(list.rules.length)]);
+  const apply = document.createElement("button");
+  apply.type = "button";
+  apply.textContent = replacingId ? t("stageRefresh") : t("stageImport");
+  apply.addEventListener("click", () => {
+    if (!replacingId && warningListViews.size >= warnings.MAX_LISTS) {
+      showStatus(t("warningListLimit"), true);
+      return;
+    }
+    const id = replacingId || crypto.randomUUID();
+    const card = createWarningList({ id, name: list.name, rules: list.rules,
+      sourceUrl: list.sourceUrl || "", enabled: false });
+    const old = replacingId ? warningListViews.get(replacingId) : null;
+    if (old && old.card !== card) old.card.replaceWith(card);
+    else document.getElementById("warningLists").append(card);
+    box.hidden = true;
+    dirty = true;
+    showStatus(t("importStaged"));
+  });
+  const cancel = document.createElement("button");
+  cancel.type = "button";
+  cancel.textContent = t("cancelPreview");
+  cancel.addEventListener("click", () => { box.hidden = true; });
+  box.replaceChildren(title, info, ruleLines(list.rules), apply, cancel);
+  box.hidden = false;
+}
+
+function readWarningLists() {
+  return [...warningListViews.entries()].map(([id, view]) => ({ id, name: view.item.name,
+    rules: view.item.rules, sourceUrl: view.item.sourceUrl || "", enabled: view.checkbox.checked }));
+}
+
+document.getElementById("addRule").addEventListener("click", () => {
+  if (document.querySelectorAll("#customRules .rule-row").length >= warnings.MAX_OWN_RULES) {
+    showStatus(t("warningRuleLimit"), true);
+    return;
+  }
+  addRuleRow().querySelector(".rule-label").focus();
+  dirty = true;
+});
+
+document.getElementById("warningFile").addEventListener("change", async event => {
+  const file = event.target.files?.[0];
+  event.target.value = "";
+  if (!file) return;
+  try {
+    if (file.size > warnings.MAX_BYTES) throw new Error("importTooLarge");
+    showWarningPreview(warnings.parseList(await file.text()));
+    showStatus(t("importReady"));
+  } catch (error) { showWarningError(error); }
+});
+
+document.getElementById("previewWarningList").addEventListener("click", async () => {
+  try {
+    showStatus(t("importLoading"));
+    showWarningPreview(await warnings.fetchList(document.getElementById("warningUrl").value));
+    showStatus(t("importReady"));
+  } catch (error) { showWarningError(error); }
+});
+
 async function load() {
   try {
     const saved = await messenger.storage.local.get(storedKeys);
@@ -230,12 +458,20 @@ async function load() {
     }
     pendingImport = null;
     document.getElementById("importPreview").hidden = true;
+    renderBuiltinWarnings(warnings.cleanDisabled(saved.disabledWarnings));
+    document.getElementById("customRules").replaceChildren();
+    for (const rule of warnings.cleanRules(saved.customWarnings)) addRuleRow(rule);
+    const lists = document.getElementById("warningLists");
+    lists.replaceChildren();
+    warningListViews.clear();
+    for (const item of warnings.cleanStoredLists(saved.warningLists)) lists.append(createWarningList(item));
+    document.getElementById("warningPreview").hidden = true;
     dirty = false;
   } catch { showStatus(t("settingsLoadFailed"), true); }
 }
 
 document.addEventListener("input", event => {
-  if (event.target.matches("textarea, input[type=checkbox]")) dirty = true;
+  if (event.target.matches("textarea, input[type=checkbox], .rule-row input, .rule-row select")) dirty = true;
 });
 
 document.getElementById("importFile").addEventListener("change", async event => {
@@ -258,7 +494,7 @@ document.getElementById("previewRemote").addEventListener("click", async () => {
   } catch (error) { showImportError(error); }
 });
 document.addEventListener("change", event => {
-  if (event.target.matches("textarea, input[type=checkbox]")) dirty = true;
+  if (event.target.matches("textarea, input[type=checkbox], .rule-row input, .rule-row select")) dirty = true;
 });
 
 messenger.storage.onChanged.addListener((changes, area) => {
@@ -294,6 +530,14 @@ document.getElementById("save").addEventListener("click", async () => {
       });
       if (invalid) throw new Error(`${listName}: ${t("broadInvalid", [invalid])}`);
     }
+    const disabledWarnings = warnings.BUILTIN.filter(kind => !builtinInputs.get(kind)?.checked);
+    const customWarnings = readOwnRules();
+    const warningLists = readWarningLists();
+    if (warnings.effectiveRules(customWarnings, warningLists).length <
+        customWarnings.length + warningLists.filter(list => list.enabled)
+          .reduce((sum, list) => sum + list.rules.length, 0)) {
+      throw userError(t("warningRuleLimit"));
+    }
     const current = await messenger.storage.local.get(storedKeys);
     if (snapshot(current) !== baseline) {
       showStatus(t("settingsChanged"), true);
@@ -301,7 +545,7 @@ document.getElementById("save").addEventListener("click", async () => {
     }
     const updated = { enabled: enabledInput.checked,
       customAllowedHosts, blockedHosts, blockedDomains, broadAllowedDomains,
-      importedLists };
+      importedLists, disabledWarnings, customWarnings, warningLists };
     saving = true;
     await messenger.storage.local.set(updated);
     baseline = snapshot(updated);
@@ -312,7 +556,7 @@ document.getElementById("save").addEventListener("click", async () => {
     blockedDomainsInput.value = formatRuleList([], blockedDomains);
     showStatus(t("settingsSaved"));
   } catch (error) {
-    showStatus(error.message?.includes(": ") ? error.message : t("settingsSaveFailed"), true);
+    showStatus(error.userFacing || error.message?.includes(": ") ? error.message : t("settingsSaveFailed"), true);
   } finally {
     saving = false;
   }

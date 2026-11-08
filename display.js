@@ -3,15 +3,24 @@
 (function () {
   const policy = globalThis.LinkGuardPolicy;
   const access = globalThis.LinkGuardAccess;
+  // Optional on purpose: if it ever failed to load, links stay protected without
+  // custom rules instead of losing protection altogether.
+  const warningRules = globalThis.LinkGuardWarnings;
   if (!policy || !access) return;
   if (globalThis.__linkGuardDisplayInstalled) return;
   globalThis.__linkGuardDisplayInstalled = true;
   const MAX_LISTED_LINKS = 500;
+  // Upper bound for custom-rule matching per scan (and per click). Matching is linear,
+  // so this only matters for hostile messages; once it is used up the remaining links
+  // get a "rules not checked" warning rather than passing unchecked.
+  const RULE_BUDGET = 10000000;
   const originalHrefs = new WeakMap();
   const inlineWarnings = new WeakMap();
   const trackedAnchors = new Set();
   let state = { enabled: true, allowedHosts: [], blockedHosts: [], blockedDomains: [],
-    customAllowedHosts: [], broadAllowedDomains: [], trustedDomains: [] };
+    customAllowedHosts: [], broadAllowedDomains: [], trustedDomains: [],
+    disabledWarnings: [], warningRules: [] };
+  let warningSettings = { key: "", disabled: new Set(), evaluator: null };
   const temporaryHosts = new Set();
   const analyzedHosts = new Map();
   let analysisPending = false;
@@ -65,11 +74,44 @@
     return prior?.value ?? current;
   }
 
+  // Rebuilt only when the rules change, so the evaluator's result cache survives scans.
+  function updateWarningSettings() {
+    const key = JSON.stringify([state.disabledWarnings || [], state.warningRules || []]);
+    if (key === warningSettings.key) return;
+    warningSettings = { key, disabled: new Set(state.disabledWarnings || []),
+      evaluator: warningRules ? warningRules.createEvaluator(state.warningRules || []) : null };
+  }
+
+  function inspectAnchor(anchor, href, budget) {
+    const text = (anchor.textContent || "").slice(0, 1024);
+    const inspection = policy.inspectLink(href, text);
+    if (!warningRules) return inspection;
+    return warningRules.applyWarnings(inspection, { disabled: warningSettings.disabled,
+      evaluator: warningSettings.evaluator, href, text, budget });
+  }
+
+  // "unverified" (the analysis failed) always warns; it is not a configurable warning.
   function warningFor(host) {
     const analyzed = analyzedHosts.get(host);
-    if (analyzed?.kind && analyzed.kind !== "none") return analyzed;
-    if (policy.isInternationalizedHost(host)) return { kind: "idn", similarTo: "" };
-    return analyzed || null;
+    if (analyzed?.kind === "unverified") return analyzed;
+    const disabled = warningSettings.disabled;
+    if ((analyzed?.kind === "idn" || policy.isInternationalizedHost(host)) && !disabled.has("idn")) {
+      return { kind: "idn", similarTo: analyzed?.similarTo || "" };
+    }
+    if ((analyzed?.kind === "lookalike" || analyzed?.kind === "idn") && analyzed.similarTo &&
+        !disabled.has("lookalike")) return { kind: "lookalike", similarTo: analyzed.similarTo };
+    return analyzed ? { kind: "none", similarTo: "" } : null;
+  }
+
+  function riskText(reason, inline) {
+    if (reason === "customSkipped") return t(inline ? "riskCustomSkippedInline" : "riskCustomSkipped");
+    if (reason.startsWith("custom:")) {
+      const rule = warningSettings.evaluator?.rules[Number(reason.slice(7))];
+      if (!rule) return t(inline ? "riskCustomSkippedInline" : "riskCustomSkipped");
+      return inline ? t("riskCustomInline", [rule.label]) :
+        t("riskCustom", [rule.label, rule.source || t("ruleSourceOwn")]);
+    }
+    return t(`${inline ? "riskInline" : "risk"}_${reason}`);
   }
 
   function isAllowed(inspection) {
@@ -83,7 +125,7 @@
     if (!anchor || anchor === panelHost || panelHost?.contains(anchor)) return;
     const href = getOriginalHref(anchor);
     if (href === null) return;
-    const inspection = policy.inspectLink(href, (anchor.textContent || "").slice(0, 1024));
+    const inspection = inspectAnchor(anchor, href, { steps: RULE_BUDGET });
     if (inspection.kind === "skip") return;
     if (isAllowed(inspection) && hasHref(anchor)) return;
     event.preventDefault();
@@ -133,6 +175,7 @@
       });
       temporaryHosts.delete(host);
       analyzedHosts.clear();
+      updateWarningSettings();
       stateReady = true;
       errorKey = "";
       scan();
@@ -220,7 +263,7 @@
     for (const reason of risks || []) {
       const detail = document.createElement("strong");
       detail.className = "link-guard-risk";
-      detail.textContent = t(`risk_${reason}`);
+      detail.textContent = riskText(reason, false);
       information.append(detail);
     }
     const actions = document.createElement("div");
@@ -346,7 +389,7 @@
       warning.kind === "idn" ? t("riskIdnInline") :
         warning.kind === "unverified" ? t("riskUnverifiedInline") :
           t("riskLookalikeInline", [warning.similarTo]);
-    const label = [hostLabel, ...(risks || []).map(reason => t(`riskInline_${reason}`)),
+    const label = [hostLabel, ...(risks || []).map(reason => riskText(reason, true)),
       showHost ? t("linkDestinationInline", [host]) : ""]
       .filter(Boolean).join(" · ");
     if (existing?.isConnected) {
@@ -404,10 +447,11 @@
     let warnings = 0;
     let inspected = 0;
     const unknown = new Set();
+    const budget = { steps: RULE_BUDGET };
     for (const anchor of anchors) {
       const href = getOriginalHref(anchor);
       if (href === null) continue;
-      const inspection = policy.inspectLink(href, (anchor.textContent || "").slice(0, 1024));
+      const inspection = inspectAnchor(anchor, href, budget);
       if (inspection.kind === "skip") continue;
       if (inspection.kind === "web") {
         for (const host of inspection.hosts) {
@@ -474,6 +518,7 @@
     try {
       state = await messenger.runtime.sendMessage({ type: "link-guard-state" });
       analyzedHosts.clear();
+      updateWarningSettings();
       stateReady = true;
       errorKey = "";
     } catch {

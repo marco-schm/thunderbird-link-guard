@@ -453,5 +453,154 @@
   },
   "autoRefreshReview": {
     "message": "Automatická aktualizace nebyla použita, protože je rozsáhlá nebo by zablokovala něco, co jste schválili. Předchozí seznam zůstává aktivní; použijte „Zkontrolovat vzdálenou aktualizaci“."
+  },
+  "warningsTitle": {
+    "message": "Varování"
+  },
+  "warningsHint": {
+    "message": "Vyberte, které kontroly vyvolají varování, a přidejte vlastní. Odkaz s varováním zůstane neaktivní, dokud neschválíte jeho přesného hostitele."
+  },
+  "builtinWarningsTitle": {
+    "message": "Vestavěná varování"
+  },
+  "builtinWarningsHint": {
+    "message": "Vypnutím varování odpadá i dodatečné schválení, které vyžaduje. Odkaz, jehož kontrola selhala, vždy zobrazí varování."
+  },
+  "warn_lookalike": {
+    "message": "Doména se podobá schválené doméně"
+  },
+  "warn_idn": {
+    "message": "Internacionalizovaný název domény"
+  },
+  "warn_textMismatch": {
+    "message": "Text odkazu ukazuje jiného hostitele"
+  },
+  "warn_credentials": {
+    "message": "Uživatelské jméno nebo heslo v odkazu"
+  },
+  "warn_ipAddress": {
+    "message": "IP adresa místo názvu hostitele"
+  },
+  "warn_unusualPort": {
+    "message": "Neobvyklý port"
+  },
+  "warn_shortLink": {
+    "message": "Veřejný zkracovač URL"
+  },
+  "customRulesTitle": {
+    "message": "Moje pravidla varování"
+  },
+  "customRulesHint": {
+    "message": "Pravidlo zobrazí svůj popisek jako varování, když jeho vzor odpovídá hostiteli, celé URL nebo textu odkazu. Vzory jsou regulární výrazy bez rozlišení velikosti písmen, nejvýše 200 znaků, bez zpětných odkazů, lookaroundu a \\b, a vyhodnocují se v lineárním čase."
+  },
+  "ruleLabel": {
+    "message": "Popisek"
+  },
+  "ruleTarget": {
+    "message": "Kontroluje"
+  },
+  "rulePattern": {
+    "message": "Vzor"
+  },
+  "ruleTarget_host": {
+    "message": "Hostitel"
+  },
+  "ruleTarget_url": {
+    "message": "Celá URL"
+  },
+  "ruleTarget_text": {
+    "message": "Text odkazu"
+  },
+  "addRule": {
+    "message": "Přidat pravidlo"
+  },
+  "removeRule": {
+    "message": "Odebrat"
+  },
+  "ruleInvalid": {
+    "message": "Pravidlo $NUMBER$: $REASON$",
+    "placeholders": {
+      "number": {
+        "content": "$1"
+      },
+      "reason": {
+        "content": "$2"
+      }
+    }
+  },
+  "regexSyntax": {
+    "message": "vzor není platný regulární výraz."
+  },
+  "regexTooLong": {
+    "message": "vzor je delší než 200 znaků."
+  },
+  "regexUnsupported": {
+    "message": "zpětné odkazy, lookaround, \\b a escape sekvence \\u nejsou podporovány."
+  },
+  "regexTooComplex": {
+    "message": "vzor je příliš složitý."
+  },
+  "labelInvalid": {
+    "message": "popisek musí mít 1 až 60 znaků bez řídicích znaků."
+  },
+  "ruleFormat": {
+    "message": "pravidlo je neúplné."
+  },
+  "warningRuleLimit": {
+    "message": "Příliš mnoho pravidel varování: nejvýše 50 vlastních a 200 aktivních."
+  },
+  "warningListsTitle": {
+    "message": "Seznamy varování"
+  },
+  "warningListsHint": {
+    "message": "Importujte pravidla ze souboru JSON nebo z adresy HTTPS. Seznamy se zobrazí ke kontrole a začínají vypnuté. Mohou jen přidávat varování, nikdy neschválí odkaz, a vzdálené seznamy se mění jen při obnovení."
+  },
+  "warningListFormat": {
+    "message": "Neplatný seznam varování. Očekáváno: format \"link-guard-warnings\", version 1, name a rules."
+  },
+  "warningListLimit": {
+    "message": "Nejvýše 10 seznamů varování."
+  },
+  "ruleCount": {
+    "message": "Pravidla: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "warningListPreviewTitle": {
+    "message": "Náhled seznamu varování"
+  },
+  "riskCustom": {
+    "message": "$SOURCE$: $LABEL$",
+    "placeholders": {
+      "label": {
+        "content": "$1"
+      },
+      "source": {
+        "content": "$2"
+      }
+    }
+  },
+  "riskCustomInline": {
+    "message": "⚠ $LABEL$",
+    "placeholders": {
+      "label": {
+        "content": "$1"
+      }
+    }
+  },
+  "ruleSourceOwn": {
+    "message": "Vlastní pravidlo"
+  },
+  "riskCustomSkipped": {
+    "message": "Pravidla varování se pro tento odkaz nepodařilo zkontrolovat."
+  },
+  "riskCustomSkippedInline": {
+    "message": "⚠ Pravidla nezkontrolována"
+  },
+  "showRules": {
+    "message": "Zobrazit pravidla"
   }
 }

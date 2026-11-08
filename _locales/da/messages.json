@@ -453,5 +453,154 @@
   },
   "autoRefreshReview": {
     "message": "Den automatiske opdatering blev ikke anvendt, fordi den er stor, eller fordi den ville blokere noget, du har godkendt. Den tidligere liste forbliver aktiv; brug \"Gennemgå opdatering på afstand\"."
+  },
+  "warningsTitle": {
+    "message": "Advarsler"
+  },
+  "warningsHint": {
+    "message": "Vælg hvilke kontroller der giver en advarsel, og tilføj dine egne. Et link med en advarsel forbliver inaktivt, indtil du godkender dets præcise vært."
+  },
+  "builtinWarningsTitle": {
+    "message": "Indbyggede advarsler"
+  },
+  "builtinWarningsHint": {
+    "message": "Slår du en advarsel fra, bortfalder også den ekstra godkendelse, den kræver. Et link, hvis kontrol mislykkedes, viser altid en advarsel."
+  },
+  "warn_lookalike": {
+    "message": "Domænet ligner et godkendt domæne"
+  },
+  "warn_idn": {
+    "message": "Internationaliseret domænenavn"
+  },
+  "warn_textMismatch": {
+    "message": "Linkteksten viser en anden vært"
+  },
+  "warn_credentials": {
+    "message": "Brugernavn eller adgangskode i linket"
+  },
+  "warn_ipAddress": {
+    "message": "IP-adresse i stedet for værtsnavn"
+  },
+  "warn_unusualPort": {
+    "message": "Usædvanlig port"
+  },
+  "warn_shortLink": {
+    "message": "Offentlig URL-forkorter"
+  },
+  "customRulesTitle": {
+    "message": "Mine advarselsregler"
+  },
+  "customRulesHint": {
+    "message": "En regel viser sin etiket som advarsel, når mønsteret matcher værten, den fulde URL eller linkteksten. Mønstre er regulære udtryk uden forskel på store og små bogstaver, højst 200 tegn, uden tilbagereferencer, lookaround eller \\b, og kontrolleres i lineær tid."
+  },
+  "ruleLabel": {
+    "message": "Etiket"
+  },
+  "ruleTarget": {
+    "message": "Kontrollerer"
+  },
+  "rulePattern": {
+    "message": "Mønster"
+  },
+  "ruleTarget_host": {
+    "message": "Vært"
+  },
+  "ruleTarget_url": {
+    "message": "Fuld URL"
+  },
+  "ruleTarget_text": {
+    "message": "Linktekst"
+  },
+  "addRule": {
+    "message": "Tilføj regel"
+  },
+  "removeRule": {
+    "message": "Fjern"
+  },
+  "ruleInvalid": {
+    "message": "Regel $NUMBER$: $REASON$",
+    "placeholders": {
+      "number": {
+        "content": "$1"
+      },
+      "reason": {
+        "content": "$2"
+      }
+    }
+  },
+  "regexSyntax": {
+    "message": "mønsteret er ikke et gyldigt regulært udtryk."
+  },
+  "regexTooLong": {
+    "message": "mønsteret er længere end 200 tegn."
+  },
+  "regexUnsupported": {
+    "message": "tilbagereferencer, lookaround, \\b og \\u-escapes understøttes ikke."
+  },
+  "regexTooComplex": {
+    "message": "mønsteret er for komplekst."
+  },
+  "labelInvalid": {
+    "message": "etiketten skal have 1 til 60 tegn uden kontroltegn."
+  },
+  "ruleFormat": {
+    "message": "reglen er ufuldstændig."
+  },
+  "warningRuleLimit": {
+    "message": "For mange advarselsregler: højst 50 egne og 200 aktive."
+  },
+  "warningListsTitle": {
+    "message": "Advarselslister"
+  },
+  "warningListsHint": {
+    "message": "Importér regler fra en JSON-fil eller en HTTPS-URL. Lister vises til gennemsyn og starter deaktiveret. De kan kun tilføje advarsler, aldrig godkende et link, og fjernlister ændres kun, når du opdaterer dem."
+  },
+  "warningListFormat": {
+    "message": "Ugyldig advarselsliste. Forventet: format \"link-guard-warnings\", version 1, name og rules."
+  },
+  "warningListLimit": {
+    "message": "Højst 10 advarselslister."
+  },
+  "ruleCount": {
+    "message": "Regler: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "warningListPreviewTitle": {
+    "message": "Forhåndsvisning af advarselsliste"
+  },
+  "riskCustom": {
+    "message": "$SOURCE$: $LABEL$",
+    "placeholders": {
+      "label": {
+        "content": "$1"
+      },
+      "source": {
+        "content": "$2"
+      }
+    }
+  },
+  "riskCustomInline": {
+    "message": "⚠ $LABEL$",
+    "placeholders": {
+      "label": {
+        "content": "$1"
+      }
+    }
+  },
+  "ruleSourceOwn": {
+    "message": "Egen regel"
+  },
+  "riskCustomSkipped": {
+    "message": "Advarselsreglerne kunne ikke kontrolleres for dette link."
+  },
+  "riskCustomSkippedInline": {
+    "message": "⚠ Regler ikke kontrolleret"
+  },
+  "showRules": {
+    "message": "Vis regler"
   }
 }

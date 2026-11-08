@@ -455,5 +455,154 @@ globalThis.LinkGuardEnglish = {
   },
   "autoRefreshReview": {
     "message": "The automatic update was not applied because it is large or would block something you approved. The previous list stays active; use \"Review remote update\"."
+  },
+  "warningsTitle": {
+    "message": "Warnings"
+  },
+  "warningsHint": {
+    "message": "Choose which checks raise a warning and add your own. A link with a warning stays inactive until you approve its exact host."
+  },
+  "builtinWarningsTitle": {
+    "message": "Built-in warnings"
+  },
+  "builtinWarningsHint": {
+    "message": "Switching a warning off also drops the extra approval it requires. A link whose check failed always shows a warning."
+  },
+  "warn_lookalike": {
+    "message": "Domain resembles an approved domain"
+  },
+  "warn_idn": {
+    "message": "Internationalized domain name"
+  },
+  "warn_textMismatch": {
+    "message": "Link text shows a different host"
+  },
+  "warn_credentials": {
+    "message": "User name or password in the link"
+  },
+  "warn_ipAddress": {
+    "message": "IP address instead of a host name"
+  },
+  "warn_unusualPort": {
+    "message": "Unusual port"
+  },
+  "warn_shortLink": {
+    "message": "Public URL shortener"
+  },
+  "customRulesTitle": {
+    "message": "My warning rules"
+  },
+  "customRulesHint": {
+    "message": "A rule shows its label as a warning when its pattern matches the host, the full URL or the link text. Patterns are case-insensitive regular expressions of up to 200 characters without backreferences, lookaround or \\b, and are matched in linear time."
+  },
+  "ruleLabel": {
+    "message": "Label"
+  },
+  "ruleTarget": {
+    "message": "Checks"
+  },
+  "rulePattern": {
+    "message": "Pattern"
+  },
+  "ruleTarget_host": {
+    "message": "Host"
+  },
+  "ruleTarget_url": {
+    "message": "Full URL"
+  },
+  "ruleTarget_text": {
+    "message": "Link text"
+  },
+  "addRule": {
+    "message": "Add rule"
+  },
+  "removeRule": {
+    "message": "Remove"
+  },
+  "ruleInvalid": {
+    "message": "Rule $NUMBER$: $REASON$",
+    "placeholders": {
+      "number": {
+        "content": "$1"
+      },
+      "reason": {
+        "content": "$2"
+      }
+    }
+  },
+  "regexSyntax": {
+    "message": "the pattern is not a valid regular expression."
+  },
+  "regexTooLong": {
+    "message": "the pattern is longer than 200 characters."
+  },
+  "regexUnsupported": {
+    "message": "backreferences, lookaround, \\b and \\u escapes are not supported."
+  },
+  "regexTooComplex": {
+    "message": "the pattern is too complex."
+  },
+  "labelInvalid": {
+    "message": "the label needs 1 to 60 characters without control characters."
+  },
+  "ruleFormat": {
+    "message": "the rule is incomplete."
+  },
+  "warningRuleLimit": {
+    "message": "Too many warning rules: at most 50 of your own and 200 in effect."
+  },
+  "warningListsTitle": {
+    "message": "Warning lists"
+  },
+  "warningListsHint": {
+    "message": "Import rules from a JSON file or an HTTPS URL. Lists are shown for review and start disabled. They can only add warnings, never approve a link, and remote lists change only when you refresh them."
+  },
+  "warningListFormat": {
+    "message": "Invalid warning list. Expected: format \"link-guard-warnings\", version 1, name, and rules."
+  },
+  "warningListLimit": {
+    "message": "At most 10 warning lists."
+  },
+  "ruleCount": {
+    "message": "Rules: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "warningListPreviewTitle": {
+    "message": "Warning list preview"
+  },
+  "riskCustom": {
+    "message": "$SOURCE$: $LABEL$",
+    "placeholders": {
+      "label": {
+        "content": "$1"
+      },
+      "source": {
+        "content": "$2"
+      }
+    }
+  },
+  "riskCustomInline": {
+    "message": "⚠ $LABEL$",
+    "placeholders": {
+      "label": {
+        "content": "$1"
+      }
+    }
+  },
+  "ruleSourceOwn": {
+    "message": "My rule"
+  },
+  "riskCustomSkipped": {
+    "message": "Warning rules could not be checked for this link."
+  },
+  "riskCustomSkippedInline": {
+    "message": "⚠ Rules not checked"
+  },
+  "showRules": {
+    "message": "Show rules"
   }
 };

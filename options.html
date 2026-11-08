@@ -54,6 +54,9 @@
     </section>
 
 
+    <p class="footnote" data-i18n="hostFormatHint"></p>
+    <p class="footnote" data-i18n="exactHostExample"></p>
+
     <section class="section-block" aria-labelledby="imports-heading">
       <div class="section-heading">
         <h2 id="imports-heading" data-i18n="importsTitle"></h2>
@@ -74,8 +77,37 @@
       <div id="importedLists" class="imported-grid"></div>
     </section>
 
-    <p class="footnote" data-i18n="hostFormatHint"></p>
-    <p class="footnote" data-i18n="exactHostExample"></p>
+    <section class="section-block" aria-labelledby="warnings-heading">
+      <div class="section-heading">
+        <h2 id="warnings-heading" data-i18n="warningsTitle"></h2>
+        <p data-i18n="warningsHint"></p>
+      </div>
+      <div class="card warning-card">
+        <h3 data-i18n="builtinWarningsTitle"></h3>
+        <p data-i18n="builtinWarningsHint"></p>
+        <div id="builtinWarnings" class="warning-toggles"></div>
+      </div>
+      <div class="card warning-card">
+        <h3 data-i18n="customRulesTitle"></h3>
+        <p data-i18n="customRulesHint"></p>
+        <div id="customRules" class="rule-list"></div>
+        <button id="addRule" type="button" class="imported-action" data-i18n="addRule"></button>
+      </div>
+      <div class="card warning-card import-controls">
+        <h3 data-i18n="warningListsTitle"></h3>
+        <p data-i18n="warningListsHint"></p>
+        <label for="warningFile" data-i18n="importFileLabel"></label>
+        <input id="warningFile" type="file" accept=".json,application/json">
+        <label for="warningUrl" data-i18n="importUrlLabel"></label>
+        <div class="import-url-row">
+          <input id="warningUrl" type="url" placeholder="https://example.org/warnings.json" autocomplete="off" spellcheck="false">
+          <button id="previewWarningList" type="button" data-i18n="previewRemote"></button>
+        </div>
+      </div>
+      <div id="warningPreview" class="card import-preview" hidden></div>
+      <div id="warningLists" class="imported-grid"></div>
+    </section>
+
     <div class="save-bar">
       <p id="status" role="status" aria-live="polite"></p>
       <button id="save" type="button" data-i18n="saveSettings"></button>
@@ -85,6 +117,8 @@
   <script src="locale.js"></script>
   <script src="policy.js"></script>
   <script src="import-list.js"></script>
+  <script src="safe-regex.js"></script>
+  <script src="warning-rules.js"></script>
   <script src="options.js"></script>
 </body>
 </html>

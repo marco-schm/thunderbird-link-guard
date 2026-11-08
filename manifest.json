@@ -12,10 +12,12 @@
   },
   "permissions": ["messagesRead", "scripting", "storage"],
   "background": {
-    "scripts": ["english.js", "locale.js", "policy.js", "import-list.js", "domain-scope.js", "background.js"]
+    "scripts": ["english.js", "locale.js", "policy.js", "import-list.js", "safe-regex.js", "warning-rules.js",
+      "domain-scope.js", "background.js"]
   },
   "message_display_scripts": [{
-    "js": ["english.js", "locale.js", "policy.js", "access.js", "panel-style.js", "display.js"],
+    "js": ["english.js", "locale.js", "policy.js", "access.js", "safe-regex.js", "warning-rules.js",
+      "panel-style.js", "display.js"],
     "css": ["display.css"],
     "run_at": "document_start"
   }],

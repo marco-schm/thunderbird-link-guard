@@ -453,5 +453,154 @@
   },
   "autoRefreshReview": {
     "message": "自動更新は、規模が大きいか、承認済みのものをブロックしてしまうため適用されませんでした。以前のリストが引き続き有効です。「リモートの更新を確認」を使ってください。"
+  },
+  "warningsTitle": {
+    "message": "警告"
+  },
+  "warningsHint": {
+    "message": "警告を出すチェックを選び、独自の警告を追加できます。警告付きのリンクは、正確なホストを許可するまで無効のままです。"
+  },
+  "builtinWarningsTitle": {
+    "message": "組み込みの警告"
+  },
+  "builtinWarningsHint": {
+    "message": "警告をオフにすると、その警告が求める追加の許可も不要になります。チェックに失敗したリンクは常に警告を表示します。"
+  },
+  "warn_lookalike": {
+    "message": "許可済みドメインに似たドメイン"
+  },
+  "warn_idn": {
+    "message": "国際化ドメイン名"
+  },
+  "warn_textMismatch": {
+    "message": "リンクテキストが別のホストを示している"
+  },
+  "warn_credentials": {
+    "message": "リンク内のユーザー名またはパスワード"
+  },
+  "warn_ipAddress": {
+    "message": "ホスト名ではなく IP アドレス"
+  },
+  "warn_unusualPort": {
+    "message": "通常と異なるポート"
+  },
+  "warn_shortLink": {
+    "message": "公開 URL 短縮サービス"
+  },
+  "customRulesTitle": {
+    "message": "自分の警告ルール"
+  },
+  "customRulesHint": {
+    "message": "パターンがホスト、完全な URL、またはリンクテキストに一致すると、ルールのラベルが警告として表示されます。パターンは大文字小文字を区別しない 200 文字以内の正規表現で、後方参照・先読み/後読み・\\b は使えず、線形時間で照合されます。"
+  },
+  "ruleLabel": {
+    "message": "ラベル"
+  },
+  "ruleTarget": {
+    "message": "対象"
+  },
+  "rulePattern": {
+    "message": "パターン"
+  },
+  "ruleTarget_host": {
+    "message": "ホスト"
+  },
+  "ruleTarget_url": {
+    "message": "完全な URL"
+  },
+  "ruleTarget_text": {
+    "message": "リンクテキスト"
+  },
+  "addRule": {
+    "message": "ルールを追加"
+  },
+  "removeRule": {
+    "message": "削除"
+  },
+  "ruleInvalid": {
+    "message": "ルール $NUMBER$: $REASON$",
+    "placeholders": {
+      "number": {
+        "content": "$1"
+      },
+      "reason": {
+        "content": "$2"
+      }
+    }
+  },
+  "regexSyntax": {
+    "message": "パターンが有効な正規表現ではありません。"
+  },
+  "regexTooLong": {
+    "message": "パターンが 200 文字を超えています。"
+  },
+  "regexUnsupported": {
+    "message": "後方参照、先読み/後読み、\\b、\\u エスケープには対応していません。"
+  },
+  "regexTooComplex": {
+    "message": "パターンが複雑すぎます。"
+  },
+  "labelInvalid": {
+    "message": "ラベルは制御文字を含まない 1〜60 文字にしてください。"
+  },
+  "ruleFormat": {
+    "message": "ルールが不完全です。"
+  },
+  "warningRuleLimit": {
+    "message": "警告ルールが多すぎます: 自分のルールは最大 50、有効なルールは合計 200 までです。"
+  },
+  "warningListsTitle": {
+    "message": "警告リスト"
+  },
+  "warningListsHint": {
+    "message": "JSON ファイルまたは HTTPS URL からルールをインポートします。リストは確認のために表示され、無効の状態で追加されます。警告を追加できるだけでリンクを許可することはなく、リモートリストは更新したときだけ変わります。"
+  },
+  "warningListFormat": {
+    "message": "無効な警告リストです。必要な項目: format \"link-guard-warnings\"、version 1、name、rules。"
+  },
+  "warningListLimit": {
+    "message": "警告リストは最大 10 件です。"
+  },
+  "ruleCount": {
+    "message": "ルール: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "warningListPreviewTitle": {
+    "message": "警告リストのプレビュー"
+  },
+  "riskCustom": {
+    "message": "$SOURCE$: $LABEL$",
+    "placeholders": {
+      "label": {
+        "content": "$1"
+      },
+      "source": {
+        "content": "$2"
+      }
+    }
+  },
+  "riskCustomInline": {
+    "message": "⚠ $LABEL$",
+    "placeholders": {
+      "label": {
+        "content": "$1"
+      }
+    }
+  },
+  "ruleSourceOwn": {
+    "message": "自分のルール"
+  },
+  "riskCustomSkipped": {
+    "message": "このリンクの警告ルールを確認できませんでした。"
+  },
+  "riskCustomSkippedInline": {
+    "message": "⚠ ルール未確認"
+  },
+  "showRules": {
+    "message": "ルールを表示"
   }
 }

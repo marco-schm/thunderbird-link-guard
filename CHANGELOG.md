@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+- Settings: choose which built-in warnings are shown. Switching one off also
+  removes the extra exact-host approval it requires.
+- Add own warning rules as regular expressions for the host, the full URL or the
+  link text, and import warning lists from a JSON file or an HTTPS URL. Patterns
+  are matched by a linear-time engine (no backtracking) within a per-message
+  budget; links that cannot be checked in time keep a warning.
 - Stop flagging plain `http://` links. They no longer show a warning or need an
   extra exact-host approval, so an approved host can also be opened over HTTP.
 - Security: disable SVG anchors that carry their destination in `xlink:href`.

@@ -453,5 +453,154 @@
   },
   "autoRefreshReview": {
     "message": "Az automatikus frissítést nem alkalmaztuk, mert nagy, vagy letiltana valamit, amit Ön jóváhagyott. Az előző lista aktív marad; használja a(z) „Távoli frissítés ellenőrzése” lehetőséget."
+  },
+  "warningsTitle": {
+    "message": "Figyelmeztetések"
+  },
+  "warningsHint": {
+    "message": "Válassza ki, mely ellenőrzések adnak figyelmeztetést, és adjon hozzá sajátokat. A figyelmeztetéssel jelölt hivatkozás inaktív marad, amíg jóvá nem hagyja a pontos gazdagépét."
+  },
+  "builtinWarningsTitle": {
+    "message": "Beépített figyelmeztetések"
+  },
+  "builtinWarningsHint": {
+    "message": "Egy figyelmeztetés kikapcsolásával az általa megkövetelt további jóváhagyás is megszűnik. Az a hivatkozás, amelynek ellenőrzése nem sikerült, mindig figyelmeztet."
+  },
+  "warn_lookalike": {
+    "message": "A tartomány egy jóváhagyott tartományra hasonlít"
+  },
+  "warn_idn": {
+    "message": "Nemzetköziesített tartománynév"
+  },
+  "warn_textMismatch": {
+    "message": "A hivatkozás szövege más gazdagépet mutat"
+  },
+  "warn_credentials": {
+    "message": "Felhasználónév vagy jelszó a hivatkozásban"
+  },
+  "warn_ipAddress": {
+    "message": "IP-cím gazdagépnév helyett"
+  },
+  "warn_unusualPort": {
+    "message": "Szokatlan port"
+  },
+  "warn_shortLink": {
+    "message": "Nyilvános URL-rövidítő"
+  },
+  "customRulesTitle": {
+    "message": "Saját figyelmeztetési szabályok"
+  },
+  "customRulesHint": {
+    "message": "Egy szabály a címkéjét figyelmeztetésként jeleníti meg, ha a mintája illeszkedik a gazdagépre, a teljes URL-re vagy a hivatkozás szövegére. A minták kis- és nagybetűt nem megkülönböztető, legfeljebb 200 karakteres reguláris kifejezések visszahivatkozás, lookaround és \\b nélkül, és lineáris időben futnak."
+  },
+  "ruleLabel": {
+    "message": "Címke"
+  },
+  "ruleTarget": {
+    "message": "Ellenőrzi"
+  },
+  "rulePattern": {
+    "message": "Minta"
+  },
+  "ruleTarget_host": {
+    "message": "Gazdagép"
+  },
+  "ruleTarget_url": {
+    "message": "Teljes URL"
+  },
+  "ruleTarget_text": {
+    "message": "Hivatkozás szövege"
+  },
+  "addRule": {
+    "message": "Szabály hozzáadása"
+  },
+  "removeRule": {
+    "message": "Eltávolítás"
+  },
+  "ruleInvalid": {
+    "message": "$NUMBER$. szabály: $REASON$",
+    "placeholders": {
+      "number": {
+        "content": "$1"
+      },
+      "reason": {
+        "content": "$2"
+      }
+    }
+  },
+  "regexSyntax": {
+    "message": "a minta nem érvényes reguláris kifejezés."
+  },
+  "regexTooLong": {
+    "message": "a minta hosszabb 200 karakternél."
+  },
+  "regexUnsupported": {
+    "message": "a visszahivatkozások, a lookaround, a \\b és a \\u escape nem támogatott."
+  },
+  "regexTooComplex": {
+    "message": "a minta túl összetett."
+  },
+  "labelInvalid": {
+    "message": "a címke 1–60 karakter lehet vezérlőkarakterek nélkül."
+  },
+  "ruleFormat": {
+    "message": "a szabály hiányos."
+  },
+  "warningRuleLimit": {
+    "message": "Túl sok figyelmeztetési szabály: legfeljebb 50 saját és 200 aktív."
+  },
+  "warningListsTitle": {
+    "message": "Figyelmeztetési listák"
+  },
+  "warningListsHint": {
+    "message": "Szabályok importálása JSON-fájlból vagy HTTPS-címről. A listák ellenőrzésre megjelennek, és letiltva indulnak. Csak figyelmeztetést adhatnak hozzá, hivatkozást soha nem hagyhatnak jóvá, és a távoli listák csak frissítéskor változnak."
+  },
+  "warningListFormat": {
+    "message": "Érvénytelen figyelmeztetési lista. Elvárt: format \"link-guard-warnings\", version 1, name és rules."
+  },
+  "warningListLimit": {
+    "message": "Legfeljebb 10 figyelmeztetési lista."
+  },
+  "ruleCount": {
+    "message": "Szabályok: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "warningListPreviewTitle": {
+    "message": "Figyelmeztetési lista előnézete"
+  },
+  "riskCustom": {
+    "message": "$SOURCE$: $LABEL$",
+    "placeholders": {
+      "label": {
+        "content": "$1"
+      },
+      "source": {
+        "content": "$2"
+      }
+    }
+  },
+  "riskCustomInline": {
+    "message": "⚠ $LABEL$",
+    "placeholders": {
+      "label": {
+        "content": "$1"
+      }
+    }
+  },
+  "ruleSourceOwn": {
+    "message": "Saját szabály"
+  },
+  "riskCustomSkipped": {
+    "message": "A figyelmeztetési szabályokat nem sikerült ellenőrizni ennél a hivatkozásnál."
+  },
+  "riskCustomSkippedInline": {
+    "message": "⚠ Szabályok nincsenek ellenőrizve"
+  },
+  "showRules": {
+    "message": "Szabályok megjelenítése"
   }
 }

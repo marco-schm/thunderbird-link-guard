@@ -453,5 +453,154 @@
   },
   "autoRefreshReview": {
     "message": "A atualização automática não foi aplicada porque é grande ou bloquearia algo que você aprovou. A lista anterior continua ativa; use “Revise a atualização remota”."
+  },
+  "warningsTitle": {
+    "message": "Avisos"
+  },
+  "warningsHint": {
+    "message": "Escolha quais verificações geram um aviso e adicione as suas. Um link com aviso fica inativo até você aprovar o host exato."
+  },
+  "builtinWarningsTitle": {
+    "message": "Avisos integrados"
+  },
+  "builtinWarningsHint": {
+    "message": "Desativar um aviso também remove a aprovação extra que ele exige. Um link cuja verificação falhou sempre mostra um aviso."
+  },
+  "warn_lookalike": {
+    "message": "Domínio parecido com um domínio aprovado"
+  },
+  "warn_idn": {
+    "message": "Nome de domínio internacionalizado"
+  },
+  "warn_textMismatch": {
+    "message": "O texto do link mostra outro host"
+  },
+  "warn_credentials": {
+    "message": "Nome de usuário ou senha no link"
+  },
+  "warn_ipAddress": {
+    "message": "Endereço IP em vez de nome de host"
+  },
+  "warn_unusualPort": {
+    "message": "Porta incomum"
+  },
+  "warn_shortLink": {
+    "message": "Encurtador de URL público"
+  },
+  "customRulesTitle": {
+    "message": "Minhas regras de aviso"
+  },
+  "customRulesHint": {
+    "message": "Uma regra mostra seu rótulo como aviso quando o padrão corresponde ao host, à URL completa ou ao texto do link. Padrões são expressões regulares sem distinção de maiúsculas, com até 200 caracteres, sem referências anteriores, lookaround ou \\b, avaliadas em tempo linear."
+  },
+  "ruleLabel": {
+    "message": "Rótulo"
+  },
+  "ruleTarget": {
+    "message": "Verifica"
+  },
+  "rulePattern": {
+    "message": "Padrão"
+  },
+  "ruleTarget_host": {
+    "message": "Host"
+  },
+  "ruleTarget_url": {
+    "message": "URL completa"
+  },
+  "ruleTarget_text": {
+    "message": "Texto do link"
+  },
+  "addRule": {
+    "message": "Adicionar regra"
+  },
+  "removeRule": {
+    "message": "Remover"
+  },
+  "ruleInvalid": {
+    "message": "Regra $NUMBER$: $REASON$",
+    "placeholders": {
+      "number": {
+        "content": "$1"
+      },
+      "reason": {
+        "content": "$2"
+      }
+    }
+  },
+  "regexSyntax": {
+    "message": "o padrão não é uma expressão regular válida."
+  },
+  "regexTooLong": {
+    "message": "o padrão tem mais de 200 caracteres."
+  },
+  "regexUnsupported": {
+    "message": "referências anteriores, lookaround, \\b e escapes \\u não são suportados."
+  },
+  "regexTooComplex": {
+    "message": "o padrão é complexo demais."
+  },
+  "labelInvalid": {
+    "message": "o rótulo precisa de 1 a 60 caracteres sem caracteres de controle."
+  },
+  "ruleFormat": {
+    "message": "a regra está incompleta."
+  },
+  "warningRuleLimit": {
+    "message": "Regras de aviso demais: no máximo 50 próprias e 200 ativas."
+  },
+  "warningListsTitle": {
+    "message": "Listas de avisos"
+  },
+  "warningListsHint": {
+    "message": "Importe regras de um arquivo JSON ou de uma URL HTTPS. As listas são exibidas para revisão e começam desativadas. Elas só podem adicionar avisos, nunca aprovar um link, e listas remotas só mudam quando você as atualiza."
+  },
+  "warningListFormat": {
+    "message": "Lista de avisos inválida. Esperado: format \"link-guard-warnings\", version 1, name e rules."
+  },
+  "warningListLimit": {
+    "message": "No máximo 10 listas de avisos."
+  },
+  "ruleCount": {
+    "message": "Regras: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "warningListPreviewTitle": {
+    "message": "Prévia da lista de avisos"
+  },
+  "riskCustom": {
+    "message": "$SOURCE$: $LABEL$",
+    "placeholders": {
+      "label": {
+        "content": "$1"
+      },
+      "source": {
+        "content": "$2"
+      }
+    }
+  },
+  "riskCustomInline": {
+    "message": "⚠ $LABEL$",
+    "placeholders": {
+      "label": {
+        "content": "$1"
+      }
+    }
+  },
+  "ruleSourceOwn": {
+    "message": "Minha regra"
+  },
+  "riskCustomSkipped": {
+    "message": "Não foi possível verificar as regras de aviso para este link."
+  },
+  "riskCustomSkippedInline": {
+    "message": "⚠ Regras não verificadas"
+  },
+  "showRules": {
+    "message": "Mostrar regras"
   }
 }

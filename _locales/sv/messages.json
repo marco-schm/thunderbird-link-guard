@@ -453,5 +453,154 @@
   },
   "autoRefreshReview": {
     "message": "Den automatiska uppdateringen tillämpades inte eftersom den är stor eller skulle blockera något du har godkänt. Den tidigare listan förblir aktiv; använd \"Granska fjärruppdatering\"."
+  },
+  "warningsTitle": {
+    "message": "Varningar"
+  },
+  "warningsHint": {
+    "message": "Välj vilka kontroller som ger en varning och lägg till egna. En länk med varning förblir inaktiv tills du godkänner dess exakta värd."
+  },
+  "builtinWarningsTitle": {
+    "message": "Inbyggda varningar"
+  },
+  "builtinWarningsHint": {
+    "message": "Om du stänger av en varning försvinner också det extra godkännande den kräver. En länk vars kontroll misslyckades visar alltid en varning."
+  },
+  "warn_lookalike": {
+    "message": "Domänen liknar en godkänd domän"
+  },
+  "warn_idn": {
+    "message": "Internationaliserat domännamn"
+  },
+  "warn_textMismatch": {
+    "message": "Länktexten visar en annan värd"
+  },
+  "warn_credentials": {
+    "message": "Användarnamn eller lösenord i länken"
+  },
+  "warn_ipAddress": {
+    "message": "IP-adress i stället för värdnamn"
+  },
+  "warn_unusualPort": {
+    "message": "Ovanlig port"
+  },
+  "warn_shortLink": {
+    "message": "Offentlig URL-förkortare"
+  },
+  "customRulesTitle": {
+    "message": "Mina varningsregler"
+  },
+  "customRulesHint": {
+    "message": "En regel visar sin etikett som varning när mönstret matchar värden, hela URL:en eller länktexten. Mönster är skiftlägesokänsliga reguljära uttryck på högst 200 tecken utan bakåtreferenser, lookaround eller \\b och kontrolleras i linjär tid."
+  },
+  "ruleLabel": {
+    "message": "Etikett"
+  },
+  "ruleTarget": {
+    "message": "Kontrollerar"
+  },
+  "rulePattern": {
+    "message": "Mönster"
+  },
+  "ruleTarget_host": {
+    "message": "Värd"
+  },
+  "ruleTarget_url": {
+    "message": "Hela URL:en"
+  },
+  "ruleTarget_text": {
+    "message": "Länktext"
+  },
+  "addRule": {
+    "message": "Lägg till regel"
+  },
+  "removeRule": {
+    "message": "Ta bort"
+  },
+  "ruleInvalid": {
+    "message": "Regel $NUMBER$: $REASON$",
+    "placeholders": {
+      "number": {
+        "content": "$1"
+      },
+      "reason": {
+        "content": "$2"
+      }
+    }
+  },
+  "regexSyntax": {
+    "message": "mönstret är inte ett giltigt reguljärt uttryck."
+  },
+  "regexTooLong": {
+    "message": "mönstret är längre än 200 tecken."
+  },
+  "regexUnsupported": {
+    "message": "bakåtreferenser, lookaround, \\b och \\u-escape stöds inte."
+  },
+  "regexTooComplex": {
+    "message": "mönstret är för komplext."
+  },
+  "labelInvalid": {
+    "message": "etiketten behöver 1 till 60 tecken utan styrtecken."
+  },
+  "ruleFormat": {
+    "message": "regeln är ofullständig."
+  },
+  "warningRuleLimit": {
+    "message": "För många varningsregler: högst 50 egna och 200 aktiva."
+  },
+  "warningListsTitle": {
+    "message": "Varningslistor"
+  },
+  "warningListsHint": {
+    "message": "Importera regler från en JSON-fil eller en HTTPS-URL. Listor visas för granskning och börjar inaktiverade. De kan bara lägga till varningar, aldrig godkänna en länk, och fjärrlistor ändras bara när du uppdaterar dem."
+  },
+  "warningListFormat": {
+    "message": "Ogiltig varningslista. Förväntat: format \"link-guard-warnings\", version 1, name och rules."
+  },
+  "warningListLimit": {
+    "message": "Högst 10 varningslistor."
+  },
+  "ruleCount": {
+    "message": "Regler: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "warningListPreviewTitle": {
+    "message": "Förhandsvisning av varningslista"
+  },
+  "riskCustom": {
+    "message": "$SOURCE$: $LABEL$",
+    "placeholders": {
+      "label": {
+        "content": "$1"
+      },
+      "source": {
+        "content": "$2"
+      }
+    }
+  },
+  "riskCustomInline": {
+    "message": "⚠ $LABEL$",
+    "placeholders": {
+      "label": {
+        "content": "$1"
+      }
+    }
+  },
+  "ruleSourceOwn": {
+    "message": "Egen regel"
+  },
+  "riskCustomSkipped": {
+    "message": "Varningsreglerna kunde inte kontrolleras för den här länken."
+  },
+  "riskCustomSkippedInline": {
+    "message": "⚠ Regler inte kontrollerade"
+  },
+  "showRules": {
+    "message": "Visa regler"
   }
 }

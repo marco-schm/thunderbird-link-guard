@@ -3,6 +3,7 @@
 const policy = globalThis.LinkGuardPolicy;
 const listImport = globalThis.LinkGuardImport;
 const domainScope = globalThis.LinkGuardDomainScope;
+const warningRules = globalThis.LinkGuardWarnings;
 let updateQueue = Promise.resolve();
 let rulesPromise;
 
@@ -68,6 +69,23 @@ async function importedBlocks(lists) {
 // result is reused until the stored lists change.
 let importedCache = { key: "", lists: [], blocks: { hosts: [], domains: [] } };
 
+// Warning rules are re-validated (and their patterns compiled) on every read, which is
+// cheap but not free, so the cleaned result is reused until the stored data changes.
+let warningCache = { key: "", value: null };
+
+function warningData(local) {
+  const key = JSON.stringify([local.disabledWarnings ?? [], local.customWarnings ?? [],
+    local.warningLists ?? []]);
+  if (warningCache.key !== key) {
+    const lists = warningRules.cleanStoredLists(local.warningLists);
+    warningCache = { key, value: {
+      disabledWarnings: warningRules.cleanDisabled(local.disabledWarnings),
+      warningRules: warningRules.effectiveRules(warningRules.cleanRules(local.customWarnings), lists)
+    } };
+  }
+  return warningCache.value;
+}
+
 async function importedData(raw) {
   const key = JSON.stringify(raw ?? []);
   if (importedCache.key !== key) {
@@ -83,7 +101,8 @@ async function importedData(raw) {
 async function readFullState() {
   const local = await messenger.storage.local.get({
     enabled: true, customAllowedHosts: [], blockedHosts: [],
-    blockedDomains: [], importedLists: [], broadAllowedDomains: []
+    blockedDomains: [], importedLists: [], broadAllowedDomains: [],
+    disabledWarnings: [], customWarnings: [], warningLists: []
   });
   const customAllowedHosts = cleanHosts(local.customAllowedHosts);
   const blockedHosts = cleanHosts(local.blockedHosts);
@@ -117,6 +136,7 @@ async function readFullState() {
     blockedHosts: allBlockedHosts, blockedDomains: allBlockedDomains,
     broadAllowedDomains,
     allowedHosts: [...effective], trustedDomains: [...trustedDomains],
+    ...warningData(local),
     ownBlockedHosts: blockedHosts, ownBlockedDomains: blockedDomains,
     importedBlockedHosts: imported.hosts, importedBlockedDomains: imported.domains };
 }
@@ -284,7 +304,8 @@ async function protectOpenMessages() {
       if (probe.some(result => result.result === true)) continue;
       await messenger.scripting.insertCSS({ target, files: ["display.css"] });
       await messenger.scripting.executeScript({ target,
-        files: ["english.js", "locale.js", "policy.js", "access.js", "panel-style.js", "display.js"] });
+        files: ["english.js", "locale.js", "policy.js", "access.js", "safe-regex.js", "warning-rules.js",
+          "panel-style.js", "display.js"] });
     } catch (error) {
       console.error("Link Guard could not protect an already open message", error);
     }

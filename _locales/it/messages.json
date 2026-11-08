@@ -453,5 +453,154 @@
   },
   "autoRefreshReview": {
     "message": "L'aggiornamento automatico non è stato applicato perché è grande o bloccherebbe qualcosa che hai approvato. L'elenco precedente resta attivo; usa «Esaminare l'aggiornamento remoto»."
+  },
+  "warningsTitle": {
+    "message": "Avvisi"
+  },
+  "warningsHint": {
+    "message": "Scegli quali controlli generano un avviso e aggiungine di tuoi. Un link con avviso resta inattivo finché non approvi il suo host esatto."
+  },
+  "builtinWarningsTitle": {
+    "message": "Avvisi integrati"
+  },
+  "builtinWarningsHint": {
+    "message": "Disattivare un avviso elimina anche l’approvazione aggiuntiva che richiede. Un link il cui controllo non è riuscito mostra sempre un avviso."
+  },
+  "warn_lookalike": {
+    "message": "Dominio simile a un dominio approvato"
+  },
+  "warn_idn": {
+    "message": "Nome di dominio internazionalizzato"
+  },
+  "warn_textMismatch": {
+    "message": "Il testo del link mostra un altro host"
+  },
+  "warn_credentials": {
+    "message": "Nome utente o password nel link"
+  },
+  "warn_ipAddress": {
+    "message": "Indirizzo IP invece di un nome host"
+  },
+  "warn_unusualPort": {
+    "message": "Porta insolita"
+  },
+  "warn_shortLink": {
+    "message": "Accorciatore di URL pubblico"
+  },
+  "customRulesTitle": {
+    "message": "Le mie regole di avviso"
+  },
+  "customRulesHint": {
+    "message": "Una regola mostra la sua etichetta come avviso quando il suo pattern corrisponde all’host, all’URL completo o al testo del link. I pattern sono espressioni regolari senza distinzione tra maiuscole e minuscole, fino a 200 caratteri, senza backreference, lookaround o \\b, e vengono valutati in tempo lineare."
+  },
+  "ruleLabel": {
+    "message": "Etichetta"
+  },
+  "ruleTarget": {
+    "message": "Controlla"
+  },
+  "rulePattern": {
+    "message": "Pattern"
+  },
+  "ruleTarget_host": {
+    "message": "Host"
+  },
+  "ruleTarget_url": {
+    "message": "URL completo"
+  },
+  "ruleTarget_text": {
+    "message": "Testo del link"
+  },
+  "addRule": {
+    "message": "Aggiungi regola"
+  },
+  "removeRule": {
+    "message": "Rimuovi"
+  },
+  "ruleInvalid": {
+    "message": "Regola $NUMBER$: $REASON$",
+    "placeholders": {
+      "number": {
+        "content": "$1"
+      },
+      "reason": {
+        "content": "$2"
+      }
+    }
+  },
+  "regexSyntax": {
+    "message": "il pattern non è un’espressione regolare valida."
+  },
+  "regexTooLong": {
+    "message": "il pattern supera i 200 caratteri."
+  },
+  "regexUnsupported": {
+    "message": "backreference, lookaround, \\b ed escape \\u non sono supportati."
+  },
+  "regexTooComplex": {
+    "message": "il pattern è troppo complesso."
+  },
+  "labelInvalid": {
+    "message": "l’etichetta richiede da 1 a 60 caratteri senza caratteri di controllo."
+  },
+  "ruleFormat": {
+    "message": "la regola è incompleta."
+  },
+  "warningRuleLimit": {
+    "message": "Troppe regole di avviso: al massimo 50 personali e 200 attive."
+  },
+  "warningListsTitle": {
+    "message": "Elenchi di avvisi"
+  },
+  "warningListsHint": {
+    "message": "Importa regole da un file JSON o da un URL HTTPS. Gli elenchi vengono mostrati per la verifica e partono disattivati. Possono solo aggiungere avvisi, mai approvare un link, e gli elenchi remoti cambiano solo quando li aggiorni."
+  },
+  "warningListFormat": {
+    "message": "Elenco di avvisi non valido. Previsti: format \"link-guard-warnings\", version 1, name e rules."
+  },
+  "warningListLimit": {
+    "message": "Al massimo 10 elenchi di avvisi."
+  },
+  "ruleCount": {
+    "message": "Regole: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "warningListPreviewTitle": {
+    "message": "Anteprima dell’elenco di avvisi"
+  },
+  "riskCustom": {
+    "message": "$SOURCE$: $LABEL$",
+    "placeholders": {
+      "label": {
+        "content": "$1"
+      },
+      "source": {
+        "content": "$2"
+      }
+    }
+  },
+  "riskCustomInline": {
+    "message": "⚠ $LABEL$",
+    "placeholders": {
+      "label": {
+        "content": "$1"
+      }
+    }
+  },
+  "ruleSourceOwn": {
+    "message": "Regola personale"
+  },
+  "riskCustomSkipped": {
+    "message": "Non è stato possibile verificare le regole di avviso per questo link."
+  },
+  "riskCustomSkippedInline": {
+    "message": "⚠ Regole non verificate"
+  },
+  "showRules": {
+    "message": "Mostra regole"
   }
 }

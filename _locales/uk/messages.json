@@ -453,5 +453,154 @@
   },
   "autoRefreshReview": {
     "message": "Автоматичне оновлення не застосовано, бо воно велике або заблокувало б щось, що ви схвалили. Попередній список залишається активним; скористайтеся «Перевірити віддалене оновлення»."
+  },
+  "warningsTitle": {
+    "message": "Попередження"
+  },
+  "warningsHint": {
+    "message": "Виберіть, які перевірки видають попередження, і додайте власні. Посилання з попередженням залишається неактивним, доки ви не схвалите його точний хост."
+  },
+  "builtinWarningsTitle": {
+    "message": "Вбудовані попередження"
+  },
+  "builtinWarningsHint": {
+    "message": "Вимкнення попередження скасовує й додаткове схвалення, якого воно вимагає. Посилання, перевірка якого не вдалася, завжди показує попередження."
+  },
+  "warn_lookalike": {
+    "message": "Домен схожий на схвалений домен"
+  },
+  "warn_idn": {
+    "message": "Інтернаціоналізоване доменне ім’я"
+  },
+  "warn_textMismatch": {
+    "message": "Текст посилання показує інший хост"
+  },
+  "warn_credentials": {
+    "message": "Ім’я користувача або пароль у посиланні"
+  },
+  "warn_ipAddress": {
+    "message": "IP-адреса замість імені хоста"
+  },
+  "warn_unusualPort": {
+    "message": "Незвичний порт"
+  },
+  "warn_shortLink": {
+    "message": "Публічний скорочувач URL"
+  },
+  "customRulesTitle": {
+    "message": "Мої правила попереджень"
+  },
+  "customRulesHint": {
+    "message": "Правило показує свою мітку як попередження, коли його шаблон збігається з хостом, повним URL або текстом посилання. Шаблони — регулярні вирази без урахування регістру довжиною до 200 символів без зворотних посилань, lookaround і \\b; перевірка виконується за лінійний час."
+  },
+  "ruleLabel": {
+    "message": "Мітка"
+  },
+  "ruleTarget": {
+    "message": "Перевіряє"
+  },
+  "rulePattern": {
+    "message": "Шаблон"
+  },
+  "ruleTarget_host": {
+    "message": "Хост"
+  },
+  "ruleTarget_url": {
+    "message": "Повний URL"
+  },
+  "ruleTarget_text": {
+    "message": "Текст посилання"
+  },
+  "addRule": {
+    "message": "Додати правило"
+  },
+  "removeRule": {
+    "message": "Видалити"
+  },
+  "ruleInvalid": {
+    "message": "Правило $NUMBER$: $REASON$",
+    "placeholders": {
+      "number": {
+        "content": "$1"
+      },
+      "reason": {
+        "content": "$2"
+      }
+    }
+  },
+  "regexSyntax": {
+    "message": "шаблон не є дійсним регулярним виразом."
+  },
+  "regexTooLong": {
+    "message": "шаблон довший за 200 символів."
+  },
+  "regexUnsupported": {
+    "message": "зворотні посилання, lookaround, \\b та екранування \\u не підтримуються."
+  },
+  "regexTooComplex": {
+    "message": "шаблон надто складний."
+  },
+  "labelInvalid": {
+    "message": "мітка має містити від 1 до 60 символів без керівних символів."
+  },
+  "ruleFormat": {
+    "message": "правило неповне."
+  },
+  "warningRuleLimit": {
+    "message": "Забагато правил попереджень: щонайбільше 50 власних і 200 активних."
+  },
+  "warningListsTitle": {
+    "message": "Списки попереджень"
+  },
+  "warningListsHint": {
+    "message": "Імпортуйте правила з файлу JSON або за адресою HTTPS. Списки показуються для перевірки й спочатку вимкнені. Вони можуть лише додавати попередження, ніколи не схвалюють посилання, а віддалені списки змінюються лише після оновлення вами."
+  },
+  "warningListFormat": {
+    "message": "Недійсний список попереджень. Очікується: format \"link-guard-warnings\", version 1, name і rules."
+  },
+  "warningListLimit": {
+    "message": "Щонайбільше 10 списків попереджень."
+  },
+  "ruleCount": {
+    "message": "Правил: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "warningListPreviewTitle": {
+    "message": "Попередній перегляд списку попереджень"
+  },
+  "riskCustom": {
+    "message": "$SOURCE$: $LABEL$",
+    "placeholders": {
+      "label": {
+        "content": "$1"
+      },
+      "source": {
+        "content": "$2"
+      }
+    }
+  },
+  "riskCustomInline": {
+    "message": "⚠ $LABEL$",
+    "placeholders": {
+      "label": {
+        "content": "$1"
+      }
+    }
+  },
+  "ruleSourceOwn": {
+    "message": "Моє правило"
+  },
+  "riskCustomSkipped": {
+    "message": "Не вдалося перевірити правила попереджень для цього посилання."
+  },
+  "riskCustomSkippedInline": {
+    "message": "⚠ Правила не перевірено"
+  },
+  "showRules": {
+    "message": "Показати правила"
   }
 }
