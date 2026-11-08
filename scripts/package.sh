@@ -7,7 +7,7 @@ mkdir -p dist
 archive="dist/link-guard-$version.xpi"
 rm -f "$archive"
 zip -q -X "$archive" \
-  manifest.json background.js locale.js policy.js access.js import-list.js domain-scope.js display.js display.css \
+  manifest.json background.js english.js locale.js policy.js access.js import-list.js domain-scope.js display.js display.css \
   options.html options.css options.js icons/shield.svg \
   _locales/de/messages.json _locales/en/messages.json _locales/es/messages.json \
   _locales/fr/messages.json _locales/pt_BR/messages.json _locales/it/messages.json \

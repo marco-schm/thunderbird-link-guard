@@ -22,7 +22,7 @@
   let lastToolbarStatus = "";
   let errorKey = "";
 
-  const t = (key, values) => messenger.i18n.getMessage(key, values) || key;
+  const t = globalThis.LinkGuardLocale.getMessage;
   const panelLanguage = globalThis.LinkGuardLocale.effectiveUiLocale(
     messenger.i18n.getUILanguage());
 

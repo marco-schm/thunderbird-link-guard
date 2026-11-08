@@ -20,7 +20,9 @@ Link Guard works locally on displayed messages. It does not upload mail or inspe
 
 ## Status and installation
 
-Version 0.9.0 supports ten UI languages. The link policy was tested manually
+Version 0.9.1 supports ten UI languages. Spanish and the English fallback for
+an unsupported Thunderbird language were tested live in Thunderbird 159 on
+macOS. The link policy was tested manually
 in Thunderbird 159 on macOS with a synthetic OpenPGP message, a user-initiated
 HTTPS list preview, and a restored message after restart. Other Thunderbird
 versions and operating systems have not been tested live.

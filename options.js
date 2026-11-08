@@ -2,7 +2,7 @@
 
 const policy = globalThis.LinkGuardPolicy;
 const listImport = globalThis.LinkGuardImport;
-const t = (key, values) => messenger.i18n.getMessage(key, values) || key;
+const t = globalThis.LinkGuardLocale.getMessage;
 const importedInputs = new Map();
 const enabledInput = document.getElementById("enabled");
 const customInput = document.getElementById("customHosts");

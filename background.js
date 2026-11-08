@@ -149,7 +149,7 @@ async function protectOpenMessages() {
       if (probe.some(result => result.result === true)) continue;
       await messenger.scripting.insertCSS({ target, files: ["display.css"] });
       await messenger.scripting.executeScript({ target,
-        files: ["locale.js", "policy.js", "access.js", "display.js"] });
+        files: ["english.js", "locale.js", "policy.js", "access.js", "display.js"] });
     } catch (error) {
       console.error("Link Guard could not protect an already open message", error);
     }
@@ -172,11 +172,11 @@ function updateToolbar(message, tabId) {
   const warnings = Number.isInteger(message.warnings) ? Math.max(message.warnings, 0) : 0;
   const overflow = message.overflow === true;
   const count = pending + blocked;
-  const title = !message.enabled ? messenger.i18n.getMessage("toolbarDisabled") :
-    overflow ? messenger.i18n.getMessage("toolbarOverflow") :
-    warnings ? messenger.i18n.getMessage("toolbarRisk", [String(warnings)]) :
-    count ? messenger.i18n.getMessage("toolbarPending", [String(count)]) :
-    messenger.i18n.getMessage("toolbarClear");
+  const t = globalThis.LinkGuardLocale.getMessage;
+  const title = !message.enabled ? t("toolbarDisabled") :
+    overflow ? t("toolbarOverflow") :
+    warnings ? t("toolbarRisk", [String(warnings)]) :
+    count ? t("toolbarPending", [String(count)]) : t("toolbarClear");
   return Promise.all([
     messenger.messageDisplayAction.setBadgeText({ tabId,
       text: overflow || warnings ? "!" : count ? String(Math.min(count, 99)) : "" }),

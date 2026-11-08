@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "__MSG_extensionName__",
   "description": "__MSG_extensionDescription__",
-  "version": "0.9.0",
+  "version": "0.9.1",
   "default_locale": "en",
   "browser_specific_settings": {
     "gecko": {
@@ -12,10 +12,10 @@
   },
   "permissions": ["messagesRead", "scripting", "storage"],
   "background": {
-    "scripts": ["policy.js", "import-list.js", "domain-scope.js", "background.js"]
+    "scripts": ["english.js", "locale.js", "policy.js", "import-list.js", "domain-scope.js", "background.js"]
   },
   "message_display_scripts": [{
-    "js": ["locale.js", "policy.js", "access.js", "display.js"],
+    "js": ["english.js", "locale.js", "policy.js", "access.js", "display.js"],
     "css": ["display.css"],
     "run_at": "document_start"
   }],

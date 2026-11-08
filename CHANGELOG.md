@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.9.1 — 2026-11-08
+
+- Make the English fallback independent of Thunderbird's secondary languages.
+  An unsupported primary language now displays Link Guard in English even if
+  Thunderbird has another supported language installed.
+
 ## 0.9.0 — 2026-11-07
 
 - Add Spanish, French, Brazilian Portuguese, Italian, Polish, Russian,

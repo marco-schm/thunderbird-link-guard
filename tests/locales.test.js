@@ -2,6 +2,7 @@ const test = require("node:test");
 const assert = require("node:assert/strict");
 const fs = require("node:fs");
 const path = require("node:path");
+const vm = require("node:vm");
 
 const read = language => JSON.parse(fs.readFileSync(
   path.join(__dirname, `../_locales/${language}/messages.json`), "utf8"));
@@ -16,6 +17,23 @@ test("unsupported Thunderbird UI locales fall back to English", () => {
   assert.equal(effectiveUiLocale("de-DE"), "de");
   assert.equal(effectiveUiLocale("pt-BR"), "pt-BR");
   assert.equal(effectiveUiLocale("zh-CN"), "zh-CN");
+});
+
+test("English fallback ignores a supported secondary Thunderbird language", () => {
+  const context = vm.createContext({ messenger: { i18n: {
+    getUILanguage: () => "nl",
+    getMessage: () => "Spanish secondary language"
+  } } });
+  for (const file of ["english.js", "locale.js"]) {
+    vm.runInContext(fs.readFileSync(path.join(__dirname, "..", file), "utf8"), context);
+  }
+  assert.equal(context.LinkGuardLocale.getMessage("settingsTitle"), "Link Guard settings");
+  assert.equal(context.LinkGuardLocale.getMessage("toolbarPending", ["3"]),
+    "Link Guard: 3 blocked links");
+  assert.equal(context.LinkGuardLocale.getMessage("panelCompactRisk", ["2", "1"]),
+    "⚠ Warnings: 1 · Pending: 2");
+  assert.equal(context.LinkGuardLocale.effectiveUiLocale("nl"), "en");
+  assert.deepEqual(JSON.parse(JSON.stringify(context.LinkGuardEnglish)), read("en"));
 });
 
 test("ten locale catalogs have complete keys and unchanged substitutions", () => {
