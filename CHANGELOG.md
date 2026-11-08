@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 0.11.0 — 2026-11-08
 
 - Add ten UI languages: Czech, Danish, Dutch, Finnish, Hungarian, Korean,
   Swedish, Traditional Chinese, Turkish and Ukrainian. Link Guard now has
