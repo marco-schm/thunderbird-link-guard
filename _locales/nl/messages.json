@@ -104,6 +104,31 @@
   "blockHost": {
     "message": "Blokkeren"
   },
+  "unblockHost": {
+    "message": "Deblokkeren"
+  },
+  "unblockConfirm": {
+    "message": "$HOST$ deblokkeren? Links daarheen worden in geen enkel bericht meer geblokkeerd.",
+    "placeholders": {
+      "host": {
+        "content": "$1"
+      }
+    }
+  },
+  "unblockDomainConfirm": {
+    "message": "$DOMAIN$ en alle subdomeinen deblokkeren? Links daarheen worden in geen enkel bericht meer geblokkeerd.",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      }
+    }
+  },
+  "blockedByList": {
+    "message": "Geblokkeerd door een geïmporteerde lijst. U kunt de lijst wijzigen in de instellingen."
+  },
+  "openSettings": {
+    "message": "Instellingen openen"
+  },
   "scopePrompt": {
     "message": "Welk bereik moet permanent worden goedgekeurd?"
   },

@@ -104,6 +104,31 @@
   "blockHost": {
     "message": "Заблокувати"
   },
+  "unblockHost": {
+    "message": "Розблокувати"
+  },
+  "unblockConfirm": {
+    "message": "Розблокувати $HOST$? Посилання на цей сайт більше не блокуватимуться в жодному листі.",
+    "placeholders": {
+      "host": {
+        "content": "$1"
+      }
+    }
+  },
+  "unblockDomainConfirm": {
+    "message": "Розблокувати $DOMAIN$ і всі його піддомени? Посилання на них більше не блокуватимуться в жодному листі.",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      }
+    }
+  },
+  "blockedByList": {
+    "message": "Заблоковано імпортованим списком. Список можна змінити в налаштуваннях."
+  },
+  "openSettings": {
+    "message": "Відкрити налаштування"
+  },
   "scopePrompt": {
     "message": "Який обсяг схвалити назавжди?"
   },

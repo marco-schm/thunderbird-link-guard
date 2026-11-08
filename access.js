@@ -2,10 +2,16 @@
 
 (function (root) {
   const policy = root.LinkGuardPolicy || (typeof require !== "undefined" ? require("./policy.js") : null);
+  // A block always wins, also over an approval for the current message: a blocked host
+  // is opened only after it has been unblocked.
+  function isBlocked(host, state) {
+    return state.blockedHosts.includes(host) ||
+      Boolean(state.blockedDomains?.some(domain => host === domain || host.endsWith(`.${domain}`)));
+  }
+
   function hostAllowed(host, state, temporaryHosts, warningFor) {
+    if (isBlocked(host, state)) return false;
     if (temporaryHosts.has(host)) return true;
-    if (state.blockedDomains?.some(domain => host === domain || host.endsWith(`.${domain}`))) return false;
-    if (state.blockedHosts.includes(host)) return false;
     if (state.customAllowedHosts.includes(host)) return true;
     const warning = warningFor(host);
     if (!warning || warning.kind !== "none") return false;
@@ -21,6 +27,7 @@
 
   function linkAllowed(inspection, state, temporaryHosts, warningFor, stateReady) {
     if (!stateReady || inspection.kind !== "web") return false;
+    if (inspection.hosts.some(host => isBlocked(host, state))) return false;
     if (inspection.risks?.some(risk => MESSAGE_ONLY_RISKS.includes(risk))) {
       return inspection.hosts.every(host => temporaryHosts.has(host));
     }

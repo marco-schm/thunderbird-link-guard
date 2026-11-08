@@ -104,6 +104,31 @@
   "blockHost": {
     "message": "ブロック"
   },
+  "unblockHost": {
+    "message": "ブロックを解除"
+  },
+  "unblockConfirm": {
+    "message": "$HOST$ のブロックを解除しますか？どのメッセージでもリンクがブロックされなくなります。",
+    "placeholders": {
+      "host": {
+        "content": "$1"
+      }
+    }
+  },
+  "unblockDomainConfirm": {
+    "message": "$DOMAIN$ とそのすべてのサブドメインのブロックを解除しますか？どのメッセージでもリンクがブロックされなくなります。",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      }
+    }
+  },
+  "blockedByList": {
+    "message": "インポートしたリストによってブロックされています。リストは設定で変更できます。"
+  },
+  "openSettings": {
+    "message": "設定を開く"
+  },
   "scopePrompt": {
     "message": "恒久的に許可する範囲を選択してください"
   },

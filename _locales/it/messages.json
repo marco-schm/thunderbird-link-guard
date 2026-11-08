@@ -104,6 +104,31 @@
   "blockHost": {
     "message": "Blocca"
   },
+  "unblockHost": {
+    "message": "Sblocca"
+  },
+  "unblockConfirm": {
+    "message": "Sbloccare $HOST$? I collegamenti a questo sito non saranno più bloccati in nessun messaggio.",
+    "placeholders": {
+      "host": {
+        "content": "$1"
+      }
+    }
+  },
+  "unblockDomainConfirm": {
+    "message": "Sbloccare $DOMAIN$ e tutti i suoi sottodomini? I collegamenti a questi siti non saranno più bloccati in nessun messaggio.",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      }
+    }
+  },
+  "blockedByList": {
+    "message": "Bloccato da un elenco importato. Puoi modificare l'elenco nelle impostazioni."
+  },
+  "openSettings": {
+    "message": "Apri impostazioni"
+  },
   "scopePrompt": {
     "message": "Quale ambito dovrebbe essere approvato in modo permanente?"
   },

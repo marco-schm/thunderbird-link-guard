@@ -104,6 +104,31 @@
   "blockHost": {
     "message": "Blockieren"
   },
+  "unblockHost": {
+    "message": "Blockierung aufheben"
+  },
+  "unblockConfirm": {
+    "message": "Blockierung von $HOST$ aufheben? Links dorthin werden dann in keiner Nachricht mehr blockiert.",
+    "placeholders": {
+      "host": {
+        "content": "$1"
+      }
+    }
+  },
+  "unblockDomainConfirm": {
+    "message": "Blockierung von $DOMAIN$ und allen Subdomains aufheben? Links dorthin werden dann in keiner Nachricht mehr blockiert.",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      }
+    }
+  },
+  "blockedByList": {
+    "message": "Durch eine importierte Liste blockiert. Die Liste lässt sich in den Einstellungen ändern."
+  },
+  "openSettings": {
+    "message": "Einstellungen öffnen"
+  },
   "scopePrompt": {
     "message": "Welcher Bereich soll dauerhaft freigegeben werden?"
   },

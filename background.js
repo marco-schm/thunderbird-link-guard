@@ -143,10 +143,11 @@ async function readFullState() {
     importedBlockedHosts: imported.hosts, importedBlockedDomains: imported.domains };
 }
 
-// Message pages need only the effective rules, not the imported lists themselves.
+// Message pages need the effective rules, not the imported lists themselves. They do get
+// the user's own blocks, to offer "Unblock" only where removing a block of one's own
+// actually unblocks the host.
 async function readState() {
-  const { ownBlockedHosts, ownBlockedDomains, importedBlockedHosts,
-    importedBlockedDomains, ...state } = await readFullState();
+  const { importedBlockedHosts, importedBlockedDomains, ...state } = await readFullState();
   return state;
 }
 
@@ -191,7 +192,7 @@ async function invalidBroadDomain(hosts) {
 
 async function setDecision(host, decision, scope = "exact") {
   const normalized = policy.normalizeHost(host);
-  if (!["permanent", "block", "clear"].includes(decision)) {
+  if (!["permanent", "block", "clear", "unblock"].includes(decision)) {
     throw new Error("invalid decision");
   }
   const state = await readFullState();
@@ -233,6 +234,17 @@ async function setDecision(host, decision, scope = "exact") {
     } else if (scope === "exact") {
       blocked.add(normalized);
       custom.delete(normalized);
+    } else throw new Error("invalid scope");
+  } else if (decision === "unblock") {
+    // Removes the user's own block only; an imported blocklist is changed in Settings.
+    if (scope === "domain") {
+      const root = await scopeRoot(normalized);
+      if (!root || !blockedDomains.has(root)) throw new Error("no whole-domain block");
+      blockedDomains.delete(root);
+      blocked.delete(normalized);
+    } else if (scope === "exact") {
+      if (!blocked.has(normalized)) throw new Error("no block");
+      blocked.delete(normalized);
     } else throw new Error("invalid scope");
   } else {
     if (scope !== "exact") throw new Error("invalid scope");
@@ -374,4 +386,5 @@ messenger.runtime.onMessage.addListener((message, sender) => {
     return result;
   }
   if (message?.type === "link-guard-status") return updateToolbar(message, sender.tab.id);
+  if (message?.type === "link-guard-open-settings") return messenger.runtime.openOptionsPage();
 });

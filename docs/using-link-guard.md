@@ -35,7 +35,7 @@ them has a warning.
 | **For this message** | You allowed the host temporarily. Its links work until you show another message. |
 | **Permanently approved** | The exact host is in your approvals or in an enabled allowlist. |
 | **Approved via whole domain** | The host belongs to a domain you approved with all subdomains. |
-| **Blocked** | The host is blocked by your rules or by an enabled blocklist. Its links stay inactive. |
+| **Blocked** | The host is blocked by your rules or by an enabled blocklist. Its links stay inactive, and the row offers only **Unblock** (see below). |
 
 ### Actions
 
@@ -52,6 +52,11 @@ When you choose **Allow permanently** or **Block**, Link Guard asks for the scop
 - **`example.org` and all subdomains** – the whole registrable domain, including
   `example.org` itself. This option appears only when the domain can be determined
   reliably from the bundled Public Suffix List.
+
+A **blocked** host offers only **Unblock**. After you confirm *Unblock example.org? Links
+to it will no longer be blocked in any message.*, the block is removed and the usual
+actions return. A host blocked by an imported list shows **Open settings** instead, since
+only the list can change that. See [Approvals and blocks](approvals-and-blocks.md#unblocking).
 
 Some actions are deliberately limited:
 

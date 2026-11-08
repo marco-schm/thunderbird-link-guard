@@ -79,7 +79,7 @@ applies. See [Troubleshooting](troubleshooting.md#a-link-stays-inactive-after-i-
 ### How do I undo a decision?
 
 Open [Settings](settings.md), remove the line from the relevant card and click **Save
-changes**.
+changes**. A block can also be undone right in the message: click **Unblock** and confirm.
 
 ## Warnings
 

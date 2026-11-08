@@ -104,6 +104,31 @@
   "blockHost": {
     "message": "Bloker"
   },
+  "unblockHost": {
+    "message": "Fjern blokering"
+  },
+  "unblockConfirm": {
+    "message": "Fjern blokering af $HOST$? Links dertil blokeres ikke længere i nogen meddelelse.",
+    "placeholders": {
+      "host": {
+        "content": "$1"
+      }
+    }
+  },
+  "unblockDomainConfirm": {
+    "message": "Fjern blokering af $DOMAIN$ og alle underdomæner? Links dertil blokeres ikke længere i nogen meddelelse.",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      }
+    }
+  },
+  "blockedByList": {
+    "message": "Blokeret af en importeret liste. Du kan ændre listen i indstillingerne."
+  },
+  "openSettings": {
+    "message": "Åbn indstillinger"
+  },
   "scopePrompt": {
     "message": "Hvilket omfang skal godkendes permanent?"
   },

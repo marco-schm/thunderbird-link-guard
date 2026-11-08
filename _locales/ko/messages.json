@@ -104,6 +104,31 @@
   "blockHost": {
     "message": "차단"
   },
+  "unblockHost": {
+    "message": "차단 해제"
+  },
+  "unblockConfirm": {
+    "message": "$HOST$의 차단을 해제할까요? 어떤 메일에서도 해당 링크가 더 이상 차단되지 않습니다.",
+    "placeholders": {
+      "host": {
+        "content": "$1"
+      }
+    }
+  },
+  "unblockDomainConfirm": {
+    "message": "$DOMAIN$ 및 모든 하위 도메인의 차단을 해제할까요? 어떤 메일에서도 해당 링크가 더 이상 차단되지 않습니다.",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      }
+    }
+  },
+  "blockedByList": {
+    "message": "가져온 목록에 의해 차단되었습니다. 설정에서 목록을 변경할 수 있습니다."
+  },
+  "openSettings": {
+    "message": "설정 열기"
+  },
   "scopePrompt": {
     "message": "어떤 범위를 영구 승인할까요?"
   },

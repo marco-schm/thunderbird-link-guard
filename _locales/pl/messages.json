@@ -104,6 +104,31 @@
   "blockHost": {
     "message": "Zablokuj"
   },
+  "unblockHost": {
+    "message": "Odblokuj"
+  },
+  "unblockConfirm": {
+    "message": "Odblokować $HOST$? Odnośniki do tej witryny nie będą już blokowane w żadnej wiadomości.",
+    "placeholders": {
+      "host": {
+        "content": "$1"
+      }
+    }
+  },
+  "unblockDomainConfirm": {
+    "message": "Odblokować $DOMAIN$ i wszystkie jej subdomeny? Odnośniki do nich nie będą już blokowane w żadnej wiadomości.",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      }
+    }
+  },
+  "blockedByList": {
+    "message": "Zablokowano przez zaimportowaną listę. Listę można zmienić w ustawieniach."
+  },
+  "openSettings": {
+    "message": "Otwórz ustawienia"
+  },
   "scopePrompt": {
     "message": "Jaki zakres zatwierdzić na stałe?"
   },

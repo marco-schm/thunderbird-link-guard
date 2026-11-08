@@ -137,6 +137,9 @@ over both saved and imported approvals. The `*.` syntax is accepted only in
 the editable whole-domain rules and is checked against the bundled Public
 Suffix List. Imported allowlists remain exact-host-only; imported blocklists
 may use the same syntax and take priority over saved and imported approvals.
+Every block also takes priority over an approval for the current message: a
+blocked host is opened only after the user removes their own block, which the
+notice offers behind a confirmation, or changes the list that blocks it.
 
 Please report security issues privately to the maintainers before publishing
 details. Use synthetic messages and remove real URLs, tokens and mail contents

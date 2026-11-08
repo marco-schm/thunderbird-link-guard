@@ -104,6 +104,31 @@
   "blockHost": {
     "message": "Blokovat"
   },
+  "unblockHost": {
+    "message": "Odblokovat"
+  },
+  "unblockConfirm": {
+    "message": "Odblokovat $HOST$? Odkazy na tento web už nebudou v žádné zprávě blokovány.",
+    "placeholders": {
+      "host": {
+        "content": "$1"
+      }
+    }
+  },
+  "unblockDomainConfirm": {
+    "message": "Odblokovat $DOMAIN$ a všechny její subdomény? Odkazy na ně už nebudou v žádné zprávě blokovány.",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      }
+    }
+  },
+  "blockedByList": {
+    "message": "Blokováno importovaným seznamem. Seznam můžete změnit v nastavení."
+  },
+  "openSettings": {
+    "message": "Otevřít nastavení"
+  },
   "scopePrompt": {
     "message": "Jaký rozsah se má trvale schválit?"
   },

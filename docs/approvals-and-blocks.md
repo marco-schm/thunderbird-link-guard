@@ -9,11 +9,11 @@ scope covers, and which links need extra care.
 For every host in a link, Link Guard checks these rules in order. The first one that
 applies decides.
 
-1. **A temporary approval** for the current message allows the host – even if it is
-   blocked.
-2. **A block** denies the host. This includes your own exact and whole-domain blocks and
-   every enabled imported blocklist. A block overrides every permanent approval and every
-   allowlist.
+1. **A block** denies the host. This includes your own exact and whole-domain blocks and
+   every enabled imported blocklist. A block overrides every approval, including one for
+   the current message; a blocked host opens only after it has been
+   [unblocked](#unblocking).
+2. **A temporary approval** for the current message allows the host.
 3. **A permanent approval** allows the host: your exact approvals, your whole-domain
    approvals and every enabled imported allowlist. A host with a warning still needs an
    exact approval (see [Links with warnings](#links-with-warnings)).
@@ -135,7 +135,19 @@ saved*:
 - approving a host exactly while **your own whole-domain block** covers it – remove the
   `*.domain` block first.
 
-A temporary approval for the current message always works.
+## Unblocking
+
+A blocked host shows a single action in the notice:
+
+- **Your own block** – **Unblock**. Link Guard asks for confirmation, then removes the
+  block and shows the usual **Allow temporarily**, **Allow permanently** and **Block**
+  actions. If one of your *whole-domain* blocks covers the host, the confirmation names the
+  domain – *Unblock example.net and all its subdomains?* – because that is the block that
+  has to go.
+- **A block from an imported list** – a note and **Open settings**. Only changing or
+  disabling the list removes such a block.
+
+You can also remove your own blocks in [Settings](settings.md#your-rules).
 
 ## Approvals and lookalike warnings
 
