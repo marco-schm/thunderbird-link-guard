@@ -173,9 +173,6 @@ globalThis.LinkGuardEnglish = {
   "risk_ipAddress": {
     "message": "Direct IP address."
   },
-  "risk_unusualPort": {
-    "message": "Unusual port."
-  },
   "risk_textMismatch": {
     "message": "Link text and destination differ."
   },
@@ -184,9 +181,6 @@ globalThis.LinkGuardEnglish = {
   },
   "riskInline_ipAddress": {
     "message": "⚠ IP address"
-  },
-  "riskInline_unusualPort": {
-    "message": "⚠ Unusual port"
   },
   "riskInline_textMismatch": {
     "message": "⚠ Text ≠ destination"
@@ -208,9 +202,6 @@ globalThis.LinkGuardEnglish = {
   },
   "reason_ipAddress": {
     "message": "Link leads directly to an IP address"
-  },
-  "reason_unusualPort": {
-    "message": "Link uses an unusual port"
   },
   "reason_textMismatch": {
     "message": "Displayed and actual domains differ"
@@ -488,9 +479,6 @@ globalThis.LinkGuardEnglish = {
   },
   "warn_ipAddress": {
     "message": "IP address instead of a host name"
-  },
-  "warn_unusualPort": {
-    "message": "Unusual port"
   },
   "warn_shortLink": {
     "message": "Public URL shortener"

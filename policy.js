@@ -199,7 +199,6 @@
     if (displayed && displayed !== host) risks.push("textMismatch");
     if (url.username || url.password) risks.push("credentials");
     if (isIpAddress(host)) risks.push("ipAddress");
-    if (url.port) risks.push("unusualPort");
     if (hostServiceRisk(host)) risks.push("shortLink");
     const result = { kind: "web", host, hosts: [host], reason: "" };
     if (risks.length) result.risks = risks;

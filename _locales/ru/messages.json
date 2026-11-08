@@ -171,9 +171,6 @@
   "risk_ipAddress": {
     "message": "Прямой IP-адрес."
   },
-  "risk_unusualPort": {
-    "message": "Необычный порт."
-  },
   "risk_textMismatch": {
     "message": "Текст ссылки отличается от адреса назначения."
   },
@@ -182,9 +179,6 @@
   },
   "riskInline_ipAddress": {
     "message": "⚠ IP-адрес"
-  },
-  "riskInline_unusualPort": {
-    "message": "⚠ Необычный порт"
   },
   "riskInline_textMismatch": {
     "message": "⚠ Текст ≠ адрес назначения"
@@ -206,9 +200,6 @@
   },
   "reason_ipAddress": {
     "message": "Ссылка ведёт прямо на IP-адрес"
-  },
-  "reason_unusualPort": {
-    "message": "Ссылка использует необычный порт"
   },
   "reason_textMismatch": {
     "message": "Показанный домен отличается от фактического"
@@ -486,9 +477,6 @@
   },
   "warn_ipAddress": {
     "message": "IP-адрес вместо имени узла"
-  },
-  "warn_unusualPort": {
-    "message": "Необычный порт"
   },
   "warn_shortLink": {
     "message": "Публичный сокращатель ссылок"

@@ -171,9 +171,6 @@
   "risk_ipAddress": {
     "message": "Пряма IP-адреса."
   },
-  "risk_unusualPort": {
-    "message": "Незвичайний порт."
-  },
   "risk_textMismatch": {
     "message": "Текст посилання й адреса призначення відрізняються."
   },
@@ -182,9 +179,6 @@
   },
   "riskInline_ipAddress": {
     "message": "⚠ IP-адреса"
-  },
-  "riskInline_unusualPort": {
-    "message": "⚠ Незвичайний порт"
   },
   "riskInline_textMismatch": {
     "message": "⚠ Текст ≠ адреса"
@@ -206,9 +200,6 @@
   },
   "reason_ipAddress": {
     "message": "Посилання веде безпосередньо на IP-адресу"
-  },
-  "reason_unusualPort": {
-    "message": "Посилання використовує незвичайний порт"
   },
   "reason_textMismatch": {
     "message": "Показаний і фактичний домени відрізняються"
@@ -486,9 +477,6 @@
   },
   "warn_ipAddress": {
     "message": "IP-адреса замість імені хоста"
-  },
-  "warn_unusualPort": {
-    "message": "Незвичний порт"
   },
   "warn_shortLink": {
     "message": "Публічний скорочувач URL"

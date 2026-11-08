@@ -81,7 +81,6 @@ Whole-domain approvals and imported allowlists do **not** unlock it. This applie
 - lookalike and internationalized domains,
 - link text that names a different host,
 - user names or passwords in the link,
-- links to an unusual port,
 - matches of your own or imported [warning rules](warning-rules.md),
 - links whose checks could not run (*Domain check unavailable*, *Warning rules could not
   be checked for this link*).

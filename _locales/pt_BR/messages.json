@@ -171,9 +171,6 @@
   "risk_ipAddress": {
     "message": "Endereço IP direto."
   },
-  "risk_unusualPort": {
-    "message": "Porta incomum."
-  },
   "risk_textMismatch": {
     "message": "O texto do link e o destino são diferentes."
   },
@@ -182,9 +179,6 @@
   },
   "riskInline_ipAddress": {
     "message": "⚠ Endereço IP"
-  },
-  "riskInline_unusualPort": {
-    "message": "⚠ Porta incomum"
   },
   "riskInline_textMismatch": {
     "message": "⚠ Texto ≠ destino"
@@ -206,9 +200,6 @@
   },
   "reason_ipAddress": {
     "message": "O link leva diretamente a um endereço IP"
-  },
-  "reason_unusualPort": {
-    "message": "O link usa uma porta incomum"
   },
   "reason_textMismatch": {
     "message": "Os domínios exibidos e reais são diferentes"
@@ -486,9 +477,6 @@
   },
   "warn_ipAddress": {
     "message": "Endereço IP em vez de nome de host"
-  },
-  "warn_unusualPort": {
-    "message": "Porta incomum"
   },
   "warn_shortLink": {
     "message": "Encurtador de URL público"

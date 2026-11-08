@@ -171,9 +171,6 @@
   "risk_ipAddress": {
     "message": "Direkte IP-adresse."
   },
-  "risk_unusualPort": {
-    "message": "Usædvanlig port."
-  },
   "risk_textMismatch": {
     "message": "Linktekst og mål er forskellige."
   },
@@ -182,9 +179,6 @@
   },
   "riskInline_ipAddress": {
     "message": "⚠ IP-adresse"
-  },
-  "riskInline_unusualPort": {
-    "message": "⚠ Usædvanlig port"
   },
   "riskInline_textMismatch": {
     "message": "⚠ Tekst ≠ mål"
@@ -206,9 +200,6 @@
   },
   "reason_ipAddress": {
     "message": "Linket fører direkte til en IP-adresse"
-  },
-  "reason_unusualPort": {
-    "message": "Linket bruger en usædvanlig port"
   },
   "reason_textMismatch": {
     "message": "Det viste og det faktiske domæne er forskellige"
@@ -486,9 +477,6 @@
   },
   "warn_ipAddress": {
     "message": "IP-adresse i stedet for værtsnavn"
-  },
-  "warn_unusualPort": {
-    "message": "Usædvanlig port"
   },
   "warn_shortLink": {
     "message": "Offentlig URL-forkorter"

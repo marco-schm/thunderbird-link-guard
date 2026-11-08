@@ -103,7 +103,7 @@ the message shows, trust the badge.
   catalogue of shared-content hosts such as `docs.google.com` and `github.io` sites. That
   catalogue is necessarily incomplete; use whole-domain approvals only for domains you
   control.
-- **Risky links** – with credentials, unusual ports, misleading text, lookalike or
+- **Risky links** – with credentials, misleading text, lookalike or
   internationalized names, or matches of warning rules – open only after an approval of
   the exact host. Whole-domain approvals and allowlists do not count.
 - **Short links and IP addresses** can only be allowed for the current message.

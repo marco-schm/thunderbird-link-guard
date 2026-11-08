@@ -171,9 +171,6 @@
   "risk_ipAddress": {
     "message": "Direct IP-adres."
   },
-  "risk_unusualPort": {
-    "message": "Ongebruikelijke poort."
-  },
   "risk_textMismatch": {
     "message": "Linktekst en bestemming verschillen."
   },
@@ -182,9 +179,6 @@
   },
   "riskInline_ipAddress": {
     "message": "⚠ IP-adres"
-  },
-  "riskInline_unusualPort": {
-    "message": "⚠ Ongebruikelijke poort"
   },
   "riskInline_textMismatch": {
     "message": "⚠ Tekst ≠ bestemming"
@@ -206,9 +200,6 @@
   },
   "reason_ipAddress": {
     "message": "Link leidt rechtstreeks naar een IP-adres"
-  },
-  "reason_unusualPort": {
-    "message": "Link gebruikt een ongebruikelijke poort"
   },
   "reason_textMismatch": {
     "message": "Getoonde en werkelijke domeinen verschillen"
@@ -486,9 +477,6 @@
   },
   "warn_ipAddress": {
     "message": "IP-adres in plaats van een hostnaam"
-  },
-  "warn_unusualPort": {
-    "message": "Ongebruikelijke poort"
   },
   "warn_shortLink": {
     "message": "Openbare URL-verkorter"

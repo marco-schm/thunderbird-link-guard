@@ -85,7 +85,33 @@ globalThis.LinkGuardPanelCss = globalThis.LinkGuardHostGuardCss + `
 .link-guard-scope-choice p { flex-basis: 100% !important; font-weight: 700 !important; }
 .link-guard-risk-confirm { display: flex !important; flex-wrap: wrap !important; gap: 7px !important; max-width: 430px !important; }
 .link-guard-risk-confirm strong { flex-basis: 100% !important; padding: 8px !important; border: 2px solid #b42332 !important; border-radius: 5px !important; background: #fff0f1 !important; color: #8b1422 !important; font-size: 13px !important; }
-.link-guard-risk { display: block !important; flex-basis: 100% !important; color: #9d1725 !important; font-size: 13px !important; }
+.link-guard-panel .link-guard-row-risk {
+  border-color: #e6aab1 !important;
+  border-left: 5px solid #b42332 !important;
+  background: #fffafa !important;
+}
+.link-guard-panel .link-guard-risk {
+  display: block !important;
+  flex-basis: 100% !important;
+  margin: 0 !important;
+}
+.link-guard-panel .link-guard-risk-box {
+  display: inline-flex !important;
+  align-items: flex-start !important;
+  gap: 7px !important;
+  max-width: 100% !important;
+  padding: 6px 12px 6px 8px !important;
+  border: 1px solid #f2c4c9 !important;
+  border-radius: 6px !important;
+  background: #fff0f1 !important;
+  color: #9d1725 !important;
+  font: 700 13px/1.4 system-ui, sans-serif !important;
+}
+.link-guard-panel .link-guard-risk-icon {
+  flex: 0 0 18px !important;
+  width: 18px !important;
+  height: 18px !important;
+}
 .link-guard-unsafe, .link-guard-error {
   padding: 7px 9px !important;
   border-left: 3px solid #a82232 !important;

@@ -171,9 +171,6 @@
   "risk_ipAddress": {
     "message": "Bezpośredni adres IP."
   },
-  "risk_unusualPort": {
-    "message": "Nietypowy port."
-  },
   "risk_textMismatch": {
     "message": "Tekst odnośnika różni się od adresu docelowego."
   },
@@ -182,9 +179,6 @@
   },
   "riskInline_ipAddress": {
     "message": "⚠ Adres IP"
-  },
-  "riskInline_unusualPort": {
-    "message": "⚠ Nietypowy port"
   },
   "riskInline_textMismatch": {
     "message": "⚠ Tekst ≠ adres docelowy"
@@ -206,9 +200,6 @@
   },
   "reason_ipAddress": {
     "message": "Odnośnik prowadzi bezpośrednio do adresu IP"
-  },
-  "reason_unusualPort": {
-    "message": "Odnośnik używa nietypowego portu"
   },
   "reason_textMismatch": {
     "message": "Widoczna domena różni się od rzeczywistej"
@@ -486,9 +477,6 @@
   },
   "warn_ipAddress": {
     "message": "Adres IP zamiast nazwy hosta"
-  },
-  "warn_unusualPort": {
-    "message": "Nietypowy port"
   },
   "warn_shortLink": {
     "message": "Publiczny skracacz adresów URL"

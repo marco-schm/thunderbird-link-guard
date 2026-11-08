@@ -171,9 +171,6 @@
   "risk_ipAddress": {
     "message": "Indirizzo IP diretto."
   },
-  "risk_unusualPort": {
-    "message": "Porta insolita."
-  },
   "risk_textMismatch": {
     "message": "Il testo del collegamento e la destinazione differiscono."
   },
@@ -182,9 +179,6 @@
   },
   "riskInline_ipAddress": {
     "message": "⚠ Indirizzo IP"
-  },
-  "riskInline_unusualPort": {
-    "message": "⚠ Porta insolita"
   },
   "riskInline_textMismatch": {
     "message": "⚠ Testo ≠ destinazione"
@@ -206,9 +200,6 @@
   },
   "reason_ipAddress": {
     "message": "Il collegamento porta direttamente a un indirizzo IP"
-  },
-  "reason_unusualPort": {
-    "message": "Il collegamento utilizza una porta insolita"
   },
   "reason_textMismatch": {
     "message": "I domini visualizzati e quelli effettivi differiscono"
@@ -486,9 +477,6 @@
   },
   "warn_ipAddress": {
     "message": "Indirizzo IP invece di un nome host"
-  },
-  "warn_unusualPort": {
-    "message": "Porta insolita"
   },
   "warn_shortLink": {
     "message": "Accorciatore di URL pubblico"

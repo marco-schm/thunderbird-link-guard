@@ -171,9 +171,6 @@
   "risk_ipAddress": {
     "message": "Doğrudan IP adresi."
   },
-  "risk_unusualPort": {
-    "message": "Olağandışı bağlantı noktası."
-  },
   "risk_textMismatch": {
     "message": "Bağlantı metni ile hedef farklı."
   },
@@ -182,9 +179,6 @@
   },
   "riskInline_ipAddress": {
     "message": "⚠ IP adresi"
-  },
-  "riskInline_unusualPort": {
-    "message": "⚠ Olağandışı bağlantı noktası"
   },
   "riskInline_textMismatch": {
     "message": "⚠ Metin ≠ hedef"
@@ -206,9 +200,6 @@
   },
   "reason_ipAddress": {
     "message": "Bağlantı doğrudan bir IP adresine gidiyor"
-  },
-  "reason_unusualPort": {
-    "message": "Bağlantı olağandışı bir bağlantı noktası kullanıyor"
   },
   "reason_textMismatch": {
     "message": "Görüntülenen ve gerçek alan adları farklı"
@@ -486,9 +477,6 @@
   },
   "warn_ipAddress": {
     "message": "Ana bilgisayar adı yerine IP adresi"
-  },
-  "warn_unusualPort": {
-    "message": "Olağandışı bağlantı noktası"
   },
   "warn_shortLink": {
     "message": "Herkese açık URL kısaltıcı"

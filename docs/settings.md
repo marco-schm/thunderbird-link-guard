@@ -99,7 +99,6 @@ One switch per built-in warning, all on by default:
 - Link text shows a different host
 - User name or password in the link
 - IP address instead of a host name
-- Unusual port
 - Public URL shortener
 
 Switching a warning off removes both the warning and the exact approval it requires.
