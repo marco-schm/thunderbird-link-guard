@@ -87,3 +87,25 @@ test("a custom warning needs an exact approval and never grants access", () => {
     new Set(), none, true), true);
   assert.equal(access.linkAllowed(inspection, { ...state, allowedHosts: [] }, new Set(), none, true), false);
 });
+
+// The rule recommended in docs/warning-rules.md for an organisation's own name. It is
+// tested here so the documentation cannot drift from what the engine does.
+test("the documented company-name rule warns about lookalikes but not the domain itself", () => {
+  const regex = require("../safe-regex.js");
+  const cases = [
+    [String.raw`[a-z0-9-]nullringresearch|nullringresearch([a-z0-9-]|\.([^d]|d[^e]|d$|de.))`,
+      ["nullringresearch-support.de", "my-nullringresearch.de", "xnullringresearch.de",
+        "nullringresearchs.de", "nullringresearch.com", "nullringresearch.net", "nullringresearch.dk",
+        "nullringresearch.de.evil.example", "nullringresearch.dev", "NullRingResearch-Login.net"],
+      ["nullringresearch.de", "www.nullringresearch.de", "mail.nullringresearch.de", "research.de"]],
+    [String.raw`[a-z0-9-]example|example([a-z0-9-]|\.([^c]|c[^o]|co[^m]|c$|co$|com.))`,
+      ["example-login.com", "my-example.com", "example.co", "example.co.uk", "example.com.evil.net",
+        "example.net"],
+      ["example.com", "www.example.com", "shop.example.com"]]
+  ];
+  for (const [pattern, warn, quiet] of cases) {
+    const program = regex.compile(pattern);
+    for (const host of warn) assert.equal(regex.test(program, host, { steps: 1e6 }), true, `${pattern}: ${host}`);
+    for (const host of quiet) assert.equal(regex.test(program, host, { steps: 1e6 }), false, `${pattern}: ${host}`);
+  }
+});

@@ -100,6 +100,8 @@ One switch per built-in warning, all on by default:
 - User name or password in the link
 - IP address instead of a host name
 - Public URL shortener
+- Script or HTML code in the link
+- Link redirects to a site you have not approved
 
 Switching a warning off removes both the warning and the exact approval it requires.
 *Domain check unavailable* cannot be switched off. See [Warnings](warnings.md).

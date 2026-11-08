@@ -98,12 +98,25 @@ A hostile warning list can at most add misleading or excessive warnings.
 
 No built-in trust list is shipped. Only reviewed public URL shorteners are
 special warning signals and require a second, red confirmation for temporary
-approval in the current message. Branded email tracking, shared-content hosts
-and generic redirect-looking paths or parameters are not given red redirect
-warnings. This is a deliberate noise reduction: a permanently approved host
-may redirect to a different destination without another prompt. A trusted
-server can also change behavior later or serve attacker-controlled content.
-Thunderbird cannot enforce the final destination in an external browser. See
+approval in the current message.
+
+Links whose path, query or fragment contains script or HTML code (the shape of
+a reflected XSS payload against the linked site) can likewise only be allowed
+for the current message, even when their host is approved permanently. The
+check normalises stacked encodings before matching narrow signatures; it is
+signature-based and can miss novel forms.
+
+A destination that a link visibly carries (a full URL in a parameter or the
+path, a base64-encoded URL, or the formats of Microsoft Safe Links and
+Proofpoint URL Defense) raises a warning that names it, but only when it leaves
+the link's own registrable domain and is not approved. Link Guard does not warn
+merely because a link looks like a redirect: branded email tracking and wrapped
+links to approved sites stay quiet. Redirects decided by the server, opaque
+tracking IDs and anything after the first page load remain invisible, so a
+permanently approved host may still redirect elsewhere without another prompt,
+and a trusted server can change behaviour later or serve attacker-controlled
+content. Thunderbird cannot enforce the final destination in an external
+browser. See [URL-CONTENT-RESEARCH.md](URL-CONTENT-RESEARCH.md),
 [REDIRECT-RESEARCH.md](REDIRECT-RESEARCH.md) and
 [SAFARI-REDIRECTS.md](SAFARI-REDIRECTS.md).
 

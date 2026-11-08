@@ -12,7 +12,7 @@
 (function (root) {
   const regex = root.LinkGuardRegex || require("./safe-regex.js");
   const BUILTIN = Object.freeze(["lookalike", "idn", "textMismatch", "credentials",
-    "ipAddress", "shortLink"]);
+    "ipAddress", "shortLink", "scriptInUrl", "redirect"]);
   const TARGETS = Object.freeze(["host", "url", "text"]);
   const MAX_OWN_RULES = 50;
   const MAX_LISTS = 10;

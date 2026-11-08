@@ -18,8 +18,9 @@ and sends no mail content or link targets anywhere.
   show the real host next to them, and the notice lists every destination in the
   message.
 - **Warns about phishing patterns.** Lookalike and internationalized domains,
-  misleading link text, credentials in the URL, IP addresses and public
-  URL shorteners get prominent warnings and need a deliberate approval of the exact host.
+  misleading link text, credentials in the URL, IP addresses, public URL shorteners,
+  script code in the link and redirects to sites you have not approved get prominent
+  warnings and need a deliberate approval of the exact host.
 - **Lets you decide at the right scope.** Approve or block one exact host
   (`login.example.org`) or a whole registrable domain with all its subdomains
   (`*.example.org`).

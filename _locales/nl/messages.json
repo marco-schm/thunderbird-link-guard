@@ -399,6 +399,28 @@
   "riskInline_shortLink": {
     "message": "⚠ Verkorte link"
   },
+  "risk_scriptInUrl": {
+    "message": "De link bevat script- of HTML-code."
+  },
+  "riskInline_scriptInUrl": {
+    "message": "⚠ Code in link"
+  },
+  "risk_redirect": {
+    "message": "Mogelijke doorverwijzing naar $HOST$ (niet goedgekeurd).",
+    "placeholders": {
+      "host": {
+        "content": "$1"
+      }
+    }
+  },
+  "riskInline_redirect": {
+    "message": "⚠ Doorverwijzing → $HOST$",
+    "placeholders": {
+      "host": {
+        "content": "$1"
+      }
+    }
+  },
   "riskyApprovalWarning": {
     "message": "Deze verkorte link verbergt de bestemming. Toestaan voor dit bericht?"
   },
@@ -480,6 +502,12 @@
   },
   "warn_shortLink": {
     "message": "Openbare URL-verkorter"
+  },
+  "warn_scriptInUrl": {
+    "message": "Script- of HTML-code in de link"
+  },
+  "warn_redirect": {
+    "message": "Link stuurt door naar een niet-goedgekeurde site"
   },
   "customRulesTitle": {
     "message": "Mijn waarschuwingsregels"

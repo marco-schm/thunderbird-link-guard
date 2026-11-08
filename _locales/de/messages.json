@@ -399,6 +399,28 @@
   "riskInline_shortLink": {
     "message": "⚠ Kurzlink"
   },
+  "risk_scriptInUrl": {
+    "message": "Der Link enthält Skript- oder HTML-Code."
+  },
+  "riskInline_scriptInUrl": {
+    "message": "⚠ Code im Link"
+  },
+  "risk_redirect": {
+    "message": "Mögliche Weiterleitung zu $HOST$ (nicht freigegeben).",
+    "placeholders": {
+      "host": {
+        "content": "$1"
+      }
+    }
+  },
+  "riskInline_redirect": {
+    "message": "⚠ Weiterleitung → $HOST$",
+    "placeholders": {
+      "host": {
+        "content": "$1"
+      }
+    }
+  },
   "riskyApprovalWarning": {
     "message": "Kurzlink verbirgt das Ziel. Wirklich für diese Mail freigeben?"
   },
@@ -480,6 +502,12 @@
   },
   "warn_shortLink": {
     "message": "Öffentlicher Kurzlink-Dienst"
+  },
+  "warn_scriptInUrl": {
+    "message": "Skript- oder HTML-Code im Link"
+  },
+  "warn_redirect": {
+    "message": "Link leitet auf eine nicht freigegebene Seite weiter"
   },
   "customRulesTitle": {
     "message": "Meine Warnregeln"

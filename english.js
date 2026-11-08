@@ -401,6 +401,28 @@ globalThis.LinkGuardEnglish = {
   "riskInline_shortLink": {
     "message": "⚠ Short link"
   },
+  "risk_scriptInUrl": {
+    "message": "The link contains script or HTML code."
+  },
+  "riskInline_scriptInUrl": {
+    "message": "⚠ Code in link"
+  },
+  "risk_redirect": {
+    "message": "Possible redirect to $HOST$ (not approved).",
+    "placeholders": {
+      "host": {
+        "content": "$1"
+      }
+    }
+  },
+  "riskInline_redirect": {
+    "message": "⚠ Redirect → $HOST$",
+    "placeholders": {
+      "host": {
+        "content": "$1"
+      }
+    }
+  },
   "riskyApprovalWarning": {
     "message": "This short link hides its destination. Allow it for this message?"
   },
@@ -482,6 +504,12 @@ globalThis.LinkGuardEnglish = {
   },
   "warn_shortLink": {
     "message": "Public URL shortener"
+  },
+  "warn_scriptInUrl": {
+    "message": "Script or HTML code in the link"
+  },
+  "warn_redirect": {
+    "message": "Link redirects to a site you have not approved"
   },
   "customRulesTitle": {
     "message": "My warning rules"

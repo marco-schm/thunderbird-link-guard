@@ -85,3 +85,14 @@ test("whole-domain block overrides exact and broad approvals, with one-message e
   assert.equal(linkAllowed(inspectLink("https://google.org/"), blocked,
     new Set(), noWarning, true), false);
 });
+
+// Code in a link attacks the site it leads to, usually one the user trusts. A lasting
+// approval of that host must not be enough; only an approval for this message is.
+test("a link with code opens only after an approval for this message", () => {
+  const href = "https://www.google.com/search?q=%3Cscript%3Ealert(1)%3C%2Fscript%3E";
+  const inspection = inspectLink(href);
+  assert.ok(inspection.risks.includes("scriptInUrl"));
+  // www.google.com is approved exactly in `state`
+  assert.equal(linkAllowed(inspection, state, new Set(), noWarning, true), false);
+  assert.equal(linkAllowed(inspection, state, new Set(["www.google.com"]), noWarning, true), true);
+});

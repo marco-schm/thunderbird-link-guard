@@ -399,6 +399,28 @@
   "riskInline_shortLink": {
     "message": "⚠ 短縮リンク"
   },
+  "risk_scriptInUrl": {
+    "message": "リンクにスクリプトまたは HTML コードが含まれています。"
+  },
+  "riskInline_scriptInUrl": {
+    "message": "⚠ リンク内のコード"
+  },
+  "risk_redirect": {
+    "message": "$HOST$ へリダイレクトされる可能性があります（未許可）。",
+    "placeholders": {
+      "host": {
+        "content": "$1"
+      }
+    }
+  },
+  "riskInline_redirect": {
+    "message": "⚠ リダイレクト → $HOST$",
+    "placeholders": {
+      "host": {
+        "content": "$1"
+      }
+    }
+  },
   "riskyApprovalWarning": {
     "message": "この短縮リンクはリンク先を隠しています。このメールでのみ許可しますか？"
   },
@@ -480,6 +502,12 @@
   },
   "warn_shortLink": {
     "message": "公開 URL 短縮サービス"
+  },
+  "warn_scriptInUrl": {
+    "message": "リンク内のスクリプトまたは HTML コード"
+  },
+  "warn_redirect": {
+    "message": "リンクが未許可のサイトへリダイレクトする"
   },
   "customRulesTitle": {
     "message": "自分の警告ルール"

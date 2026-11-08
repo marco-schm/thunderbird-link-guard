@@ -399,6 +399,28 @@
   "riskInline_shortLink": {
     "message": "⚠ 단축 링크"
   },
+  "risk_scriptInUrl": {
+    "message": "링크에 스크립트 또는 HTML 코드가 포함되어 있습니다."
+  },
+  "riskInline_scriptInUrl": {
+    "message": "⚠ 링크 내 코드"
+  },
+  "risk_redirect": {
+    "message": "$HOST$(으)로 리디렉션될 수 있습니다(승인되지 않음).",
+    "placeholders": {
+      "host": {
+        "content": "$1"
+      }
+    }
+  },
+  "riskInline_redirect": {
+    "message": "⚠ 리디렉션 → $HOST$",
+    "placeholders": {
+      "host": {
+        "content": "$1"
+      }
+    }
+  },
   "riskyApprovalWarning": {
     "message": "이 단축 링크는 대상을 숨깁니다. 이 메시지에 대해 허용할까요?"
   },
@@ -480,6 +502,12 @@
   },
   "warn_shortLink": {
     "message": "공개 URL 단축 서비스"
+  },
+  "warn_scriptInUrl": {
+    "message": "링크의 스크립트 또는 HTML 코드"
+  },
+  "warn_redirect": {
+    "message": "링크가 승인되지 않은 사이트로 리디렉션됨"
   },
   "customRulesTitle": {
     "message": "내 경고 규칙"

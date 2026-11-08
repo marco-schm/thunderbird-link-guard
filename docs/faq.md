@@ -96,6 +96,20 @@ is consistently unhelpful for you, switch it off in
 No. Warnings stay visible next to the link on purpose, so that the reason for caution is
 never hidden once a link works.
 
+### Why do Outlook "safelinks" links say *Possible redirect to …*?
+
+Microsoft Safe Links and similar services wrap every link in your organisation's mail.
+The visible host is the wrapper, not the site you will reach. Link Guard reads the real
+destination from the wrapped link and names it, so you can judge it. Once that
+destination is approved, the warning disappears. See
+[Warnings](warnings.md#link-redirects-to-a-site-you-have-not-approved).
+
+### Why can a link to my bank only be allowed for this message?
+
+Its address contains script or HTML code. That is how cross-site scripting attacks a site
+you trust, so a lasting approval of the host is deliberately not enough. See
+[Warnings](warnings.md#script-or-html-code-in-the-link).
+
 ### Why don't I get lookalike warnings?
 
 The lookalike check compares links with domains you have approved. With no approvals

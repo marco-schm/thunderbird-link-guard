@@ -399,6 +399,28 @@
   "riskInline_shortLink": {
     "message": "⚠ Скорочене посилання"
   },
+  "risk_scriptInUrl": {
+    "message": "Посилання містить скрипт або HTML-код."
+  },
+  "riskInline_scriptInUrl": {
+    "message": "⚠ Код у посиланні"
+  },
+  "risk_redirect": {
+    "message": "Можливе переспрямування на $HOST$ (не схвалено).",
+    "placeholders": {
+      "host": {
+        "content": "$1"
+      }
+    }
+  },
+  "riskInline_redirect": {
+    "message": "⚠ Переспрямування → $HOST$",
+    "placeholders": {
+      "host": {
+        "content": "$1"
+      }
+    }
+  },
   "riskyApprovalWarning": {
     "message": "Це скорочене посилання приховує адресу призначення. Дозволити його для цього листа?"
   },
@@ -480,6 +502,12 @@
   },
   "warn_shortLink": {
     "message": "Публічний скорочувач URL"
+  },
+  "warn_scriptInUrl": {
+    "message": "Скрипт або HTML-код у посиланні"
+  },
+  "warn_redirect": {
+    "message": "Посилання переспрямовує на несхвалений сайт"
   },
   "customRulesTitle": {
     "message": "Мої правила попереджень"

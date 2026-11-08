@@ -19,12 +19,18 @@ extra approval it requires.
 | User name or password in the link | *Credentials in the URL.* | ⚠ Credentials in URL |
 | IP address instead of a host name | *Direct IP address.* | ⚠ IP address |
 | Public URL shortener | *Short link: destination hidden.* | ⚠ Short link |
+| Script or HTML code in the link | *The link contains script or HTML code.* | ⚠ Code in link |
+| Link redirects to a site you have not approved | *Possible redirect to evil.example (not approved).* | ⚠ Redirect → evil.example |
 | *(always on)* | *Domain check unavailable.* | ⚠ Domain unchecked |
 | *(your rules)* | *My rule: Label* or *List name: Label* | ⚠ Label |
 | *(your rules)* | *Warning rules could not be checked for this link.* | ⚠ Rules not checked |
 
-Plain `http://` links and explicit ports are not a warning. They are handled like `https://` links, so an
-approved host can also be opened over HTTP.
+Plain `http://` links and explicit ports are not a warning. They are handled like
+`https://` links, so an approved host can also be opened over HTTP.
+
+A link can have several warnings at once. The notice lists each in its own red box, and
+the label next to the link joins them, for example
+**⚠ Similar to example.com · ⚠ Text ≠ destination · ⚠ Credentials in URL**.
 
 ## Lookalike domain
 
@@ -110,6 +116,58 @@ current message after a second confirmation; see
 [Approvals and blocks](approvals-and-blocks.md#public-url-shorteners) for the list of
 recognised services. Branded click-tracking domains of newsletters are not shorteners;
 they are ordinary hosts that you approve or not.
+
+## Script or HTML code in the link
+
+Reflected cross-site scripting (XSS) attacks a site you trust by sending you a link *to
+that very site* whose address contains code, for example
+`https://bank.example/search?q=<script>…</script>`. Opening it can let the attacker act
+in your session on that site. Approving the host does not help here: the host is
+genuine.
+
+Link Guard looks at the path, query and fragment of every link. It first undoes the
+encodings used to hide such code – percent-encoding up to three times, HTML character
+references such as `&#x6A;`, JavaScript escapes such as `\u003c`, and tabs or line breaks
+inside words – and then looks for:
+
+- script and other dangerous HTML tags, such as `<script>`, `<img …>` or `<svg …>`,
+- event-handler attributes such as `onerror=` or `onload=` where an attribute can start,
+- `javascript:` and `vbscript:` addresses and `data:text/html` documents,
+- script access such as `document.cookie` and calls such as `alert(`, `eval(` or
+  `String.fromCharCode(`.
+
+A link with code can only be allowed **for the current message**, even if its host is
+approved permanently; the notice offers **Allow temporarily** and **Block** only. Ordinary
+links that merely contain such words – a search for "fire alert (2024)", a page called
+`/onboarding`, a parameter `&onload=true` – do not warn.
+
+The check is based on known patterns and can miss new tricks. Background and test
+results are in the
+[research notes](https://github.com/marco-schm/thunderbird-link-guard/blob/main/URL-CONTENT-RESEARCH.md).
+
+## Link redirects to a site you have not approved
+
+Many links pass you on to another address that they carry inside them: redirect pages,
+open redirects on trusted sites, and security wrappers such as Microsoft Safe Links or
+Proofpoint URL Defense. The visible host then says little about where you end up.
+
+Link Guard reads such a carried destination and names it:
+*Possible redirect to evil.example (not approved).* It finds destinations
+
+- as a full address in any parameter or in the path, also when encoded several times,
+- as `//evil.example` in parameters such as `url`, `next`, `to` or `redirect`,
+- encoded in base64,
+- in the formats of Microsoft Safe Links and Proofpoint URL Defense.
+
+It warns **only** when the carried destination belongs to a different domain than the
+link and is not approved. A wrapped link to a site you have approved, or a redirect
+within the same site such as `www.example.com/login?next=https://shop.example.com/`,
+does not warn. A destination that merely resembles an approved domain counts as not
+approved.
+
+Link Guard does not open links, so it cannot see redirects that the server decides on,
+such as a click tracker with an opaque ID. A missing redirect warning therefore does not
+prove that a link stays where it seems to go.
 
 ## Domain check unavailable
 

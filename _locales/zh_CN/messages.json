@@ -399,6 +399,28 @@
   "riskInline_shortLink": {
     "message": "⚠ 短链接"
   },
+  "risk_scriptInUrl": {
+    "message": "此链接包含脚本或 HTML 代码。"
+  },
+  "riskInline_scriptInUrl": {
+    "message": "⚠ 链接含代码"
+  },
+  "risk_redirect": {
+    "message": "可能重定向到 $HOST$（未批准）。",
+    "placeholders": {
+      "host": {
+        "content": "$1"
+      }
+    }
+  },
+  "riskInline_redirect": {
+    "message": "⚠ 重定向 → $HOST$",
+    "placeholders": {
+      "host": {
+        "content": "$1"
+      }
+    }
+  },
   "riskyApprovalWarning": {
     "message": "此短链接隐藏了目标地址。是否仅在这封邮件中允许？"
   },
@@ -480,6 +502,12 @@
   },
   "warn_shortLink": {
     "message": "公共短链接服务"
+  },
+  "warn_scriptInUrl": {
+    "message": "链接中的脚本或 HTML 代码"
+  },
+  "warn_redirect": {
+    "message": "链接重定向到未批准的网站"
   },
   "customRulesTitle": {
     "message": "我的警告规则"

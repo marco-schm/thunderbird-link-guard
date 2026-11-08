@@ -61,6 +61,8 @@ Some actions are deliberately limited:
 - **Public URL shorteners** such as `bit.ly` hide their destination. They can only be
   allowed for the current message, after a second, red confirmation: *This short link
   hides its destination. Allow it for this message?*
+- **Links with script or HTML code** in their address can only be allowed for the current
+  message, even when their host is approved permanently.
 - **Links to an IP address** can only be allowed for the current message.
 
 ### Links that cannot be approved

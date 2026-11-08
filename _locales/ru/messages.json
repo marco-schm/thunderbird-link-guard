@@ -399,6 +399,28 @@
   "riskInline_shortLink": {
     "message": "⚠ Короткая ссылка"
   },
+  "risk_scriptInUrl": {
+    "message": "Ссылка содержит скрипт или HTML-код."
+  },
+  "riskInline_scriptInUrl": {
+    "message": "⚠ Код в ссылке"
+  },
+  "risk_redirect": {
+    "message": "Возможное перенаправление на $HOST$ (не разрешено).",
+    "placeholders": {
+      "host": {
+        "content": "$1"
+      }
+    }
+  },
+  "riskInline_redirect": {
+    "message": "⚠ Перенаправление → $HOST$",
+    "placeholders": {
+      "host": {
+        "content": "$1"
+      }
+    }
+  },
   "riskyApprovalWarning": {
     "message": "Эта короткая ссылка скрывает адрес назначения. Разрешить её для этого письма?"
   },
@@ -480,6 +502,12 @@
   },
   "warn_shortLink": {
     "message": "Публичный сокращатель ссылок"
+  },
+  "warn_scriptInUrl": {
+    "message": "Скрипт или HTML-код в ссылке"
+  },
+  "warn_redirect": {
+    "message": "Ссылка перенаправляет на неразрешённый сайт"
   },
   "customRulesTitle": {
     "message": "Мои правила предупреждений"

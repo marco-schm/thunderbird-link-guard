@@ -399,6 +399,28 @@
   "riskInline_shortLink": {
     "message": "⚠ Kısaltılmış bağlantı"
   },
+  "risk_scriptInUrl": {
+    "message": "Bağlantı betik veya HTML kodu içeriyor."
+  },
+  "riskInline_scriptInUrl": {
+    "message": "⚠ Bağlantıda kod"
+  },
+  "risk_redirect": {
+    "message": "$HOST$ adresine olası yönlendirme (onaylanmadı).",
+    "placeholders": {
+      "host": {
+        "content": "$1"
+      }
+    }
+  },
+  "riskInline_redirect": {
+    "message": "⚠ Yönlendirme → $HOST$",
+    "placeholders": {
+      "host": {
+        "content": "$1"
+      }
+    }
+  },
   "riskyApprovalWarning": {
     "message": "Bu kısaltılmış bağlantı hedefini gizliyor. Bu ileti için izin verilsin mi?"
   },
@@ -480,6 +502,12 @@
   },
   "warn_shortLink": {
     "message": "Herkese açık URL kısaltıcı"
+  },
+  "warn_scriptInUrl": {
+    "message": "Bağlantıda betik veya HTML kodu"
+  },
+  "warn_redirect": {
+    "message": "Bağlantı onaylanmamış bir siteye yönlendiriyor"
   },
   "customRulesTitle": {
     "message": "Uyarı kurallarım"
