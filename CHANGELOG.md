@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.12.1 — 2026-11-08
+
+- Settings: align the input boxes. Rule cards in the same row now have their
+  text boxes at the same height, and the fields of a warning rule share one
+  height.
+
 ## 0.12.0 — 2026-11-08
 
 - Settings: choose which built-in warnings are shown. Switching one off also
