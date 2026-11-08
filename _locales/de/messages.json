@@ -287,7 +287,7 @@
     "message": "Eigene und Remote-Listen"
   },
   "importsHint": {
-    "message": "JSON-Datei importieren oder HTTPS-Liste verknüpfen. Jede Liste wird vor Aktivierung angezeigt und nur nach deiner Prüfung übernommen. Remote-Änderungen benötigen erneut deine Bestätigung."
+    "message": "JSON-Datei importieren oder HTTPS-Liste verknüpfen. Jede Liste wird vor Aktivierung angezeigt und nur nach deiner Prüfung übernommen. Remote-Änderungen an Freigabelisten benötigen erneut deine Bestätigung."
   },
   "importFileLabel": {
     "message": "JSON-Datei auswählen"
@@ -419,5 +419,42 @@
   },
   "listHosts": {
     "message": "Exakte Hostnamen dieser Liste"
+  },
+  "kind_allow": {
+    "message": "Freigabeliste"
+  },
+  "kind_block": {
+    "message": "Sperrliste"
+  },
+  "listBlockedHosts": {
+    "message": "Gesperrte Einträge dieser Liste (*.example.com sperrt die Domain und alle Subdomains)"
+  },
+  "importBlockHint": {
+    "message": "Eine Liste mit \"kind\": \"block\" ist eine Sperrliste. Aktiviert überschreibt sie Freigaben und importierte Freigabelisten und darf *.example.com-Einträge enthalten. Sperrlisten können sich optional etwa einmal täglich selbst aktualisieren; Freigabelisten nie."
+  },
+  "autoRefreshLabel": {
+    "message": "Automatisch etwa einmal täglich aktualisieren (ersetzt lokale Änderungen)"
+  },
+  "autoRefreshKind": {
+    "message": "Die Quelle meldet jetzt einen anderen Listentyp, daher wurde die Liste nicht geändert. Bitte manuell prüfen."
+  },
+  "autoRefreshOk": {
+    "message": "Letzte automatische Prüfung: $DATE$",
+    "placeholders": {
+      "date": {
+        "content": "$1"
+      }
+    }
+  },
+  "autoRefreshFailed": {
+    "message": "Automatische Aktualisierung am $DATE$ fehlgeschlagen. Die bisherige Liste bleibt aktiv.",
+    "placeholders": {
+      "date": {
+        "content": "$1"
+      }
+    }
+  },
+  "autoRefreshReview": {
+    "message": "Das automatische Update wurde nicht übernommen, weil es groß ist oder etwas sperren würde, das du freigegeben hast. Die bisherige Liste bleibt aktiv; nutze „Remote-Änderung prüfen“."
   }
 }

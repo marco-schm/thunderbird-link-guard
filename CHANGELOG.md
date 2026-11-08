@@ -1,5 +1,24 @@
 # Changelog
 
+## Unreleased
+
+- Support remote and local blocklists: add an optional `"kind": "block"` to the
+  JSON list format. Blocklists may contain `*.example.com` whole-domain entries,
+  start disabled like all imports, and override approvals and imported
+  allowlists once enabled. Existing lists are unaffected and remain allowlists.
+- Remote blocklists update themselves about once a day once enabled, with a
+  per-list "Update automatically about once a day" checkbox (on by default) to
+  switch it off. Allowlists never refresh themselves; failures and changed list
+  types keep the stored list. No new permission is required.
+- Hold an automatic blocklist update for manual review when it is large or would
+  block a host or domain you approved.
+- Keep lookalike warnings for approved domains even when an imported blocklist
+  blocks them.
+- Make state requests cheaper (about 1 ms instead of about 40 ms with full
+  lists) by caching cleaned lists and not sending lists to message pages.
+- Refuse a permanent approval of a host that an enabled imported blocklist
+  blocks, instead of saving an approval that has no effect.
+
 ## 0.10.1 — 2026-11-08
 
 - Correct the rule-list labels so whole-domain `*.` entries are not described

@@ -287,7 +287,7 @@
     "message": "Listas personalizadas e remotas"
   },
   "importsHint": {
-    "message": "Importe um arquivo JSON ou vincule uma lista HTTPS. Cada lista é exibida antes da ativação e aplicada somente após sua revisão. As alterações remotas requerem sua aprovação novamente."
+    "message": "Importe um arquivo JSON ou vincule uma lista HTTPS. Cada lista é exibida antes da ativação e aplicada somente após sua revisão. As alterações remotas em listas de permissões requerem sua aprovação novamente."
   },
   "importFileLabel": {
     "message": "Escolha um arquivo JSON"
@@ -419,5 +419,42 @@
   },
   "listHosts": {
     "message": "Nomes de host exatos nesta lista"
+  },
+  "kind_allow": {
+    "message": "Lista de permissões"
+  },
+  "kind_block": {
+    "message": "Lista de bloqueio"
+  },
+  "listBlockedHosts": {
+    "message": "Entradas bloqueadas desta lista (*.example.com bloqueia o domínio e todos os subdomínios)"
+  },
+  "importBlockHint": {
+    "message": "Uma lista com \"kind\": \"block\" é uma lista de bloqueio. Depois de ativada, ela prevalece sobre as aprovações e as listas de permissões importadas, e pode conter entradas *.example.com. Listas de bloqueio podem se atualizar sozinhas cerca de uma vez por dia, se você ativar; listas de permissões nunca."
+  },
+  "autoRefreshLabel": {
+    "message": "Atualizar automaticamente cerca de uma vez por dia (substitui edições locais)"
+  },
+  "autoRefreshKind": {
+    "message": "A origem agora declara outro tipo de lista, então a lista não foi alterada. Revise-a manualmente."
+  },
+  "autoRefreshOk": {
+    "message": "Última verificação automática: $DATE$",
+    "placeholders": {
+      "date": {
+        "content": "$1"
+      }
+    }
+  },
+  "autoRefreshFailed": {
+    "message": "A atualização automática falhou em $DATE$. A lista anterior continua ativa.",
+    "placeholders": {
+      "date": {
+        "content": "$1"
+      }
+    }
+  },
+  "autoRefreshReview": {
+    "message": "A atualização automática não foi aplicada porque é grande ou bloquearia algo que você aprovou. A lista anterior continua ativa; use “Revise a atualização remota”."
   }
 }

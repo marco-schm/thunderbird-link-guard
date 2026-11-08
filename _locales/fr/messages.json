@@ -287,7 +287,7 @@
     "message": "Listes personnalisées et distantes"
   },
   "importsHint": {
-    "message": "Importez un fichier JSON ou liez une liste HTTPS. Chaque liste est affichée avant l'activation et appliquée uniquement après votre examen. Les modifications à distance nécessitent à nouveau votre approbation."
+    "message": "Importez un fichier JSON ou liez une liste HTTPS. Chaque liste est affichée avant l'activation et appliquée uniquement après votre examen. Les modifications à distance d'une liste d'autorisation nécessitent à nouveau votre approbation."
   },
   "importFileLabel": {
     "message": "Choisissez un fichier JSON"
@@ -419,5 +419,42 @@
   },
   "listHosts": {
     "message": "Noms d'hôtes exacts dans cette liste"
+  },
+  "kind_allow": {
+    "message": "Liste d'autorisation"
+  },
+  "kind_block": {
+    "message": "Liste de blocage"
+  },
+  "listBlockedHosts": {
+    "message": "Entrées bloquées de cette liste (*.example.com bloque le domaine et tous ses sous-domaines)"
+  },
+  "importBlockHint": {
+    "message": "Une liste avec \"kind\": \"block\" est une liste de blocage. Une fois activée, elle prévaut sur les approbations et les listes d'autorisation importées, et peut contenir des entrées *.example.com. Les listes de blocage peuvent se mettre à jour d'elles-mêmes environ une fois par jour si vous l'activez ; les listes d'autorisation jamais."
+  },
+  "autoRefreshLabel": {
+    "message": "Mettre à jour automatiquement environ une fois par jour (remplace les modifications locales)"
+  },
+  "autoRefreshKind": {
+    "message": "La source déclare désormais un autre type de liste ; la liste n'a donc pas été modifiée. Vérifiez-la manuellement."
+  },
+  "autoRefreshOk": {
+    "message": "Dernière vérification automatique : $DATE$",
+    "placeholders": {
+      "date": {
+        "content": "$1"
+      }
+    }
+  },
+  "autoRefreshFailed": {
+    "message": "La mise à jour automatique a échoué le $DATE$. La liste précédente reste active.",
+    "placeholders": {
+      "date": {
+        "content": "$1"
+      }
+    }
+  },
+  "autoRefreshReview": {
+    "message": "La mise à jour automatique n'a pas été appliquée, car elle est importante ou bloquerait quelque chose que vous avez approuvé. La liste précédente reste active ; utilisez « Vérifier la mise à jour à distance »."
   }
 }

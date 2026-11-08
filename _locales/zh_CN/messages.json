@@ -287,7 +287,7 @@
     "message": "自定义和远程列表"
   },
   "importsHint": {
-    "message": "导入 JSON 文件或连接 HTTPS 列表。每个列表在启用前都会显示，只有经您检查后才会生效。远程变更需要再次批准。"
+    "message": "导入 JSON 文件或连接 HTTPS 列表。每个列表在启用前都会显示，只有经您检查后才会生效。允许列表的远程变更需要再次批准。"
   },
   "importFileLabel": {
     "message": "选择 JSON 文件"
@@ -419,5 +419,42 @@
   },
   "listHosts": {
     "message": "此列表中的准确主机名"
+  },
+  "kind_allow": {
+    "message": "允许列表"
+  },
+  "kind_block": {
+    "message": "屏蔽列表"
+  },
+  "listBlockedHosts": {
+    "message": "此列表中被屏蔽的条目（*.example.com 会屏蔽该域名及其所有子域名）"
+  },
+  "importBlockHint": {
+    "message": "带有 \"kind\": \"block\" 的列表是屏蔽列表。启用后，它优先于已批准的主机和导入的允许列表，并可包含 *.example.com 条目。 屏蔽列表可选择大约每天自动更新一次；允许列表从不自动更新。"
+  },
+  "autoRefreshLabel": {
+    "message": "大约每天自动更新一次（会替换本地修改）"
+  },
+  "autoRefreshKind": {
+    "message": "来源现在声明了不同的列表类型，因此列表未被更改。请手动检查。"
+  },
+  "autoRefreshOk": {
+    "message": "上次自动检查：$DATE$",
+    "placeholders": {
+      "date": {
+        "content": "$1"
+      }
+    }
+  },
+  "autoRefreshFailed": {
+    "message": "$DATE$ 的自动更新失败。之前的列表仍然有效。",
+    "placeholders": {
+      "date": {
+        "content": "$1"
+      }
+    }
+  },
+  "autoRefreshReview": {
+    "message": "自动更新未被应用，因为它过大，或会屏蔽你已批准的内容。之前的列表仍然有效；请使用“检查远程更新”。"
   }
 }

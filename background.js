@@ -23,10 +23,10 @@ async function scopeRoot(host) {
   return domainScope.registrableDomain(normalized, await publicSuffixRules());
 }
 
-async function cleanBroadDomains(value) {
+async function cleanBroadDomains(value, limit = 500) {
   if (!Array.isArray(value)) return [];
   const roots = new Set();
-  for (const entry of value.slice(0, 500)) {
+  for (const entry of value.slice(0, limit)) {
     try {
       const normalized = policy.normalizeHost(entry);
       if (await scopeRoot(normalized) === normalized) roots.add(normalized);
@@ -45,7 +45,42 @@ function cleanHosts(value) {
   return [...hosts].sort();
 }
 
-async function readState() {
+const covers = (domains, host) =>
+  domains.some(domain => host === domain || host.endsWith(`.${domain}`));
+
+// Enabled imported block lists add to the user's own blocks. Wildcards that are not
+// a verified registrable domain are dropped: they never block more than intended.
+async function importedBlocks(lists) {
+  const hosts = new Set();
+  const wildcards = [];
+  for (const list of lists) {
+    if (!list.enabled || list.kind !== "block") continue;
+    for (const entry of list.hosts) {
+      if (entry.startsWith("*.")) wildcards.push(entry.slice(2));
+      else hosts.add(entry);
+    }
+  }
+  const domains = await cleanBroadDomains(wildcards, listImport.MAX_LISTS * listImport.MAX_HOSTS);
+  return { hosts: [...hosts].sort(), domains };
+}
+
+// Cleaning thousands of imported entries on every message display is wasteful, so the
+// result is reused until the stored lists change.
+let importedCache = { key: "", lists: [], blocks: { hosts: [], domains: [] } };
+
+async function importedData(raw) {
+  const key = JSON.stringify(raw ?? []);
+  if (importedCache.key !== key) {
+    const lists = listImport.cleanStored(raw);
+    importedCache = { key, lists, blocks: await importedBlocks(lists) };
+  }
+  return importedCache;
+}
+
+// The public state seen by message pages. `blockedHosts` and `blockedDomains` are the
+// effective blocks (own rules plus enabled imported block lists). Own rules are kept
+// apart so a decision never copies an imported entry into the user's stored lists.
+async function readFullState() {
   const local = await messenger.storage.local.get({
     enabled: true, customAllowedHosts: [], blockedHosts: [],
     blockedDomains: [], importedLists: [], broadAllowedDomains: []
@@ -54,25 +89,43 @@ async function readState() {
   const blockedHosts = cleanHosts(local.blockedHosts);
   const blockedDomains = await cleanBroadDomains(local.blockedDomains);
   const broadAllowedDomains = await cleanBroadDomains(local.broadAllowedDomains);
-  const importedLists = listImport.cleanStored(local.importedLists);
-  const effective = new Set(customAllowedHosts);
+  const { lists: importedLists, blocks: imported } = await importedData(local.importedLists);
+  const allBlockedHosts = [...new Set([...blockedHosts, ...imported.hosts])].sort();
+  const allBlockedDomains = [...new Set([...blockedDomains, ...imported.domains])].sort();
+  const approved = new Set(customAllowedHosts);
   for (const list of importedLists) {
-    if (list.enabled) for (const host of list.hosts) effective.add(host);
+    if (list.enabled && list.kind === "allow") for (const host of list.hosts) approved.add(host);
   }
-  for (const host of blockedHosts) effective.delete(host);
-  for (const host of effective) {
-    if (blockedDomains.some(domain => host === domain || host.endsWith(`.${domain}`)))
-      effective.delete(host);
+  // The user's own blocks remove an approval. Imported blocks do not: the references for
+  // lookalike warnings must not be something a remote list can shrink.
+  for (const host of blockedHosts) approved.delete(host);
+  for (const host of approved) {
+    if (covers(blockedDomains, host)) approved.delete(host);
   }
   const rules = await publicSuffixRules();
   const trustedDomains = new Set(broadAllowedDomains);
-  for (const host of effective) {
+  for (const host of approved) {
     const root = domainScope.registrableDomain(host, rules);
     if (root) trustedDomains.add(root);
   }
-  return { enabled: local.enabled !== false, customAllowedHosts, blockedHosts, blockedDomains,
-    importedLists, broadAllowedDomains,
-    allowedHosts: [...effective], trustedDomains: [...trustedDomains] };
+  const effective = new Set(approved);
+  for (const host of imported.hosts) effective.delete(host);
+  for (const host of effective) {
+    if (covers(imported.domains, host)) effective.delete(host);
+  }
+  return { enabled: local.enabled !== false, customAllowedHosts,
+    blockedHosts: allBlockedHosts, blockedDomains: allBlockedDomains,
+    broadAllowedDomains,
+    allowedHosts: [...effective], trustedDomains: [...trustedDomains],
+    ownBlockedHosts: blockedHosts, ownBlockedDomains: blockedDomains,
+    importedBlockedHosts: imported.hosts, importedBlockedDomains: imported.domains };
+}
+
+// Message pages need only the effective rules, not the imported lists themselves.
+async function readState() {
+  const { ownBlockedHosts, ownBlockedDomains, importedBlockedHosts,
+    importedBlockedDomains, ...state } = await readFullState();
+  return state;
 }
 
 async function analyzeHosts(hosts) {
@@ -106,24 +159,30 @@ async function setDecision(host, decision, scope = "exact") {
   if (!["permanent", "block", "clear"].includes(decision)) {
     throw new Error("invalid decision");
   }
-  const state = await readState();
+  const state = await readFullState();
   const custom = new Set(state.customAllowedHosts);
   const broad = new Set(state.broadAllowedDomains);
-  const blocked = new Set(state.blockedHosts);
-  const blockedDomains = new Set(state.blockedDomains);
+  const blocked = new Set(state.ownBlockedHosts);
+  const blockedDomains = new Set(state.ownBlockedDomains);
+  // An imported block list is not editable here; an approval would have no effect.
+  const importedBlocked = host => state.importedBlockedHosts.includes(host) ||
+    covers(state.importedBlockedDomains, host);
   if (decision === "permanent") {
     if (scope === "domain") {
       if (policy.isSharedContentHost(normalized)) throw new Error("shared host cannot grant broad access");
       const root = await scopeRoot(normalized);
       if (!root) throw new Error("domain scope unavailable");
+      if (covers(state.importedBlockedDomains, root)) {
+        throw new Error("blocked by an imported list");
+      }
       broad.add(root);
       blockedDomains.delete(root);
       blocked.delete(normalized);
     } else if (scope === "exact") {
-      if ([...blockedDomains].some(domain =>
-        normalized === domain || normalized.endsWith(`.${domain}`))) {
+      if (covers([...blockedDomains], normalized)) {
         throw new Error("remove whole-domain block before approving an exact host");
       }
+      if (importedBlocked(normalized)) throw new Error("blocked by an imported list");
       custom.add(normalized);
       blocked.delete(normalized);
     } else throw new Error("invalid scope");
@@ -154,6 +213,60 @@ async function setDecision(host, decision, scope = "exact") {
   });
   return readState();
 }
+
+// Enabled remote blocklists with automatic updates are re-fetched about daily. An update
+// replaces only the host entries of a list that is still a blocklist from the same
+// source; it never enables a list and never touches allowlists. Anything that fails or
+// changes the list type leaves the stored list as it was.
+let refreshPromise = null;
+
+async function refreshBlocklists() {
+  const stored = await messenger.storage.local.get({ importedLists: [] });
+  // Cheap check on the raw data first: most users have no auto-updating list.
+  if (!Array.isArray(stored.importedLists) ||
+      !stored.importedLists.some(list => list?.enabled === true && list.kind === "block" &&
+        list.autoRefresh !== false && list.sourceUrl)) return;
+  const now = Date.now();
+  const due = listImport.cleanStored(stored.importedLists)
+    .filter(list => listImport.autoRefreshDue(list, now));
+  if (!due.length) return;
+  const results = new Map();
+  const full = await readFullState();
+  const approval = { hosts: [...new Set([...full.customAllowedHosts, ...full.allowedHosts])],
+    domains: full.broadAllowedDomains };
+  for (const list of due) {
+    const result = { sourceUrl: list.sourceUrl, refreshedAt: now };
+    try {
+      const fetched = await listImport.fetchRemote(list.sourceUrl, (...args) => fetch(...args));
+      if (fetched.kind !== "block") result.refreshStatus = "kindChanged";
+      else if (listImport.assessAutoUpdate(list.hosts, fetched.hosts,
+        approval.hosts, approval.domains) === "ok") {
+        Object.assign(result, { hosts: fetched.hosts, refreshStatus: "ok" });
+      } else result.refreshStatus = "review";
+    } catch { result.refreshStatus = "failed"; }
+    results.set(list.id, result);
+  }
+  // Re-read so that edits saved in Settings during the fetch are not overwritten.
+  const current = await messenger.storage.local.get({ importedLists: [] });
+  const merged = listImport.cleanStored(current.importedLists).map(list => {
+    const result = results.get(list.id);
+    if (!result || result.sourceUrl !== list.sourceUrl || !listImport.autoRefreshDue(list, now)) {
+      return list;
+    }
+    const { sourceUrl, ...changes } = result;
+    return { ...list, ...changes };
+  });
+  await messenger.storage.local.set({ importedLists: merged });
+}
+
+function scheduleRefresh() {
+  if (refreshPromise) return;
+  refreshPromise = refreshBlocklists()
+    .catch(() => { /* A failed update keeps the stored list. */ })
+    .finally(() => { refreshPromise = null; });
+}
+
+scheduleRefresh();
 
 // Manifest scripts cover messages as Thunderbird restores them. An update can also
 // leave a message already open, so inject into those documents once at startup.
@@ -210,7 +323,10 @@ function updateToolbar(message, tabId) {
 
 messenger.runtime.onMessage.addListener((message, sender) => {
   if (!Number.isInteger(sender.tab?.id)) return;
-  if (message?.type === "link-guard-state") return readState();
+  if (message?.type === "link-guard-state") {
+    scheduleRefresh();
+    return readState();
+  }
   if (message?.type === "link-guard-scope") return scopeRoot(message.host);
   if (message?.type === "link-guard-analyze") return analyzeHosts(message.hosts);
   if (message?.type === "link-guard-validate-broad") return invalidBroadDomain(message.hosts);

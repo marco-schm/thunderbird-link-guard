@@ -287,7 +287,7 @@
     "message": "Listas personalizadas y remotas"
   },
   "importsHint": {
-    "message": "Importe un archivo JSON o vincule una lista HTTPS. Cada lista se muestra antes de la activación y se aplica solo después de su revisión. Los cambios remotos requieren su aprobación nuevamente."
+    "message": "Importe un archivo JSON o vincule una lista HTTPS. Cada lista se muestra antes de la activación y se aplica solo después de su revisión. Los cambios remotos en listas de permitidos requieren su aprobación nuevamente."
   },
   "importFileLabel": {
     "message": "Elija un archivo JSON"
@@ -419,5 +419,42 @@
   },
   "listHosts": {
     "message": "Nombres de host exactos en esta lista"
+  },
+  "kind_allow": {
+    "message": "Lista de permitidos"
+  },
+  "kind_block": {
+    "message": "Lista de bloqueo"
+  },
+  "listBlockedHosts": {
+    "message": "Entradas bloqueadas de esta lista (*.example.com bloquea el dominio y todos sus subdominios)"
+  },
+  "importBlockHint": {
+    "message": "Una lista con \"kind\": \"block\" es una lista de bloqueo. Una vez activada, prevalece sobre las aprobaciones y las listas de permitidos importadas, y puede contener entradas *.example.com. Las listas de bloqueo pueden actualizarse solas aproximadamente una vez al día si lo activas; las listas de permitidos nunca."
+  },
+  "autoRefreshLabel": {
+    "message": "Actualizar automáticamente aproximadamente una vez al día (sustituye las ediciones locales)"
+  },
+  "autoRefreshKind": {
+    "message": "La fuente ahora declara otro tipo de lista, por lo que la lista no se modificó. Revísala manualmente."
+  },
+  "autoRefreshOk": {
+    "message": "Última comprobación automática: $DATE$",
+    "placeholders": {
+      "date": {
+        "content": "$1"
+      }
+    }
+  },
+  "autoRefreshFailed": {
+    "message": "La actualización automática falló el $DATE$. La lista anterior sigue activa.",
+    "placeholders": {
+      "date": {
+        "content": "$1"
+      }
+    }
+  },
+  "autoRefreshReview": {
+    "message": "No se aplicó la actualización automática porque es grande o bloquearía algo que aprobaste. La lista anterior sigue activa; usa «Revisar actualización remota»."
   }
 }

@@ -287,7 +287,7 @@
     "message": "Listy własne i zdalne"
   },
   "importsHint": {
-    "message": "Zaimportuj plik JSON lub podłącz listę HTTPS. Każda lista jest pokazana przed włączeniem i działa dopiero po Twojej kontroli. Zdalne zmiany wymagają ponownej zgody."
+    "message": "Zaimportuj plik JSON lub podłącz listę HTTPS. Każda lista jest pokazana przed włączeniem i działa dopiero po Twojej kontroli. Zdalne zmiany list dozwolonych wymagają ponownej zgody."
   },
   "importFileLabel": {
     "message": "Wybierz plik JSON"
@@ -419,5 +419,42 @@
   },
   "listHosts": {
     "message": "Dokładne nazwy hostów na tej liście"
+  },
+  "kind_allow": {
+    "message": "Lista dozwolonych"
+  },
+  "kind_block": {
+    "message": "Lista blokowania"
+  },
+  "listBlockedHosts": {
+    "message": "Zablokowane wpisy tej listy (*.example.com blokuje domenę i wszystkie subdomeny)"
+  },
+  "importBlockHint": {
+    "message": "Lista z \"kind\": \"block\" jest listą blokowania. Po włączeniu ma pierwszeństwo przed zatwierdzeniami i importowanymi listami dozwolonych oraz może zawierać wpisy *.example.com. Listy blokowania mogą opcjonalnie aktualizować się same mniej więcej raz dziennie; listy dozwolonych nigdy."
+  },
+  "autoRefreshLabel": {
+    "message": "Aktualizuj automatycznie mniej więcej raz dziennie (zastępuje lokalne zmiany)"
+  },
+  "autoRefreshKind": {
+    "message": "Źródło deklaruje teraz inny typ listy, więc listy nie zmieniono. Sprawdź ją ręcznie."
+  },
+  "autoRefreshOk": {
+    "message": "Ostatnie automatyczne sprawdzenie: $DATE$",
+    "placeholders": {
+      "date": {
+        "content": "$1"
+      }
+    }
+  },
+  "autoRefreshFailed": {
+    "message": "Automatyczna aktualizacja nie powiodła się: $DATE$. Poprzednia lista pozostaje aktywna.",
+    "placeholders": {
+      "date": {
+        "content": "$1"
+      }
+    }
+  },
+  "autoRefreshReview": {
+    "message": "Automatyczna aktualizacja nie została zastosowana, ponieważ jest duża lub zablokowałaby coś, co zatwierdziłeś. Poprzednia lista pozostaje aktywna; użyj „Sprawdź zdalną aktualizację”."
   }
 }

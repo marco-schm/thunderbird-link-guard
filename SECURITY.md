@@ -24,11 +24,29 @@ so a compromised or multi-tenant site remains a risk. Sender identity is
 outside the current scope.
 
 Imported lists are untrusted input. The parser accepts only a bounded JSON
-schema with exact DNS hostnames, and imported lists start disabled. Remote
+schema with exact DNS hostnames, and imported lists start disabled. A list
+marked `"kind": "block"` is a blocklist and may also contain `*.example.com`
+whole-domain entries; blocking can only remove access, and wildcards that are
+not a registrable domain according to the bundled Public Suffix List are
+refused on save and ignored if found in storage. A hostile or compromised
+blocklist source can therefore block legitimate sites, never approve any, which
+is why a refreshed list is previewed and disabled until the user enables it. Remote
 fetches happen only after a user action; they require HTTPS and CORS, omit
 credentials, reject redirects, and are bounded by time and bytes. A remote
 refresh is previewed and disables the list until the user enables it again.
-The source URL is stored only for manual refresh. No email content or link
+The source URL is stored for refreshing the list. Allowlists are refreshed only
+manually. An enabled remote blocklist refreshes itself about
+once a day unless the user switches that off for the list. An automatic refresh
+uses the same restrictions as a manual one, replaces only the entries of an
+enabled list that is still a blocklist from the same URL, and cannot enable a
+list or approve a host. It is also held for manual review if it adds more than
+50 entries, more than doubles or halves the list, or would block a host or
+domain the user approved. A failed fetch, a changed list type or a held update
+leaves the stored list in place. Entries from imported blocklists never remove a
+domain from the references used for lookalike warnings, so a hostile list
+cannot silence those warnings. A compromised list source (for example an
+expired and re-registered domain) can still block ordinary sites within these
+limits and sees the user's IP address and per-installation extension origin. Each fetch discloses the user's IP address to the list host. No email content or link
 target is sent to a list source.
 
 Risky HTTP(S) links may be opened only after explicit approval of every
@@ -65,7 +83,8 @@ An exact block covers one host. A whole-domain block is displayed as
 `*.example.com` and covers `example.com` and every subdomain; it takes priority
 over both saved and imported approvals. The `*.` syntax is accepted only in
 the editable whole-domain rules and is checked against the bundled Public
-Suffix List. Imported JSON lists remain exact-host-only.
+Suffix List. Imported allowlists remain exact-host-only; imported blocklists
+may use the same syntax and take priority over saved and imported approvals.
 
 Please report security issues privately to the maintainers before publishing
 details. Use synthetic messages and remove real URLs, tokens and mail contents
