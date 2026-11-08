@@ -174,6 +174,51 @@
       "textMismatch" : null;
   }
 
+  // Destinations whose lookalike and approval analysis is still missing; scan() adds them
+  // to its analysis request.
+  const destinationsToAnalyze = new Set();
+
+  // true or false once known, undefined while the destination still needs analysis.
+  function destinationApproved(host) {
+    if (temporaryHosts.has(host)) return true;
+    if (policy.isIpAddress(host)) return false;
+    if (state.blockedHosts.includes(host) ||
+        state.blockedDomains?.some(domain => host === domain || host.endsWith(`.${domain}`))) return false;
+    if (state.customAllowedHosts.includes(host)) return true;
+    if (!analyzedHosts.has(host)) return undefined;
+    const status = statusFor(host);
+    return status === "permanent" || status === "broad";
+  }
+
+  // A link that carries another destination (a redirector, a Safe Links or URL Defense
+  // wrapper, an open redirect) warns only when that destination leaves the link's own
+  // site and is not approved. The warning names the destination. Returns the risks and
+  // whether a check is still pending, in which case the link stays closed for now.
+  function redirectRisks(inspection) {
+    const result = { risks: [], pending: false };
+    if (inspection.kind !== "web" || !inspection.destinations ||
+        warningSettings.disabled.has("redirect")) return result;
+    for (const target of inspection.destinations) {
+      const approved = destinationApproved(target);
+      if (approved === true) continue;
+      if (!registrableRoots.has(target) || !registrableRoots.has(inspection.host)) {
+        unknownRoots.add(target);
+        unknownRoots.add(inspection.host);
+        result.pending = true;
+        continue;
+      }
+      const targetRoot = registrableRoots.get(target);
+      if (targetRoot && targetRoot === registrableRoots.get(inspection.host)) continue;
+      if (approved === undefined) {
+        destinationsToAnalyze.add(target);
+        result.pending = true;
+        continue;
+      }
+      result.risks.push(`redirect:${target}`);
+    }
+    return result;
+  }
+
   function inspectAnchor(anchor, href, budget) {
     const text = (anchor.textContent || "").slice(0, 1024);
     // The base URI is read per inspection: a message can carry a `<base href>` that
@@ -184,6 +229,10 @@
     if (bare === "textMismatch" && !inspection.risks?.includes("textMismatch")) {
       inspection = { ...inspection, risks: [...(inspection.risks || []), "textMismatch"] };
     }
+    const redirect = redirectRisks(inspection);
+    if (redirect.risks.length) {
+      inspection = { ...inspection, risks: [...(inspection.risks || []), ...redirect.risks] };
+    }
     if (warningRules) {
       // Rules are matched against the destination a click would open, not the raw
       // attribute, so a base-relative link cannot slip past a rule written for its URL.
@@ -191,8 +240,9 @@
       inspection = warningRules.applyWarnings(inspection, { disabled: warningSettings.disabled,
         evaluator: warningSettings.evaluator, href: target, text, budget });
     }
-    // Until the text is checked the link stays closed, whatever its host's approval.
-    return bare === "pending" ? { ...inspection, pendingText: true } : inspection;
+    // Until the link text and any carried destination are checked, the link stays closed,
+    // whatever its host's approval.
+    return bare === "pending" || redirect.pending ? { ...inspection, pendingCheck: true } : inspection;
   }
 
   // "unverified" (the analysis failed) always warns; it is not a configurable warning.
@@ -216,11 +266,14 @@
       return inline ? t("riskCustomInline", [rule.label]) :
         t("riskCustom", [rule.label, rule.source || t("ruleSourceOwn")]);
     }
+    if (reason.startsWith("redirect:")) {
+      return t(inline ? "riskInline_redirect" : "risk_redirect", [reason.slice(9)]);
+    }
     return t(`${inline ? "riskInline" : "risk"}_${reason}`);
   }
 
   function isAllowed(inspection) {
-    if (inspection.pendingText) return false;
+    if (inspection.pendingCheck) return false;
     return access.linkAllowed(inspection, state, temporaryHosts, warningFor, stateReady);
   }
 
@@ -408,7 +461,8 @@
     const name = document.createElement("strong");
     name.textContent = host;
     const status = document.createElement("span");
-    const temporaryOnly = risks?.has("shortLink");
+    // Same rule as access.js: these risks can only be allowed for this message.
+    const temporaryOnly = risks?.has("shortLink") || risks?.has("scriptInUrl");
     const statusKey = statusFor(host) === "blocked" ? "blocked" :
       temporaryOnly && !temporaryHosts.has(host) ? "pending" :
       risks?.size && !temporaryHosts.has(host) &&
@@ -432,7 +486,8 @@
       temporary.type = "button";
       temporary.textContent = t("allowTemporary");
       temporary.disabled = !stateReady;
-      temporary.addEventListener("click", () => riskyApproval(host, actions));
+      temporary.addEventListener("click", () => risks.has("shortLink") ?
+        riskyApproval(host, actions) : decide(host, "temporary"));
       actions.append(temporary);
     } else actions.append(button("allowTemporary", host, "temporary"));
     if (!policy.isIpAddress(host)) {
@@ -598,9 +653,12 @@
       warning.kind === "idn" ? t("riskIdnInline") :
         warning.kind === "unverified" ? t("riskUnverifiedInline") :
           t("riskLookalikeInline", [warning.similarTo]);
+    // A line may break only between two parts, never right after a ⚠ or ↗ sign, so
+    // each warning stays together when a long label wraps.
     const label = [hostLabel, ...(risks || []).map(reason => riskText(reason, true)),
       showHost ? t("linkDestinationInline", [host]) : ""]
-      .filter(Boolean).join(" · ");
+      .filter(Boolean).map(part => part.replace(/^([\u26a0\u2197])\s+/u, "$1\u00a0"))
+      .join("\u00a0\u00b7 ");
     const className = risky ? "link-guard-inline-warning" : "link-guard-inline-destination";
     const content = existing && labelTexts.get(existing);
     if (existing?.isConnected && content) {
@@ -743,6 +801,10 @@
     const overflow = inspected > MAX_LISTED_LINKS;
     renderPanel(groups, hardBlocks, linkRisks, totalWeb, pending, blocked, warnings, overflow);
     sendToolbar(pending, blocked, warnings, overflow);
+    for (const host of destinationsToAnalyze) {
+      if (!analyzedHosts.has(host)) unknown.add(host);
+    }
+    destinationsToAnalyze.clear();
     analyzeUnknown([...unknown].slice(0, 500));
   }
 

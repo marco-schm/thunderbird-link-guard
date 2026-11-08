@@ -399,6 +399,28 @@
   "riskInline_shortLink": {
     "message": "⚠ 短網址"
   },
+  "risk_scriptInUrl": {
+    "message": "此連結包含指令碼或 HTML 程式碼。"
+  },
+  "riskInline_scriptInUrl": {
+    "message": "⚠ 連結含程式碼"
+  },
+  "risk_redirect": {
+    "message": "可能重新導向至 $HOST$（未核准）。",
+    "placeholders": {
+      "host": {
+        "content": "$1"
+      }
+    }
+  },
+  "riskInline_redirect": {
+    "message": "⚠ 重新導向 → $HOST$",
+    "placeholders": {
+      "host": {
+        "content": "$1"
+      }
+    }
+  },
   "riskyApprovalWarning": {
     "message": "這個短網址隱藏了目的地。要在此郵件中允許嗎？"
   },
@@ -480,6 +502,12 @@
   },
   "warn_shortLink": {
     "message": "公開短網址服務"
+  },
+  "warn_scriptInUrl": {
+    "message": "連結中的指令碼或 HTML 程式碼"
+  },
+  "warn_redirect": {
+    "message": "連結會重新導向至未核准的網站"
   },
   "customRulesTitle": {
     "message": "我的警告規則"

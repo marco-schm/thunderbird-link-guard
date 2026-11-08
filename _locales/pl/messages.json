@@ -399,6 +399,28 @@
   "riskInline_shortLink": {
     "message": "⚠ Skrócony odnośnik"
   },
+  "risk_scriptInUrl": {
+    "message": "Odnośnik zawiera kod skryptu lub HTML."
+  },
+  "riskInline_scriptInUrl": {
+    "message": "⚠ Kod w odnośniku"
+  },
+  "risk_redirect": {
+    "message": "Możliwe przekierowanie do $HOST$ (brak zgody).",
+    "placeholders": {
+      "host": {
+        "content": "$1"
+      }
+    }
+  },
+  "riskInline_redirect": {
+    "message": "⚠ Przekierowanie → $HOST$",
+    "placeholders": {
+      "host": {
+        "content": "$1"
+      }
+    }
+  },
   "riskyApprovalWarning": {
     "message": "Ten skrócony odnośnik ukrywa adres docelowy. Zezwolić na niego w tej wiadomości?"
   },
@@ -480,6 +502,12 @@
   },
   "warn_shortLink": {
     "message": "Publiczny skracacz adresów URL"
+  },
+  "warn_scriptInUrl": {
+    "message": "Kod skryptu lub HTML w odnośniku"
+  },
+  "warn_redirect": {
+    "message": "Odnośnik przekierowuje do witryny bez zgody"
   },
   "customRulesTitle": {
     "message": "Moje reguły ostrzeżeń"

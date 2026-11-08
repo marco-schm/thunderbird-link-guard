@@ -399,6 +399,28 @@
   "riskInline_shortLink": {
     "message": "⚠ Rövidített hivatkozás"
   },
+  "risk_scriptInUrl": {
+    "message": "A hivatkozás szkript- vagy HTML-kódot tartalmaz."
+  },
+  "riskInline_scriptInUrl": {
+    "message": "⚠ Kód a hivatkozásban"
+  },
+  "risk_redirect": {
+    "message": "Lehetséges átirányítás ide: $HOST$ (nincs jóváhagyva).",
+    "placeholders": {
+      "host": {
+        "content": "$1"
+      }
+    }
+  },
+  "riskInline_redirect": {
+    "message": "⚠ Átirányítás → $HOST$",
+    "placeholders": {
+      "host": {
+        "content": "$1"
+      }
+    }
+  },
   "riskyApprovalWarning": {
     "message": "Ez a rövidített hivatkozás elrejti a célját. Engedélyezi ehhez az üzenethez?"
   },
@@ -480,6 +502,12 @@
   },
   "warn_shortLink": {
     "message": "Nyilvános URL-rövidítő"
+  },
+  "warn_scriptInUrl": {
+    "message": "Szkript- vagy HTML-kód a hivatkozásban"
+  },
+  "warn_redirect": {
+    "message": "A hivatkozás jóvá nem hagyott webhelyre irányít át"
   },
   "customRulesTitle": {
     "message": "Saját figyelmeztetési szabályok"

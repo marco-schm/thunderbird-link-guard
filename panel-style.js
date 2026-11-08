@@ -50,7 +50,7 @@ globalThis.LinkGuardPanelCss = globalThis.LinkGuardHostGuardCss + `
 .link-guard-list { margin: 12px 0 !important; display: grid !important; gap: 8px !important; }
 .link-guard-row {
   display: flex !important;
-  align-items: center !important;
+  align-items: flex-start !important;
   justify-content: space-between !important;
   flex-wrap: wrap !important;
   gap: 10px !important;
@@ -59,15 +59,15 @@ globalThis.LinkGuardPanelCss = globalThis.LinkGuardHostGuardCss + `
   border-radius: 7px !important;
   background: #fff !important;
 }
-.link-guard-row-info { display: flex !important; flex-wrap: wrap !important; align-items: center !important; gap: 8px !important; }
-.link-guard-row-info strong { font-size: 15px !important; color: #1d2430 !important; }
+.link-guard-row-info { display: flex !important; flex-wrap: wrap !important; align-items: center !important; gap: 8px !important; flex: 1 1 260px !important; min-width: 0 !important; }
+.link-guard-row-info strong { font-size: 15px !important; color: #1d2430 !important; overflow-wrap: anywhere !important; }
 .link-guard-row-info small { font-size: 12px !important; color: #4b5563 !important; }
 .link-guard-state { padding: 2px 6px !important; border-radius: 4px !important; font-size: 11px !important; font-weight: 700 !important; }
 .link-guard-state-pending { background: #ffefd2 !important; color: #7c3f00 !important; }
 .link-guard-state-temporary { background: #e3f0ff !important; color: #174a80 !important; }
 .link-guard-state-permanent { background: #e1f4e5 !important; color: #1c6030 !important; }
 .link-guard-state-blocked { background: #ffe3e6 !important; color: #8b2634 !important; }
-.link-guard-actions { display: flex !important; flex-wrap: wrap !important; gap: 6px !important; }
+.link-guard-actions { display: flex !important; flex-wrap: wrap !important; gap: 6px !important; flex: 0 1 auto !important; }
 .link-guard-actions button {
   appearance: none !important;
   padding: 6px 9px !important;

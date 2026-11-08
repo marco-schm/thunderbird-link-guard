@@ -81,6 +81,8 @@ Whole-domain approvals and imported allowlists do **not** unlock it. This applie
 - lookalike and internationalized domains,
 - link text that names a different host,
 - user names or passwords in the link,
+- script or HTML code in the link, and destinations it carries to sites you have not
+  approved,
 - matches of your own or imported [warning rules](warning-rules.md),
 - links whose checks could not run (*Domain check unavailable*, *Warning rules could not
   be checked for this link*).
@@ -100,6 +102,13 @@ any other host.
 Recognised shorteners: `bit.ly`, `bitly.is`, `bitly.com`, `j.mp`, `tinyurl.com`, `t.co`,
 `lnkd.in`, `buff.ly`, `ow.ly`, `rb.gy`, `rebrand.ly`, `s.gy`, `short.gy`, `is.gd`, `v.gd`,
 `tiny.cc`, `cutt.ly`, `bl.ink`, and their subdomains.
+
+### Links with code
+
+A link whose address contains script or HTML code is the typical form of a cross-site
+scripting attack against the linked site – usually a site you trust. It can therefore only
+be allowed **for the current message**, even when its host is approved permanently. See
+[Warnings](warnings.md#script-or-html-code-in-the-link).
 
 ### Links to IP addresses
 

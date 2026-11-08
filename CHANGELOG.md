@@ -2,6 +2,17 @@
 
 ## Unreleased
 
+- New warning: script or HTML code in a link, the shape of a reflected XSS attack on
+  the linked site. Encodings are undone first (percent-encoding up to three times,
+  HTML character references, JavaScript escapes, control characters). Such a link
+  can only be allowed for the current message, even when its host is approved
+  permanently.
+- New warning: a link that carries another destination – a full URL in a parameter
+  or the path, a base64-encoded URL, Microsoft Safe Links or Proofpoint URL Defense –
+  names that destination when it leaves the link's own domain and is not approved.
+  Wrapped links to approved sites and redirects within a site do not warn.
+- Notice: action buttons stay at the top right of each row, and a long label next to
+  a link wraps only between two warnings.
 - Notice: warnings are shown in red with a red warning triangle, and the rows of
   hosts with a warning get a red edge. Before, a style conflict drew them in the
   same dark text as host names.

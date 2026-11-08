@@ -28,6 +28,11 @@ services and generic redirect-looking URL components also do not trigger a
 red redirect warning. URL syntax risks such as HTTP, credentials and a
 misleading visible link text remain separate warning checks.
 
+Update 2026-11-08: a destination that a link visibly carries is now named in a
+warning when it is not approved; generic redirect-looking components without a
+readable destination still raise none. See
+[URL-CONTENT-RESEARCH.md](URL-CONTENT-RESEARCH.md).
+
 The catalogue cannot be complete. Providers offer arbitrary branded tracking
 domains; opaque redirects can hide the target until a browser visits the URL.
 Link Guard does not fetch mail links or inspect the final browser navigation.

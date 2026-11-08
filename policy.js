@@ -170,6 +170,162 @@
     catch { return null; }
   }
 
+  // ----- Code and embedded destinations inside a URL ------------------------------
+  // Both checks read the path, query and fragment after undoing the encodings that are
+  // stacked to get past filters (OWASP XSS filter evasion cheat sheet): percent-encoding
+  // up to three times, HTML character references, JavaScript escapes, and control
+  // characters inside words such as `java\tscript:`. All patterns are free of nested
+  // quantifiers, so their running time stays linear in the length of the URL.
+  const DECODE_PASSES = 3;
+  const MAX_DESTINATIONS = 5;
+
+  function percentDecode(text) {
+    try { return decodeURIComponent(text); }
+    catch { return text.replace(/%([0-9a-f]{2})/gi, (_, hex) => String.fromCharCode(parseInt(hex, 16))); }
+  }
+
+  // The percent-decoding chain of a text: the text itself and each further decoding.
+  function percentForms(text, plusIsSpace = false) {
+    const forms = [];
+    let current = text;
+    for (let pass = 0; pass <= DECODE_PASSES; pass++) {
+      forms.push(current);
+      const next = percentDecode(plusIsSpace ? current.replace(/\+/g, " ") : current);
+      if (next === current) break;
+      current = next;
+    }
+    return forms;
+  }
+
+  const NAMED_REFERENCES = { lt: "<", gt: ">", quot: "\"", apos: "'", amp: "&", colon: ":",
+    tab: "\t", newline: "\n", sol: "/", lpar: "(", rpar: ")", equals: "=", semi: ";", grave: "`" };
+
+  function codePoint(value, fallback) {
+    return value > 0 && value <= 0x10ffff ? String.fromCodePoint(value) : fallback;
+  }
+
+  function decodeReferences(text) {
+    return text
+      .replace(/&#x0*([0-9a-f]{1,6});?/gi, (match, hex) => codePoint(parseInt(hex, 16), match))
+      .replace(/&#0*([0-9]{1,7});?/g, (match, dec) => codePoint(parseInt(dec, 10), match))
+      .replace(/&([a-z]{2,7});/gi, (match, name) => NAMED_REFERENCES[name.toLowerCase()] ?? match)
+      .replace(/\\u\{([0-9a-f]{1,6})\}|\\u([0-9a-f]{4})|\\x([0-9a-f]{2})/gi,
+        (match, braced, four, two) => codePoint(parseInt(braced || four || two, 16), match));
+  }
+
+  function decodedForms(text) {
+    const forms = new Set();
+    for (const form of percentForms(text, true)) {
+      forms.add(form);
+      const referenced = decodeReferences(form);
+      forms.add(referenced);
+      forms.add(referenced.replace(/[\x00-\x1f\x7f]+/g, ""));
+    }
+    return [...forms].map(form => form.toLowerCase());
+  }
+
+  // Tags that can run script or load content when reflected into a page.
+  const DANGEROUS_TAGS = "script|img|image|svg|iframe|frame|frameset|object|embed|applet|body|html|" +
+    "style|link|meta|base|form|input|button|textarea|select|option|details|dialog|video|audio|" +
+    "source|track|math|marquee|isindex|template|animate|set|xmp|plaintext|noscript|title|" +
+    "bgsound|keygen|a";
+  // Event handler attributes, only where an attribute can start: an `&onload=` query
+  // parameter is ordinary, `" onload=` or `/onload=` after a tag is not.
+  const EVENT_HANDLERS = "abort|activate|afterprint|animation(?:cancel|end|iteration|start)|" +
+    "auxclick|before(?:copy|cut|input|paste|print|toggle|unload)|begin|blur|cancel|" +
+    "canplay(?:through)?|change|click|close|contextmenu|copy|cuechange|cut|dblclick|" +
+    "drag(?:end|enter|leave|over|start)?|drop|durationchange|emptied|end|ended|error|" +
+    "focus(?:in|out)?|formdata|fullscreenchange|hashchange|input|invalid|key(?:down|press|up)|" +
+    "load(?:eddata|edmetadata|start|end)?|message|mouse(?:down|enter|leave|move|out|over|up|wheel)|" +
+    "offline|online|page(?:hide|show)|paste|pause|play(?:ing)?|" +
+    "pointer(?:cancel|down|enter|leave|move|out|over|rawupdate|up)|popstate|progress|ratechange|" +
+    "readystatechange|repeat|reset|resize|scroll(?:end)?|search|seek(?:ed|ing)|" +
+    "select(?:ionchange|start)?|show|stalled|start|storage|submit|suspend|timeupdate|toggle|" +
+    "touch(?:cancel|end|move|start)|transition(?:cancel|end|run|start)|unhandledrejection|" +
+    "unload|volumechange|waiting|webkit[a-z]{0,30}|wheel";
+  const SCRIPT_SIGNS = [
+    new RegExp(`<\\s*/?\\s*(?:${DANGEROUS_TAGS})(?=[\\s/>]|$)`),
+    /<!--|<!\[cdata\[/,
+    new RegExp(`(?:^|[\\s"'\`/;>(])on(?:${EVENT_HANDLERS})\\s*=`),
+    /(?:java|vb|live)script\s*:/,
+    /data\s*:\s*(?:text\/html|image\/svg\+xml|(?:text|application)\/(?:x-)?(?:java|ecma)script)/,
+    /document\s*\.\s*(?:cookie|domain|write|location)|window\s*\.\s*(?:location|open)\b|location\s*\.\s*(?:href|replace|assign)\b/,
+    /(?:^|[^a-z0-9_$])(?:alert|prompt|confirm|eval|atob|settimeout|setinterval|fromcharcode)[(`]/,
+    /(?:^|[\s"'/])srcdoc\s*=/
+  ];
+
+  // Script or HTML code in the path, query or fragment: the shape of a reflected XSS
+  // payload aimed at the linked site.
+  function scriptInUrl(url) {
+    const tail = `${url.pathname}${url.search}${url.hash}`;
+    if (tail.length <= 1) return false;
+    return decodedForms(tail).some(form => SCRIPT_SIGNS.some(sign => sign.test(form)));
+  }
+
+  // Parameters whose name says they carry a destination. Only these may name one
+  // without a scheme (`//evil.example`); any parameter may carry a full URL.
+  const DESTINATION_NAMES = /^(?:u|url|uri|link|href|r|rurl|q|to|go|goto|next|out|jump|view|continue|forward|relaystate|dest[a-z_]*|target[a-z_]*|redir[a-z_]*|redirect[a-z_]*|return[a-z_]*|callback[a-z_]*|success[a-z_]*|landing[a-z_]*)$/i;
+  const ABSOLUTE_URL = /https?:[\\/]{1,3}[^\s"'<>`]+/gi;
+  const BASE64_URL = /^aHR0c[A-Za-z0-9+/_-]{6,}={0,2}$/;
+
+  function hostOf(candidate) {
+    try {
+      const url = new URL(candidate.replace(/\\/g, "/"));
+      if (url.protocol !== "http:" && url.protocol !== "https:") return "";
+      return url.hostname ? canonicalHost(url.hostname) : "";
+    } catch { return ""; }
+  }
+
+  function base64Text(value) {
+    try {
+      const text = atob(value.replace(/-/g, "+").replace(/_/g, "/"));
+      return /^[\x20-\x7e]+$/.test(text) ? text : "";
+    } catch { return ""; }
+  }
+
+  // Destination hosts carried inside a URL: full URLs anywhere in the path, query or
+  // fragment; scheme-relative ones in destination parameters; base64-encoded URLs; and
+  // the formats of Microsoft Safe Links (url=) and Proofpoint URL Defense (v2 u=, v3 __…__).
+  function embeddedDestinations(url) {
+    const hosts = new Set();
+    const addFrom = text => {
+      for (const match of text.matchAll(ABSOLUTE_URL)) {
+        const host = hostOf(match[0]);
+        if (host) hosts.add(host);
+        if (hosts.size >= MAX_DESTINATIONS) return;
+      }
+    };
+    const examine = (value, named) => {
+      for (const form of percentForms(value)) {
+        if (hosts.size >= MAX_DESTINATIONS) return;
+        const trimmed = form.trim();
+        if (/^https?-3a__/i.test(trimmed)) {
+          addFrom(percentDecode(trimmed.replace(/_/g, "/").replace(/-/g, "%")));
+        }
+        if (BASE64_URL.test(trimmed)) addFrom(base64Text(trimmed));
+        if (named && /^[\\/]{2}[^\\/]/.test(trimmed)) {
+          const host = hostOf(`https:${trimmed}`);
+          if (host) hosts.add(host);
+        }
+        addFrom(form);
+      }
+    };
+    examine(url.pathname, false);
+    for (const segment of url.pathname.split("/")) {
+      if (BASE64_URL.test(segment)) addFrom(base64Text(segment));
+    }
+    const parameters = [...url.searchParams];
+    const fragment = url.hash.slice(1);
+    if (fragment.includes("=")) {
+      try { parameters.push(...new URLSearchParams(fragment)); } catch { /* not parameters */ }
+    } else if (fragment) examine(fragment, false);
+    for (const [name, value] of parameters.slice(0, 100)) {
+      if (hosts.size >= MAX_DESTINATIONS) break;
+      examine(value, DESTINATION_NAMES.test(name));
+    }
+    return [...hosts].slice(0, MAX_DESTINATIONS);
+  }
+
   function inspectLink(href, visibleText = "", baseUrl = "") {
     if (typeof href !== "string" || href.length > MAX_URL_LENGTH) {
       return { kind: "blocked", host: "", hosts: [], reason: "invalidUrl" };
@@ -200,14 +356,19 @@
     if (url.username || url.password) risks.push("credentials");
     if (isIpAddress(host)) risks.push("ipAddress");
     if (hostServiceRisk(host)) risks.push("shortLink");
+    if (scriptInUrl(url)) risks.push("scriptInUrl");
     const result = { kind: "web", host, hosts: [host], reason: "" };
     if (risks.length) result.risks = risks;
+    // Whether a destination deserves a warning depends on the user's approvals, so the
+    // message page decides; the link's own host is never its own destination.
+    const destinations = embeddedDestinations(url).filter(destination => destination !== host);
+    if (destinations.length) result.destinations = destinations;
     return result;
   }
 
   const api = Object.freeze({ canonicalHost, isIpAddress, normalizeHost, parseHostList, parseRuleList, inspectLink,
     resolveHref, lookalikeDomain, isInternationalizedHost, hostServiceRisk, isSharedContentHost,
-    apparentHost, bareHostCandidate });
+    apparentHost, bareHostCandidate, scriptInUrl, embeddedDestinations });
   root.LinkGuardPolicy = api;
   if (typeof module !== "undefined" && module.exports) module.exports = api;
 })(globalThis);

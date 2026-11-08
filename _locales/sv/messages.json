@@ -399,6 +399,28 @@
   "riskInline_shortLink": {
     "message": "⚠ Förkortad länk"
   },
+  "risk_scriptInUrl": {
+    "message": "Länken innehåller skript- eller HTML-kod."
+  },
+  "riskInline_scriptInUrl": {
+    "message": "⚠ Kod i länk"
+  },
+  "risk_redirect": {
+    "message": "Möjlig omdirigering till $HOST$ (inte godkänd).",
+    "placeholders": {
+      "host": {
+        "content": "$1"
+      }
+    }
+  },
+  "riskInline_redirect": {
+    "message": "⚠ Omdirigering → $HOST$",
+    "placeholders": {
+      "host": {
+        "content": "$1"
+      }
+    }
+  },
   "riskyApprovalWarning": {
     "message": "Den här förkortade länken döljer sitt mål. Tillåta den för det här meddelandet?"
   },
@@ -480,6 +502,12 @@
   },
   "warn_shortLink": {
     "message": "Offentlig URL-förkortare"
+  },
+  "warn_scriptInUrl": {
+    "message": "Skript- eller HTML-kod i länken"
+  },
+  "warn_redirect": {
+    "message": "Länken omdirigerar till en webbplats som inte är godkänd"
   },
   "customRulesTitle": {
     "message": "Mina varningsregler"

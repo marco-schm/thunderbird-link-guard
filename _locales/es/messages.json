@@ -399,6 +399,28 @@
   "riskInline_shortLink": {
     "message": "⚠ Enlace corto"
   },
+  "risk_scriptInUrl": {
+    "message": "El enlace contiene código de script o HTML."
+  },
+  "riskInline_scriptInUrl": {
+    "message": "⚠ Código en el enlace"
+  },
+  "risk_redirect": {
+    "message": "Posible redirección a $HOST$ (no aprobado).",
+    "placeholders": {
+      "host": {
+        "content": "$1"
+      }
+    }
+  },
+  "riskInline_redirect": {
+    "message": "⚠ Redirección → $HOST$",
+    "placeholders": {
+      "host": {
+        "content": "$1"
+      }
+    }
+  },
   "riskyApprovalWarning": {
     "message": "Este breve enlace oculta su destino. ¿Permitirlo para este mensaje?"
   },
@@ -480,6 +502,12 @@
   },
   "warn_shortLink": {
     "message": "Acortador de URL público"
+  },
+  "warn_scriptInUrl": {
+    "message": "Código de script o HTML en el enlace"
+  },
+  "warn_redirect": {
+    "message": "El enlace redirige a un sitio no aprobado"
   },
   "customRulesTitle": {
     "message": "Mis reglas de advertencia"

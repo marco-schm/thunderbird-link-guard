@@ -399,6 +399,28 @@
   "riskInline_shortLink": {
     "message": "⚠ Lyhennetty linkki"
   },
+  "risk_scriptInUrl": {
+    "message": "Linkki sisältää skripti- tai HTML-koodia."
+  },
+  "riskInline_scriptInUrl": {
+    "message": "⚠ Koodia linkissä"
+  },
+  "risk_redirect": {
+    "message": "Mahdollinen uudelleenohjaus kohteeseen $HOST$ (ei hyväksytty).",
+    "placeholders": {
+      "host": {
+        "content": "$1"
+      }
+    }
+  },
+  "riskInline_redirect": {
+    "message": "⚠ Uudelleenohjaus → $HOST$",
+    "placeholders": {
+      "host": {
+        "content": "$1"
+      }
+    }
+  },
   "riskyApprovalWarning": {
     "message": "Tämä lyhennetty linkki piilottaa kohteensa. Sallitaanko se tälle viestille?"
   },
@@ -480,6 +502,12 @@
   },
   "warn_shortLink": {
     "message": "Julkinen URL-lyhentäjä"
+  },
+  "warn_scriptInUrl": {
+    "message": "Skripti- tai HTML-koodia linkissä"
+  },
+  "warn_redirect": {
+    "message": "Linkki ohjaa sivustolle, jota ei ole hyväksytty"
   },
   "customRulesTitle": {
     "message": "Omat varoitussäännöt"

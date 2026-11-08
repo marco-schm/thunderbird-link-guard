@@ -399,6 +399,28 @@
   "riskInline_shortLink": {
     "message": "⚠ Zkrácený odkaz"
   },
+  "risk_scriptInUrl": {
+    "message": "Odkaz obsahuje skript nebo HTML kód."
+  },
+  "riskInline_scriptInUrl": {
+    "message": "⚠ Kód v odkazu"
+  },
+  "risk_redirect": {
+    "message": "Možné přesměrování na $HOST$ (neschváleno).",
+    "placeholders": {
+      "host": {
+        "content": "$1"
+      }
+    }
+  },
+  "riskInline_redirect": {
+    "message": "⚠ Přesměrování → $HOST$",
+    "placeholders": {
+      "host": {
+        "content": "$1"
+      }
+    }
+  },
   "riskyApprovalWarning": {
     "message": "Tento zkrácený odkaz skrývá svůj cíl. Povolit jej pro tuto zprávu?"
   },
@@ -480,6 +502,12 @@
   },
   "warn_shortLink": {
     "message": "Veřejný zkracovač URL"
+  },
+  "warn_scriptInUrl": {
+    "message": "Skript nebo HTML kód v odkazu"
+  },
+  "warn_redirect": {
+    "message": "Odkaz přesměrovává na neschválený web"
   },
   "customRulesTitle": {
     "message": "Moje pravidla varování"

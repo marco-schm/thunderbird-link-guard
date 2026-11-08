@@ -20,10 +20,13 @@ unknown destination:
 - **It is not a malware or website scanner.** It never contacts link targets. An
   approved host can still serve harmful content, be compromised later, or host pages
   written by other people.
-- **It does not follow redirects.** Approving a host allows every URL on it. If that host
-  redirects – a newsletter click tracker, an open redirect on a trusted site – the browser
-  follows without asking Link Guard. Thunderbird cannot enforce the final destination of
-  a link opened in an external browser.
+- **It does not follow redirects.** Approving a host allows every URL on it. Link Guard
+  names a destination that a link visibly carries (see
+  [Warnings](warnings.md#link-redirects-to-a-site-you-have-not-approved)), but a redirect
+  that the server decides on – a click tracker with an opaque ID, an open redirect whose
+  target is not in the link – is followed by the browser without asking Link Guard.
+  Thunderbird cannot enforce the final destination of a link opened in an external
+  browser.
 - **It does not check the sender.** Sender identity, SPF, DKIM and DMARC are outside its
   scope.
 - **It does not inspect attachments, QR codes or text that only looks like a link.** An
@@ -106,7 +109,8 @@ the message shows, trust the badge.
 - **Risky links** – with credentials, misleading text, lookalike or
   internationalized names, or matches of warning rules – open only after an approval of
   the exact host. Whole-domain approvals and allowlists do not count.
-- **Short links and IP addresses** can only be allowed for the current message.
+- **Short links, links with code and IP addresses** can only be allowed for the current
+  message.
 - **Blocks win** over every permanent approval and allowlist. Only a temporary approval in
   the current message overrides a block.
 
