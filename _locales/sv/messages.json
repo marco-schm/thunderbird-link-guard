@@ -104,6 +104,31 @@
   "blockHost": {
     "message": "Blockera"
   },
+  "unblockHost": {
+    "message": "Avblockera"
+  },
+  "unblockConfirm": {
+    "message": "Avblockera $HOST$? Länkar dit blockeras inte längre i något meddelande.",
+    "placeholders": {
+      "host": {
+        "content": "$1"
+      }
+    }
+  },
+  "unblockDomainConfirm": {
+    "message": "Avblockera $DOMAIN$ och alla underdomäner? Länkar dit blockeras inte längre i något meddelande.",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      }
+    }
+  },
+  "blockedByList": {
+    "message": "Blockerad av en importerad lista. Du kan ändra listan i inställningarna."
+  },
+  "openSettings": {
+    "message": "Öppna inställningar"
+  },
   "scopePrompt": {
     "message": "Vilket omfång ska godkännas permanent?"
   },

@@ -66,12 +66,12 @@ and
 | Effect when enabled | approves its exact hosts | blocks its hosts and `*.` domains |
 | Overrides your approvals | – | yes |
 | Unlocks links with a warning | no – they need an exact approval | – |
-| Can be overridden by | your exact block, your whole-domain block, any enabled blocklist | a temporary approval in a message |
+| Can be overridden by | your exact block, your whole-domain block, any enabled blocklist | nothing – change or disable the list |
 | Updates itself | never | optionally, about once a day |
 
 While an enabled blocklist blocks a host, approving that host permanently is refused;
-disable the list or edit its entries first. A temporary approval in a message still
-works.
+disable the list or edit its entries first. In a message, such a host shows a note and
+**Open settings** instead of the usual actions.
 
 ## Remote sources
 

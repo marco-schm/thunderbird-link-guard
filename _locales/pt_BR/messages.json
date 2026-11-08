@@ -104,6 +104,31 @@
   "blockHost": {
     "message": "Bloquear"
   },
+  "unblockHost": {
+    "message": "Desbloquear"
+  },
+  "unblockConfirm": {
+    "message": "Desbloquear $HOST$? Os links para este site não serão mais bloqueados em nenhuma mensagem.",
+    "placeholders": {
+      "host": {
+        "content": "$1"
+      }
+    }
+  },
+  "unblockDomainConfirm": {
+    "message": "Desbloquear $DOMAIN$ e todos os seus subdomínios? Os links para eles não serão mais bloqueados em nenhuma mensagem.",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      }
+    }
+  },
+  "blockedByList": {
+    "message": "Bloqueado por uma lista importada. Você pode alterar a lista nas configurações."
+  },
+  "openSettings": {
+    "message": "Abrir configurações"
+  },
   "scopePrompt": {
     "message": "Qual escopo deve ser aprovado permanentemente?"
   },

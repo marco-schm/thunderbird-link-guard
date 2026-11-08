@@ -180,10 +180,10 @@
 
   // true or false once known, undefined while the destination still needs analysis.
   function destinationApproved(host) {
-    if (temporaryHosts.has(host)) return true;
-    if (policy.isIpAddress(host)) return false;
     if (state.blockedHosts.includes(host) ||
         state.blockedDomains?.some(domain => host === domain || host.endsWith(`.${domain}`))) return false;
+    if (temporaryHosts.has(host)) return true;
+    if (policy.isIpAddress(host)) return false;
     if (state.customAllowedHosts.includes(host)) return true;
     if (!analyzedHosts.has(host)) return undefined;
     const status = statusFor(host);
@@ -326,11 +326,12 @@
     messenger.runtime.sendMessage(message).catch(() => { lastToolbarStatus = ""; });
   }
 
+  // Same order as access.js: a block wins, also over an approval for this message.
   function statusFor(host) {
-    if (temporaryHosts.has(host)) return "temporary";
     if (state.blockedDomains?.some(domain => host === domain || host.endsWith(`.${domain}`)))
       return "blocked";
     if (state.blockedHosts.includes(host)) return "blocked";
+    if (temporaryHosts.has(host)) return "temporary";
     if (state.customAllowedHosts.includes(host)) return "permanent";
     const warning = warningFor(host);
     if (!warning || warning.kind !== "none") return "pending";
@@ -370,6 +371,59 @@
     control.disabled = !stateReady;
     control.addEventListener("click", () => decide(host, decision));
     return control;
+  }
+
+  // The user's own block that covers a host: a whole-domain block first, since removing
+  // only an exact block would leave the host blocked. null when only a list blocks it.
+  function ownBlockFor(host) {
+    const domain = state.ownBlockedDomains?.find(entry => host === entry || host.endsWith(`.${entry}`));
+    if (domain) return { scope: "domain", name: domain };
+    if (state.ownBlockedHosts?.includes(host)) return { scope: "exact", name: host };
+    return null;
+  }
+
+  function confirmUnblock(host, own, actions) {
+    const chooser = document.createElement("div");
+    chooser.className = "link-guard-risk-confirm";
+    const question = document.createElement("strong");
+    question.textContent = own.scope === "domain" ?
+      t("unblockDomainConfirm", [own.name]) : t("unblockConfirm", [host]);
+    const confirm = document.createElement("button");
+    confirm.type = "button";
+    confirm.textContent = t("unblockHost");
+    confirm.addEventListener("click", () => decide(host, "unblock", own.scope));
+    const cancel = document.createElement("button");
+    cancel.type = "button";
+    cancel.textContent = t("cancelPreview");
+    cancel.addEventListener("click", () => scan());
+    chooser.append(question, confirm, cancel);
+    actions.replaceChildren(chooser);
+  }
+
+  // A blocked host offers a single action: "Unblock", after a confirmation, when the block
+  // is the user's own; a way to Settings when an imported list blocks it, since only the
+  // list can change that. Once unblocked, the row shows the usual actions again.
+  function blockedActions(host, actions) {
+    const own = ownBlockFor(host);
+    if (!own) {
+      const note = document.createElement("p");
+      note.className = "link-guard-blocked-note";
+      note.textContent = t("blockedByList");
+      const open = document.createElement("button");
+      open.type = "button";
+      open.textContent = t("openSettings");
+      open.addEventListener("click", () => {
+        messenger.runtime.sendMessage({ type: "link-guard-open-settings" }).catch(() => {});
+      });
+      actions.append(note, open);
+      return;
+    }
+    const unblock = document.createElement("button");
+    unblock.type = "button";
+    unblock.textContent = t("unblockHost");
+    unblock.disabled = !stateReady;
+    unblock.addEventListener("click", () => confirmUnblock(host, own, actions));
+    actions.append(unblock);
   }
 
   function riskyApproval(host, actions) {
@@ -481,6 +535,11 @@
     if ((warning && warning.kind !== "none") || risks?.size) row.classList.add("link-guard-row-risk");
     const actions = document.createElement("div");
     actions.className = "link-guard-actions";
+    if (statusKey === "blocked") {
+      blockedActions(host, actions);
+      row.append(information, actions);
+      return row;
+    }
     if (temporaryOnly) {
       const temporary = document.createElement("button");
       temporary.type = "button";

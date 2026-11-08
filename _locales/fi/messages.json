@@ -104,6 +104,31 @@
   "blockHost": {
     "message": "Estä"
   },
+  "unblockHost": {
+    "message": "Poista esto"
+  },
+  "unblockConfirm": {
+    "message": "Poistetaanko esto kohteelta $HOST$? Linkkejä sinne ei enää estetä missään viestissä.",
+    "placeholders": {
+      "host": {
+        "content": "$1"
+      }
+    }
+  },
+  "unblockDomainConfirm": {
+    "message": "Poistetaanko esto kohteelta $DOMAIN$ ja kaikilta sen aliverkkotunnuksilta? Linkkejä niihin ei enää estetä missään viestissä.",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      }
+    }
+  },
+  "blockedByList": {
+    "message": "Tuodun luettelon estämä. Voit muuttaa luetteloa asetuksissa."
+  },
+  "openSettings": {
+    "message": "Avaa asetukset"
+  },
   "scopePrompt": {
     "message": "Mikä laajuus hyväksytään pysyvästi?"
   },

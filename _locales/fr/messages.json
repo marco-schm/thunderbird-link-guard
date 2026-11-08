@@ -104,6 +104,31 @@
   "blockHost": {
     "message": "Bloquer"
   },
+  "unblockHost": {
+    "message": "Débloquer"
+  },
+  "unblockConfirm": {
+    "message": "Débloquer $HOST$ ? Les liens vers ce site ne seront plus bloqués dans aucun message.",
+    "placeholders": {
+      "host": {
+        "content": "$1"
+      }
+    }
+  },
+  "unblockDomainConfirm": {
+    "message": "Débloquer $DOMAIN$ et tous ses sous-domaines ? Les liens vers ceux-ci ne seront plus bloqués dans aucun message.",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      }
+    }
+  },
+  "blockedByList": {
+    "message": "Bloqué par une liste importée. Vous pouvez modifier la liste dans les paramètres."
+  },
+  "openSettings": {
+    "message": "Ouvrir les paramètres"
+  },
   "scopePrompt": {
     "message": "Quel champ d’application doit être approuvé de façon permanente ?"
   },

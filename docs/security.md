@@ -111,8 +111,9 @@ the message shows, trust the badge.
   the exact host. Whole-domain approvals and allowlists do not count.
 - **Short links, links with code and IP addresses** can only be allowed for the current
   message.
-- **Blocks win** over every permanent approval and allowlist. Only a temporary approval in
-  the current message overrides a block.
+- **Blocks win** over every approval, including one for the current message. A blocked
+  host opens only after you unblock it, with a confirmation, or change the list that
+  blocks it.
 
 ## Imported lists
 

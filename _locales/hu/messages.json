@@ -104,6 +104,31 @@
   "blockHost": {
     "message": "Letiltás"
   },
+  "unblockHost": {
+    "message": "Letiltás feloldása"
+  },
+  "unblockConfirm": {
+    "message": "Feloldja a(z) $HOST$ letiltását? Az ide mutató hivatkozások egyetlen levélben sem lesznek többé letiltva.",
+    "placeholders": {
+      "host": {
+        "content": "$1"
+      }
+    }
+  },
+  "unblockDomainConfirm": {
+    "message": "Feloldja a(z) $DOMAIN$ és összes aldomainje letiltását? Az ide mutató hivatkozások egyetlen levélben sem lesznek többé letiltva.",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      }
+    }
+  },
+  "blockedByList": {
+    "message": "Egy importált lista tiltja le. A listát a beállításokban módosíthatja."
+  },
+  "openSettings": {
+    "message": "Beállítások megnyitása"
+  },
   "scopePrompt": {
     "message": "Melyik hatókört hagyja jóvá véglegesen?"
   },

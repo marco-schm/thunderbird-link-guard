@@ -104,6 +104,31 @@
   "blockHost": {
     "message": "Block"
   },
+  "unblockHost": {
+    "message": "Unblock"
+  },
+  "unblockConfirm": {
+    "message": "Unblock $HOST$? Links to it will no longer be blocked in any message.",
+    "placeholders": {
+      "host": {
+        "content": "$1"
+      }
+    }
+  },
+  "unblockDomainConfirm": {
+    "message": "Unblock $DOMAIN$ and all its subdomains? Links to them will no longer be blocked in any message.",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      }
+    }
+  },
+  "blockedByList": {
+    "message": "Blocked by an imported list. You can change the list in Settings."
+  },
+  "openSettings": {
+    "message": "Open settings"
+  },
   "scopePrompt": {
     "message": "Which scope should be approved permanently?"
   },

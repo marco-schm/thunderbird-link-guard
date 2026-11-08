@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+- Notice: a blocked host offers only **Unblock**. After a confirmation – which names the
+  whole domain when one of your whole-domain blocks applies – the block is removed and
+  the usual actions return. A host blocked by an imported list shows **Open settings**
+  instead.
+- A block now wins over every approval, including one for the current message; a
+  blocked link opens only after it has been unblocked.
 - New warning: script or HTML code in a link, the shape of a reflected XSS attack on
   the linked site. Encodings are undone first (percent-encoding up to three times,
   HTML character references, JavaScript escapes, control characters). Such a link

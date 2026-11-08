@@ -21,7 +21,7 @@ Expand the notice and look at the host's row:
 | --- | --- | --- |
 | a red warning on the host | links with warnings need an approval of the **exact** host; whole-domain approvals and allowlists do not count | **Allow temporarily**, or **Allow permanently → Only \<host\>** |
 | *Others can publish content here* | a shared-content host such as `docs.google.com` is excluded from whole-domain approvals | approve the exact host |
-| **Blocked** | your own block or an enabled blocklist covers the host | remove the block in Settings, or disable the list, or allow it temporarily |
+| **Blocked** | your own block or an enabled blocklist covers the host | click **Unblock** and confirm; for a list block, **Open settings** and change or disable the list |
 | *Short link: destination hidden* | short links can only be allowed for one message | **Allow temporarily** and confirm |
 | *Direct IP address* | IP links can only be allowed for one message | **Allow temporarily** |
 | *Domain check unavailable* | the background check failed | show the message again; restart Thunderbird if it persists |
@@ -32,8 +32,7 @@ Expand the notice and look at the host's row:
 A permanent decision was refused. Common reasons:
 
 - An **enabled imported blocklist** blocks the host or its domain. Disable the list or
-  remove the entry under **View and edit list**, save, and try again. A temporary approval
-  still works.
+  remove the entry under **View and edit list**, save, and try again.
 - One of **your own whole-domain blocks** covers the host. Remove the `*.domain` line
   under **Block whole domains** first.
 - A card already holds **500 entries**.

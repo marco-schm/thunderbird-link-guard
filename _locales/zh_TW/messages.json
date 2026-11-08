@@ -104,6 +104,31 @@
   "blockHost": {
     "message": "封鎖"
   },
+  "unblockHost": {
+    "message": "解除封鎖"
+  },
+  "unblockConfirm": {
+    "message": "要解除封鎖 $HOST$ 嗎？指向它的連結將不再於任何郵件中遭到封鎖。",
+    "placeholders": {
+      "host": {
+        "content": "$1"
+      }
+    }
+  },
+  "unblockDomainConfirm": {
+    "message": "要解除封鎖 $DOMAIN$ 及其所有子網域嗎？指向它們的連結將不再於任何郵件中遭到封鎖。",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      }
+    }
+  },
+  "blockedByList": {
+    "message": "已被匯入的清單封鎖。可在設定中變更該清單。"
+  },
+  "openSettings": {
+    "message": "開啟設定"
+  },
   "scopePrompt": {
     "message": "要永久核准哪個範圍？"
   },

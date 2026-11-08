@@ -377,13 +377,37 @@ test("an imported block cannot shrink the lookalike references of approved domai
   assert.ok(!has((await h.send({ type: "link-guard-state" })).trustedDomains, "bank.com"));
 });
 
+// Message pages may tell the user's own blocks from list blocks (to offer "Unblock" only
+// where it works), but never see the imported lists themselves.
 test("the public state does not carry the imported lists themselves", async () => {
   const h = harness();
   h.local.importedLists = [blockList(["a.example.org"])];
+  h.local.blockedHosts = ["b.example.org"];
   const state = await h.send({ type: "link-guard-state" });
   assert.equal(state.importedLists, undefined);
-  assert.equal(state.ownBlockedHosts, undefined);
-  assert.deepEqual([...state.blockedHosts], ["a.example.org"]);
+  assert.equal(state.importedBlockedHosts, undefined);
+  assert.equal(state.importedBlockedDomains, undefined);
+  assert.deepEqual([...state.ownBlockedHosts], ["b.example.org"]);
+  assert.deepEqual([...state.blockedHosts], ["a.example.org", "b.example.org"]);
+});
+
+test("unblock removes only the user's own block and asks for the right scope", async () => {
+  const h = harness();
+  h.local.blockedHosts = ["ads.example.org"];
+  h.local.blockedDomains = ["phish.de"];
+  h.local.importedLists = [blockList(["list.example.org"])];
+  let state = await h.send({ type: "link-guard-decision", host: "ads.example.org",
+    decision: "unblock", scope: "exact" });
+  assert.ok(!has(state.blockedHosts, "ads.example.org"));
+  state = await h.send({ type: "link-guard-decision", host: "login.phish.de",
+    decision: "unblock", scope: "domain" });
+  assert.ok(!has(state.blockedDomains, "phish.de"));
+  // Nothing of one's own to remove: a list block, or a host that is not blocked.
+  await assert.rejects(h.send({ type: "link-guard-decision", host: "list.example.org",
+    decision: "unblock", scope: "exact" }));
+  await assert.rejects(h.send({ type: "link-guard-decision", host: "free.example.org",
+    decision: "unblock", scope: "domain" }));
+  assert.ok(has((await h.send({ type: "link-guard-state" })).blockedHosts, "list.example.org"));
 });
 
 const autoResponse = hosts => async url => remoteResponse({ format: "link-guard-hosts",

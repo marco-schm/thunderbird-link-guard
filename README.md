@@ -38,8 +38,8 @@ Link Guard removes the `href` of unapproved links and intercepts clicks on them.
 
 Rules are evaluated in this order:
 
-1. A **temporary approval** for the current message wins.
-2. A **block** (your own, or from an enabled imported blocklist) denies the host. It overrides every permanent approval and allowlist.
+1. A **block** (your own, or from an enabled imported blocklist) denies the host. It overrides every approval, including one for the current message. A blocked host offers only **Unblock** in the notice, with a confirmation; a host blocked by an imported list links to Settings instead.
+2. A **temporary approval** for the current message allows the host.
 3. A **permanent approval** (exact host, whole domain, or an enabled imported allowlist) allows the host. Links with a risk such as credentials or misleading link text still need an explicit approval of their exact host.
 4. Everything else stays inactive until you decide.
 
@@ -72,7 +72,7 @@ Limits: 64 KiB and 500 hosts per list, at most 20 lists. Examples: [allowlist](e
 
 **Remote sources** must use HTTPS with CORS. Credentials, redirects, custom ports, query strings and fragments are rejected, and each fetch is bounded in time and size.
 
-**Blocklists** override your own approvals and imported allowlists. Wildcards are checked against the bundled Public Suffix List, so entries such as `*.co.uk` are refused. Approving a host that an enabled blocklist blocks is refused until you disable the list or remove the entry; a temporary approval for a single message still works.
+**Blocklists** override your own approvals and imported allowlists. Wildcards are checked against the bundled Public Suffix List, so entries such as `*.co.uk` are refused. Approving a host that an enabled blocklist blocks is refused until you disable the list or remove the entry.
 
 <p align="center">
   <img src="docs/screenshots/settings-lists.png" alt="Imported lists with an allowlist and two remote blocklists, one expanded to show its entries" width="720">
