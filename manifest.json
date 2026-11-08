@@ -15,7 +15,7 @@
     "scripts": ["english.js", "locale.js", "policy.js", "import-list.js", "domain-scope.js", "background.js"]
   },
   "message_display_scripts": [{
-    "js": ["english.js", "locale.js", "policy.js", "access.js", "display.js"],
+    "js": ["english.js", "locale.js", "policy.js", "access.js", "panel-style.js", "display.js"],
     "css": ["display.css"],
     "run_at": "document_start"
   }],

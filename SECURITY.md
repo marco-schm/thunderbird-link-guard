@@ -57,6 +57,14 @@ message. An HTTP-to-HTTPS redirect cannot protect the first insecure request
 unless the browser already knows an HSTS policy for that host. Imported lists and
 broad-domain approvals do not unlock risky links.
 
+The approval panel is rendered inside a closed shadow root with its box
+properties fixed by inline `!important` styles, so message-authored CSS cannot
+hide, restyle or fade it by selector. HTML anchors, image maps and SVG anchors
+(including the legacy `xlink:href` attribute) are disabled until approved. The
+panel does not defend against a message that deliberately draws other content
+over it with a higher stacking order; the per-link inline warnings and the
+toolbar badge stay as independent signals.
+
 No built-in trust list is shipped. Only reviewed public URL shorteners are
 special warning signals and require a second, red confirmation for temporary
 approval in the current message. Branded email tracking, shared-content hosts

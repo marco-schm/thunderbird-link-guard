@@ -16,6 +16,7 @@
   const analyzedHosts = new Map();
   let analysisPending = false;
   let stateReady = false;
+  let panelHost = null;
   let panel = null;
   let observer = null;
   let scheduled = false;
@@ -26,15 +27,42 @@
   const panelLanguage = globalThis.LinkGuardLocale.effectiveUiLocale(
     messenger.i18n.getUILanguage());
 
+  // SVG anchors may carry their destination in the legacy xlink:href attribute.
+  const XLINK_NS = "http://www.w3.org/1999/xlink";
+
+  function liveHref(anchor) {
+    const plain = anchor.getAttribute("href");
+    if (plain !== null) return plain;
+    return anchor.getAttributeNS(XLINK_NS, "href");
+  }
+
+  function hasHref(anchor) {
+    return anchor.hasAttribute("href") || anchor.hasAttributeNS(XLINK_NS, "href");
+  }
+
+  function stripHref(anchor) {
+    anchor.removeAttribute("href");
+    anchor.removeAttributeNS(XLINK_NS, "href");
+  }
+
+  // Puts an approved destination back on the attribute it came from.
+  function restoreHref(anchor, value) {
+    if (anchor.getAttribute("href") === value) return;
+    if (!anchor.hasAttribute("href") && anchor.getAttributeNS(XLINK_NS, "href") === value) return;
+    stripHref(anchor);
+    if (originalHrefs.get(anchor)?.legacy) anchor.setAttributeNS(XLINK_NS, "xlink:href", value);
+    else anchor.setAttribute("href", value);
+  }
+
   function getOriginalHref(anchor) {
-    const current = anchor.getAttribute("href");
+    const current = liveHref(anchor);
     const prior = originalHrefs.get(anchor);
-    if (current !== null && current !== prior) {
-      originalHrefs.set(anchor, current);
+    if (current !== null && current !== prior?.value) {
+      originalHrefs.set(anchor, { value: current, legacy: !anchor.hasAttribute("href") });
       trackedAnchors.add(anchor);
       return current;
     }
-    return prior ?? current;
+    return prior?.value ?? current;
   }
 
   function warningFor(host) {
@@ -52,12 +80,12 @@
     if (stateReady && !state.enabled) return;
     const target = event.target instanceof Element ? event.target : event.target?.parentElement;
     const anchor = target?.closest("a, area");
-    if (!anchor || panel?.contains(anchor)) return;
+    if (!anchor || anchor === panelHost || panelHost?.contains(anchor)) return;
     const href = getOriginalHref(anchor);
     if (href === null) return;
     const inspection = policy.inspectLink(href, (anchor.textContent || "").slice(0, 1024));
     if (inspection.kind === "skip") return;
-    if (isAllowed(inspection) && anchor.hasAttribute("href")) return;
+    if (isAllowed(inspection) && hasHref(anchor)) return;
     event.preventDefault();
     event.stopImmediatePropagation();
     if (panel) panel.open = true;
@@ -225,20 +253,43 @@
     return row;
   }
 
+  // Properties set inline with !important beat every message-authored rule, so a message
+  // cannot hide, move, fade out or restyle the panel's box.
+  const HOST_STYLE = [["display", "block"], ["position", "relative"], ["visibility", "visible"],
+    ["opacity", "1"], ["margin", "0 0 10px"], ["padding", "0"], ["border", "0"],
+    ["z-index", "2147483647"], ["width", "auto"], ["height", "auto"], ["max-height", "none"],
+    ["overflow", "visible"], ["transform", "none"], ["filter", "none"], ["clip-path", "none"],
+    ["mask", "none"], ["pointer-events", "auto"], ["contain", "none"], ["float", "none"]];
+
+  // The panel lives in a closed shadow root: message CSS cannot reach its elements and
+  // message scripts cannot walk into it.
+  function createPanel() {
+    panelHost?.remove();
+    panelHost = document.createElement("div");
+    panelHost.style.setProperty("all", "initial", "important");
+    for (const [property, value] of HOST_STYLE) {
+      panelHost.style.setProperty(property, value, "important");
+    }
+    const shadow = panelHost.attachShadow({ mode: "closed" });
+    const style = document.createElement("style");
+    style.textContent = globalThis.LinkGuardPanelCss || "";
+    panel = document.createElement("details");
+    panel.className = "link-guard-panel";
+    panel.lang = panelLanguage;
+    panel.tabIndex = -1;
+    shadow.append(style, panel);
+    document.body.prepend(panelHost);
+  }
+
   function renderPanel(groups, hardBlocks, linkRisks, totalWeb, pending, blocked, warnings, overflow) {
     if (!document.body) return;
     if (!state.enabled || (pending + blocked + warnings === 0 && !overflow)) {
-      panel?.remove();
+      panelHost?.remove();
+      panelHost = null;
       panel = null;
       return;
     }
-    if (!panel || !panel.isConnected) {
-      panel = document.createElement("details");
-      panel.className = "link-guard-panel";
-      panel.lang = panelLanguage;
-      panel.tabIndex = -1;
-      document.body.prepend(panel);
-    }
+    if (!panel || !panelHost?.isConnected) createPanel();
     const summaryLine = document.createElement("summary");
     summaryLine.textContent = warnings ?
       t("panelCompactRisk", [String(pending + blocked), String(warnings)]) :
@@ -337,9 +388,7 @@
       for (const anchor of trackedAnchors) {
         markInline(anchor, null, []);
         const original = originalHrefs.get(anchor);
-        if (original !== undefined && anchor.getAttribute("href") !== original) {
-          anchor.setAttribute("href", original);
-        }
+        if (original !== undefined) restoreHref(anchor, original.value);
       }
       renderPanel(new Map(), new Map(), new Map(), 0, 0, 0, 0, false);
       sendToolbar(0, 0, 0, false);
@@ -371,11 +420,8 @@
       const warning = inspection.kind === "web" ?
         inspection.hosts.map(warningFor).find(value => value && value.kind !== "none") : null;
       markInline(anchor, warning, inspection.risks || [], inspection.host);
-      if (approved) {
-        if (anchor.getAttribute("href") !== href) anchor.setAttribute("href", href);
-      } else if (anchor.hasAttribute("href")) {
-        anchor.removeAttribute("href");
-      }
+      if (approved) restoreHref(anchor, href);
+      else if (hasHref(anchor)) stripHref(anchor);
       if (!withinLimit) { blocked++; continue; }
       if (inspection.kind === "blocked") {
         blocked++;
@@ -411,14 +457,14 @@
   }
 
   function isOwnMutation(mutation) {
-    if (!panel) return false;
-    if (panel.contains(mutation.target)) return true;
+    if (!panelHost) return false;
+    if (panelHost.contains(mutation.target)) return true;
     const targetElement = mutation.target.nodeType === Node.ELEMENT_NODE ?
       mutation.target : mutation.target.parentElement;
     if (targetElement?.closest?.(".link-guard-inline-warning, .link-guard-inline-destination")) return true;
     if (mutation.type !== "childList") return false;
     const changed = [...mutation.addedNodes, ...mutation.removedNodes];
-    return changed.length > 0 && changed.every(node => node === panel ||
+    return changed.length > 0 && changed.every(node => node === panelHost ||
       (node.nodeType === Node.ELEMENT_NODE &&
         (node.classList?.contains("link-guard-inline-warning") ||
          node.classList?.contains("link-guard-inline-destination"))));
