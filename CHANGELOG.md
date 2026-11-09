@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 0.14.1 — 2026-11-09
 
 - **Allow permanently** and **Block** ask again whether the decision covers only this host
   or its whole domain with all subdomains, as before 0.14.0. A host with a warning, and a
