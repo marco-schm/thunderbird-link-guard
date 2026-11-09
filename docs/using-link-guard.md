@@ -54,16 +54,18 @@ the message is approved and none of them has a warning.
 
 | Action | What happens |
 | --- | --- |
-| **Allow permanently** | Approves exactly this host and remembers it in [Settings](settings.md). Highlighted in blue when the host has no warning. |
+| **Allow permanently** | Asks *Which scope should be approved permanently?*: **Only `www.example.org`** approves exactly this host, **`example.org` and all subdomains** the whole registrable domain. The decision is remembered in [Settings](settings.md). Highlighted in blue when the host has no warning. |
 | **Allow temporarily** | The host's links work in this message only. The approval ends when you show another message. |
-| **Block** | Blocks exactly this host; its links stay inactive in every message. |
-| **⋯ → Allow `example.org` and all subdomains** | Approves the whole registrable domain, including `example.org` itself. |
-| **⋯ → Block `example.org` and all subdomains** | Blocks the whole registrable domain. |
+| **Block** | Asks *Which scope should be blocked?* in the same way: only this host, or the whole registrable domain. Blocked links stay inactive in every message. |
+| **⋯ → Allow `example.org` and all subdomains** | The same whole-domain approval in one step. |
+| **⋯ → Block `example.org` and all subdomains** | The same whole-domain block in one step. |
 
-The whole-domain entries appear only when the domain can be determined reliably from the
+The whole-domain choice appears only when the domain can be determined reliably from the
 bundled Public Suffix List. Approving a whole domain is not offered for a host with a
-warning, because such links need an approval of their exact host anyway. For a host you
-allowed for this message or approved, **⋯** offers to approve it permanently or to block it.
+warning, because such links need an approval of their exact host anyway: there, **Allow
+permanently** approves the exact host at once. **Cancel** returns to the actions. For a
+host you allowed for this message or approved, **⋯** offers to approve it permanently or
+to block it.
 
 A **blocked** host offers only **Unblock**. After you confirm *Unblock example.org? Links
 to it will no longer be blocked in any message.*, the block is removed and the usual
@@ -73,8 +75,8 @@ only the list can change that. See [Approvals and blocks](approvals-and-blocks.m
 Some actions are deliberately limited:
 
 - **Shared-content hosts** such as `docs.google.com` or `github.io` sites, where anyone
-  can publish, can only be approved exactly; **⋯** offers no whole-domain approval for
-  them. See [Approvals and blocks](approvals-and-blocks.md#shared-content-hosts).
+  can publish, can only be approved exactly; neither **Allow permanently** nor **⋯**
+  offers a whole-domain approval for them. See [Approvals and blocks](approvals-and-blocks.md#shared-content-hosts).
 - **Public URL shorteners** such as `bit.ly` hide their destination. They can only be
   allowed for the current message, after a second, red confirmation: *This short link
   hides its destination. Allow it for this message?*

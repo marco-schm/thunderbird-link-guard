@@ -1,5 +1,12 @@
 # Changelog
 
+## Unreleased
+
+- **Allow permanently** and **Block** ask again whether the decision covers only this host
+  or its whole domain with all subdomains, as before 0.14.0. A host with a warning, and a
+  shared-content host, is still approved exactly at once. The **⋯** menu keeps the
+  whole-domain shortcuts.
+
 ## 0.14.0 — 2026-11-09
 
 - New design in Thunderbird's style, with the same layout as Link Guard for Outlook. The

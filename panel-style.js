@@ -192,6 +192,8 @@ globalThis.LinkGuardPanelCss = globalThis.LinkGuardHostGuardCss + `
 .link-guard-risk-confirm { display: flex !important; flex-wrap: wrap !important; gap: 6px !important; }
 .link-guard-risk-confirm strong { flex-basis: 100% !important; padding: 7px 9px !important; border: 1px solid var(--lg-danger-line) !important;
   border-radius: 4px !important; background: var(--lg-danger-tint) !important; color: var(--lg-danger) !important; font-size: 13px !important; font-weight: 600 !important; }
+.link-guard-scope-choice { display: flex !important; flex-wrap: wrap !important; align-items: center !important; gap: 6px !important; }
+.link-guard-scope-choice p { flex-basis: 100% !important; margin: 0 0 2px !important; color: var(--lg-text) !important; font-size: 13px !important; font-weight: 600 !important; }
 .link-guard-panel .link-guard-blocked-note { flex-basis: 100% !important; color: var(--lg-text-2) !important; font-size: 12px !important; }
 .lg-footnote { font-size: 12px !important; color: var(--lg-text-2) !important; }
 .lg-error { padding: 7px 9px !important; border-radius: 4px !important; background: var(--lg-danger-tint) !important; color: var(--lg-danger) !important; font-size: 13px !important; }

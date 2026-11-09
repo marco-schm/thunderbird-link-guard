@@ -717,5 +717,27 @@
         "content": "$1"
       }
     }
+  },
+  "scopePrompt": {
+    "message": "Melyik hatókört hagyja jóvá véglegesen?"
+  },
+  "blockScopePrompt": {
+    "message": "Melyik hatókört tiltsa le?"
+  },
+  "scopeExact": {
+    "message": "Csak $HOST$",
+    "placeholders": {
+      "host": {
+        "content": "$1"
+      }
+    }
+  },
+  "scopeBroad": {
+    "message": "$DOMAIN$ és minden altartomány",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      }
+    }
   }
 }

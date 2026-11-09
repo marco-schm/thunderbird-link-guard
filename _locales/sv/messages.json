@@ -717,5 +717,27 @@
         "content": "$1"
       }
     }
+  },
+  "scopePrompt": {
+    "message": "Vilket omfång ska godkännas permanent?"
+  },
+  "blockScopePrompt": {
+    "message": "Vilket omfång ska blockeras?"
+  },
+  "scopeExact": {
+    "message": "Endast $HOST$",
+    "placeholders": {
+      "host": {
+        "content": "$1"
+      }
+    }
+  },
+  "scopeBroad": {
+    "message": "$DOMAIN$ och alla underdomäner",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      }
+    }
   }
 }

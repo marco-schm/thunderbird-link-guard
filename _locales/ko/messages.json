@@ -717,5 +717,27 @@
         "content": "$1"
       }
     }
+  },
+  "scopePrompt": {
+    "message": "어떤 범위를 영구 승인할까요?"
+  },
+  "blockScopePrompt": {
+    "message": "어떤 범위를 차단할까요?"
+  },
+  "scopeExact": {
+    "message": "$HOST$만",
+    "placeholders": {
+      "host": {
+        "content": "$1"
+      }
+    }
+  },
+  "scopeBroad": {
+    "message": "$DOMAIN$ 및 모든 하위 도메인",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      }
+    }
   }
 }

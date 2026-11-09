@@ -651,16 +651,42 @@
     if (statusKey !== "pending") return;
     const ip = policy.isIpAddress(host);
     if (!ip && !temporaryOnly) {
-      actions.append(actionButton(t("allowPermanent"), () => decide(host, "permanent"),
+      actions.append(actionButton(t("allowPermanent"), () => scopeChoice(host, "permanent", risks, actions),
         { kind: risky ? "" : "primary", key: `perm:${host}` }));
     }
     // A short link hides its destination, so allowing it asks once more.
     actions.append(actionButton(t("allowTemporary"), () => risks?.has("shortLink") ?
       riskyApproval(host, actions) : decide(host, "temporary"), { key: `temp:${host}` }));
     if (!ip) {
-      actions.append(actionButton(t("blockHost"), () => decide(host, "block"),
+      actions.append(actionButton(t("blockHost"), () => scopeChoice(host, "block", risks, actions),
         { kind: "subtle-danger", key: `block:${host}` }));
     }
+  }
+
+  // "Allow permanently" and "Block" ask whether the decision covers only this host or
+  // its registrable domain with all subdomains. Where a whole-domain decision is not
+  // possible, the exact host is decided at once. Same rules as the "⋯" menu: a
+  // whole-domain approval is not offered for a host with a warning, which needs its exact
+  // approval anyway, nor for shared-content hosts.
+  function scopeChoice(host, decision, risks, actions) {
+    const root = registrableRoots.get(host);
+    const warning = warningFor(host);
+    const broad = decision === "block" ? Boolean(root) :
+      Boolean(root) && !risks?.size && (!warning || warning.kind === "none") && !policy.isSharedContentHost(host);
+    if (!broad) {
+      decide(host, decision);
+      return;
+    }
+    const chooser = element("div", "link-guard-scope-choice");
+    chooser.append(element("p", "", t(decision === "block" ? "blockScopePrompt" : "scopePrompt")));
+    const exact = actionButton(t("scopeExact", [host]), () => decide(host, decision, "exact"),
+      { key: `scope-exact:${host}` });
+    const domain = actionButton(t("scopeBroad", [root]), () => decide(host, decision, "domain"),
+      { key: `scope-domain:${host}` });
+    const cancel = actionButton(t("cancelPreview"), () => scan(), { kind: "small", key: `scope-cancel:${host}` });
+    chooser.append(exact, domain, cancel);
+    actions.replaceChildren(chooser);
+    exact.focus();
   }
 
   function linkList(host, details) {

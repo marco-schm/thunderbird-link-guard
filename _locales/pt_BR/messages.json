@@ -717,5 +717,27 @@
         "content": "$1"
       }
     }
+  },
+  "scopePrompt": {
+    "message": "Qual escopo deve ser aprovado permanentemente?"
+  },
+  "blockScopePrompt": {
+    "message": "Qual escopo deve ser bloqueado?"
+  },
+  "scopeExact": {
+    "message": "Somente $HOST$",
+    "placeholders": {
+      "host": {
+        "content": "$1"
+      }
+    }
+  },
+  "scopeBroad": {
+    "message": "$DOMAIN$ e todos os subdomínios",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      }
+    }
   }
 }

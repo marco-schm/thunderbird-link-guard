@@ -719,5 +719,27 @@ globalThis.LinkGuardEnglish = {
         "content": "$1"
       }
     }
+  },
+  "scopePrompt": {
+    "message": "Which scope should be approved permanently?"
+  },
+  "blockScopePrompt": {
+    "message": "Which scope should be blocked?"
+  },
+  "scopeExact": {
+    "message": "Only $HOST$",
+    "placeholders": {
+      "host": {
+        "content": "$1"
+      }
+    }
+  },
+  "scopeBroad": {
+    "message": "$DOMAIN$ and all subdomains",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      }
+    }
   }
 };

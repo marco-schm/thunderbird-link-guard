@@ -65,8 +65,8 @@ are excluded from whole-domain approvals and can only be approved exactly:
 `appspot.com`, and all of their subdomains.
 
 For example, approving `*.google.com` does **not** make links to `docs.google.com` work.
-For these hosts the notice's **⋯** menu offers no whole-domain approval; only the exact
-host can be approved. Blocking them as a whole domain is possible.
+For these hosts the notice offers no whole-domain approval, neither after **Allow
+permanently** nor in the **⋯** menu; only the exact host can be approved. Blocking them as a whole domain is possible.
 
 This list is a limited catalogue. New services of this kind appear all the time, and
 an exact approval of such a host still allows every page on it. Use whole-domain

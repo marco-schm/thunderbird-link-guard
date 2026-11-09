@@ -717,5 +717,27 @@
         "content": "$1"
       }
     }
+  },
+  "scopePrompt": {
+    "message": "要永久核准哪個範圍？"
+  },
+  "blockScopePrompt": {
+    "message": "要封鎖哪個範圍？"
+  },
+  "scopeExact": {
+    "message": "僅限 $HOST$",
+    "placeholders": {
+      "host": {
+        "content": "$1"
+      }
+    }
+  },
+  "scopeBroad": {
+    "message": "$DOMAIN$ 及所有子網域",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      }
+    }
   }
 }

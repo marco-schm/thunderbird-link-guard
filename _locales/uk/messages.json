@@ -717,5 +717,27 @@
         "content": "$1"
       }
     }
+  },
+  "scopePrompt": {
+    "message": "Який обсяг схвалити назавжди?"
+  },
+  "blockScopePrompt": {
+    "message": "Який обсяг заблокувати?"
+  },
+  "scopeExact": {
+    "message": "Лише $HOST$",
+    "placeholders": {
+      "host": {
+        "content": "$1"
+      }
+    }
+  },
+  "scopeBroad": {
+    "message": "$DOMAIN$ і всі піддомени",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      }
+    }
   }
 }

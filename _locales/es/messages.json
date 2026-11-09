@@ -717,5 +717,27 @@
         "content": "$1"
       }
     }
+  },
+  "scopePrompt": {
+    "message": "¿Qué alcance debería aprobarse permanentemente?"
+  },
+  "blockScopePrompt": {
+    "message": "¿Qué alcance se debe bloquear?"
+  },
+  "scopeExact": {
+    "message": "Solo $HOST$",
+    "placeholders": {
+      "host": {
+        "content": "$1"
+      }
+    }
+  },
+  "scopeBroad": {
+    "message": "$DOMAIN$ y todos los subdominios",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      }
+    }
   }
 }
