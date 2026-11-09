@@ -1,6 +1,6 @@
 {
   "name": "thunderbird-link-guard",
-  "version": "0.14.0",
+  "version": "0.14.1",
   "private": true,
   "description": "Local, user-controlled link approvals and phishing warnings for Thunderbird",
   "license": "MIT",
