@@ -10,6 +10,10 @@
       "strict_min_version": "151.0"
     }
   },
+  "icons": {
+    "32": "icons/link-guard.svg",
+    "64": "icons/link-guard.svg"
+  },
   "permissions": ["messagesRead", "scripting", "storage"],
   "background": {
     "scripts": ["english.js", "locale.js", "policy.js", "import-list.js", "safe-regex.js", "warning-rules.js",

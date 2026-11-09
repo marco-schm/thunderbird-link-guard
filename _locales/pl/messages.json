@@ -36,28 +36,6 @@
       }
     }
   },
-  "panelTitle": {
-    "message": "Sprawdź odnośniki"
-  },
-  "panelCompact": {
-    "message": "Odnośniki oczekujące: $COUNT$",
-    "placeholders": {
-      "count": {
-        "content": "$1"
-      }
-    }
-  },
-  "panelCompactRisk": {
-    "message": "⚠ Ostrzeżenia: $RISK$ · Oczekujące: $BLOCKED$",
-    "placeholders": {
-      "risk": {
-        "content": "$2"
-      },
-      "blocked": {
-        "content": "$1"
-      }
-    }
-  },
   "panelSummary": {
     "message": "Sprawdzono odnośniki: $TOTAL$ · Zablokowano: $BLOCKED$",
     "placeholders": {
@@ -129,35 +107,10 @@
   "openSettings": {
     "message": "Otwórz ustawienia"
   },
-  "scopePrompt": {
-    "message": "Jaki zakres zatwierdzić na stałe?"
-  },
-  "blockScopePrompt": {
-    "message": "Jaki zakres zablokować?"
-  },
-  "scopePromptShared": {
-    "message": "Inne osoby mogą tu publikować treści. Zatwierdź tylko ten host."
-  },
   "linkDestinationInline": {
     "message": "↗ $HOST$",
     "placeholders": {
       "host": {
-        "content": "$1"
-      }
-    }
-  },
-  "scopeExact": {
-    "message": "Tylko $HOST$",
-    "placeholders": {
-      "host": {
-        "content": "$1"
-      }
-    }
-  },
-  "scopeBroad": {
-    "message": "$DOMAIN$ i wszystkie subdomeny",
-    "placeholders": {
-      "domain": {
         "content": "$1"
       }
     }
@@ -670,5 +623,99 @@
   },
   "showRules": {
     "message": "Pokaż reguły"
+  },
+  "panelTitleDanger": {
+    "message": "Podejrzane odnośniki w tej wiadomości"
+  },
+  "panelTitleBlocked": {
+    "message": "Ta wiadomość prowadzi do zablokowanych witryn"
+  },
+  "panelTitlePending": {
+    "message": "Odnośniki w tej wiadomości czekają na zgodę"
+  },
+  "countWarnings": {
+    "message": "Ostrzeżenia: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "countPending": {
+    "message": "Bez zgody: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "countBlocked": {
+    "message": "Zablokowane: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "countLinks": {
+    "message": "Odnośniki: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "sectionAttention": {
+    "message": "Wymaga uwagi"
+  },
+  "sectionPending": {
+    "message": "Jeszcze bez zgody"
+  },
+  "sectionBlocked": {
+    "message": "Zablokowane"
+  },
+  "sectionApproved": {
+    "message": "Zatwierdzone"
+  },
+  "moreActions": {
+    "message": "Więcej działań dla $HOST$",
+    "placeholders": {
+      "host": {
+        "content": "$1"
+      }
+    }
+  },
+  "showLinks": {
+    "message": "Pokaż odnośniki ($COUNT$)",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "hideLinks": {
+    "message": "Ukryj odnośniki"
+  },
+  "showInMessage": {
+    "message": "Pokaż w wiadomości"
+  },
+  "noLinkText": {
+    "message": "(brak tekstu odnośnika)"
+  },
+  "allowDomain": {
+    "message": "Zezwól na $DOMAIN$ i wszystkie subdomeny",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      }
+    }
+  },
+  "blockDomain": {
+    "message": "Zablokuj $DOMAIN$ i wszystkie subdomeny",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      }
+    }
   }
 }

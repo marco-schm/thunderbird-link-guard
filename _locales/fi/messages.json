@@ -36,28 +36,6 @@
       }
     }
   },
-  "panelTitle": {
-    "message": "Tarkista linkit"
-  },
-  "panelCompact": {
-    "message": "Odottavia linkkejä: $COUNT$",
-    "placeholders": {
-      "count": {
-        "content": "$1"
-      }
-    }
-  },
-  "panelCompactRisk": {
-    "message": "⚠ Varoituksia: $RISK$ · Odottaa: $BLOCKED$",
-    "placeholders": {
-      "risk": {
-        "content": "$2"
-      },
-      "blocked": {
-        "content": "$1"
-      }
-    }
-  },
   "panelSummary": {
     "message": "$TOTAL$ verkkolinkkiä tarkistettu · $BLOCKED$ estetty",
     "placeholders": {
@@ -129,35 +107,10 @@
   "openSettings": {
     "message": "Avaa asetukset"
   },
-  "scopePrompt": {
-    "message": "Mikä laajuus hyväksytään pysyvästi?"
-  },
-  "blockScopePrompt": {
-    "message": "Mikä laajuus estetään?"
-  },
-  "scopePromptShared": {
-    "message": "Muut voivat julkaista tässä sisältöä. Hyväksy vain tämä isäntä."
-  },
   "linkDestinationInline": {
     "message": "↗ $HOST$",
     "placeholders": {
       "host": {
-        "content": "$1"
-      }
-    }
-  },
-  "scopeExact": {
-    "message": "Vain $HOST$",
-    "placeholders": {
-      "host": {
-        "content": "$1"
-      }
-    }
-  },
-  "scopeBroad": {
-    "message": "$DOMAIN$ ja kaikki aliverkkotunnukset",
-    "placeholders": {
-      "domain": {
         "content": "$1"
       }
     }
@@ -670,5 +623,99 @@
   },
   "showRules": {
     "message": "Näytä säännöt"
+  },
+  "panelTitleDanger": {
+    "message": "Epäilyttäviä linkkejä tässä viestissä"
+  },
+  "panelTitleBlocked": {
+    "message": "Tämä viesti linkittää estettyihin sivustoihin"
+  },
+  "panelTitlePending": {
+    "message": "Tämän viestin linkit odottavat hyväksyntää"
+  },
+  "countWarnings": {
+    "message": "Varoituksia: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "countPending": {
+    "message": "Ei hyväksytty: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "countBlocked": {
+    "message": "Estetty: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "countLinks": {
+    "message": "Linkkejä: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "sectionAttention": {
+    "message": "Vaatii huomiota"
+  },
+  "sectionPending": {
+    "message": "Ei vielä hyväksytty"
+  },
+  "sectionBlocked": {
+    "message": "Estetty"
+  },
+  "sectionApproved": {
+    "message": "Hyväksytty"
+  },
+  "moreActions": {
+    "message": "Lisää toimintoja kohteelle $HOST$",
+    "placeholders": {
+      "host": {
+        "content": "$1"
+      }
+    }
+  },
+  "showLinks": {
+    "message": "Näytä linkit ($COUNT$)",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "hideLinks": {
+    "message": "Piilota linkit"
+  },
+  "showInMessage": {
+    "message": "Näytä viestissä"
+  },
+  "noLinkText": {
+    "message": "(ei linkkitekstiä)"
+  },
+  "allowDomain": {
+    "message": "Salli $DOMAIN$ ja kaikki aliverkkotunnukset",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      }
+    }
+  },
+  "blockDomain": {
+    "message": "Estä $DOMAIN$ ja kaikki aliverkkotunnukset",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      }
+    }
   }
 }

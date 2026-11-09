@@ -36,28 +36,6 @@
       }
     }
   },
-  "panelTitle": {
-    "message": "Liens de révision"
-  },
-  "panelCompact": {
-    "message": "Liens en attente : $COUNT$",
-    "placeholders": {
-      "count": {
-        "content": "$1"
-      }
-    }
-  },
-  "panelCompactRisk": {
-    "message": "⚠ Avertissements : $RISK$ · En attente : $BLOCKED$",
-    "placeholders": {
-      "risk": {
-        "content": "$2"
-      },
-      "blocked": {
-        "content": "$1"
-      }
-    }
-  },
   "panelSummary": {
     "message": "$TOTAL$ liens Web vérifiés · $BLOCKED$ bloqués",
     "placeholders": {
@@ -129,35 +107,10 @@
   "openSettings": {
     "message": "Ouvrir les paramètres"
   },
-  "scopePrompt": {
-    "message": "Quel champ d’application doit être approuvé de façon permanente ?"
-  },
-  "blockScopePrompt": {
-    "message": "Quelle portée faut-il bloquer ?"
-  },
-  "scopePromptShared": {
-    "message": "D'autres peuvent publier du contenu ici. Approuvez uniquement cet hôte."
-  },
   "linkDestinationInline": {
     "message": "↗ $HOST$",
     "placeholders": {
       "host": {
-        "content": "$1"
-      }
-    }
-  },
-  "scopeExact": {
-    "message": "Seulement $HOST$",
-    "placeholders": {
-      "host": {
-        "content": "$1"
-      }
-    }
-  },
-  "scopeBroad": {
-    "message": "$DOMAIN$ et tous les sous-domaines",
-    "placeholders": {
-      "domain": {
         "content": "$1"
       }
     }
@@ -670,5 +623,99 @@
   },
   "showRules": {
     "message": "Afficher les règles"
+  },
+  "panelTitleDanger": {
+    "message": "Liens suspects dans ce message"
+  },
+  "panelTitleBlocked": {
+    "message": "Ce message renvoie vers des sites bloqués"
+  },
+  "panelTitlePending": {
+    "message": "Les liens de ce message attendent une approbation"
+  },
+  "countWarnings": {
+    "message": "Avertissements : $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "countPending": {
+    "message": "Non approuvés : $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "countBlocked": {
+    "message": "Bloqués : $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "countLinks": {
+    "message": "Liens : $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "sectionAttention": {
+    "message": "À examiner"
+  },
+  "sectionPending": {
+    "message": "Pas encore approuvés"
+  },
+  "sectionBlocked": {
+    "message": "Bloqués"
+  },
+  "sectionApproved": {
+    "message": "Approuvés"
+  },
+  "moreActions": {
+    "message": "Autres actions pour $HOST$",
+    "placeholders": {
+      "host": {
+        "content": "$1"
+      }
+    }
+  },
+  "showLinks": {
+    "message": "Afficher les liens ($COUNT$)",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "hideLinks": {
+    "message": "Masquer les liens"
+  },
+  "showInMessage": {
+    "message": "Afficher dans le message"
+  },
+  "noLinkText": {
+    "message": "(aucun texte de lien)"
+  },
+  "allowDomain": {
+    "message": "Autoriser $DOMAIN$ et tous les sous-domaines",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      }
+    }
+  },
+  "blockDomain": {
+    "message": "Bloquer $DOMAIN$ et tous les sous-domaines",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      }
+    }
   }
 }

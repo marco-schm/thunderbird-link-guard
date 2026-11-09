@@ -36,28 +36,6 @@
       }
     }
   },
-  "panelTitle": {
-    "message": "检查链接"
-  },
-  "panelCompact": {
-    "message": "待确认链接：$COUNT$ 个",
-    "placeholders": {
-      "count": {
-        "content": "$1"
-      }
-    }
-  },
-  "panelCompactRisk": {
-    "message": "⚠ 警告：$RISK$ 个 · 待确认：$BLOCKED$ 个",
-    "placeholders": {
-      "risk": {
-        "content": "$2"
-      },
-      "blocked": {
-        "content": "$1"
-      }
-    }
-  },
   "panelSummary": {
     "message": "已检查 $TOTAL$ 个网页链接 · 已阻止 $BLOCKED$ 个",
     "placeholders": {
@@ -129,35 +107,10 @@
   "openSettings": {
     "message": "打开设置"
   },
-  "scopePrompt": {
-    "message": "要永久批准哪个范围？"
-  },
-  "blockScopePrompt": {
-    "message": "要阻止哪个范围？"
-  },
-  "scopePromptShared": {
-    "message": "其他人也可以在这里发布内容。请只批准此主机名。"
-  },
   "linkDestinationInline": {
     "message": "↗ $HOST$",
     "placeholders": {
       "host": {
-        "content": "$1"
-      }
-    }
-  },
-  "scopeExact": {
-    "message": "仅限 $HOST$",
-    "placeholders": {
-      "host": {
-        "content": "$1"
-      }
-    }
-  },
-  "scopeBroad": {
-    "message": "$DOMAIN$ 及其所有子域名",
-    "placeholders": {
-      "domain": {
         "content": "$1"
       }
     }
@@ -670,5 +623,99 @@
   },
   "showRules": {
     "message": "显示规则"
+  },
+  "panelTitleDanger": {
+    "message": "此邮件中有可疑链接"
+  },
+  "panelTitleBlocked": {
+    "message": "此邮件链接到已阻止的网站"
+  },
+  "panelTitlePending": {
+    "message": "此邮件中的链接正在等待批准"
+  },
+  "countWarnings": {
+    "message": "警告：$COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "countPending": {
+    "message": "未批准：$COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "countBlocked": {
+    "message": "已阻止：$COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "countLinks": {
+    "message": "链接：$COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "sectionAttention": {
+    "message": "需要注意"
+  },
+  "sectionPending": {
+    "message": "尚未批准"
+  },
+  "sectionBlocked": {
+    "message": "已阻止"
+  },
+  "sectionApproved": {
+    "message": "已批准"
+  },
+  "moreActions": {
+    "message": "$HOST$ 的更多操作",
+    "placeholders": {
+      "host": {
+        "content": "$1"
+      }
+    }
+  },
+  "showLinks": {
+    "message": "显示链接（$COUNT$）",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "hideLinks": {
+    "message": "隐藏链接"
+  },
+  "showInMessage": {
+    "message": "在邮件中显示"
+  },
+  "noLinkText": {
+    "message": "（无链接文字）"
+  },
+  "allowDomain": {
+    "message": "允许 $DOMAIN$ 及其所有子域名",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      }
+    }
+  },
+  "blockDomain": {
+    "message": "阻止 $DOMAIN$ 及其所有子域名",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      }
+    }
   }
 }

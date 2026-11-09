@@ -8,7 +8,7 @@ archive="dist/link-guard-$version.xpi"
 rm -f "$archive"
 zip -q -X "$archive" \
   manifest.json background.js english.js locale.js policy.js access.js import-list.js safe-regex.js warning-rules.js domain-scope.js panel-style.js display.js display.css \
-  options.html options.css options.js icons/shield.svg \
+  options.html options.css options.js icons/shield.svg icons/link-guard.svg \
   _locales/de/messages.json _locales/en/messages.json _locales/es/messages.json \
   _locales/fr/messages.json _locales/pt_BR/messages.json _locales/it/messages.json \
   _locales/pl/messages.json _locales/ru/messages.json _locales/ja/messages.json \

@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Link Guard">
+  <title>Link Guard</title>
+  <!-- Shield with two interlocking chain links. The links are pills of 20 x 14 whose
+       rounded ends pass through each other's opening; they cross at (32, 27.1) and
+       (32, 36.9) before rotation. The right link is drawn over the left one with a
+       halo in the shield colour, then the lower crossing is redrawn the other way round
+       so the links interlock. -->
+  <defs>
+    <clipPath id="lg-mark-front">
+      <circle cx="32" cy="36.9" r="3.6"/>
+    </clipPath>
+  </defs>
+  <path fill="#27538e" d="M32 3.5 54.5 11c1 .3 1.5 1.1 1.5 2.1V30c0 15.2-9.3 25.6-23.1 30.8a2.6 2.6 0 0 1-1.8 0C17.3 55.6 8 45.2 8 30V13.1c0-1 .5-1.8 1.5-2.1z"/>
+  <g transform="rotate(-45 32 32)" fill="none">
+    <rect x="14" y="25" width="20" height="14" rx="7" stroke="#fff" stroke-width="3.8"/>
+    <rect x="30" y="25" width="20" height="14" rx="7" stroke="#27538e" stroke-width="6.8"/>
+    <rect x="30" y="25" width="20" height="14" rx="7" stroke="#fff" stroke-width="3.8"/>
+    <g clip-path="url(#lg-mark-front)">
+      <rect x="14" y="25" width="20" height="14" rx="7" stroke="#27538e" stroke-width="6.8"/>
+      <rect x="14" y="25" width="20" height="14" rx="7" stroke="#fff" stroke-width="3.8"/>
+    </g>
+  </g>
+</svg>

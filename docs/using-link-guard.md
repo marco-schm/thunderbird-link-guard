@@ -8,24 +8,37 @@ the labels next to links, and the toolbar button.
 When a message contains web links that are not approved, or links with a warning,
 Link Guard shows a notice at the very top of the message.
 
-**Collapsed**, it is a single line:
+**Collapsed**, it is a single bar in the style of Thunderbird's own notification bars:
 
-- **Links pending: 3** – three links are inactive and waiting for your decision.
-- **⚠ Warnings: 1 · Pending: 3** (red) – at least one link has a warning.
+- **Links in this message are waiting for approval** (amber) – some links are inactive
+  and waiting for your decision.
+- **Suspicious links in this message** (red) – at least one link has a warning.
+- **This message links to blocked sites** (red) – some links lead to hosts you blocked.
 
-**Click it to expand.** The expanded notice, titled **Review links**, has one row per
-destination host, sorted alphabetically. Each row shows:
+Below the title, a line counts what the notice found, for example *Warnings: 1 · Not
+approved: 3 · Links: 7*.
 
-1. the **host name** exactly as the link resolves to it,
-2. its **status** (see below),
-3. any **warnings** for that host, each in a red box with a red warning triangle,
-4. the **actions** you can take.
+**Click it to expand.** The expanded notice groups the destination hosts:
 
-Rows of hosts with a warning have a red edge, so they stand out when you scan the list.
-The notice disappears as soon as every web link in the message is approved and none of
-them has a warning.
+1. **Needs attention** – hosts with a warning whose links are still inactive,
+2. **Links that cannot be approved** – links with an invalid address or protocol,
+3. **Not yet approved** – hosts without a decision, and hosts you allowed for this message,
+4. **Blocked** – hosts blocked by you or an imported list,
+5. **Approved** – collapsed; click it to see the approved hosts of this message.
 
-![Choosing between approving only shop.example.org or example.org and all subdomains](screenshots/scope-choice.png)
+Each host has a card with
+
+- the **host name**, with its registrable domain in bold, so `login.example.org.evil.net`
+  reads as what it is,
+- its **status** (see below),
+- any **warnings**, each in red with a warning triangle, and amber hints such as
+  *Names www.example.org, but click.example.info decides where the link really leads.*,
+- the **actions** you can take, and a **⋯** button with more,
+- **Show links**, which lists the host's links with their text and full address, each
+  with **Show in message** to scroll to it.
+
+Cards with a warning have a red edge. The notice disappears as soon as every web link in
+the message is approved and none of them has a warning.
 
 ### Statuses
 
@@ -35,23 +48,22 @@ them has a warning.
 | **For this message** | You allowed the host temporarily. Its links work until you show another message. |
 | **Permanently approved** | The exact host is in your approvals or in an enabled allowlist. |
 | **Approved via whole domain** | The host belongs to a domain you approved with all subdomains. |
-| **Blocked** | The host is blocked by your rules or by an enabled blocklist. Its links stay inactive, and the row offers only **Unblock** (see below). |
+| **Blocked** | The host is blocked by your rules or by an enabled blocklist. Its links stay inactive, and the card offers only **Unblock** (see below). |
 
 ### Actions
 
 | Action | What happens |
 | --- | --- |
+| **Allow permanently** | Approves exactly this host and remembers it in [Settings](settings.md). Highlighted in blue when the host has no warning. |
 | **Allow temporarily** | The host's links work in this message only. The approval ends when you show another message. |
-| **Allow permanently** | Asks for the scope, then remembers the approval in [Settings](settings.md). |
-| **Block** | Asks for the scope, then keeps the host's links inactive in every message. |
+| **Block** | Blocks exactly this host; its links stay inactive in every message. |
+| **⋯ → Allow `example.org` and all subdomains** | Approves the whole registrable domain, including `example.org` itself. |
+| **⋯ → Block `example.org` and all subdomains** | Blocks the whole registrable domain. |
 
-When you choose **Allow permanently** or **Block**, Link Guard asks for the scope:
-
-- **Only `login.example.org`** – exactly this host. `example.org` and other subdomains
-  are separate decisions.
-- **`example.org` and all subdomains** – the whole registrable domain, including
-  `example.org` itself. This option appears only when the domain can be determined
-  reliably from the bundled Public Suffix List.
+The whole-domain entries appear only when the domain can be determined reliably from the
+bundled Public Suffix List. Approving a whole domain is not offered for a host with a
+warning, because such links need an approval of their exact host anyway. For a host you
+allowed for this message or approved, **⋯** offers to approve it permanently or to block it.
 
 A **blocked** host offers only **Unblock**. After you confirm *Unblock example.org? Links
 to it will no longer be blocked in any message.*, the block is removed and the usual
@@ -61,8 +73,8 @@ only the list can change that. See [Approvals and blocks](approvals-and-blocks.m
 Some actions are deliberately limited:
 
 - **Shared-content hosts** such as `docs.google.com` or `github.io` sites, where anyone
-  can publish, can only be approved exactly. The notice says *Others can publish content
-  here. Approve only this host.* See [Approvals and blocks](approvals-and-blocks.md#shared-content-hosts).
+  can publish, can only be approved exactly; **⋯** offers no whole-domain approval for
+  them. See [Approvals and blocks](approvals-and-blocks.md#shared-content-hosts).
 - **Public URL shorteners** such as `bit.ly` hide their destination. They can only be
   allowed for the current message, after a second, red confirmation: *This short link
   hides its destination. Allow it for this message?*

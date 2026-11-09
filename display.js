@@ -10,6 +10,8 @@
   if (globalThis.__linkGuardDisplayInstalled) return;
   globalThis.__linkGuardDisplayInstalled = true;
   const MAX_LISTED_LINKS = 500;
+  // The notice lists at most this many links per host; the count still covers all.
+  const MAX_DETAILS_PER_HOST = 50;
   // Upper bound for custom-rule matching per scan (and per click). Matching is linear,
   // so this only matters for hostile messages; once it is used up the remaining links
   // get a "rules not checked" warning rather than passing unchecked.
@@ -379,15 +381,6 @@
     }
   }
 
-  function button(labelKey, host, decision) {
-    const control = document.createElement("button");
-    control.type = "button";
-    control.textContent = t(labelKey);
-    control.disabled = !stateReady;
-    control.addEventListener("click", () => decide(host, decision));
-    return control;
-  }
-
   function ownBlockFor(host) {
     return access.ownBlockFor(host, state);
   }
@@ -453,30 +446,6 @@
     actions.replaceChildren(chooser);
   }
 
-  async function chooseScope(host, actions, decision) {
-    const chooser = document.createElement("div");
-    chooser.className = "link-guard-scope-choice";
-    const explanation = document.createElement("p");
-    explanation.textContent = t(decision === "block" ? "blockScopePrompt" :
-      policy.isSharedContentHost(host) ? "scopePromptShared" : "scopePrompt");
-    const exact = document.createElement("button");
-    exact.type = "button";
-    exact.textContent = t("scopeExact", [host]);
-    exact.addEventListener("click", () => decide(host, decision, "exact"));
-    chooser.append(explanation, exact);
-    try {
-      const root = await messenger.runtime.sendMessage({ type: "link-guard-scope", host });
-      if (root && (decision === "block" || !policy.isSharedContentHost(host))) {
-        const broad = document.createElement("button");
-        broad.type = "button";
-        broad.textContent = t("scopeBroad", [root]);
-        broad.addEventListener("click", () => decide(host, decision, "domain"));
-        chooser.append(broad);
-      }
-    } catch { /* Exact decision remains available if the suffix list fails. */ }
-    actions.replaceChildren(chooser);
-  }
-
   // A warning in the notice: red text behind a red warning triangle. The triangle is an
   // inline SVG rather than the ⚠ character, which some systems draw as a colour emoji.
   const SVG_NS = "http://www.w3.org/2000/svg";
@@ -488,9 +457,10 @@
     icon.setAttribute("aria-hidden", "true");
     const triangle = document.createElementNS(SVG_NS, "path");
     triangle.setAttribute("d", "M10.3 3.9a2 2 0 0 1 3.4 0l8.4 14.6a2 2 0 0 1-1.7 3H3.6a2 2 0 0 1-1.7-3z");
-    triangle.setAttribute("fill", "#b42332");
+    triangle.setAttribute("fill", "currentColor");
     const bar = document.createElementNS(SVG_NS, "path");
     bar.setAttribute("d", "M12 9v5.2");
+    bar.setAttribute("class", "lg-icon-mark");
     bar.setAttribute("stroke", "#fff");
     bar.setAttribute("stroke-width", "2.4");
     bar.setAttribute("stroke-linecap", "round");
@@ -498,6 +468,7 @@
     dot.setAttribute("cx", "12");
     dot.setAttribute("cy", "17.6");
     dot.setAttribute("r", "1.4");
+    dot.setAttribute("class", "lg-icon-dot");
     dot.setAttribute("fill", "#fff");
     icon.append(triangle, bar, dot);
     return icon;
@@ -533,9 +504,10 @@
     circle.setAttribute("cx", "12");
     circle.setAttribute("cy", "12");
     circle.setAttribute("r", "10");
-    circle.setAttribute("fill", "#a34d00");
+    circle.setAttribute("fill", "currentColor");
     const mark = document.createElementNS(SVG_NS, "path");
     mark.setAttribute("d", "M12 11v6M12 7.2v.1");
+    mark.setAttribute("class", "lg-icon-mark");
     mark.setAttribute("stroke", "#fff");
     mark.setAttribute("stroke-width", "2.4");
     mark.setAttribute("stroke-linecap", "round");
@@ -545,71 +517,286 @@
     return line;
   }
 
-  function makeHostRow(host, count, risks, notes) {
-    const row = document.createElement("div");
-    row.className = "link-guard-row";
-    const information = document.createElement("div");
-    information.className = "link-guard-row-info";
-    const name = document.createElement("strong");
-    name.textContent = host;
-    const status = document.createElement("span");
-    // Same rule as access.js: these risks can only be allowed for this message.
+  // ----- The notice ------------------------------------------------------------------
+  // Same layout as Link Guard for Outlook: a summary bar, then the destinations grouped
+  // into "needs attention", "not yet approved", "blocked" and "approved", one card per
+  // host with its warnings, its actions, a "⋯" menu for whole-domain decisions and the
+  // list of its links. The look follows Thunderbird (see panel-style.js).
+
+  // Per-message interface state, kept across rescans.
+  const expandedHosts = new Set();
+  const menuHosts = new Set();
+  let approvedOpen = false;
+  let panelShadow = null;
+
+  function svgIcon(className, parts) {
+    const icon = document.createElementNS(SVG_NS, "svg");
+    icon.setAttribute("class", className);
+    icon.setAttribute("viewBox", "0 0 20 20");
+    icon.setAttribute("aria-hidden", "true");
+    for (const [tag, attributes] of parts) {
+      const part = document.createElementNS(SVG_NS, tag);
+      for (const [name, value] of Object.entries(attributes)) part.setAttribute(name, value);
+      icon.append(part);
+    }
+    return icon;
+  }
+
+  const ICON_PARTS = {
+    globe: [["circle", { cx: "10", cy: "10", r: "7.25" }],
+      ["path", { d: "M2.75 10h14.5M10 2.75c-2.5 2.4-2.5 12.1 0 14.5 2.5-2.4 2.5-12.1 0-14.5" }]],
+    blocked: [["circle", { cx: "10", cy: "10", r: "7.25" }], ["path", { d: "m4.9 4.9 10.2 10.2" }]],
+    check: [["circle", { cx: "10", cy: "10", r: "7.25" }], ["path", { d: "m6.8 10.2 2.1 2.1 4.3-4.5" }]],
+    more: [["path", { d: "M5 10h.01M10 10h.01M15 10h.01", "stroke-width": "2.6" }]],
+    chevron: [["path", { d: "m8 5 5 5-5 5" }]],
+    shield: [["path", { d: "M10 2.5 16 4.8v4.8c0 3.6-2.5 6.5-6 7.9-3.5-1.4-6-4.3-6-7.9V4.8Z" }]],
+    target: [["circle", { cx: "10", cy: "10", r: "6.5" }], ["circle", { cx: "10", cy: "10", r: "2" }]]
+  };
+
+  function icon(name, className = "lg-icon") {
+    return svgIcon(className, ICON_PARTS[name]);
+  }
+
+  function element(tag, className, text) {
+    const node = document.createElement(tag);
+    if (className) node.className = className;
+    if (text !== undefined) node.textContent = text;
+    return node;
+  }
+
+  function actionButton(label, onClick, { kind = "", key = "", disabled = !stateReady } = {}) {
+    const control = element("button", kind ? `lg-btn lg-btn-${kind}` : "lg-btn", label);
+    control.type = "button";
+    control.disabled = disabled;
+    if (key) control.dataset.key = key;
+    control.addEventListener("click", onClick);
+    return control;
+  }
+
+  // The registrable domain in bold, so "login.example.org.evil.example" reads as what it is.
+  function hostName(host) {
+    const name = element("span", "lg-host-name");
+    const root = registrableRoots.get(host);
+    if (root && host !== root && host.endsWith(`.${root}`)) {
+      name.append(host.slice(0, host.length - root.length), element("strong", "", root));
+    } else name.append(element("strong", "", host));
+    return name;
+  }
+
+  function badge(statusKey, risky) {
+    const tone = statusKey === "blocked" ? "danger" : statusKey === "pending" ? (risky ? "danger" : "warning") :
+      statusKey === "temporary" ? "info" : "success";
+    return element("span", `lg-badge lg-badge-${tone}`, t(`status_${statusKey}`));
+  }
+
+  // Same rule as access.js: a host with a risk needs its exact approval, and short links
+  // and code in links only an approval for this message.
+  function hostStatus(host, risks) {
     const temporaryOnly = risks?.has("shortLink") || risks?.has("scriptInUrl");
-    const statusKey = statusFor(host) === "blocked" ? "blocked" :
-      temporaryOnly && !temporaryHosts.has(host) ? "pending" :
-      risks?.size && !temporaryHosts.has(host) &&
-      !access.isExactlyApproved(host, state) ? "pending" : statusFor(host);
-    status.className = `link-guard-state link-guard-state-${statusKey}`;
-    status.textContent = t(`status_${statusKey}`);
-    information.append(name, status);
+    const status = statusFor(host);
+    if (status === "blocked") return { statusKey: "blocked", temporaryOnly };
+    if (temporaryOnly && !temporaryHosts.has(host)) return { statusKey: "pending", temporaryOnly };
+    if (risks?.size && !temporaryHosts.has(host) && !access.isExactlyApproved(host, state)) {
+      return { statusKey: "pending", temporaryOnly };
+    }
+    return { statusKey: status, temporaryOnly };
+  }
+
+  function warningLines(host, risks, notes) {
+    const lines = [];
     const warning = warningFor(host);
     if (warning && warning.kind !== "none") {
-      information.append(riskLine(warning.kind === "idn" ? t("riskIdn") :
-        warning.kind === "unverified" ? t("riskUnverified") :
-          t("riskLookalike", [warning.similarTo])));
+      lines.push(riskLine(warning.kind === "idn" ? t("riskIdn") :
+        warning.kind === "unverified" ? t("riskUnverified") : t("riskLookalike", [warning.similarTo])));
     }
-    for (const reason of risks || []) information.append(riskLine(riskText(reason, false)));
+    for (const reason of risks || []) lines.push(riskLine(riskText(reason, false)));
     for (const note of notes || []) {
-      if (note.startsWith("namedTarget:")) {
-        information.append(noteLine(t("note_namedTarget", [note.slice(12), host])));
+      if (note.startsWith("namedTarget:")) lines.push(noteLine(t("note_namedTarget", [note.slice(12), host])));
+    }
+    return lines;
+  }
+
+  // The "⋯" menu: whole-domain decisions and the actions that are not offered directly.
+  function menuItems(host, statusKey, temporaryOnly, risks) {
+    const items = [];
+    const root = registrableRoots.get(host);
+    if (policy.isIpAddress(host) || statusKey === "blocked") return items;
+    if (statusKey === "temporary" || statusKey === "permanent" || statusKey === "broad") {
+      if (statusKey === "temporary" && !temporaryOnly) {
+        items.push(actionButton(t("allowPermanent"), () => decide(host, "permanent"), { kind: "menu", key: `perm:${host}` }));
+      }
+      if (statusKey !== "broad") {
+        items.push(actionButton(t("blockHost"), () => decide(host, "block"), { kind: "menu", key: `block:${host}` }));
       }
     }
-    // A host with a warning stands out in the list, not only through its text.
-    if ((warning && warning.kind !== "none") || risks?.size) row.classList.add("link-guard-row-risk");
-    const actions = document.createElement("div");
-    actions.className = "link-guard-actions";
+    const warning = warningFor(host);
+    // A whole-domain approval would not open a link with a warning, so it is not offered.
+    if (root && statusKey === "pending" && !risks?.size && (!warning || warning.kind === "none") &&
+        !policy.isSharedContentHost(host)) {
+      items.push(actionButton(t("allowDomain", [root]), () => decide(host, "permanent", "domain"),
+        { kind: "menu", key: `permd:${host}` }));
+    }
+    if (root) {
+      items.push(actionButton(t("blockDomain", [root]), () => decide(host, "block", "domain"),
+        { kind: "menu", key: `blockd:${host}` }));
+    }
+    return items;
+  }
+
+  function primaryActions(host, statusKey, temporaryOnly, risky, risks, actions) {
     if (statusKey === "blocked") {
       blockedActions(host, actions);
-      row.append(information, actions);
-      return row;
+      return;
     }
-    if (temporaryOnly) {
-      const temporary = document.createElement("button");
-      temporary.type = "button";
-      temporary.textContent = t("allowTemporary");
-      temporary.disabled = !stateReady;
-      temporary.addEventListener("click", () => risks.has("shortLink") ?
-        riskyApproval(host, actions) : decide(host, "temporary"));
-      actions.append(temporary);
-    } else actions.append(button("allowTemporary", host, "temporary"));
-    if (!policy.isIpAddress(host)) {
-      if (!temporaryOnly) {
-        const permanent = document.createElement("button");
-        permanent.type = "button";
-        permanent.textContent = t("allowPermanent");
-        permanent.disabled = !stateReady;
-        permanent.addEventListener("click", () => chooseScope(host, actions, "permanent"));
-        actions.append(permanent);
+    if (statusKey !== "pending") return;
+    const ip = policy.isIpAddress(host);
+    if (!ip && !temporaryOnly) {
+      actions.append(actionButton(t("allowPermanent"), () => decide(host, "permanent"),
+        { kind: risky ? "" : "primary", key: `perm:${host}` }));
+    }
+    // A short link hides its destination, so allowing it asks once more.
+    actions.append(actionButton(t("allowTemporary"), () => risks?.has("shortLink") ?
+      riskyApproval(host, actions) : decide(host, "temporary"), { key: `temp:${host}` }));
+    if (!ip) {
+      actions.append(actionButton(t("blockHost"), () => decide(host, "block"),
+        { kind: "subtle-danger", key: `block:${host}` }));
+    }
+  }
+
+  function linkList(host, details) {
+    const list = element("ul", "lg-links");
+    details.forEach((detail, index) => {
+      const item = element("li", "lg-link");
+      item.append(element("p", detail.text ? "lg-link-text" : "lg-link-text lg-empty",
+        detail.text || t("noLinkText")));
+      item.append(element("p", "lg-link-url", detail.url));
+      const show = actionButton(t("showInMessage"), () => showInMessage(detail.anchor),
+        { kind: "small", key: `show:${host}:${index}`, disabled: !detail.anchor.isConnected });
+      show.prepend(icon("target", "lg-icon lg-icon-small"));
+      item.append(show);
+      list.append(item);
+    });
+    return list;
+  }
+
+  // Scrolls the message to a link and outlines it for a moment.
+  function showInMessage(anchor) {
+    if (!anchor?.isConnected) return;
+    anchor.scrollIntoView({ block: "center", behavior: "smooth" });
+    const previous = [anchor.style.getPropertyValue("outline"), anchor.style.getPropertyPriority("outline")];
+    anchor.style.setProperty("outline", "3px solid #1373d9", "important");
+    setTimeout(() => {
+      if (previous[0]) anchor.style.setProperty("outline", previous[0], previous[1]);
+      else anchor.style.removeProperty("outline");
+    }, 1800);
+  }
+
+  function linksToggle(host, details, defaultOpen) {
+    const open = expandedHosts.has(host) !== defaultOpen;
+    const toggle = element("button", "lg-toggle");
+    toggle.type = "button";
+    toggle.dataset.key = `links:${host}`;
+    toggle.setAttribute("aria-expanded", String(open));
+    toggle.append(icon("chevron", "lg-icon lg-icon-small lg-chevron"),
+      open ? t("hideLinks") : t("showLinks", [String(details.length)]));
+    toggle.addEventListener("click", () => {
+      if (expandedHosts.has(host)) expandedHosts.delete(host); else expandedHosts.add(host);
+      scan();
+    });
+    return open ? [toggle, linkList(host, details)] : [toggle];
+  }
+
+  function moreButton(host, items) {
+    if (!items.length) return null;
+    const open = menuHosts.has(host);
+    const more = element("button", "lg-icon-btn");
+    more.type = "button";
+    more.dataset.key = `more:${host}`;
+    more.setAttribute("aria-label", t("moreActions", [host]));
+    more.title = t("moreActions", [host]);
+    more.setAttribute("aria-expanded", String(open));
+    more.append(icon("more"));
+    more.addEventListener("click", () => {
+      if (open) menuHosts.delete(host); else menuHosts.add(host);
+      scan();
+    });
+    return more;
+  }
+
+  function hostCard(host, risks, notes, details) {
+    const { statusKey, temporaryOnly } = hostStatus(host, risks);
+    const lines = warningLines(host, risks, notes);
+    const risky = lines.some(line => !line.classList.contains("link-guard-note"));
+    const card = element("article", "lg-card");
+    if (risky && statusKey !== "blocked") card.classList.add("lg-card-risk");
+    if (statusKey === "blocked") card.classList.add("lg-card-blocked");
+    const items = menuItems(host, statusKey, temporaryOnly, risks);
+    const head = element("div", "lg-card-head");
+    head.append(icon(statusKey === "blocked" ? "blocked" : "globe", "lg-icon lg-host-icon"), hostName(host),
+      badge(statusKey, risky));
+    const more = moreButton(host, items);
+    if (more) head.append(more);
+    card.append(head, ...lines);
+    const actions = element("div", "lg-actions");
+    // A warning or a hint takes the emphasis off "Allow permanently".
+    primaryActions(host, statusKey, temporaryOnly, lines.length > 0, risks, actions);
+    if (actions.childElementCount) card.append(actions);
+    if (more && menuHosts.has(host)) {
+      const menu = element("div", "lg-menu");
+      menu.append(...items);
+      card.append(menu);
+    }
+    if (details.length) card.append(...linksToggle(host, details, risky && statusKey !== "blocked"));
+    return card;
+  }
+
+  // Approved hosts take one line each; their links and actions open on demand.
+  function approvedList(hosts, linkRisks, linkNotes, linkDetails) {
+    const card = element("div", "lg-card lg-compact");
+    for (const host of hosts) {
+      const risks = linkRisks.get(host);
+      const { statusKey, temporaryOnly } = hostStatus(host, risks);
+      const row = element("div", "lg-compact-row");
+      row.append(icon("check", "lg-icon lg-host-icon lg-ok"), hostName(host), badge(statusKey, false));
+      const items = menuItems(host, statusKey, temporaryOnly, risks);
+      const more = moreButton(host, items);
+      if (more) row.append(more);
+      card.append(row);
+      const lines = warningLines(host, risks, linkNotes.get(host));
+      if (lines.length) {
+        const box = element("div", "lg-compact-detail");
+        box.append(...lines);
+        card.append(box);
       }
-      const block = document.createElement("button");
-      block.type = "button";
-      block.textContent = t("blockHost");
-      block.disabled = !stateReady;
-      block.addEventListener("click", () => chooseScope(host, actions, "block"));
-      actions.append(block);
+      if (more && menuHosts.has(host)) {
+        const menu = element("div", "lg-menu lg-compact-detail");
+        menu.append(...items);
+        card.append(menu);
+      }
+      const details = linkDetails.get(host) || [];
+      if (details.length) {
+        const box = element("div", "lg-compact-detail");
+        box.append(...linksToggle(host, details, false));
+        card.append(box);
+      }
     }
-    row.append(information, actions);
-    return row;
+    return card;
+  }
+
+  function section(title, count, ...content) {
+    const block = element("section", "lg-section");
+    const heading = element("h3", "lg-section-title", title);
+    heading.append(element("span", "lg-count", String(count)));
+    block.append(heading, ...content);
+    return block;
+  }
+
+  // Counts without plural forms, so every language reads naturally.
+  function countLine(totalWeb, pending, blocked, warnings) {
+    return [warnings ? t("countWarnings", [String(warnings)]) : "",
+      pending ? t("countPending", [String(pending)]) : "",
+      blocked ? t("countBlocked", [String(blocked)]) : "",
+      t("countLinks", [String(totalWeb)])].filter(Boolean).join(" · ");
   }
 
   // Properties set inline with !important beat every message-authored rule, so a message
@@ -629,68 +816,87 @@
     for (const [property, value] of HOST_STYLE) {
       panelHost.style.setProperty(property, value, "important");
     }
-    const shadow = panelHost.attachShadow({ mode: "closed" });
+    panelShadow = panelHost.attachShadow({ mode: "closed" });
     const style = document.createElement("style");
     style.textContent = globalThis.LinkGuardPanelCss || "";
     panel = document.createElement("details");
     panel.className = "link-guard-panel";
     panel.lang = panelLanguage;
     panel.tabIndex = -1;
-    shadow.append(style, panel);
+    panelShadow.append(style, panel);
     document.body.prepend(panelHost);
   }
 
   function renderPanel(groups, hardBlocks, linkRisks, totalWeb, pending, blocked, warnings, overflow,
-      linkNotes = new Map()) {
+      linkNotes = new Map(), linkDetails = new Map()) {
     if (!document.body) return;
     if (!state.enabled || (pending + blocked + warnings === 0 && !overflow)) {
       panelHost?.remove();
       panelHost = null;
       panel = null;
+      panelShadow = null;
       return;
     }
     if (!panel || !panelHost?.isConnected) createPanel();
-    const summaryLine = document.createElement("summary");
-    summaryLine.textContent = warnings ?
-      t("panelCompactRisk", [String(pending + blocked), String(warnings)]) :
-      t("panelCompact", [String(pending + blocked)]);
-    summaryLine.className = warnings ? "link-guard-summary-risk" : "";
-    const content = document.createElement("div");
-    content.className = "link-guard-expanded";
-    const heading = document.createElement("h2");
-    heading.textContent = t("panelTitle");
-    const list = document.createElement("div");
-    list.className = "link-guard-list";
-    for (const [host, count] of [...groups].sort(([a], [b]) => a.localeCompare(b))) {
-      list.append(makeHostRow(host, count, linkRisks.get(host), linkNotes.get(host)));
+    const focusKey = panelShadow?.activeElement?.dataset?.key;
+    const tone = warnings || hardBlocks.size ? "danger" : blocked ? "blocked" : "pending";
+    panel.dataset.tone = tone;
+
+    const summary = element("summary", "lg-summary");
+    const text = element("span", "lg-summary-text");
+    text.append(element("span", "lg-summary-title",
+      t(tone === "danger" ? "panelTitleDanger" : tone === "blocked" ? "panelTitleBlocked" : "panelTitlePending")),
+    element("span", "lg-summary-counts", countLine(totalWeb, pending, blocked, warnings)));
+    summary.append(icon("shield", "lg-icon lg-summary-icon"), text, icon("chevron", "lg-icon lg-summary-chevron"));
+
+    const attention = [];
+    const waiting = [];
+    const blockedHosts = [];
+    const approved = [];
+    for (const host of [...groups.keys()].sort((a, b) => a.localeCompare(b))) {
+      const risks = linkRisks.get(host);
+      const { statusKey } = hostStatus(host, risks);
+      const warning = warningFor(host);
+      const risky = Boolean(risks?.size || (warning && warning.kind !== "none"));
+      if (statusKey === "blocked") blockedHosts.push(host);
+      else if (statusKey === "pending" && risky) attention.push(host);
+      else if (statusKey === "pending" || statusKey === "temporary") waiting.push(host);
+      else approved.push(host);
     }
+    const card = host => hostCard(host, linkRisks.get(host), linkNotes.get(host), linkDetails.get(host) || []);
+    const body = element("div", "lg-body");
+    if (attention.length) body.append(section(t("sectionAttention"), attention.length, ...attention.map(card)));
     if (hardBlocks.size) {
-      const hardTitle = document.createElement("h3");
-      hardTitle.textContent = t("unsafeTitle");
-      list.append(hardTitle);
+      const items = [];
       for (const [key, count] of hardBlocks) {
         const [reason, host] = key.split("|", 2);
-        const item = document.createElement("p");
-        item.className = "link-guard-unsafe";
-        item.textContent = `${host || t("unknownHost")}: ${t(`reason_${reason}`)} (${count})`;
-        list.append(item);
+        const item = element("article", "lg-card lg-card-risk");
+        item.append(riskLine(`${host || t("unknownHost")}: ${t(`reason_${reason}`)} (${count})`));
+        items.push(item);
       }
+      body.append(section(t("unsafeTitle"), hardBlocks.size, ...items));
     }
-    const elements = [heading, list];
-    if (overflow) {
-      const footer = document.createElement("p");
-      footer.className = "link-guard-footer";
-      footer.textContent = t("overflowNotice");
-      elements.push(footer);
+    if (waiting.length) body.append(section(t("sectionPending"), waiting.length, ...waiting.map(card)));
+    if (blockedHosts.length) body.append(section(t("sectionBlocked"), blockedHosts.length, ...blockedHosts.map(card)));
+    if (approved.length) {
+      const toggle = element("button", "lg-toggle lg-section-toggle");
+      toggle.type = "button";
+      toggle.dataset.key = "approved";
+      toggle.setAttribute("aria-expanded", String(approvedOpen));
+      toggle.append(icon("chevron", "lg-icon lg-icon-small lg-chevron"), t("sectionApproved"),
+        element("span", "lg-count", String(approved.length)));
+      toggle.addEventListener("click", () => { approvedOpen = !approvedOpen; scan(); });
+      const block = element("section", "lg-section");
+      block.append(toggle);
+      if (approvedOpen) block.append(approvedList(approved, linkRisks, linkNotes, linkDetails));
+      body.append(block);
     }
-    if (!stateReady || errorKey) {
-      const error = document.createElement("p");
-      error.className = "link-guard-error";
-      error.textContent = t(errorKey || "stateUnavailable");
-      elements.push(error);
+    if (overflow) body.append(element("p", "lg-footnote", t("overflowNotice")));
+    if (!stateReady || errorKey) body.append(element("p", "lg-error", t(errorKey || "stateUnavailable")));
+    panel.replaceChildren(summary, body);
+    if (focusKey) {
+      [...panel.querySelectorAll("[data-key]")].find(node => node.dataset.key === focusKey)?.focus();
     }
-    content.append(...elements);
-    panel.replaceChildren(summaryLine, content);
   }
 
   // The inline labels sit in the message's own DOM, so they get the panel host's
@@ -703,12 +909,12 @@
     ["direction", "ltr"], ["unicode-bidi", "isolate"], ["text-decoration", "none"],
     ["white-space", "normal"], ["pointer-events", "auto"]];
   const LABEL_LOOK = {
-    warning: [["margin", "3px 5px"], ["padding", "3px 7px"], ["border", "2px solid #b42332"],
-      ["border-radius", "4px"], ["background", "#b42332"], ["color", "#fff"],
-      ["font", "800 13px/1.3 system-ui, sans-serif"]],
-    destination: [["margin", "2px 4px"], ["padding", "1px 4px"], ["border-radius", "3px"],
-      ["background", "#edf2f7"], ["color", "#253449"],
-      ["font", "600 11px/1.3 system-ui, sans-serif"]]
+    warning: [["margin", "2px 4px"], ["padding", "2px 7px"], ["border", "1px solid #b91c1c"],
+      ["border-radius", "4px"], ["background", "#b91c1c"], ["color", "#fff"],
+      ["font", "600 12px/1.35 system-ui, -apple-system, 'Segoe UI', sans-serif"]],
+    destination: [["margin", "2px 4px"], ["padding", "1px 5px"], ["border", "1px solid #d4d4d8"],
+      ["border-radius", "4px"], ["background", "#f4f4f5"], ["color", "#3f3f46"],
+      ["font", "500 11px/1.35 system-ui, -apple-system, 'Segoe UI', sans-serif"]]
   };
 
   function styleLabel(marker, risky) {
@@ -837,6 +1043,7 @@
     const hardBlocks = new Map();
     const linkRisks = new Map();
     const linkNotes = new Map();
+    const linkDetails = new Map();
     const scopes = linkScopes();
     const anchors = [];
     for (const scope of scopes) {
@@ -888,6 +1095,16 @@
         continue;
       }
       totalWeb++;
+      // Every listed host shows its registrable domain in bold, so it is looked up.
+      if (!registrableRoots.has(inspection.host) && !policy.isIpAddress(inspection.host)) {
+        unknownRoots.add(inspection.host);
+      }
+      const details = linkDetails.get(inspection.host) || [];
+      if (details.length < MAX_DETAILS_PER_HOST) {
+        details.push({ anchor, text: (anchor.textContent || "").replace(/\s+/g, " ").trim().slice(0, 200),
+          url: (policy.resolveHref(href, base)?.href || href).slice(0, 2048) });
+        linkDetails.set(inspection.host, details);
+      }
       if (warning || inspection.risks?.length) warnings++;
       for (const host of inspection.hosts) groups.set(host, (groups.get(host) || 0) + 1);
       if (inspection.risks?.length) {
@@ -908,7 +1125,8 @@
       }
     }
     const overflow = inspected > MAX_LISTED_LINKS;
-    renderPanel(groups, hardBlocks, linkRisks, totalWeb, pending, blocked, warnings, overflow, linkNotes);
+    renderPanel(groups, hardBlocks, linkRisks, totalWeb, pending, blocked, warnings, overflow, linkNotes,
+      linkDetails);
     sendToolbar(pending, blocked, warnings, overflow);
     for (const host of destinationsToAnalyze) {
       if (!analyzedHosts.has(host)) unknown.add(host);

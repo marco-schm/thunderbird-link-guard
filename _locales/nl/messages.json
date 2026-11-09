@@ -36,28 +36,6 @@
       }
     }
   },
-  "panelTitle": {
-    "message": "Links controleren"
-  },
-  "panelCompact": {
-    "message": "Links in afwachting: $COUNT$",
-    "placeholders": {
-      "count": {
-        "content": "$1"
-      }
-    }
-  },
-  "panelCompactRisk": {
-    "message": "⚠ Waarschuwingen: $RISK$ · In afwachting: $BLOCKED$",
-    "placeholders": {
-      "risk": {
-        "content": "$2"
-      },
-      "blocked": {
-        "content": "$1"
-      }
-    }
-  },
   "panelSummary": {
     "message": "$TOTAL$ weblinks gecontroleerd · $BLOCKED$ geblokkeerd",
     "placeholders": {
@@ -129,35 +107,10 @@
   "openSettings": {
     "message": "Instellingen openen"
   },
-  "scopePrompt": {
-    "message": "Welk bereik moet permanent worden goedgekeurd?"
-  },
-  "blockScopePrompt": {
-    "message": "Welk bereik moet worden geblokkeerd?"
-  },
-  "scopePromptShared": {
-    "message": "Anderen kunnen hier inhoud publiceren. Keur alleen deze host goed."
-  },
   "linkDestinationInline": {
     "message": "↗ $HOST$",
     "placeholders": {
       "host": {
-        "content": "$1"
-      }
-    }
-  },
-  "scopeExact": {
-    "message": "Alleen $HOST$",
-    "placeholders": {
-      "host": {
-        "content": "$1"
-      }
-    }
-  },
-  "scopeBroad": {
-    "message": "$DOMAIN$ en alle subdomeinen",
-    "placeholders": {
-      "domain": {
         "content": "$1"
       }
     }
@@ -670,5 +623,99 @@
   },
   "showRules": {
     "message": "Regels tonen"
+  },
+  "panelTitleDanger": {
+    "message": "Verdachte links in dit bericht"
+  },
+  "panelTitleBlocked": {
+    "message": "Dit bericht linkt naar geblokkeerde websites"
+  },
+  "panelTitlePending": {
+    "message": "Links in dit bericht wachten op goedkeuring"
+  },
+  "countWarnings": {
+    "message": "Waarschuwingen: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "countPending": {
+    "message": "Niet goedgekeurd: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "countBlocked": {
+    "message": "Geblokkeerd: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "countLinks": {
+    "message": "Links: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "sectionAttention": {
+    "message": "Vraagt aandacht"
+  },
+  "sectionPending": {
+    "message": "Nog niet goedgekeurd"
+  },
+  "sectionBlocked": {
+    "message": "Geblokkeerd"
+  },
+  "sectionApproved": {
+    "message": "Goedgekeurd"
+  },
+  "moreActions": {
+    "message": "Meer acties voor $HOST$",
+    "placeholders": {
+      "host": {
+        "content": "$1"
+      }
+    }
+  },
+  "showLinks": {
+    "message": "Links tonen ($COUNT$)",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "hideLinks": {
+    "message": "Links verbergen"
+  },
+  "showInMessage": {
+    "message": "In het bericht tonen"
+  },
+  "noLinkText": {
+    "message": "(geen linktekst)"
+  },
+  "allowDomain": {
+    "message": "$DOMAIN$ en alle subdomeinen toestaan",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      }
+    }
+  },
+  "blockDomain": {
+    "message": "$DOMAIN$ en alle subdomeinen blokkeren",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      }
+    }
   }
 }

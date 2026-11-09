@@ -36,28 +36,6 @@
       }
     }
   },
-  "panelTitle": {
-    "message": "Links prüfen"
-  },
-  "panelCompact": {
-    "message": "Links offen: $COUNT$",
-    "placeholders": {
-      "count": {
-        "content": "$1"
-      }
-    }
-  },
-  "panelCompactRisk": {
-    "message": "⚠ Warnungen: $RISK$ · Offen: $BLOCKED$",
-    "placeholders": {
-      "risk": {
-        "content": "$2"
-      },
-      "blocked": {
-        "content": "$1"
-      }
-    }
-  },
   "panelSummary": {
     "message": "$TOTAL$ Weblinks geprüft · $BLOCKED$ gesperrt",
     "placeholders": {
@@ -129,35 +107,10 @@
   "openSettings": {
     "message": "Einstellungen öffnen"
   },
-  "scopePrompt": {
-    "message": "Welcher Bereich soll dauerhaft freigegeben werden?"
-  },
-  "blockScopePrompt": {
-    "message": "Welcher Bereich soll blockiert werden?"
-  },
-  "scopePromptShared": {
-    "message": "Hier können andere Inhalte veröffentlichen. Nur diesen Host freigeben."
-  },
   "linkDestinationInline": {
     "message": "↗ $HOST$",
     "placeholders": {
       "host": {
-        "content": "$1"
-      }
-    }
-  },
-  "scopeExact": {
-    "message": "Nur $HOST$",
-    "placeholders": {
-      "host": {
-        "content": "$1"
-      }
-    }
-  },
-  "scopeBroad": {
-    "message": "$DOMAIN$ und alle Subdomains",
-    "placeholders": {
-      "domain": {
         "content": "$1"
       }
     }
@@ -670,5 +623,99 @@
   },
   "showRules": {
     "message": "Regeln anzeigen"
+  },
+  "panelTitleDanger": {
+    "message": "Verdächtige Links in dieser Nachricht"
+  },
+  "panelTitleBlocked": {
+    "message": "Diese Nachricht verlinkt auf blockierte Seiten"
+  },
+  "panelTitlePending": {
+    "message": "Links in dieser Nachricht warten auf Freigabe"
+  },
+  "countWarnings": {
+    "message": "Warnungen: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "countPending": {
+    "message": "Nicht freigegeben: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "countBlocked": {
+    "message": "Blockiert: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "countLinks": {
+    "message": "Links: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "sectionAttention": {
+    "message": "Braucht Aufmerksamkeit"
+  },
+  "sectionPending": {
+    "message": "Noch nicht freigegeben"
+  },
+  "sectionBlocked": {
+    "message": "Blockiert"
+  },
+  "sectionApproved": {
+    "message": "Freigegeben"
+  },
+  "moreActions": {
+    "message": "Weitere Aktionen für $HOST$",
+    "placeholders": {
+      "host": {
+        "content": "$1"
+      }
+    }
+  },
+  "showLinks": {
+    "message": "Links anzeigen ($COUNT$)",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "hideLinks": {
+    "message": "Links ausblenden"
+  },
+  "showInMessage": {
+    "message": "In der Nachricht zeigen"
+  },
+  "noLinkText": {
+    "message": "(kein Linktext)"
+  },
+  "allowDomain": {
+    "message": "$DOMAIN$ und alle Subdomains freigeben",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      }
+    }
+  },
+  "blockDomain": {
+    "message": "$DOMAIN$ und alle Subdomains blockieren",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      }
+    }
   }
 }

@@ -36,28 +36,6 @@
       }
     }
   },
-  "panelTitle": {
-    "message": "Проверить ссылки"
-  },
-  "panelCompact": {
-    "message": "Ссылок ожидают решения: $COUNT$",
-    "placeholders": {
-      "count": {
-        "content": "$1"
-      }
-    }
-  },
-  "panelCompactRisk": {
-    "message": "⚠ Предупреждений: $RISK$ · Ожидают: $BLOCKED$",
-    "placeholders": {
-      "risk": {
-        "content": "$2"
-      },
-      "blocked": {
-        "content": "$1"
-      }
-    }
-  },
   "panelSummary": {
     "message": "Проверено веб-ссылок: $TOTAL$ · Заблокировано: $BLOCKED$",
     "placeholders": {
@@ -129,35 +107,10 @@
   "openSettings": {
     "message": "Открыть настройки"
   },
-  "scopePrompt": {
-    "message": "Что разрешить постоянно?"
-  },
-  "blockScopePrompt": {
-    "message": "Какую область заблокировать?"
-  },
-  "scopePromptShared": {
-    "message": "Здесь могут публиковать материалы другие люди. Разрешайте только этот хост."
-  },
   "linkDestinationInline": {
     "message": "↗ $HOST$",
     "placeholders": {
       "host": {
-        "content": "$1"
-      }
-    }
-  },
-  "scopeExact": {
-    "message": "Только $HOST$",
-    "placeholders": {
-      "host": {
-        "content": "$1"
-      }
-    }
-  },
-  "scopeBroad": {
-    "message": "$DOMAIN$ и все поддомены",
-    "placeholders": {
-      "domain": {
         "content": "$1"
       }
     }
@@ -670,5 +623,99 @@
   },
   "showRules": {
     "message": "Показать правила"
+  },
+  "panelTitleDanger": {
+    "message": "Подозрительные ссылки в этом сообщении"
+  },
+  "panelTitleBlocked": {
+    "message": "Это сообщение ссылается на заблокированные сайты"
+  },
+  "panelTitlePending": {
+    "message": "Ссылки в этом сообщении ждут разрешения"
+  },
+  "countWarnings": {
+    "message": "Предупреждения: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "countPending": {
+    "message": "Не разрешено: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "countBlocked": {
+    "message": "Заблокировано: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "countLinks": {
+    "message": "Ссылки: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "sectionAttention": {
+    "message": "Требует внимания"
+  },
+  "sectionPending": {
+    "message": "Ещё не разрешено"
+  },
+  "sectionBlocked": {
+    "message": "Заблокировано"
+  },
+  "sectionApproved": {
+    "message": "Разрешено"
+  },
+  "moreActions": {
+    "message": "Другие действия для $HOST$",
+    "placeholders": {
+      "host": {
+        "content": "$1"
+      }
+    }
+  },
+  "showLinks": {
+    "message": "Показать ссылки ($COUNT$)",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "hideLinks": {
+    "message": "Скрыть ссылки"
+  },
+  "showInMessage": {
+    "message": "Показать в сообщении"
+  },
+  "noLinkText": {
+    "message": "(без текста ссылки)"
+  },
+  "allowDomain": {
+    "message": "Разрешить $DOMAIN$ и все поддомены",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      }
+    }
+  },
+  "blockDomain": {
+    "message": "Заблокировать $DOMAIN$ и все поддомены",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      }
+    }
   }
 }

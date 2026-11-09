@@ -36,28 +36,6 @@
       }
     }
   },
-  "panelTitle": {
-    "message": "Granska länkar"
-  },
-  "panelCompact": {
-    "message": "Väntande länkar: $COUNT$",
-    "placeholders": {
-      "count": {
-        "content": "$1"
-      }
-    }
-  },
-  "panelCompactRisk": {
-    "message": "⚠ Varningar: $RISK$ · Väntar: $BLOCKED$",
-    "placeholders": {
-      "risk": {
-        "content": "$2"
-      },
-      "blocked": {
-        "content": "$1"
-      }
-    }
-  },
   "panelSummary": {
     "message": "$TOTAL$ webblänkar kontrollerade · $BLOCKED$ blockerade",
     "placeholders": {
@@ -129,35 +107,10 @@
   "openSettings": {
     "message": "Öppna inställningar"
   },
-  "scopePrompt": {
-    "message": "Vilket omfång ska godkännas permanent?"
-  },
-  "blockScopePrompt": {
-    "message": "Vilket omfång ska blockeras?"
-  },
-  "scopePromptShared": {
-    "message": "Andra kan publicera innehåll här. Godkänn bara den här värden."
-  },
   "linkDestinationInline": {
     "message": "↗ $HOST$",
     "placeholders": {
       "host": {
-        "content": "$1"
-      }
-    }
-  },
-  "scopeExact": {
-    "message": "Endast $HOST$",
-    "placeholders": {
-      "host": {
-        "content": "$1"
-      }
-    }
-  },
-  "scopeBroad": {
-    "message": "$DOMAIN$ och alla underdomäner",
-    "placeholders": {
-      "domain": {
         "content": "$1"
       }
     }
@@ -670,5 +623,99 @@
   },
   "showRules": {
     "message": "Visa regler"
+  },
+  "panelTitleDanger": {
+    "message": "Misstänkta länkar i det här meddelandet"
+  },
+  "panelTitleBlocked": {
+    "message": "Det här meddelandet länkar till blockerade webbplatser"
+  },
+  "panelTitlePending": {
+    "message": "Länkarna i det här meddelandet väntar på godkännande"
+  },
+  "countWarnings": {
+    "message": "Varningar: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "countPending": {
+    "message": "Inte godkända: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "countBlocked": {
+    "message": "Blockerade: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "countLinks": {
+    "message": "Länkar: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "sectionAttention": {
+    "message": "Kräver uppmärksamhet"
+  },
+  "sectionPending": {
+    "message": "Ännu inte godkända"
+  },
+  "sectionBlocked": {
+    "message": "Blockerade"
+  },
+  "sectionApproved": {
+    "message": "Godkända"
+  },
+  "moreActions": {
+    "message": "Fler åtgärder för $HOST$",
+    "placeholders": {
+      "host": {
+        "content": "$1"
+      }
+    }
+  },
+  "showLinks": {
+    "message": "Visa länkar ($COUNT$)",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "hideLinks": {
+    "message": "Dölj länkar"
+  },
+  "showInMessage": {
+    "message": "Visa i meddelandet"
+  },
+  "noLinkText": {
+    "message": "(ingen länktext)"
+  },
+  "allowDomain": {
+    "message": "Tillåt $DOMAIN$ och alla underdomäner",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      }
+    }
+  },
+  "blockDomain": {
+    "message": "Blockera $DOMAIN$ och alla underdomäner",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      }
+    }
   }
 }

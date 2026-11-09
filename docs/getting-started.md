@@ -59,18 +59,19 @@ Link Guard asks for three permissions and no access to any website:
 
 ## Your first message
 
-Open any message with web links. Instead of clickable links you will see a notice at
-the top of the message, for example **Links pending: 3**.
+Open any message with web links. Instead of clickable links you will see a notice bar at
+the top of the message, for example **Links in this message are waiting for approval**.
 
 1. **Click the notice** to expand it. It lists every destination host in the message,
-   with its status and any warnings.
+   grouped into *Needs attention*, *Not yet approved*, *Blocked* and *Approved*, each with
+   its status and any warnings.
 2. **Check the destination** independently of the email: is this a host you expect
    this sender to link to?
 3. **Decide** for each host:
+   - **Allow permanently** approves exactly this host and remembers the decision.
    - **Allow temporarily** makes its links work in this message only.
-   - **Allow permanently** asks whether to approve only this host or its whole domain,
-     and remembers the decision.
-   - **Block** asks for the same scope and keeps its links inactive from now on.
+   - **Block** keeps the host's links inactive from now on.
+   - **⋯** approves or blocks the whole domain with all its subdomains.
 
 Once every link is approved and none has a warning, the notice disappears. Your
 permanent decisions appear in [Settings](settings.md), where you can edit them at any

@@ -38,28 +38,6 @@ globalThis.LinkGuardEnglish = {
       }
     }
   },
-  "panelTitle": {
-    "message": "Review links"
-  },
-  "panelCompact": {
-    "message": "Links pending: $COUNT$",
-    "placeholders": {
-      "count": {
-        "content": "$1"
-      }
-    }
-  },
-  "panelCompactRisk": {
-    "message": "⚠ Warnings: $RISK$ · Pending: $BLOCKED$",
-    "placeholders": {
-      "risk": {
-        "content": "$2"
-      },
-      "blocked": {
-        "content": "$1"
-      }
-    }
-  },
   "panelSummary": {
     "message": "$TOTAL$ web links checked · $BLOCKED$ blocked",
     "placeholders": {
@@ -131,35 +109,10 @@ globalThis.LinkGuardEnglish = {
   "openSettings": {
     "message": "Open settings"
   },
-  "scopePrompt": {
-    "message": "Which scope should be approved permanently?"
-  },
-  "blockScopePrompt": {
-    "message": "Which scope should be blocked?"
-  },
-  "scopePromptShared": {
-    "message": "Others can publish content here. Approve only this host."
-  },
   "linkDestinationInline": {
     "message": "↗ $HOST$",
     "placeholders": {
       "host": {
-        "content": "$1"
-      }
-    }
-  },
-  "scopeExact": {
-    "message": "Only $HOST$",
-    "placeholders": {
-      "host": {
-        "content": "$1"
-      }
-    }
-  },
-  "scopeBroad": {
-    "message": "$DOMAIN$ and all subdomains",
-    "placeholders": {
-      "domain": {
         "content": "$1"
       }
     }
@@ -672,5 +625,99 @@ globalThis.LinkGuardEnglish = {
   },
   "showRules": {
     "message": "Show rules"
+  },
+  "panelTitleDanger": {
+    "message": "Suspicious links in this message"
+  },
+  "panelTitleBlocked": {
+    "message": "This message links to blocked sites"
+  },
+  "panelTitlePending": {
+    "message": "Links in this message are waiting for approval"
+  },
+  "countWarnings": {
+    "message": "Warnings: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "countPending": {
+    "message": "Not approved: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "countBlocked": {
+    "message": "Blocked: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "countLinks": {
+    "message": "Links: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "sectionAttention": {
+    "message": "Needs attention"
+  },
+  "sectionPending": {
+    "message": "Not yet approved"
+  },
+  "sectionBlocked": {
+    "message": "Blocked"
+  },
+  "sectionApproved": {
+    "message": "Approved"
+  },
+  "moreActions": {
+    "message": "More actions for $HOST$",
+    "placeholders": {
+      "host": {
+        "content": "$1"
+      }
+    }
+  },
+  "showLinks": {
+    "message": "Show links ($COUNT$)",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "hideLinks": {
+    "message": "Hide links"
+  },
+  "showInMessage": {
+    "message": "Show in message"
+  },
+  "noLinkText": {
+    "message": "(no link text)"
+  },
+  "allowDomain": {
+    "message": "Allow $DOMAIN$ and all subdomains",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      }
+    }
+  },
+  "blockDomain": {
+    "message": "Block $DOMAIN$ and all subdomains",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      }
+    }
   }
 };

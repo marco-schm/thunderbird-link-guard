@@ -36,28 +36,6 @@
       }
     }
   },
-  "panelTitle": {
-    "message": "링크 검토"
-  },
-  "panelCompact": {
-    "message": "대기 중인 링크: $COUNT$",
-    "placeholders": {
-      "count": {
-        "content": "$1"
-      }
-    }
-  },
-  "panelCompactRisk": {
-    "message": "⚠ 경고: $RISK$ · 대기 중: $BLOCKED$",
-    "placeholders": {
-      "risk": {
-        "content": "$2"
-      },
-      "blocked": {
-        "content": "$1"
-      }
-    }
-  },
   "panelSummary": {
     "message": "웹 링크 $TOTAL$개 검사 · $BLOCKED$개 차단",
     "placeholders": {
@@ -129,35 +107,10 @@
   "openSettings": {
     "message": "설정 열기"
   },
-  "scopePrompt": {
-    "message": "어떤 범위를 영구 승인할까요?"
-  },
-  "blockScopePrompt": {
-    "message": "어떤 범위를 차단할까요?"
-  },
-  "scopePromptShared": {
-    "message": "다른 사람이 여기에 콘텐츠를 게시할 수 있습니다. 이 호스트만 승인하세요."
-  },
   "linkDestinationInline": {
     "message": "↗ $HOST$",
     "placeholders": {
       "host": {
-        "content": "$1"
-      }
-    }
-  },
-  "scopeExact": {
-    "message": "$HOST$만",
-    "placeholders": {
-      "host": {
-        "content": "$1"
-      }
-    }
-  },
-  "scopeBroad": {
-    "message": "$DOMAIN$ 및 모든 하위 도메인",
-    "placeholders": {
-      "domain": {
         "content": "$1"
       }
     }
@@ -670,5 +623,99 @@
   },
   "showRules": {
     "message": "규칙 보기"
+  },
+  "panelTitleDanger": {
+    "message": "이 메시지에 의심스러운 링크가 있습니다"
+  },
+  "panelTitleBlocked": {
+    "message": "이 메시지는 차단된 사이트로 연결됩니다"
+  },
+  "panelTitlePending": {
+    "message": "이 메시지의 링크가 승인을 기다리고 있습니다"
+  },
+  "countWarnings": {
+    "message": "경고: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "countPending": {
+    "message": "승인되지 않음: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "countBlocked": {
+    "message": "차단됨: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "countLinks": {
+    "message": "링크: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "sectionAttention": {
+    "message": "확인 필요"
+  },
+  "sectionPending": {
+    "message": "아직 승인되지 않음"
+  },
+  "sectionBlocked": {
+    "message": "차단됨"
+  },
+  "sectionApproved": {
+    "message": "승인됨"
+  },
+  "moreActions": {
+    "message": "$HOST$에 대한 추가 작업",
+    "placeholders": {
+      "host": {
+        "content": "$1"
+      }
+    }
+  },
+  "showLinks": {
+    "message": "링크 표시 ($COUNT$)",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "hideLinks": {
+    "message": "링크 숨기기"
+  },
+  "showInMessage": {
+    "message": "메시지에서 보기"
+  },
+  "noLinkText": {
+    "message": "(링크 텍스트 없음)"
+  },
+  "allowDomain": {
+    "message": "$DOMAIN$ 및 모든 하위 도메인 허용",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      }
+    }
+  },
+  "blockDomain": {
+    "message": "$DOMAIN$ 및 모든 하위 도메인 차단",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      }
+    }
   }
 }

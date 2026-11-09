@@ -36,28 +36,6 @@
       }
     }
   },
-  "panelTitle": {
-    "message": "Перегляд посилань"
-  },
-  "panelCompact": {
-    "message": "Посилань очікує: $COUNT$",
-    "placeholders": {
-      "count": {
-        "content": "$1"
-      }
-    }
-  },
-  "panelCompactRisk": {
-    "message": "⚠ Попередження: $RISK$ · Очікують: $BLOCKED$",
-    "placeholders": {
-      "risk": {
-        "content": "$2"
-      },
-      "blocked": {
-        "content": "$1"
-      }
-    }
-  },
   "panelSummary": {
     "message": "Перевірено вебпосилань: $TOTAL$ · заблоковано: $BLOCKED$",
     "placeholders": {
@@ -129,35 +107,10 @@
   "openSettings": {
     "message": "Відкрити налаштування"
   },
-  "scopePrompt": {
-    "message": "Який обсяг схвалити назавжди?"
-  },
-  "blockScopePrompt": {
-    "message": "Який обсяг заблокувати?"
-  },
-  "scopePromptShared": {
-    "message": "Тут можуть публікувати вміст інші люди. Схваліть лише цей хост."
-  },
   "linkDestinationInline": {
     "message": "↗ $HOST$",
     "placeholders": {
       "host": {
-        "content": "$1"
-      }
-    }
-  },
-  "scopeExact": {
-    "message": "Лише $HOST$",
-    "placeholders": {
-      "host": {
-        "content": "$1"
-      }
-    }
-  },
-  "scopeBroad": {
-    "message": "$DOMAIN$ і всі піддомени",
-    "placeholders": {
-      "domain": {
         "content": "$1"
       }
     }
@@ -670,5 +623,99 @@
   },
   "showRules": {
     "message": "Показати правила"
+  },
+  "panelTitleDanger": {
+    "message": "Підозрілі посилання в цьому повідомленні"
+  },
+  "panelTitleBlocked": {
+    "message": "Це повідомлення посилається на заблоковані сайти"
+  },
+  "panelTitlePending": {
+    "message": "Посилання в цьому повідомленні чекають на схвалення"
+  },
+  "countWarnings": {
+    "message": "Попередження: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "countPending": {
+    "message": "Не схвалено: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "countBlocked": {
+    "message": "Заблоковано: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "countLinks": {
+    "message": "Посилання: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "sectionAttention": {
+    "message": "Потребує уваги"
+  },
+  "sectionPending": {
+    "message": "Ще не схвалено"
+  },
+  "sectionBlocked": {
+    "message": "Заблоковано"
+  },
+  "sectionApproved": {
+    "message": "Схвалено"
+  },
+  "moreActions": {
+    "message": "Інші дії для $HOST$",
+    "placeholders": {
+      "host": {
+        "content": "$1"
+      }
+    }
+  },
+  "showLinks": {
+    "message": "Показати посилання ($COUNT$)",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "hideLinks": {
+    "message": "Сховати посилання"
+  },
+  "showInMessage": {
+    "message": "Показати в повідомленні"
+  },
+  "noLinkText": {
+    "message": "(без тексту посилання)"
+  },
+  "allowDomain": {
+    "message": "Дозволити $DOMAIN$ і всі піддомени",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      }
+    }
+  },
+  "blockDomain": {
+    "message": "Заблокувати $DOMAIN$ і всі піддомени",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      }
+    }
   }
 }

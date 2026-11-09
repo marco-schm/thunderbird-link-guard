@@ -8,7 +8,7 @@ this message only or permanently.
 Nothing leaves your computer: Link Guard checks messages locally, ships no trust list
 and sends no mail content or link targets anywhere.
 
-![Link Guard notice listing five hosts with warnings for a lookalike domain, a text/destination mismatch and a short link](screenshots/message-panel.png)
+![Link Guard notice in Thunderbird style: hosts grouped into Needs attention and Not yet approved, with warnings for a short link, a lookalike domain and misleading link text](screenshots/message-panel.png)
 
 ## What it does
 
