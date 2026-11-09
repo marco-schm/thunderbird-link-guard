@@ -518,7 +518,7 @@
   }
 
   // ----- The notice ------------------------------------------------------------------
-  // Same layout as Link Guard for Outlook: a summary bar, then the destinations grouped
+  // Layout: a summary bar, then the destinations grouped
   // into "needs attention", "not yet approved", "blocked" and "approved", one card per
   // host with its warnings, its actions, a "⋯" menu for whole-domain decisions and the
   // list of its links. The look follows Thunderbird (see panel-style.js).
