@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 0.14.0 — 2026-11-09
 
 - New design in Thunderbird's style, with the same layout as Link Guard for Outlook. The
   notice is a notification bar that names what it found (suspicious links, blocked sites
@@ -12,6 +12,8 @@
   exact host directly. Light and dark mode follow Thunderbird.
 - Settings use Thunderbird's colours, toggles and the Link Guard logo, which is now also
   the add-on's icon.
+- Documentation: describes the latest release instead of the `main` branch, matching
+  the website, which publishes each signed release.
 - A link whose own host is not approved but which names a site you approved inside it
   (`?url=https://your-bank.example/`) now shows an amber hint that the linking site, not
   the named one, decides where the link really leads. Before, such a link looked

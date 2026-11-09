@@ -62,6 +62,7 @@ your browser. An approved host can still serve harmful content. See
 | License | MIT; the bundled Public Suffix List is MPL 2.0 |
 | Source | [github.com/marco-schm/thunderbird-link-guard](https://github.com/marco-schm/thunderbird-link-guard) |
 
-This documentation follows the `main` branch of the repository. The
+This documentation describes the latest release; the version is shown at the top of
+each page. The
 [changelog](https://github.com/marco-schm/thunderbird-link-guard/blob/main/CHANGELOG.md)
 lists which release introduced each change.
