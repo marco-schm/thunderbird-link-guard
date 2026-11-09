@@ -456,6 +456,17 @@
       }
     }
   },
+  "note_namedTarget": {
+    "message": "Wskazuje $TARGET$, ale to $HOST$ decyduje, dokąd naprawdę prowadzi link.",
+    "placeholders": {
+      "target": {
+        "content": "$1"
+      },
+      "host": {
+        "content": "$2"
+      }
+    }
+  },
   "riskyApprovalWarning": {
     "message": "Ten skrócony odnośnik ukrywa adres docelowy. Zezwolić na niego w tej wiadomości?"
   },

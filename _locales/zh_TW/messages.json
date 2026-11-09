@@ -456,6 +456,17 @@
       }
     }
   },
+  "note_namedTarget": {
+    "message": "連結中寫的是 $TARGET$，但實際去向由 $HOST$ 決定。",
+    "placeholders": {
+      "target": {
+        "content": "$1"
+      },
+      "host": {
+        "content": "$2"
+      }
+    }
+  },
   "riskyApprovalWarning": {
     "message": "這個短網址隱藏了目的地。要在此郵件中允許嗎？"
   },

@@ -456,6 +456,17 @@
       }
     }
   },
+  "note_namedTarget": {
+    "message": "Nævner $TARGET$, men $HOST$ bestemmer, hvor linket reelt fører hen.",
+    "placeholders": {
+      "target": {
+        "content": "$1"
+      },
+      "host": {
+        "content": "$2"
+      }
+    }
+  },
   "riskyApprovalWarning": {
     "message": "Dette forkortede link skjuler sit mål. Tillad det for denne meddelelse?"
   },

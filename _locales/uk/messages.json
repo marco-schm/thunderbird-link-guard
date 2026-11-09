@@ -456,6 +456,17 @@
       }
     }
   },
+  "note_namedTarget": {
+    "message": "Вказує $TARGET$, але куди насправді веде посилання, вирішує $HOST$.",
+    "placeholders": {
+      "target": {
+        "content": "$1"
+      },
+      "host": {
+        "content": "$2"
+      }
+    }
+  },
   "riskyApprovalWarning": {
     "message": "Це скорочене посилання приховує адресу призначення. Дозволити його для цього листа?"
   },

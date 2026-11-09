@@ -456,6 +456,17 @@
       }
     }
   },
+  "note_namedTarget": {
+    "message": "Noemt $TARGET$, maar $HOST$ bepaalt waar de link echt naartoe gaat.",
+    "placeholders": {
+      "target": {
+        "content": "$1"
+      },
+      "host": {
+        "content": "$2"
+      }
+    }
+  },
   "riskyApprovalWarning": {
     "message": "Deze verkorte link verbergt de bestemming. Toestaan voor dit bericht?"
   },
