@@ -5,6 +5,8 @@
 
 Link Guard makes web links in displayed email inactive until you approve their destination host. A notice bar in Thunderbird's style shows which hosts a message links to, grouped by what needs your attention, flags suspicious links, and lets you allow or block each host or its whole domain. No trust list is bundled, and nothing is uploaded: your mail never leaves Thunderbird.
 
+**Website:** [link-guard.nullringresearch.de](https://link-guard.nullringresearch.de/) · **Documentation:** [link-guard.nullringresearch.de/thunderbird](https://link-guard.nullringresearch.de/thunderbird/)
+
 <p align="center">
   <img src="docs/screenshots/message-panel.png" alt="Link Guard notice in Thunderbird style: hosts grouped into Needs attention and Not yet approved, with warnings for a short link, a lookalike domain and misleading link text" width="720">
 </p>
