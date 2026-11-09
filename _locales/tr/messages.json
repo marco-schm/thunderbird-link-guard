@@ -456,6 +456,17 @@
       }
     }
   },
+  "note_namedTarget": {
+    "message": "$TARGET$ adresini gösteriyor, ancak bağlantının gerçekte nereye gittiğine $HOST$ karar verir.",
+    "placeholders": {
+      "target": {
+        "content": "$1"
+      },
+      "host": {
+        "content": "$2"
+      }
+    }
+  },
   "riskyApprovalWarning": {
     "message": "Bu kısaltılmış bağlantı hedefini gizliyor. Bu ileti için izin verilsin mi?"
   },

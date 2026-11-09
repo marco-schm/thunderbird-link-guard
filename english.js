@@ -458,6 +458,17 @@ globalThis.LinkGuardEnglish = {
       }
     }
   },
+  "note_namedTarget": {
+    "message": "Names $TARGET$, but $HOST$ decides where the link really leads.",
+    "placeholders": {
+      "target": {
+        "content": "$1"
+      },
+      "host": {
+        "content": "$2"
+      }
+    }
+  },
   "riskyApprovalWarning": {
     "message": "This short link hides its destination. Allow it for this message?"
   },

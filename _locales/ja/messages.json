@@ -456,6 +456,17 @@
       }
     }
   },
+  "note_namedTarget": {
+    "message": "$TARGET$ を示していますが、リンクの実際の行き先は $HOST$ が決めます。",
+    "placeholders": {
+      "target": {
+        "content": "$1"
+      },
+      "host": {
+        "content": "$2"
+      }
+    }
+  },
   "riskyApprovalWarning": {
     "message": "この短縮リンクはリンク先を隠しています。このメールでのみ許可しますか？"
   },

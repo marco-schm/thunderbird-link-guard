@@ -193,13 +193,30 @@
   // wrapper, an open redirect) warns only when that destination leaves the link's own
   // site and is not approved. The warning names the destination. Returns the risks and
   // whether a check is still pending, in which case the link stays closed for now.
+  //
+  // A carried destination is only a claim: the linked site decides where the browser
+  // really goes. When an approved site is named inside a link whose own host is not
+  // approved, the link would otherwise look harmless, so it gets a note (not a warning:
+  // newsletter click trackers name the real site all the time).
   function redirectRisks(inspection) {
-    const result = { risks: [], pending: false };
-    if (inspection.kind !== "web" || !inspection.destinations ||
-        warningSettings.disabled.has("redirect")) return result;
+    const result = { risks: [], notes: [], pending: false };
+    if (inspection.kind !== "web" || !inspection.destinations) return result;
     for (const target of inspection.destinations) {
       const approved = destinationApproved(target);
-      if (approved === true) continue;
+      if (approved === true) {
+        if (destinationApproved(inspection.host) === true) continue;
+        if (!registrableRoots.has(target) || !registrableRoots.has(inspection.host)) {
+          unknownRoots.add(target);
+          unknownRoots.add(inspection.host);
+          continue;
+        }
+        const targetRoot = registrableRoots.get(target);
+        if (!targetRoot || targetRoot !== registrableRoots.get(inspection.host)) {
+          result.notes.push(`namedTarget:${target}`);
+        }
+        continue;
+      }
+      if (warningSettings.disabled.has("redirect")) continue;
       if (!registrableRoots.has(target) || !registrableRoots.has(inspection.host)) {
         unknownRoots.add(target);
         unknownRoots.add(inspection.host);
@@ -232,6 +249,7 @@
     if (redirect.risks.length) {
       inspection = { ...inspection, risks: [...(inspection.risks || []), ...redirect.risks] };
     }
+    if (redirect.notes.length) inspection = { ...inspection, notes: redirect.notes };
     if (warningRules) {
       // Rules are matched against the destination a click would open, not the raw
       // attribute, so a base-relative link cannot slip past a rule written for its URL.
@@ -499,7 +517,35 @@
     return line;
   }
 
-  function makeHostRow(host, count, risks) {
+  // A hint that is not a warning: amber text behind an information mark.
+  function noteLine(text) {
+    const line = document.createElement("div");
+    line.className = "link-guard-risk link-guard-note";
+    const box = document.createElement("span");
+    box.className = "link-guard-risk-box";
+    const label = document.createElement("span");
+    label.textContent = text;
+    const icon = document.createElementNS(SVG_NS, "svg");
+    icon.setAttribute("class", "link-guard-risk-icon");
+    icon.setAttribute("viewBox", "0 0 24 24");
+    icon.setAttribute("aria-hidden", "true");
+    const circle = document.createElementNS(SVG_NS, "circle");
+    circle.setAttribute("cx", "12");
+    circle.setAttribute("cy", "12");
+    circle.setAttribute("r", "10");
+    circle.setAttribute("fill", "#a34d00");
+    const mark = document.createElementNS(SVG_NS, "path");
+    mark.setAttribute("d", "M12 11v6M12 7.2v.1");
+    mark.setAttribute("stroke", "#fff");
+    mark.setAttribute("stroke-width", "2.4");
+    mark.setAttribute("stroke-linecap", "round");
+    icon.append(circle, mark);
+    box.append(icon, label);
+    line.append(box);
+    return line;
+  }
+
+  function makeHostRow(host, count, risks, notes) {
     const row = document.createElement("div");
     row.className = "link-guard-row";
     const information = document.createElement("div");
@@ -523,6 +569,11 @@
           t("riskLookalike", [warning.similarTo])));
     }
     for (const reason of risks || []) information.append(riskLine(riskText(reason, false)));
+    for (const note of notes || []) {
+      if (note.startsWith("namedTarget:")) {
+        information.append(noteLine(t("note_namedTarget", [note.slice(12), host])));
+      }
+    }
     // A host with a warning stands out in the list, not only through its text.
     if ((warning && warning.kind !== "none") || risks?.size) row.classList.add("link-guard-row-risk");
     const actions = document.createElement("div");
@@ -589,7 +640,8 @@
     document.body.prepend(panelHost);
   }
 
-  function renderPanel(groups, hardBlocks, linkRisks, totalWeb, pending, blocked, warnings, overflow) {
+  function renderPanel(groups, hardBlocks, linkRisks, totalWeb, pending, blocked, warnings, overflow,
+      linkNotes = new Map()) {
     if (!document.body) return;
     if (!state.enabled || (pending + blocked + warnings === 0 && !overflow)) {
       panelHost?.remove();
@@ -610,7 +662,7 @@
     const list = document.createElement("div");
     list.className = "link-guard-list";
     for (const [host, count] of [...groups].sort(([a], [b]) => a.localeCompare(b))) {
-      list.append(makeHostRow(host, count, linkRisks.get(host)));
+      list.append(makeHostRow(host, count, linkRisks.get(host), linkNotes.get(host)));
     }
     if (hardBlocks.size) {
       const hardTitle = document.createElement("h3");
@@ -784,6 +836,7 @@
     const groups = new Map();
     const hardBlocks = new Map();
     const linkRisks = new Map();
+    const linkNotes = new Map();
     const scopes = linkScopes();
     const anchors = [];
     for (const scope of scopes) {
@@ -844,13 +897,18 @@
           linkRisks.set(host, risks);
         }
       }
+      if (inspection.notes?.length) {
+        const notes = linkNotes.get(inspection.host) || new Set();
+        for (const note of inspection.notes) notes.add(note);
+        linkNotes.set(inspection.host, notes);
+      }
       if (!approved) {
         if (inspection.hosts.some(host => statusFor(host) === "blocked")) blocked++;
         else pending++;
       }
     }
     const overflow = inspected > MAX_LISTED_LINKS;
-    renderPanel(groups, hardBlocks, linkRisks, totalWeb, pending, blocked, warnings, overflow);
+    renderPanel(groups, hardBlocks, linkRisks, totalWeb, pending, blocked, warnings, overflow, linkNotes);
     sendToolbar(pending, blocked, warnings, overflow);
     for (const host of destinationsToAnalyze) {
       if (!analyzedHosts.has(host)) unknown.add(host);

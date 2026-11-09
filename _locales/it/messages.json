@@ -456,6 +456,17 @@
       }
     }
   },
+  "note_namedTarget": {
+    "message": "Indica $TARGET$, ma è $HOST$ a decidere dove porta davvero il link.",
+    "placeholders": {
+      "target": {
+        "content": "$1"
+      },
+      "host": {
+        "content": "$2"
+      }
+    }
+  },
   "riskyApprovalWarning": {
     "message": "Questo breve collegamento nasconde la sua destinazione. Consentirlo per questo messaggio?"
   },

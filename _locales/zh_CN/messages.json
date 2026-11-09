@@ -456,6 +456,17 @@
       }
     }
   },
+  "note_namedTarget": {
+    "message": "链接中写的是 $TARGET$，但实际去向由 $HOST$ 决定。",
+    "placeholders": {
+      "target": {
+        "content": "$1"
+      },
+      "host": {
+        "content": "$2"
+      }
+    }
+  },
   "riskyApprovalWarning": {
     "message": "此短链接隐藏了目标地址。是否仅在这封邮件中允许？"
   },

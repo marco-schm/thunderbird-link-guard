@@ -456,6 +456,17 @@
       }
     }
   },
+  "note_namedTarget": {
+    "message": "Mainitsee kohteen $TARGET$, mutta $HOST$ päättää, minne linkki todella vie.",
+    "placeholders": {
+      "target": {
+        "content": "$1"
+      },
+      "host": {
+        "content": "$2"
+      }
+    }
+  },
   "riskyApprovalWarning": {
     "message": "Tämä lyhennetty linkki piilottaa kohteensa. Sallitaanko se tälle viestille?"
   },

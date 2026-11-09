@@ -1,5 +1,13 @@
 # Changelog
 
+## Unreleased
+
+- A link whose own host is not approved but which names a site you approved inside it
+  (`?url=https://your-bank.example/`) now shows an amber hint that the linking site, not
+  the named one, decides where the link really leads. Before, such a link looked
+  harmless because the named site needed no warning. The hint is not a warning and
+  needs no extra approval.
+
 ## 0.13.0 — 2026-11-09
 
 - Imported lists may now hold 5,000 entries and 512 KiB each (previously 500 and

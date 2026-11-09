@@ -107,6 +107,12 @@ globalThis.LinkGuardPanelCss = globalThis.LinkGuardHostGuardCss + `
   color: #9d1725 !important;
   font: 700 13px/1.4 system-ui, sans-serif !important;
 }
+.link-guard-panel .link-guard-note .link-guard-risk-box {
+  border-color: #f1c88f !important;
+  background: #fff6e8 !important;
+  color: #7a3a00 !important;
+  font-weight: 600 !important;
+}
 .link-guard-panel .link-guard-blocked-note {
   flex-basis: 100% !important;
   max-width: 280px !important;

@@ -165,6 +165,16 @@ within the same site such as `www.example.com/login?next=https://shop.example.co
 does not warn. A destination that merely resembles an approved domain counts as not
 approved.
 
+A carried destination is only what the link **claims**. The linked site decides where
+your browser really goes, and it can send you somewhere else entirely. An attacker can
+therefore put a site you trust into the parameter to make an unknown link look
+harmless, as in `click.example.info/r?u=https://www.example.org/`. When the carried
+destination is approved but the link's own host is not, the notice says so in an amber
+hint instead of staying silent: *Names www.example.org, but click.example.info decides
+where the link really leads.* This is not a warning – newsletter click trackers name the
+real site all the time – but approve the linking host only if you know it. The hint
+disappears once that host is approved.
+
 Link Guard does not open links, so it cannot see redirects that the server decides on,
 such as a click tracker with an opaque ID. A missing redirect warning therefore does not
 prove that a link stays where it seems to go.

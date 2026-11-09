@@ -456,6 +456,17 @@
       }
     }
   },
+  "note_namedTarget": {
+    "message": "Указывает $TARGET$, но куда на самом деле ведёт ссылка, решает $HOST$.",
+    "placeholders": {
+      "target": {
+        "content": "$1"
+      },
+      "host": {
+        "content": "$2"
+      }
+    }
+  },
   "riskyApprovalWarning": {
     "message": "Эта короткая ссылка скрывает адрес назначения. Разрешить её для этого письма?"
   },

@@ -456,6 +456,17 @@
       }
     }
   },
+  "note_namedTarget": {
+    "message": "Uvádí $TARGET$, ale kam odkaz skutečně vede, rozhoduje $HOST$.",
+    "placeholders": {
+      "target": {
+        "content": "$1"
+      },
+      "host": {
+        "content": "$2"
+      }
+    }
+  },
   "riskyApprovalWarning": {
     "message": "Tento zkrácený odkaz skrývá svůj cíl. Povolit jej pro tuto zprávu?"
   },

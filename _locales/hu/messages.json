@@ -456,6 +456,17 @@
       }
     }
   },
+  "note_namedTarget": {
+    "message": "A(z) $TARGET$ címet nevezi meg, de hogy a link valójában hová vezet, azt a(z) $HOST$ dönti el.",
+    "placeholders": {
+      "target": {
+        "content": "$1"
+      },
+      "host": {
+        "content": "$2"
+      }
+    }
+  },
   "riskyApprovalWarning": {
     "message": "Ez a rövidített hivatkozás elrejti a célját. Engedélyezi ehhez az üzenethez?"
   },

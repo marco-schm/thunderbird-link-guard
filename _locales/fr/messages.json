@@ -456,6 +456,17 @@
       }
     }
   },
+  "note_namedTarget": {
+    "message": "Mentionne $TARGET$, mais c’est $HOST$ qui décide où mène réellement le lien.",
+    "placeholders": {
+      "target": {
+        "content": "$1"
+      },
+      "host": {
+        "content": "$2"
+      }
+    }
+  },
   "riskyApprovalWarning": {
     "message": "Ce lien court cache sa destination. L'autoriser pour ce message ?"
   },

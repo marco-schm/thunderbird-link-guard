@@ -456,6 +456,17 @@
       }
     }
   },
+  "note_namedTarget": {
+    "message": "$TARGET$을(를) 가리키지만, 링크가 실제로 어디로 가는지는 $HOST$이(가) 결정합니다.",
+    "placeholders": {
+      "target": {
+        "content": "$1"
+      },
+      "host": {
+        "content": "$2"
+      }
+    }
+  },
   "riskyApprovalWarning": {
     "message": "이 단축 링크는 대상을 숨깁니다. 이 메시지에 대해 허용할까요?"
   },
