@@ -717,5 +717,27 @@
         "content": "$1"
       }
     }
+  },
+  "scopePrompt": {
+    "message": "Quale ambito dovrebbe essere approvato in modo permanente?"
+  },
+  "blockScopePrompt": {
+    "message": "Quale ambito deve essere bloccato?"
+  },
+  "scopeExact": {
+    "message": "Solo $HOST$",
+    "placeholders": {
+      "host": {
+        "content": "$1"
+      }
+    }
+  },
+  "scopeBroad": {
+    "message": "$DOMAIN$ e tutti i sottodomini",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      }
+    }
   }
 }

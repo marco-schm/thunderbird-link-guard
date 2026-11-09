@@ -717,5 +717,27 @@
         "content": "$1"
       }
     }
+  },
+  "scopePrompt": {
+    "message": "Jaki zakres zatwierdzić na stałe?"
+  },
+  "blockScopePrompt": {
+    "message": "Jaki zakres zablokować?"
+  },
+  "scopeExact": {
+    "message": "Tylko $HOST$",
+    "placeholders": {
+      "host": {
+        "content": "$1"
+      }
+    }
+  },
+  "scopeBroad": {
+    "message": "$DOMAIN$ i wszystkie subdomeny",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      }
+    }
   }
 }

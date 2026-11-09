@@ -717,5 +717,27 @@
         "content": "$1"
       }
     }
+  },
+  "scopePrompt": {
+    "message": "恒久的に許可する範囲を選択してください"
+  },
+  "blockScopePrompt": {
+    "message": "ブロックする範囲を選択してください"
+  },
+  "scopeExact": {
+    "message": "$HOST$ のみ",
+    "placeholders": {
+      "host": {
+        "content": "$1"
+      }
+    }
+  },
+  "scopeBroad": {
+    "message": "$DOMAIN$ とすべてのサブドメイン",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      }
+    }
   }
 }

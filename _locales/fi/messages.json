@@ -717,5 +717,27 @@
         "content": "$1"
       }
     }
+  },
+  "scopePrompt": {
+    "message": "Mikä laajuus hyväksytään pysyvästi?"
+  },
+  "blockScopePrompt": {
+    "message": "Mikä laajuus estetään?"
+  },
+  "scopeExact": {
+    "message": "Vain $HOST$",
+    "placeholders": {
+      "host": {
+        "content": "$1"
+      }
+    }
+  },
+  "scopeBroad": {
+    "message": "$DOMAIN$ ja kaikki aliverkkotunnukset",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      }
+    }
   }
 }

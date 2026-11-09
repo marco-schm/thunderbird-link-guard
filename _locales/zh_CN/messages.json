@@ -717,5 +717,27 @@
         "content": "$1"
       }
     }
+  },
+  "scopePrompt": {
+    "message": "要永久批准哪个范围？"
+  },
+  "blockScopePrompt": {
+    "message": "要阻止哪个范围？"
+  },
+  "scopeExact": {
+    "message": "仅限 $HOST$",
+    "placeholders": {
+      "host": {
+        "content": "$1"
+      }
+    }
+  },
+  "scopeBroad": {
+    "message": "$DOMAIN$ 及其所有子域名",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      }
+    }
   }
 }

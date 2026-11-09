@@ -717,5 +717,27 @@
         "content": "$1"
       }
     }
+  },
+  "scopePrompt": {
+    "message": "Welk bereik moet permanent worden goedgekeurd?"
+  },
+  "blockScopePrompt": {
+    "message": "Welk bereik moet worden geblokkeerd?"
+  },
+  "scopeExact": {
+    "message": "Alleen $HOST$",
+    "placeholders": {
+      "host": {
+        "content": "$1"
+      }
+    }
+  },
+  "scopeBroad": {
+    "message": "$DOMAIN$ en alle subdomeinen",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      }
+    }
   }
 }
