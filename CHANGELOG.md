@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 0.13.0 — 2026-11-09
 
 - Imported lists may now hold 5,000 entries and 512 KiB each (previously 500 and
   64 KiB), still at most 20 lists. Warning lists and your own rule cards keep their
