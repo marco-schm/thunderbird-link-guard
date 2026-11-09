@@ -51,8 +51,21 @@ test("the panel stylesheet is exposed as a string for the shadow root", () => {
   const context = vm.createContext({});
   vm.runInContext(fs.readFileSync(path.join(__dirname, "../panel-style.js"), "utf8"), context);
   assert.match(context.LinkGuardPanelCss, /\.link-guard-panel\s*\{/);
-  assert.match(context.LinkGuardPanelCss, /\.link-guard-actions button/);
+  assert.match(context.LinkGuardPanelCss, /\.link-guard-panel button\s*\{/);
   assert.doesNotMatch(fs.readFileSync(path.join(__dirname, "../display.css"), "utf8"), /link-guard-panel/);
+});
+
+// Message CSS cannot reach into the closed shadow root, but every declaration is still
+// !important so the panel keeps its look even if a rule ever leaked in.
+test("every declaration in the panel stylesheet is important", () => {
+  const context = vm.createContext({});
+  vm.runInContext(fs.readFileSync(path.join(__dirname, "../panel-style.js"), "utf8"), context);
+  const css = context.LinkGuardPanelCss.replace(/\/\*[\s\S]*?\*\//g, "");
+  for (const block of css.matchAll(/\{([^{}]*)\}/g)) {
+    for (const declaration of block[1].split(";").map(part => part.trim()).filter(Boolean)) {
+      assert.match(declaration, /!important$/, declaration);
+    }
+  }
 });
 
 // Inline styles cannot reach pseudo-elements; message CSS could inject text into the

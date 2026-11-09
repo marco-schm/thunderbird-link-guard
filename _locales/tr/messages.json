@@ -36,28 +36,6 @@
       }
     }
   },
-  "panelTitle": {
-    "message": "Bağlantıları gözden geçir"
-  },
-  "panelCompact": {
-    "message": "Bekleyen bağlantılar: $COUNT$",
-    "placeholders": {
-      "count": {
-        "content": "$1"
-      }
-    }
-  },
-  "panelCompactRisk": {
-    "message": "⚠ Uyarılar: $RISK$ · Bekleyen: $BLOCKED$",
-    "placeholders": {
-      "risk": {
-        "content": "$2"
-      },
-      "blocked": {
-        "content": "$1"
-      }
-    }
-  },
   "panelSummary": {
     "message": "$TOTAL$ web bağlantısı denetlendi · $BLOCKED$ engellendi",
     "placeholders": {
@@ -129,35 +107,10 @@
   "openSettings": {
     "message": "Ayarları aç"
   },
-  "scopePrompt": {
-    "message": "Hangi kapsam kalıcı olarak onaylansın?"
-  },
-  "blockScopePrompt": {
-    "message": "Hangi kapsam engellensin?"
-  },
-  "scopePromptShared": {
-    "message": "Başkaları burada içerik yayımlayabilir. Yalnızca bu ana bilgisayarı onaylayın."
-  },
   "linkDestinationInline": {
     "message": "↗ $HOST$",
     "placeholders": {
       "host": {
-        "content": "$1"
-      }
-    }
-  },
-  "scopeExact": {
-    "message": "Yalnızca $HOST$",
-    "placeholders": {
-      "host": {
-        "content": "$1"
-      }
-    }
-  },
-  "scopeBroad": {
-    "message": "$DOMAIN$ ve tüm alt alan adları",
-    "placeholders": {
-      "domain": {
         "content": "$1"
       }
     }
@@ -670,5 +623,99 @@
   },
   "showRules": {
     "message": "Kuralları göster"
+  },
+  "panelTitleDanger": {
+    "message": "Bu iletide şüpheli bağlantılar var"
+  },
+  "panelTitleBlocked": {
+    "message": "Bu ileti engellenmiş sitelere bağlantı veriyor"
+  },
+  "panelTitlePending": {
+    "message": "Bu iletideki bağlantılar onay bekliyor"
+  },
+  "countWarnings": {
+    "message": "Uyarılar: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "countPending": {
+    "message": "Onaylanmadı: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "countBlocked": {
+    "message": "Engellendi: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "countLinks": {
+    "message": "Bağlantılar: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "sectionAttention": {
+    "message": "Dikkat gerekiyor"
+  },
+  "sectionPending": {
+    "message": "Henüz onaylanmadı"
+  },
+  "sectionBlocked": {
+    "message": "Engellendi"
+  },
+  "sectionApproved": {
+    "message": "Onaylandı"
+  },
+  "moreActions": {
+    "message": "$HOST$ için diğer işlemler",
+    "placeholders": {
+      "host": {
+        "content": "$1"
+      }
+    }
+  },
+  "showLinks": {
+    "message": "Bağlantıları göster ($COUNT$)",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "hideLinks": {
+    "message": "Bağlantıları gizle"
+  },
+  "showInMessage": {
+    "message": "İletide göster"
+  },
+  "noLinkText": {
+    "message": "(bağlantı metni yok)"
+  },
+  "allowDomain": {
+    "message": "$DOMAIN$ ve tüm alt alan adlarına izin ver",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      }
+    }
+  },
+  "blockDomain": {
+    "message": "$DOMAIN$ ve tüm alt alan adlarını engelle",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      }
+    }
   }
 }

@@ -36,28 +36,6 @@
       }
     }
   },
-  "panelTitle": {
-    "message": "リンクを確認"
-  },
-  "panelCompact": {
-    "message": "確認待ちのリンク: $COUNT$ 件",
-    "placeholders": {
-      "count": {
-        "content": "$1"
-      }
-    }
-  },
-  "panelCompactRisk": {
-    "message": "⚠ 警告: $RISK$ 件 · 確認待ち: $BLOCKED$ 件",
-    "placeholders": {
-      "risk": {
-        "content": "$2"
-      },
-      "blocked": {
-        "content": "$1"
-      }
-    }
-  },
   "panelSummary": {
     "message": "確認したウェブリンク: $TOTAL$ 件 · ブロック: $BLOCKED$ 件",
     "placeholders": {
@@ -129,35 +107,10 @@
   "openSettings": {
     "message": "設定を開く"
   },
-  "scopePrompt": {
-    "message": "恒久的に許可する範囲を選択してください"
-  },
-  "blockScopePrompt": {
-    "message": "ブロックする範囲を選択してください"
-  },
-  "scopePromptShared": {
-    "message": "ここには他の人もコンテンツを公開できます。このホストだけを許可してください。"
-  },
   "linkDestinationInline": {
     "message": "↗ $HOST$",
     "placeholders": {
       "host": {
-        "content": "$1"
-      }
-    }
-  },
-  "scopeExact": {
-    "message": "$HOST$ のみ",
-    "placeholders": {
-      "host": {
-        "content": "$1"
-      }
-    }
-  },
-  "scopeBroad": {
-    "message": "$DOMAIN$ とすべてのサブドメイン",
-    "placeholders": {
-      "domain": {
         "content": "$1"
       }
     }
@@ -670,5 +623,99 @@
   },
   "showRules": {
     "message": "ルールを表示"
+  },
+  "panelTitleDanger": {
+    "message": "このメッセージに不審なリンクがあります"
+  },
+  "panelTitleBlocked": {
+    "message": "このメッセージはブロック済みのサイトにリンクしています"
+  },
+  "panelTitlePending": {
+    "message": "このメッセージのリンクは許可待ちです"
+  },
+  "countWarnings": {
+    "message": "警告: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "countPending": {
+    "message": "未許可: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "countBlocked": {
+    "message": "ブロック済み: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "countLinks": {
+    "message": "リンク: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "sectionAttention": {
+    "message": "要確認"
+  },
+  "sectionPending": {
+    "message": "未許可"
+  },
+  "sectionBlocked": {
+    "message": "ブロック済み"
+  },
+  "sectionApproved": {
+    "message": "許可済み"
+  },
+  "moreActions": {
+    "message": "$HOST$ のその他の操作",
+    "placeholders": {
+      "host": {
+        "content": "$1"
+      }
+    }
+  },
+  "showLinks": {
+    "message": "リンクを表示 ($COUNT$)",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "hideLinks": {
+    "message": "リンクを隠す"
+  },
+  "showInMessage": {
+    "message": "メッセージ内で表示"
+  },
+  "noLinkText": {
+    "message": "(リンクテキストなし)"
+  },
+  "allowDomain": {
+    "message": "$DOMAIN$ とすべてのサブドメインを許可",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      }
+    }
+  },
+  "blockDomain": {
+    "message": "$DOMAIN$ とすべてのサブドメインをブロック",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      }
+    }
   }
 }

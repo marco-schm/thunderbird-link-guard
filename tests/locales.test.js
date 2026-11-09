@@ -38,8 +38,8 @@ test("English fallback ignores a supported secondary Thunderbird language", () =
   assert.equal(context.LinkGuardLocale.getMessage("settingsTitle"), "Link Guard settings");
   assert.equal(context.LinkGuardLocale.getMessage("toolbarPending", ["3"]),
     "Link Guard: 3 blocked links");
-  assert.equal(context.LinkGuardLocale.getMessage("panelCompactRisk", ["2", "1"]),
-    "⚠ Warnings: 1 · Pending: 2");
+  assert.equal(context.LinkGuardLocale.getMessage("allowDomain", ["example.org"]),
+    "Allow example.org and all subdomains");
   assert.equal(context.LinkGuardLocale.effectiveUiLocale("ar"), "en");
   assert.deepEqual(JSON.parse(JSON.stringify(context.LinkGuardEnglish)), read("en"));
 });

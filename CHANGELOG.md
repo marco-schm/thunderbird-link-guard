@@ -2,6 +2,16 @@
 
 ## Unreleased
 
+- New design in Thunderbird's style, with the same layout as Link Guard for Outlook. The
+  notice is a notification bar that names what it found (suspicious links, blocked sites
+  or links waiting for approval) and counts warnings, unapproved and blocked links. Expanded,
+  it groups hosts into *Needs attention*, *Not yet approved*, *Blocked* and a collapsed
+  *Approved*, one card per host with its registrable domain in bold. Each card lists its
+  links with their full address and **Show in message**. Whole-domain decisions moved
+  from a second step into the card's **⋯** menu; **Allow permanently** now approves the
+  exact host directly. Light and dark mode follow Thunderbird.
+- Settings use Thunderbird's colours, toggles and the Link Guard logo, which is now also
+  the add-on's icon.
 - A link whose own host is not approved but which names a site you approved inside it
   (`?url=https://your-bank.example/`) now shows an amber hint that the linking site, not
   the named one, decides where the link really leads. Before, such a link looked

@@ -36,28 +36,6 @@
       }
     }
   },
-  "panelTitle": {
-    "message": "Zkontrolovat odkazy"
-  },
-  "panelCompact": {
-    "message": "Čekající odkazy: $COUNT$",
-    "placeholders": {
-      "count": {
-        "content": "$1"
-      }
-    }
-  },
-  "panelCompactRisk": {
-    "message": "⚠ Upozornění: $RISK$ · Čeká: $BLOCKED$",
-    "placeholders": {
-      "risk": {
-        "content": "$2"
-      },
-      "blocked": {
-        "content": "$1"
-      }
-    }
-  },
   "panelSummary": {
     "message": "Zkontrolováno webových odkazů: $TOTAL$ · blokováno: $BLOCKED$",
     "placeholders": {
@@ -129,35 +107,10 @@
   "openSettings": {
     "message": "Otevřít nastavení"
   },
-  "scopePrompt": {
-    "message": "Jaký rozsah se má trvale schválit?"
-  },
-  "blockScopePrompt": {
-    "message": "Jaký rozsah se má blokovat?"
-  },
-  "scopePromptShared": {
-    "message": "Jiní zde mohou zveřejňovat obsah. Schvalte pouze tohoto hostitele."
-  },
   "linkDestinationInline": {
     "message": "↗ $HOST$",
     "placeholders": {
       "host": {
-        "content": "$1"
-      }
-    }
-  },
-  "scopeExact": {
-    "message": "Pouze $HOST$",
-    "placeholders": {
-      "host": {
-        "content": "$1"
-      }
-    }
-  },
-  "scopeBroad": {
-    "message": "$DOMAIN$ a všechny subdomény",
-    "placeholders": {
-      "domain": {
         "content": "$1"
       }
     }
@@ -670,5 +623,99 @@
   },
   "showRules": {
     "message": "Zobrazit pravidla"
+  },
+  "panelTitleDanger": {
+    "message": "Podezřelé odkazy v této zprávě"
+  },
+  "panelTitleBlocked": {
+    "message": "Tato zpráva odkazuje na blokované stránky"
+  },
+  "panelTitlePending": {
+    "message": "Odkazy v této zprávě čekají na schválení"
+  },
+  "countWarnings": {
+    "message": "Varování: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "countPending": {
+    "message": "Neschváleno: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "countBlocked": {
+    "message": "Blokováno: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "countLinks": {
+    "message": "Odkazy: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "sectionAttention": {
+    "message": "Vyžaduje pozornost"
+  },
+  "sectionPending": {
+    "message": "Zatím neschváleno"
+  },
+  "sectionBlocked": {
+    "message": "Blokováno"
+  },
+  "sectionApproved": {
+    "message": "Schváleno"
+  },
+  "moreActions": {
+    "message": "Další akce pro $HOST$",
+    "placeholders": {
+      "host": {
+        "content": "$1"
+      }
+    }
+  },
+  "showLinks": {
+    "message": "Zobrazit odkazy ($COUNT$)",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "hideLinks": {
+    "message": "Skrýt odkazy"
+  },
+  "showInMessage": {
+    "message": "Ukázat ve zprávě"
+  },
+  "noLinkText": {
+    "message": "(bez textu odkazu)"
+  },
+  "allowDomain": {
+    "message": "Povolit $DOMAIN$ a všechny subdomény",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      }
+    }
+  },
+  "blockDomain": {
+    "message": "Blokovat $DOMAIN$ a všechny subdomény",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      }
+    }
   }
 }

@@ -36,28 +36,6 @@
       }
     }
   },
-  "panelTitle": {
-    "message": "Hivatkozások áttekintése"
-  },
-  "panelCompact": {
-    "message": "Függőben lévő hivatkozások: $COUNT$",
-    "placeholders": {
-      "count": {
-        "content": "$1"
-      }
-    }
-  },
-  "panelCompactRisk": {
-    "message": "⚠ Figyelmeztetések: $RISK$ · Függőben: $BLOCKED$",
-    "placeholders": {
-      "risk": {
-        "content": "$2"
-      },
-      "blocked": {
-        "content": "$1"
-      }
-    }
-  },
   "panelSummary": {
     "message": "$TOTAL$ webes hivatkozás ellenőrizve · $BLOCKED$ letiltva",
     "placeholders": {
@@ -129,35 +107,10 @@
   "openSettings": {
     "message": "Beállítások megnyitása"
   },
-  "scopePrompt": {
-    "message": "Melyik hatókört hagyja jóvá véglegesen?"
-  },
-  "blockScopePrompt": {
-    "message": "Melyik hatókört tiltsa le?"
-  },
-  "scopePromptShared": {
-    "message": "Mások is közzétehetnek itt tartalmat. Csak ezt a gazdagépet hagyja jóvá."
-  },
   "linkDestinationInline": {
     "message": "↗ $HOST$",
     "placeholders": {
       "host": {
-        "content": "$1"
-      }
-    }
-  },
-  "scopeExact": {
-    "message": "Csak $HOST$",
-    "placeholders": {
-      "host": {
-        "content": "$1"
-      }
-    }
-  },
-  "scopeBroad": {
-    "message": "$DOMAIN$ és minden altartomány",
-    "placeholders": {
-      "domain": {
         "content": "$1"
       }
     }
@@ -670,5 +623,99 @@
   },
   "showRules": {
     "message": "Szabályok megjelenítése"
+  },
+  "panelTitleDanger": {
+    "message": "Gyanús hivatkozások ebben az üzenetben"
+  },
+  "panelTitleBlocked": {
+    "message": "Ez az üzenet letiltott oldalakra hivatkozik"
+  },
+  "panelTitlePending": {
+    "message": "Az üzenet hivatkozásai jóváhagyásra várnak"
+  },
+  "countWarnings": {
+    "message": "Figyelmeztetések: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "countPending": {
+    "message": "Nincs jóváhagyva: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "countBlocked": {
+    "message": "Letiltva: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "countLinks": {
+    "message": "Hivatkozások: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "sectionAttention": {
+    "message": "Figyelmet igényel"
+  },
+  "sectionPending": {
+    "message": "Még nincs jóváhagyva"
+  },
+  "sectionBlocked": {
+    "message": "Letiltva"
+  },
+  "sectionApproved": {
+    "message": "Jóváhagyva"
+  },
+  "moreActions": {
+    "message": "További műveletek: $HOST$",
+    "placeholders": {
+      "host": {
+        "content": "$1"
+      }
+    }
+  },
+  "showLinks": {
+    "message": "Hivatkozások megjelenítése ($COUNT$)",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "hideLinks": {
+    "message": "Hivatkozások elrejtése"
+  },
+  "showInMessage": {
+    "message": "Megjelenítés az üzenetben"
+  },
+  "noLinkText": {
+    "message": "(nincs hivatkozásszöveg)"
+  },
+  "allowDomain": {
+    "message": "$DOMAIN$ és minden altartomány engedélyezése",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      }
+    }
+  },
+  "blockDomain": {
+    "message": "$DOMAIN$ és minden altartomány letiltása",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      }
+    }
   }
 }

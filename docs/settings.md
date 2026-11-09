@@ -57,7 +57,7 @@ See [Approvals and blocks](approvals-and-blocks.md) for how these rules combine.
 Import allowlists and blocklists from a JSON file or an HTTPS URL. The format and the
 requirements for remote sources are described in [Host lists](lists.md).
 
-![Imported lists with an allowlist and two remote blocklists, one expanded to show its entries](screenshots/settings-lists.png)
+![Imported lists: an enabled allowlist, an enabled remote blocklist that updates itself and a disabled one](screenshots/settings-lists.png)
 
 ### Importing a list
 
@@ -88,7 +88,7 @@ Up to 20 lists, each with up to 5,000 entries.
 
 ## Warnings
 
-![Warning settings with built-in toggles, two own regex rules and an imported warning list](screenshots/settings-warnings.png)
+![Warning settings with built-in toggles and an own regex rule](screenshots/settings-warnings.png)
 
 ### Built-in warnings
 

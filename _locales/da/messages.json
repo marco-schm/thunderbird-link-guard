@@ -36,28 +36,6 @@
       }
     }
   },
-  "panelTitle": {
-    "message": "Gennemgå links"
-  },
-  "panelCompact": {
-    "message": "Ventende links: $COUNT$",
-    "placeholders": {
-      "count": {
-        "content": "$1"
-      }
-    }
-  },
-  "panelCompactRisk": {
-    "message": "⚠ Advarsler: $RISK$ · Venter: $BLOCKED$",
-    "placeholders": {
-      "risk": {
-        "content": "$2"
-      },
-      "blocked": {
-        "content": "$1"
-      }
-    }
-  },
   "panelSummary": {
     "message": "$TOTAL$ weblinks kontrolleret · $BLOCKED$ blokeret",
     "placeholders": {
@@ -129,35 +107,10 @@
   "openSettings": {
     "message": "Åbn indstillinger"
   },
-  "scopePrompt": {
-    "message": "Hvilket omfang skal godkendes permanent?"
-  },
-  "blockScopePrompt": {
-    "message": "Hvilket omfang skal blokeres?"
-  },
-  "scopePromptShared": {
-    "message": "Andre kan udgive indhold her. Godkend kun denne vært."
-  },
   "linkDestinationInline": {
     "message": "↗ $HOST$",
     "placeholders": {
       "host": {
-        "content": "$1"
-      }
-    }
-  },
-  "scopeExact": {
-    "message": "Kun $HOST$",
-    "placeholders": {
-      "host": {
-        "content": "$1"
-      }
-    }
-  },
-  "scopeBroad": {
-    "message": "$DOMAIN$ og alle underdomæner",
-    "placeholders": {
-      "domain": {
         "content": "$1"
       }
     }
@@ -670,5 +623,99 @@
   },
   "showRules": {
     "message": "Vis regler"
+  },
+  "panelTitleDanger": {
+    "message": "Mistænkelige links i denne meddelelse"
+  },
+  "panelTitleBlocked": {
+    "message": "Denne meddelelse linker til blokerede websteder"
+  },
+  "panelTitlePending": {
+    "message": "Links i denne meddelelse venter på godkendelse"
+  },
+  "countWarnings": {
+    "message": "Advarsler: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "countPending": {
+    "message": "Ikke godkendt: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "countBlocked": {
+    "message": "Blokeret: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "countLinks": {
+    "message": "Links: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "sectionAttention": {
+    "message": "Kræver opmærksomhed"
+  },
+  "sectionPending": {
+    "message": "Endnu ikke godkendt"
+  },
+  "sectionBlocked": {
+    "message": "Blokeret"
+  },
+  "sectionApproved": {
+    "message": "Godkendt"
+  },
+  "moreActions": {
+    "message": "Flere handlinger for $HOST$",
+    "placeholders": {
+      "host": {
+        "content": "$1"
+      }
+    }
+  },
+  "showLinks": {
+    "message": "Vis links ($COUNT$)",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "hideLinks": {
+    "message": "Skjul links"
+  },
+  "showInMessage": {
+    "message": "Vis i meddelelsen"
+  },
+  "noLinkText": {
+    "message": "(ingen linktekst)"
+  },
+  "allowDomain": {
+    "message": "Tillad $DOMAIN$ og alle underdomæner",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      }
+    }
+  },
+  "blockDomain": {
+    "message": "Bloker $DOMAIN$ og alle underdomæner",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      }
+    }
   }
 }

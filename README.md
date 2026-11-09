@@ -3,10 +3,10 @@
 [![CI](https://github.com/marco-schm/thunderbird-link-guard/actions/workflows/ci.yml/badge.svg)](https://github.com/marco-schm/thunderbird-link-guard/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
-Link Guard makes web links in displayed email inactive until you approve their destination host. A compact notice shows which hosts a message links to, flags suspicious links, and lets you allow or block each host. No trust list is bundled, and nothing is uploaded: your mail never leaves Thunderbird.
+Link Guard makes web links in displayed email inactive until you approve their destination host. A notice bar in Thunderbird's style shows which hosts a message links to, grouped by what needs your attention, flags suspicious links, and lets you allow or block each host or its whole domain. No trust list is bundled, and nothing is uploaded: your mail never leaves Thunderbird.
 
 <p align="center">
-  <img src="docs/screenshots/message-panel.png" alt="Link Guard notice listing five hosts with warnings for a lookalike domain, a text/destination mismatch and a short link" width="720">
+  <img src="docs/screenshots/message-panel.png" alt="Link Guard notice in Thunderbird style: hosts grouped into Needs attention and Not yet approved, with warnings for a short link, a lookalike domain and misleading link text" width="720">
 </p>
 
 <sub>Screenshots use synthetic messages and reserved example domains.</sub>
@@ -20,10 +20,6 @@ Link Guard makes web links in displayed email inactive until you approve their d
 - **Configurable warnings.** Switch built-in warnings off, or add your own as regular expressions for the host, URL or link text, also from imported warning lists. See [Warnings](#warnings).
 - **Allowlists and blocklists.** Import hosts from a JSON file or an HTTPS URL. Remote blocklists can update themselves daily within strict limits. See [Lists](#lists).
 - **Localized.** 20 languages follow Thunderbird's interface language, and others fall back to English: Chinese (Simplified and Traditional), Czech, Danish, Dutch, English, Finnish, French, German, Hungarian, Italian, Japanese, Korean, Polish, Portuguese (Brazil), Russian, Spanish, Swedish, Turkish and Ukrainian.
-
-<p align="center">
-  <img src="docs/screenshots/scope-choice.png" alt="Choosing between approving only shop.example.org or example.org and all subdomains" width="720">
-</p>
 
 ## Installation
 
@@ -75,7 +71,7 @@ Limits: 512 KiB and 5,000 hosts per list, at most 20 lists. Examples: [allowlist
 **Blocklists** override your own approvals and imported allowlists. Wildcards are checked against the bundled Public Suffix List, so entries such as `*.co.uk` are refused. Approving a host that an enabled blocklist blocks is refused until you disable the list or remove the entry.
 
 <p align="center">
-  <img src="docs/screenshots/settings-lists.png" alt="Imported lists with an allowlist and two remote blocklists, one expanded to show its entries" width="720">
+  <img src="docs/screenshots/settings-lists.png" alt="Imported lists: an enabled allowlist, an enabled remote blocklist that updates itself and a disabled one" width="720">
 </p>
 
 ### Automatic updates
@@ -115,7 +111,7 @@ Settings lets you switch each built-in warning off: lookalike domains, internati
 Patterns never run on the JavaScript regular-expression engine. Link Guard compiles them into a small automaton whose matching time grows linearly with the input, so no pattern can freeze Thunderbird through catastrophic backtracking. Matching per message is additionally capped; a link that could not be checked within the cap shows a "rules not checked" warning instead of passing silently.
 
 <p align="center">
-  <img src="docs/screenshots/settings-warnings.png" alt="Warning settings with built-in toggles, two own regex rules and an imported warning list" width="720">
+  <img src="docs/screenshots/settings-warnings.png" alt="Warning settings with built-in toggles and an own regex rule" width="720">
 </p>
 
 ## Security
