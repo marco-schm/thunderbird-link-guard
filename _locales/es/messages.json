@@ -318,7 +318,7 @@
     "message": "Consultar lista remota"
   },
   "importSecurityHint": {
-    "message": "Los servidores remotos deben permitir CORS. No se envía ningún contenido del mensaje. Como máximo 64 KiB, 500 nombres de host y 20 listas; sin redirecciones. Cargue listas solo de fuentes confiables."
+    "message": "Los servidores remotos deben permitir CORS. No se envía ningún contenido del mensaje. Como máximo 512 KiB, 5000 nombres de host y 20 listas; sin redirecciones. Cargue listas solo de fuentes confiables."
   },
   "importPreviewTitle": {
     "message": "Vista previa"
@@ -351,7 +351,12 @@
     "message": "Cargando y revisando lista..."
   },
   "importTooLarge": {
-    "message": "La lista es demasiado grande (máximo 64 KiB)."
+    "message": "La lista es demasiado grande (máximo $SIZE$ KiB).",
+    "placeholders": {
+      "size": {
+        "content": "$1"
+      }
+    }
   },
   "importFormat": {
     "message": "Formato de lista no válido. Se requieren: format, version, name, category y hosts."
@@ -410,7 +415,12 @@
     }
   },
   "hostLimit": {
-    "message": "Hasta 500 nombres de host por lista."
+    "message": "Hasta $LIMIT$ nombres de host por lista.",
+    "placeholders": {
+      "limit": {
+        "content": "$1"
+      }
+    }
   },
   "hostFormatHint": {
     "message": "Los hosts exactos no usan comodines. Una regla de dominio completo usa *.example.com e incluye example.com."

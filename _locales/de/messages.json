@@ -318,7 +318,7 @@
     "message": "Remote-Liste prüfen"
   },
   "importSecurityHint": {
-    "message": "Remote-Server müssen CORS erlauben. Keine Mailinhalte werden übertragen. Maximal 64 KiB, 500 Hostnamen und 20 Listen; keine Weiterleitungen. Lade nur Listen aus vertrauenswürdigen Quellen."
+    "message": "Remote-Server müssen CORS erlauben. Keine Mailinhalte werden übertragen. Maximal 512 KiB, 5.000 Hostnamen und 20 Listen; keine Weiterleitungen. Lade nur Listen aus vertrauenswürdigen Quellen."
   },
   "importPreviewTitle": {
     "message": "Vorschau"
@@ -351,7 +351,12 @@
     "message": "Liste wird geladen und geprüft …"
   },
   "importTooLarge": {
-    "message": "Liste ist zu groß (maximal 64 KiB)."
+    "message": "Liste ist zu groß (maximal $SIZE$ KiB).",
+    "placeholders": {
+      "size": {
+        "content": "$1"
+      }
+    }
   },
   "importFormat": {
     "message": "Ungültiges Listenformat. Erwartet: format, version, name, category und hosts."
@@ -410,7 +415,12 @@
     }
   },
   "hostLimit": {
-    "message": "Maximal 500 Hostnamen pro Liste."
+    "message": "Maximal $LIMIT$ Hostnamen pro Liste.",
+    "placeholders": {
+      "limit": {
+        "content": "$1"
+      }
+    }
   },
   "hostFormatHint": {
     "message": "Exakte Hosts haben keinen Platzhalter. Eine Regel für die ganze Domain nutzt *.example.com und umfasst auch example.com."

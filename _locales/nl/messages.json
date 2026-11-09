@@ -318,7 +318,7 @@
     "message": "Externe lijst controleren"
   },
   "importSecurityHint": {
-    "message": "Externe servers moeten CORS toestaan. Er wordt geen berichtinhoud verzonden. Maximaal 64 KiB, 500 hostnamen en 20 lijsten; geen redirects. Laad lijsten alleen van vertrouwde bronnen."
+    "message": "Externe servers moeten CORS toestaan. Er wordt geen berichtinhoud verzonden. Maximaal 512 KiB, 5.000 hostnamen en 20 lijsten; geen redirects. Laad lijsten alleen van vertrouwde bronnen."
   },
   "importPreviewTitle": {
     "message": "Voorbeeld"
@@ -351,7 +351,12 @@
     "message": "Lijst laden en controleren …"
   },
   "importTooLarge": {
-    "message": "De lijst is te groot (maximaal 64 KiB)."
+    "message": "De lijst is te groot (maximaal $SIZE$ KiB).",
+    "placeholders": {
+      "size": {
+        "content": "$1"
+      }
+    }
   },
   "importFormat": {
     "message": "Ongeldig lijstformaat. Verwacht: format, version, name, category en hosts."
@@ -410,7 +415,12 @@
     }
   },
   "hostLimit": {
-    "message": "Maximaal 500 hostnamen per lijst."
+    "message": "Maximaal $LIMIT$ hostnamen per lijst.",
+    "placeholders": {
+      "limit": {
+        "content": "$1"
+      }
+    }
   },
   "hostFormatHint": {
     "message": "Exacte hosts hebben geen jokerteken. Een regel voor een heel domein gebruikt *.example.com en omvat ook example.com zelf."

@@ -38,26 +38,42 @@ function showStatus(message, error = false) {
   status.classList.toggle("error", error);
 }
 
+// Host lists and warning lists have different size limits, so the message names the
+// limit of the list that was rejected.
+function tooLarge(bytes) {
+  return t("importTooLarge", [String(bytes / 1024)]);
+}
+
 function showImportError(error, fallback = "importFetch") {
-  const known = new Set(["importTooLarge", "importFormat", "importDuplicate", "importUrl", "importFetch"]);
+  if (error?.message === "importTooLarge") {
+    showStatus(tooLarge(listImport.MAX_BYTES), true);
+    return;
+  }
+  const known = new Set(["importFormat", "importDuplicate", "importUrl", "importFetch"]);
   showStatus(t(known.has(error?.message) ? error.message : fallback), true);
 }
 
-function readHosts(input, label) {
-  const result = policy.parseHostList(input.value);
+const OWN_RULE_LIMIT = 500;
+
+function limitReason(limit) {
+  return t("hostLimit", [limit.toLocaleString(document.documentElement.lang)]);
+}
+
+function readHosts(input, label, limit = OWN_RULE_LIMIT) {
+  const result = policy.parseHostList(input.value, limit);
   if (result.errors.length) {
     const issue = result.errors[0];
-    const reason = issue === "limit" ? t("hostLimit") : t("invalidHostLine", [String(issue)]);
+    const reason = issue === "limit" ? limitReason(limit) : t("invalidHostLine", [String(issue)]);
     throw new Error(`${label}: ${reason}`);
   }
   return result.hosts;
 }
 
-function readRules(input, label, wholeDomainOnly = false) {
-  const result = policy.parseRuleList(input.value, wholeDomainOnly);
+function readRules(input, label, wholeDomainOnly = false, limit = OWN_RULE_LIMIT) {
+  const result = policy.parseRuleList(input.value, wholeDomainOnly, limit);
   if (result.errors.length) {
     const issue = result.errors[0];
-    const reason = issue === "limit" ? t("hostLimit") : t("invalidHostLine", [String(issue)]);
+    const reason = issue === "limit" ? limitReason(limit) : t("invalidHostLine", [String(issue)]);
     throw new Error(`${label}: ${reason}`);
   }
   return result;
@@ -82,8 +98,8 @@ function refreshOutcome(item) {
 
 // Block lists may hold `*.example.org` entries; allow lists hold exact hosts only.
 function readListEntries(view) {
-  if (view.item.kind !== "block") return readHosts(view.textarea, view.item.name);
-  const rules = readRules(view.textarea, view.item.name);
+  if (view.item.kind !== "block") return readHosts(view.textarea, view.item.name, listImport.MAX_HOSTS);
+  const rules = readRules(view.textarea, view.item.name, false, listImport.MAX_HOSTS);
   return [...rules.hosts, ...rules.domains.map(domain => `*.${domain}`)].sort();
 }
 
@@ -313,7 +329,11 @@ function showWarningError(error) {
     showStatus(t("ruleInvalid", [String(error.rule), t(error.message)]), true);
     return;
   }
-  const known = new Set(["importTooLarge", "warningListFormat", "warningRuleLimit", "importUrl", "importFetch"]);
+  if (error?.message === "importTooLarge") {
+    showStatus(tooLarge(warnings.MAX_BYTES), true);
+    return;
+  }
+  const known = new Set(["warningListFormat", "warningRuleLimit", "importUrl", "importFetch"]);
   showStatus(t(known.has(error?.message) ? error.message : "warningListFormat"), true);
 }
 

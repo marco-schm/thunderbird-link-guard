@@ -12,16 +12,21 @@ const warnings = require("../warning-rules.js");
 // Exact membership in a list of hosts (not a substring test on a URL).
 const has = (list, value) => [...list].some(item => item === value);
 
-function harness() {
+// With `notifyChanges`, storage reports its changes like Thunderbird does, and the
+// background caches its state; without it, the state is recomputed on every read.
+function harness({ notifyChanges = false } = {}) {
   const local = { trustedHosts: ["old.example.com"] };
   const remote = { calls: [], handler: null };
+  const changeListeners = [];
+  const notify = changes => { for (const listener of changeListeners) listener(changes, "local"); };
   let onMessage;
   const storageArea = values => ({
     async get(defaults) { return { ...defaults, ...values }; },
-    async set(changes) { Object.assign(values, changes); }
+    async set(changes) { Object.assign(values, changes); if (notifyChanges) notify(changes); }
   });
   const messenger = {
-    storage: { local: storageArea(local) },
+    storage: { local: storageArea(local), ...(notifyChanges ? {
+      onChanged: { addListener(listener) { changeListeners.push(listener); } } } : {}) },
     scripting: { messageDisplay: {
       async getRegisteredScripts() { return []; },
       async unregisterScripts() {},
@@ -53,7 +58,7 @@ function harness() {
     console, URL, Promise, Set, Object });
   vm.runInContext(fs.readFileSync(path.join(__dirname, "../background.js"), "utf8"), context);
   const send = (message) => onMessage(message, { tab: { id: 1 } });
-  return { local, send, remote, context };
+  return { local, send, remote, context, notify };
 }
 
 test("legacy host list is not silently approved and hostnames do not inherit", async () => {
@@ -486,4 +491,40 @@ test("warning settings are cleaned before they reach message pages", async () =>
   // Warning rules never change what is approved.
   assert.deepEqual([...state.allowedHosts], ["shop.example.com"]);
   assert.equal(state.warningLists, undefined);
+});
+
+// With 20 lists of 5,000 hosts, deriving the state takes long enough that it must not
+// run for every displayed message. It is cached until local storage changes, and a
+// decision answers with the state that includes it.
+test("the state is reused until storage changes, and decisions see their own write", async () => {
+  const h = harness({ notifyChanges: true });
+  assert.deepEqual([...(await h.send({ type: "link-guard-state" })).blockedHosts], []);
+  // A write that storage has not reported yet is not visible: the cached state is served.
+  h.local.blockedHosts = ["ads.example.net"];
+  assert.deepEqual([...(await h.send({ type: "link-guard-state" })).blockedHosts], []);
+  // Once storage reports the change (also one made by the settings page), it is.
+  h.notify({ blockedHosts: { newValue: ["ads.example.net"] } });
+  assert.deepEqual([...(await h.send({ type: "link-guard-state" })).blockedHosts],
+    ["ads.example.net"]);
+  // A decision returns, and later reads serve, a state that already contains it.
+  const decided = await h.send({ type: "link-guard-decision", host: "login.example.com",
+    decision: "permanent" });
+  assert.ok(decided.customAllowedHosts.includes("login.example.com"));
+  assert.ok((await h.send({ type: "link-guard-state" })).customAllowedHosts
+    .includes("login.example.com"));
+  const unblocked = await h.send({ type: "link-guard-decision", host: "ads.example.net",
+    decision: "unblock" });
+  assert.ok(!unblocked.blockedHosts.includes("ads.example.net"));
+  assert.ok(!(await h.send({ type: "link-guard-state" })).blockedHosts.includes("ads.example.net"));
+});
+
+test("an imported list with 5,000 hosts is applied in full", async () => {
+  const h = harness({ notifyChanges: true });
+  const hosts = Array.from({ length: listImport.MAX_HOSTS }, (_, i) => `host${i}.example.org`);
+  h.local.importedLists = [{ id: "12345678-1234-1234-1234-123456789abc", name: "Large",
+    category: "other", kind: "block", hosts, enabled: true }];
+  h.notify({ importedLists: {} });
+  const state = await h.send({ type: "link-guard-state" });
+  assert.equal(state.blockedHosts.length, listImport.MAX_HOSTS);
+  assert.ok(state.blockedHosts.includes("host4999.example.org"));
 });

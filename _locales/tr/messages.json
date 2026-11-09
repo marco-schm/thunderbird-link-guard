@@ -318,7 +318,7 @@
     "message": "Uzak listeyi denetle"
   },
   "importSecurityHint": {
-    "message": "Uzak sunucular CORS'a izin vermelidir. İleti içeriği gönderilmez. En fazla 64 KiB, 500 ana bilgisayar adı ve 20 liste; yönlendirme yok. Listeleri yalnızca güvendiğiniz kaynaklardan yükleyin."
+    "message": "Uzak sunucular CORS'a izin vermelidir. İleti içeriği gönderilmez. En fazla 512 KiB, 5.000 ana bilgisayar adı ve 20 liste; yönlendirme yok. Listeleri yalnızca güvendiğiniz kaynaklardan yükleyin."
   },
   "importPreviewTitle": {
     "message": "Önizleme"
@@ -351,7 +351,12 @@
     "message": "Liste yükleniyor ve denetleniyor …"
   },
   "importTooLarge": {
-    "message": "Liste çok büyük (en fazla 64 KiB)."
+    "message": "Liste çok büyük (en fazla $SIZE$ KiB).",
+    "placeholders": {
+      "size": {
+        "content": "$1"
+      }
+    }
   },
   "importFormat": {
     "message": "Geçersiz liste biçimi. Beklenen: format, version, name, category ve hosts."
@@ -410,7 +415,12 @@
     }
   },
   "hostLimit": {
-    "message": "Liste başına en fazla 500 ana bilgisayar adı."
+    "message": "Liste başına en fazla $LIMIT$ ana bilgisayar adı.",
+    "placeholders": {
+      "limit": {
+        "content": "$1"
+      }
+    }
   },
   "hostFormatHint": {
     "message": "Tam ana bilgisayarlarda joker karakter yoktur. Alan adının tamamı için kural *.example.com biçimindedir ve example.com'un kendisini de kapsar."

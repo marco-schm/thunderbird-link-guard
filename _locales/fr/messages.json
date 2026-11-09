@@ -318,7 +318,7 @@
     "message": "Vérifier la liste distante"
   },
   "importSecurityHint": {
-    "message": "Les serveurs distants doivent autoriser CORS. Aucun contenu de message n'est envoyé. Au maximum 64 Ko, 500 noms d'hôtes et 20 listes ; aucune redirection. Chargez des listes uniquement à partir de sources fiables."
+    "message": "Les serveurs distants doivent autoriser CORS. Aucun contenu de message n'est envoyé. Au maximum 512 Ko, 5 000 noms d'hôtes et 20 listes ; aucune redirection. Chargez des listes uniquement à partir de sources fiables."
   },
   "importPreviewTitle": {
     "message": "Aperçu"
@@ -351,7 +351,12 @@
     "message": "Chargement et vérification de la liste…"
   },
   "importTooLarge": {
-    "message": "La liste est trop volumineuse (maximum 64 Ko)."
+    "message": "La liste est trop volumineuse (maximum $SIZE$ Ko).",
+    "placeholders": {
+      "size": {
+        "content": "$1"
+      }
+    }
   },
   "importFormat": {
     "message": "Format de liste invalide. Champs requis : format, version, name, category et hosts."
@@ -410,7 +415,12 @@
     }
   },
   "hostLimit": {
-    "message": "Jusqu'à 500 noms d'hôtes par liste."
+    "message": "Jusqu'à $LIMIT$ noms d'hôtes par liste.",
+    "placeholders": {
+      "limit": {
+        "content": "$1"
+      }
+    }
   },
   "hostFormatHint": {
     "message": "Les hôtes exacts ne comportent pas de joker. Une règle globale utilise *.example.com et inclut example.com."

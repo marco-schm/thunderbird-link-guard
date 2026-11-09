@@ -140,7 +140,7 @@ Link Guard does not recommend list providers. You can write your own (the
 ### My remote list does not load. What is wrong?
 
 The source must use HTTPS, allow CORS, answer without a redirect, use the content type
-`application/json` or `text/plain`, and stay under 64 KiB. See
+`application/json` or `text/plain`, and stay under 512 KiB (64 KiB for a warning list). See
 [Troubleshooting](troubleshooting.md#a-remote-list-does-not-load).
 
 ### Can a list approve links I have not reviewed?

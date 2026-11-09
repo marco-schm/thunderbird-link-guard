@@ -145,6 +145,12 @@ characters, 512 compiled instructions and repetition counts of 50, and charged t
 per-message budget. No pattern and no message can freeze Thunderbird through
 catastrophic backtracking.
 
+Large lists do not slow messages down. With 20 imported lists of 5,000 hosts each, every
+host check is a few lookups in an index rather than a pass over the lists, and the
+lookalike check looks up the one-edit variants of a domain instead of comparing it with
+every trusted domain, so it covers all of them. The combined state is computed once and
+reused until your settings change.
+
 ## Privacy
 
 Link Guard inspects mail locally and stores its settings only on your computer. The only

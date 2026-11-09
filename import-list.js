@@ -2,7 +2,10 @@
 
 (function (root) {
   const policy = root.LinkGuardPolicy || require("./policy.js");
-  const MAX_BYTES = 65536;
+  // 20 lists of 5,000 hosts are checked through indexed lookups (access.js) and a
+  // variant lookup for lookalikes (policy.js), so neither limit slows message display.
+  const MAX_BYTES = 524288;
+  const MAX_HOSTS = 5000;
   const MAX_LISTS = 20;
   const categories = new Set(["news", "social", "companies", "other"]);
   const kinds = new Set(["allow", "block"]);
@@ -42,7 +45,7 @@
         (raw.kind !== undefined && !kinds.has(raw.kind)) ||
         typeof raw.name !== "string" || !/^[^\x00-\x1f\x7f<>\u2028\u2029\u202a-\u202e\u2066-\u2069]{1,60}$/.test(raw.name.trim()) ||
         !categories.has(raw.category) || !Array.isArray(raw.hosts) ||
-        raw.hosts.length < 1 || raw.hosts.length > 500) {
+        raw.hosts.length < 1 || raw.hosts.length > MAX_HOSTS) {
       throw new Error("importFormat");
     }
     const kind = raw.kind || "allow";
@@ -78,8 +81,9 @@
   }
 
   // Shared by host lists and warning lists: HTTPS only, CORS, no credentials, no
-  // redirects, bounded in time and bytes, strict UTF-8.
-  async function fetchText(input, fetcher = fetch) {
+  // redirects, bounded in time and bytes, strict UTF-8. Each caller passes its own size
+  // limit, so a warning list is never downloaded beyond what it may hold.
+  async function fetchText(input, fetcher = fetch, maxBytes = MAX_BYTES) {
     const url = parseRemoteUrl(input);
     const controller = new AbortController();
     const timer = setTimeout(() => controller.abort(), 10000);
@@ -92,7 +96,7 @@
         throw new Error("importFetch");
       }
       const declared = Number(response.headers.get("content-length"));
-      if (declared > MAX_BYTES) throw new Error("importTooLarge");
+      if (declared > maxBytes) throw new Error("importTooLarge");
       const reader = response.body?.getReader();
       if (!reader) throw new Error("importFetch");
       const chunks = [];
@@ -101,7 +105,7 @@
         const { done, value } = await reader.read();
         if (done) break;
         size += value.byteLength;
-        if (size > MAX_BYTES) { await reader.cancel(); throw new Error("importTooLarge"); }
+        if (size > maxBytes) { await reader.cancel(); throw new Error("importTooLarge"); }
         chunks.push(value);
       }
       const bytes = new Uint8Array(size);
@@ -166,7 +170,7 @@
   }
 
   const api = Object.freeze({ parse, parseRemoteUrl, fetchRemote, fetchText, cleanStored, autoRefreshDue, assessAutoUpdate, MAX_BYTES, MAX_LISTS,
-    MAX_HOSTS: 500 });
+    MAX_HOSTS });
   root.LinkGuardImport = api;
   if (typeof module !== "undefined" && module.exports) module.exports = api;
 })(globalThis);

@@ -318,7 +318,7 @@
     "message": "リモートリストを確認"
   },
   "importSecurityHint": {
-    "message": "リモートサーバーは CORS を許可する必要があります。メールの内容は送信されません。上限は 64 KiB、ホスト名 500 件、リスト 20 件で、リダイレクトは不可です。信頼できる提供元のリストだけを読み込んでください。"
+    "message": "リモートサーバーは CORS を許可する必要があります。メールの内容は送信されません。上限は 512 KiB、ホスト名 5,000 件、リスト 20 件で、リダイレクトは不可です。信頼できる提供元のリストだけを読み込んでください。"
   },
   "importPreviewTitle": {
     "message": "プレビュー"
@@ -351,7 +351,12 @@
     "message": "リストを読み込んで確認しています…"
   },
   "importTooLarge": {
-    "message": "リストが大きすぎます（最大 64 KiB）。"
+    "message": "リストが大きすぎます（最大 $SIZE$ KiB）。",
+    "placeholders": {
+      "size": {
+        "content": "$1"
+      }
+    }
   },
   "importFormat": {
     "message": "リスト形式が無効です。format、version、name、category、hosts が必要です。"
@@ -410,7 +415,12 @@
     }
   },
   "hostLimit": {
-    "message": "リストごとにホスト名は最大 500 件です。"
+    "message": "リストごとにホスト名は最大 $LIMIT$ 件です。",
+    "placeholders": {
+      "limit": {
+        "content": "$1"
+      }
+    }
   },
   "hostFormatHint": {
     "message": "個別ホストにはワイルドカードを付けません。ドメイン全体のルールは *.example.com と記し、example.com 自体も含みます。"

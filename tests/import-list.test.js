@@ -15,7 +15,19 @@ test("strict import accepts only exact DNS hosts and known schema", () => {
     { ...valid, unexpected: true },
     { ...valid, category: "javascript" }
   ]) assert.throws(() => lists.parse(JSON.stringify(bad)));
-  assert.throws(() => lists.parse("x".repeat(65537)), /importTooLarge/);
+  assert.throws(() => lists.parse("x".repeat(lists.MAX_BYTES + 1)), /importTooLarge/);
+});
+
+test("a list may hold 5,000 hosts within 512 KiB, and no more", () => {
+  assert.equal(lists.MAX_HOSTS, 5000);
+  assert.equal(lists.MAX_BYTES, 512 * 1024);
+  const hosts = Array.from({ length: 5001 }, (_, i) => `www.host-number-${i}.example.org`);
+  assert.equal(lists.parse(JSON.stringify({ ...valid, hosts: hosts.slice(0, 5000) })).hosts.length, 5000);
+  assert.throws(() => lists.parse(JSON.stringify({ ...valid, hosts })), /importFormat/);
+  // Stored lists are re-validated with the same limits.
+  const stored = lists.cleanStored([{ id: "12345678-1234-1234-1234-123456789abc",
+    ...valid, hosts: hosts.slice(0, 5000), enabled: true }]);
+  assert.equal(stored[0].hosts.length, 5000);
 });
 
 test("remote URL disallows HTTP, credentials, ports, fragments and query data", () => {

@@ -51,7 +51,7 @@ The error message tells you which rule failed:
 | --- | --- |
 | *Only an HTTPS file URL without credentials, port, query, or fragment is allowed.* | The URL is not `https://`, contains `user@`, a `:port`, a `?query` or `#fragment`, ends with `/`, or uses an IP address. |
 | *Remote list could not be loaded safely. Check HTTPS, JSON, CORS, and redirects.* | The server did not answer with status 200, redirected, does not allow CORS, sent a content type other than `application/json` or `text/plain`, did not answer within 10 seconds, or the file is not valid UTF-8. |
-| *List is too large (maximum 64 KiB).* | The file is larger than 65,536 bytes. |
+| *List is too large (maximum 512 KiB).* | The host list file is larger than 524,288 bytes. A warning list shows *maximum 64 KiB* and may be at most 65,536 bytes. |
 | *Invalid list format. Expected: format, version, name, category, and hosts.* | A field is missing, has a wrong value, or the list contains an unknown field or an invalid host. |
 | *List contains a duplicate hostname.* | Two entries are the same after normalisation, e.g. `Example.org` and `example.org.` |
 
@@ -78,7 +78,7 @@ See [Automatic updates](lists.md#automatic-updates).
 | Message | Cause |
 | --- | --- |
 | *Invalid hostname on line N.* | The line is not a valid host name – check for `https://`, paths, ports, spaces or IP addresses. |
-| *Up to 500 hostnames per list.* | The card has more than 500 lines. |
+| *Up to 500 hostnames per list.* | One of your own rule cards has more than 500 lines. An imported list you edit shows *Up to 5,000 hostnames per list.* |
 | *\<domain\> is not a registrable domain according to the bundled Public Suffix List.* | A `*.` rule names a public suffix such as `co.uk` or a hosting service such as `github.io`. Use the full registrable domain, e.g. `*.example.co.uk`. |
 | *Rule N: …* | A warning rule is invalid; the message names the problem. See [Warning rules](warning-rules.md#pattern-syntax). |
 | *Too many warning rules: at most 50 of your own and 200 in effect.* | Reduce your rules or disable a warning list. |

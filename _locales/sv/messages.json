@@ -318,7 +318,7 @@
     "message": "Kontrollera fjärrlista"
   },
   "importSecurityHint": {
-    "message": "Fjärrservrar måste tillåta CORS. Inget meddelandeinnehåll skickas. Högst 64 KiB, 500 värdnamn och 20 listor; inga omdirigeringar. Läs bara in listor från betrodda källor."
+    "message": "Fjärrservrar måste tillåta CORS. Inget meddelandeinnehåll skickas. Högst 512 KiB, 5 000 värdnamn och 20 listor; inga omdirigeringar. Läs bara in listor från betrodda källor."
   },
   "importPreviewTitle": {
     "message": "Förhandsgranskning"
@@ -351,7 +351,12 @@
     "message": "Läser in och kontrollerar lista …"
   },
   "importTooLarge": {
-    "message": "Listan är för stor (högst 64 KiB)."
+    "message": "Listan är för stor (högst $SIZE$ KiB).",
+    "placeholders": {
+      "size": {
+        "content": "$1"
+      }
+    }
   },
   "importFormat": {
     "message": "Ogiltigt listformat. Förväntas: format, version, name, category och hosts."
@@ -410,7 +415,12 @@
     }
   },
   "hostLimit": {
-    "message": "Högst 500 värdnamn per lista."
+    "message": "Högst $LIMIT$ värdnamn per lista.",
+    "placeholders": {
+      "limit": {
+        "content": "$1"
+      }
+    }
   },
   "hostFormatHint": {
     "message": "Exakta värdar har inget jokertecken. En regel för hela domänen använder *.example.com och omfattar även själva example.com."

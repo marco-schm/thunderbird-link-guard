@@ -29,7 +29,7 @@ before you see it.
 | `kind` | no | `"allow"` (default) or `"block"` |
 | `name` | yes | 1 to 60 characters; no control characters, no `<` or `>`, no bidirectional control characters |
 | `category` | yes | `"news"`, `"social"`, `"companies"` or `"other"` – a label for your overview only |
-| `hosts` | yes | 1 to 500 unique entries (see below) |
+| `hosts` | yes | 1 to 5,000 unique entries (see below) |
 
 No other fields are allowed; a list with an unknown field is rejected.
 
@@ -48,8 +48,8 @@ No other fields are allowed; a list with an unknown field is rejected.
 
 | Limit | Value |
 | --- | --- |
-| File size | 64 KiB (65,536 bytes, UTF-8) |
-| Entries per list | 500 |
+| File size | 512 KiB (524,288 bytes, UTF-8) |
+| Entries per list | 5,000 |
 | Imported lists | 20 |
 
 ### Examples
@@ -84,7 +84,7 @@ A list can be loaded from an HTTPS URL. The fetch is deliberately strict:
 | CORS | the server must allow cross-origin requests, for example with `Access-Control-Allow-Origin: *` |
 | Redirects | not followed – the URL must answer directly |
 | Content type | `application/json` or `text/plain` |
-| Size | at most 64 KiB; larger responses are aborted |
+| Size | at most 512 KiB for host lists and 64 KiB for warning lists; larger responses are aborted |
 | Encoding | valid UTF-8 |
 | Time | aborted after 10 seconds |
 

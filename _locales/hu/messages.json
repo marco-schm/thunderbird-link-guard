@@ -318,7 +318,7 @@
     "message": "Távoli lista ellenőrzése"
   },
   "importSecurityHint": {
-    "message": "A távoli szervereknek engedélyezniük kell a CORS-t. Üzenettartalom nem kerül elküldésre. Legfeljebb 64 KiB, 500 gazdagépnév és 20 lista; átirányítás nélkül. Listákat csak megbízható forrásból töltsön be."
+    "message": "A távoli szervereknek engedélyezniük kell a CORS-t. Üzenettartalom nem kerül elküldésre. Legfeljebb 512 KiB, 5000 gazdagépnév és 20 lista; átirányítás nélkül. Listákat csak megbízható forrásból töltsön be."
   },
   "importPreviewTitle": {
     "message": "Előnézet"
@@ -351,7 +351,12 @@
     "message": "Lista betöltése és ellenőrzése …"
   },
   "importTooLarge": {
-    "message": "A lista túl nagy (legfeljebb 64 KiB)."
+    "message": "A lista túl nagy (legfeljebb $SIZE$ KiB).",
+    "placeholders": {
+      "size": {
+        "content": "$1"
+      }
+    }
   },
   "importFormat": {
     "message": "Érvénytelen listaformátum. Elvárt mezők: format, version, name, category és hosts."
@@ -410,7 +415,12 @@
     }
   },
   "hostLimit": {
-    "message": "Listánként legfeljebb 500 gazdagépnév."
+    "message": "Listánként legfeljebb $LIMIT$ gazdagépnév.",
+    "placeholders": {
+      "limit": {
+        "content": "$1"
+      }
+    }
   },
   "hostFormatHint": {
     "message": "A pontos gazdagépekben nincs helyettesítő karakter. A teljes tartományra vonatkozó szabály formátuma *.example.com, és magát az example.comot is magában foglalja."

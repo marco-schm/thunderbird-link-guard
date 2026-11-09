@@ -318,7 +318,7 @@
     "message": "Tarkista etäluettelo"
   },
   "importSecurityHint": {
-    "message": "Etäpalvelimien on sallittava CORS. Viestien sisältöä ei lähetetä. Enintään 64 KiB, 500 isäntänimeä ja 20 luetteloa; ei uudelleenohjauksia. Lataa luetteloita vain luotetuista lähteistä."
+    "message": "Etäpalvelimien on sallittava CORS. Viestien sisältöä ei lähetetä. Enintään 512 KiB, 5 000 isäntänimeä ja 20 luetteloa; ei uudelleenohjauksia. Lataa luetteloita vain luotetuista lähteistä."
   },
   "importPreviewTitle": {
     "message": "Esikatselu"
@@ -351,7 +351,12 @@
     "message": "Ladataan ja tarkistetaan luetteloa …"
   },
   "importTooLarge": {
-    "message": "Luettelo on liian suuri (enintään 64 KiB)."
+    "message": "Luettelo on liian suuri (enintään $SIZE$ KiB).",
+    "placeholders": {
+      "size": {
+        "content": "$1"
+      }
+    }
   },
   "importFormat": {
     "message": "Virheellinen luettelomuoto. Odotettu: format, version, name, category ja hosts."
@@ -410,7 +415,12 @@
     }
   },
   "hostLimit": {
-    "message": "Enintään 500 isäntänimeä luetteloa kohti."
+    "message": "Enintään $LIMIT$ isäntänimeä luetteloa kohti.",
+    "placeholders": {
+      "limit": {
+        "content": "$1"
+      }
+    }
   },
   "hostFormatHint": {
     "message": "Tarkoissa isännissä ei ole jokerimerkkiä. Koko verkkotunnuksen sääntö on muotoa *.example.com, ja se kattaa myös example.comin itsensä."

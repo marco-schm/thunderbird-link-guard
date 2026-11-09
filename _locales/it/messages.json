@@ -318,7 +318,7 @@
     "message": "Controlla l'elenco remoto"
   },
   "importSecurityHint": {
-    "message": "I server remoti devono consentire CORS. Non viene inviato alcun contenuto del messaggio. Al massimo 64 KiB, 500 nomi host e 20 elenchi; nessun reindirizzamento. Carica elenchi solo da fonti attendibili."
+    "message": "I server remoti devono consentire CORS. Non viene inviato alcun contenuto del messaggio. Al massimo 512 KiB, 5000 nomi host e 20 elenchi; nessun reindirizzamento. Carica elenchi solo da fonti attendibili."
   },
   "importPreviewTitle": {
     "message": "Anteprima"
@@ -351,7 +351,12 @@
     "message": "Caricamento e controllo dell'elenco..."
   },
   "importTooLarge": {
-    "message": "L'elenco è troppo grande (massimo 64 KiB)."
+    "message": "L'elenco è troppo grande (massimo $SIZE$ KiB).",
+    "placeholders": {
+      "size": {
+        "content": "$1"
+      }
+    }
   },
   "importFormat": {
     "message": "Formato elenco non valido. Campi richiesti: format, version, name, category e hosts."
@@ -410,7 +415,12 @@
     }
   },
   "hostLimit": {
-    "message": "Fino a 500 nomi host per elenco."
+    "message": "Fino a $LIMIT$ nomi host per elenco.",
+    "placeholders": {
+      "limit": {
+        "content": "$1"
+      }
+    }
   },
   "hostFormatHint": {
     "message": "Gli host esatti non usano caratteri jolly. Una regola per tutto il dominio usa *.example.com e include example.com."

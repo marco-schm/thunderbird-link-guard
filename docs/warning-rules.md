@@ -195,7 +195,7 @@ approve those hosts exactly.
 In JSON, every backslash in a pattern is written twice: the pattern `\.zip$` becomes
 `"\\.zip$"`.
 
-Warning lists use the same file-size limit (64 KiB) and the same
+Warning lists may be at most 64 KiB and use the same
 [remote-source requirements](lists.md#remote-sources) as host lists. They are shown for
 review, start disabled and change only when you click **Review remote update** – they
 are never updated automatically.
