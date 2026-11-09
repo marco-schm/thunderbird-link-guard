@@ -318,7 +318,7 @@
     "message": "Zkontrolovat vzdálený seznam"
   },
   "importSecurityHint": {
-    "message": "Vzdálené servery musí povolit CORS. Neodesílá se žádný obsah zpráv. Nejvýše 64 KiB, 500 názvů hostitelů a 20 seznamů; bez přesměrování. Seznamy načítejte jen z důvěryhodných zdrojů."
+    "message": "Vzdálené servery musí povolit CORS. Neodesílá se žádný obsah zpráv. Nejvýše 512 KiB, 5 000 názvů hostitelů a 20 seznamů; bez přesměrování. Seznamy načítejte jen z důvěryhodných zdrojů."
   },
   "importPreviewTitle": {
     "message": "Náhled"
@@ -351,7 +351,12 @@
     "message": "Načítání a kontrola seznamu …"
   },
   "importTooLarge": {
-    "message": "Seznam je příliš velký (maximálně 64 KiB)."
+    "message": "Seznam je příliš velký (maximálně $SIZE$ KiB).",
+    "placeholders": {
+      "size": {
+        "content": "$1"
+      }
+    }
   },
   "importFormat": {
     "message": "Neplatný formát seznamu. Očekává se: format, version, name, category a hosts."
@@ -410,7 +415,12 @@
     }
   },
   "hostLimit": {
-    "message": "Nejvýše 500 názvů hostitelů na seznam."
+    "message": "Nejvýše $LIMIT$ názvů hostitelů na seznam.",
+    "placeholders": {
+      "limit": {
+        "content": "$1"
+      }
+    }
   },
   "hostFormatHint": {
     "message": "Přesní hostitelé nemají zástupný znak. Pravidlo pro celou doménu používá *.example.com a zahrnuje i samotnou doménu example.com."

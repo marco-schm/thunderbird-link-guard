@@ -180,11 +180,10 @@
 
   // true or false once known, undefined while the destination still needs analysis.
   function destinationApproved(host) {
-    if (state.blockedHosts.includes(host) ||
-        state.blockedDomains?.some(domain => host === domain || host.endsWith(`.${domain}`))) return false;
+    if (access.isBlocked(host, state)) return false;
     if (temporaryHosts.has(host)) return true;
     if (policy.isIpAddress(host)) return false;
-    if (state.customAllowedHosts.includes(host)) return true;
+    if (access.isExactlyApproved(host, state)) return true;
     if (!analyzedHosts.has(host)) return undefined;
     const status = statusFor(host);
     return status === "permanent" || status === "broad";
@@ -326,18 +325,16 @@
     messenger.runtime.sendMessage(message).catch(() => { lastToolbarStatus = ""; });
   }
 
-  // Same order as access.js: a block wins, also over an approval for this message.
+  // Same order as access.js, and the same indexed lookups: a block wins, also over an
+  // approval for this message.
   function statusFor(host) {
-    if (state.blockedDomains?.some(domain => host === domain || host.endsWith(`.${domain}`)))
-      return "blocked";
-    if (state.blockedHosts.includes(host)) return "blocked";
+    if (access.isBlocked(host, state)) return "blocked";
     if (temporaryHosts.has(host)) return "temporary";
-    if (state.customAllowedHosts.includes(host)) return "permanent";
+    if (access.isExactlyApproved(host, state)) return "permanent";
     const warning = warningFor(host);
     if (!warning || warning.kind !== "none") return "pending";
-    if (state.allowedHosts.includes(host)) return "permanent";
-    if (!policy.isSharedContentHost(host) && state.broadAllowedDomains.some(domain =>
-      host === domain || host.endsWith(`.${domain}`))) return "broad";
+    if (access.isListApproved(host, state)) return "permanent";
+    if (access.isBroadlyApproved(host, state)) return "broad";
     return "pending";
   }
 
@@ -373,13 +370,8 @@
     return control;
   }
 
-  // The user's own block that covers a host: a whole-domain block first, since removing
-  // only an exact block would leave the host blocked. null when only a list blocks it.
   function ownBlockFor(host) {
-    const domain = state.ownBlockedDomains?.find(entry => host === entry || host.endsWith(`.${entry}`));
-    if (domain) return { scope: "domain", name: domain };
-    if (state.ownBlockedHosts?.includes(host)) return { scope: "exact", name: host };
-    return null;
+    return access.ownBlockFor(host, state);
   }
 
   function confirmUnblock(host, own, actions) {
@@ -520,7 +512,7 @@
     const statusKey = statusFor(host) === "blocked" ? "blocked" :
       temporaryOnly && !temporaryHosts.has(host) ? "pending" :
       risks?.size && !temporaryHosts.has(host) &&
-      !state.customAllowedHosts.includes(host) ? "pending" : statusFor(host);
+      !access.isExactlyApproved(host, state) ? "pending" : statusFor(host);
     status.className = `link-guard-state link-guard-state-${statusKey}`;
     status.textContent = t(`status_${statusKey}`);
     information.append(name, status);

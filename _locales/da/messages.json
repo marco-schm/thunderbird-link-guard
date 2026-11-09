@@ -318,7 +318,7 @@
     "message": "Kontrollér fjernliste"
   },
   "importSecurityHint": {
-    "message": "Fjernservere skal tillade CORS. Intet meddelelsesindhold sendes. Højst 64 KiB, 500 værtsnavne og 20 lister; ingen omdirigeringer. Indlæs kun lister fra pålidelige kilder."
+    "message": "Fjernservere skal tillade CORS. Intet meddelelsesindhold sendes. Højst 512 KiB, 5.000 værtsnavne og 20 lister; ingen omdirigeringer. Indlæs kun lister fra pålidelige kilder."
   },
   "importPreviewTitle": {
     "message": "Forhåndsvisning"
@@ -351,7 +351,12 @@
     "message": "Indlæser og kontrollerer liste …"
   },
   "importTooLarge": {
-    "message": "Listen er for stor (højst 64 KiB)."
+    "message": "Listen er for stor (højst $SIZE$ KiB).",
+    "placeholders": {
+      "size": {
+        "content": "$1"
+      }
+    }
   },
   "importFormat": {
     "message": "Ugyldigt listeformat. Forventet: format, version, name, category og hosts."
@@ -410,7 +415,12 @@
     }
   },
   "hostLimit": {
-    "message": "Op til 500 værtsnavne pr. liste."
+    "message": "Op til $LIMIT$ værtsnavne pr. liste.",
+    "placeholders": {
+      "limit": {
+        "content": "$1"
+      }
+    }
   },
   "hostFormatHint": {
     "message": "Præcise værter har ingen jokertegn. En regel for hele domænet bruger *.example.com og omfatter også selve example.com."

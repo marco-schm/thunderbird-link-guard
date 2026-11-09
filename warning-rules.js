@@ -90,7 +90,7 @@
 
   async function fetchList(url, fetcher) {
     const listImport = root.LinkGuardImport || require("./import-list.js");
-    const { text, sourceUrl } = await listImport.fetchText(url, fetcher);
+    const { text, sourceUrl } = await listImport.fetchText(url, fetcher, MAX_BYTES);
     return { ...parseList(text), sourceUrl };
   }
 

@@ -98,7 +98,32 @@ async function importedData(raw) {
 // The public state seen by message pages. `blockedHosts` and `blockedDomains` are the
 // effective blocks (own rules plus enabled imported block lists). Own rules are kept
 // apart so a decision never copies an imported entry into the user's stored lists.
-async function readFullState() {
+// The full state is derived from all stored rules and lists, which can hold 100,000
+// hosts. It is computed once and reused until local storage changes, instead of on every
+// displayed message. Where no change notification exists (the unit-test harness), it is
+// computed on every call, so a stale result is never served.
+const canCacheState = Boolean(messenger.storage?.onChanged?.addListener);
+let stateCache = null;
+
+function invalidateState() { stateCache = null; }
+
+if (canCacheState) {
+  messenger.storage.onChanged.addListener((changes, area) => {
+    if (area === "local") invalidateState();
+  });
+}
+
+function readFullState() {
+  if (!canCacheState) return computeFullState();
+  if (!stateCache) {
+    const pending = computeFullState();
+    stateCache = pending;
+    pending.catch(() => { if (stateCache === pending) stateCache = null; });
+  }
+  return stateCache;
+}
+
+async function computeFullState() {
   const local = await messenger.storage.local.get({
     enabled: true, showDestinations: true, customAllowedHosts: [], blockedHosts: [],
     blockedDomains: [], importedLists: [], broadAllowedDomains: [],
@@ -258,6 +283,9 @@ async function setDecision(host, decision, scope = "exact") {
     customAllowedHosts: [...custom].sort(), broadAllowedDomains: [...broad].sort(),
     blockedHosts: [...blocked].sort(), blockedDomains: [...blockedDomains].sort()
   });
+  // storage.onChanged arrives later; the state returned now must already include this
+  // decision, also if another request cached the old state while it was being written.
+  invalidateState();
   return readState();
 }
 
@@ -304,6 +332,7 @@ async function refreshBlocklists() {
     return { ...list, ...changes };
   });
   await messenger.storage.local.set({ importedLists: merged });
+  invalidateState();
 }
 
 function scheduleRefresh() {

@@ -318,7 +318,7 @@
     "message": "檢查遠端清單"
   },
   "importSecurityHint": {
-    "message": "遠端伺服器必須允許 CORS。不會傳送郵件內容。最多 64 KiB、500 個主機名稱與 20 份清單；不支援重新導向。請僅從信任的來源載入清單。"
+    "message": "遠端伺服器必須允許 CORS。不會傳送郵件內容。最多 512 KiB、5,000 個主機名稱與 20 份清單；不支援重新導向。請僅從信任的來源載入清單。"
   },
   "importPreviewTitle": {
     "message": "預覽"
@@ -351,7 +351,12 @@
     "message": "正在載入並檢查清單 …"
   },
   "importTooLarge": {
-    "message": "清單過大（上限 64 KiB）。"
+    "message": "清單過大（上限 $SIZE$ KiB）。",
+    "placeholders": {
+      "size": {
+        "content": "$1"
+      }
+    }
   },
   "importFormat": {
     "message": "清單格式無效。必須包含：format、version、name、category 與 hosts。"
@@ -410,7 +415,12 @@
     }
   },
   "hostLimit": {
-    "message": "每份清單最多 500 個主機名稱。"
+    "message": "每份清單最多 $LIMIT$ 個主機名稱。",
+    "placeholders": {
+      "limit": {
+        "content": "$1"
+      }
+    }
   },
   "hostFormatHint": {
     "message": "確切的主機不含萬用字元。整個網域的規則使用 *.example.com，並包含 example.com 本身。"

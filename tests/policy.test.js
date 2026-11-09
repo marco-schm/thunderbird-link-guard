@@ -167,3 +167,72 @@ test("shared content hosts and descriptive link text are identified", () => {
   assert.ok(inspectLink("https://other.invalid/", "Öffne https://example.org/")
     .risks.includes("textMismatch"));
 });
+
+// The lookalike check looks up every one-edit variant of a candidate instead of comparing
+// it with each trusted domain. It must decide exactly like the earlier pairwise rule,
+// which is kept here as the reference, and it must see every trusted domain.
+test("lookalike lookup decides like the pairwise rule, for any number of trusted domains", () => {
+  function oneEditOrSwap(a, b) {
+    if (a === b || Math.abs(a.length - b.length) > 1) return false;
+    let left = 0, right = 0, edits = 0;
+    while (left < a.length && right < b.length) {
+      if (a[left] === b[right]) { left++; right++; continue; }
+      if (++edits > 1) return false;
+      if (a.length === b.length && left + 1 < a.length &&
+          a[left] === b[right + 1] && a[left + 1] === b[right]) { left += 2; right += 2; }
+      else if (a.length > b.length) left++;
+      else if (b.length > a.length) right++;
+      else { left++; right++; }
+    }
+    return edits + (left < a.length || right < b.length ? 1 : 0) === 1;
+  }
+  function reference(candidate, trusted) {
+    const labels = candidate.split(".");
+    if (labels.length < 2 || labels[0].length < 4) return false;
+    for (const other of trusted) {
+      if (other === candidate) continue;
+      if (oneEditOrSwap(candidate, other)) return true;
+      const parts = other.split(".");
+      if (parts.length === labels.length && parts[0].length >= 4 &&
+          labels.slice(1).join(".") === parts.slice(1).join(".") &&
+          oneEditOrSwap(labels[0], parts[0])) return true;
+    }
+    return false;
+  }
+  let seed = 11;
+  const random = n => (seed = (seed * 1103515245 + 12345) & 0x7fffffff) % n;
+  const alphabet = "abcdefghijklmnopqrstuvwxyz0123456789-.";
+  const word = () => Array.from({ length: 3 + random(9) }, () => alphabet[random(36)]).join("");
+  const trusted = Array.from({ length: 300 }, () => `${word()}.${["com", "de", "co.uk", "org"][random(4)]}`);
+  for (let k = 0; k < 3000; k++) {
+    const base = trusted[random(trusted.length)];
+    const i = random(base.length);
+    const c = alphabet[random(alphabet.length)];
+    const candidate = [base.slice(0, i) + base.slice(i + 1), base.slice(0, i) + c + base.slice(i),
+      base.slice(0, i) + c + base.slice(i + 1),
+      i + 1 < base.length ? base.slice(0, i) + base[i + 1] + base[i] + base.slice(i + 2) : base,
+      `${word()}.${["com", "net"][random(2)]}`][k % 5];
+    const expected = reference(candidate, trusted);
+    const actual = lookalikeDomain(candidate, trusted);
+    assert.equal(Boolean(actual), expected, candidate);
+    if (actual) assert.ok(trusted.includes(actual) && actual !== candidate, candidate);
+  }
+  // No cap: a trusted domain far down a long list (here at position 30,000; the old check
+  // stopped at 10,000) is still a reference.
+  const many = Array.from({ length: 30000 }, (_, i) => `brand${i}shop.com`);
+  assert.equal(lookalikeDomain("brand29999shpo.com", many), "brand29999shop.com");
+  assert.equal(lookalikeDomain("unrelatedname.org", many), null);
+});
+
+// Own rule cards stay at 500 entries; imported lists, edited on the settings page, pass
+// their own limit of 5,000.
+test("host and rule lists stop at the limit they are given", () => {
+  const lines = count => Array.from({ length: count }, (_, i) => `host${i}.example.org`).join("\n");
+  assert.deepEqual(parseHostList(lines(501)).errors, ["limit"]);
+  assert.deepEqual(parseHostList(lines(500)).errors, []);
+  assert.equal(parseHostList(lines(5000), 5000).hosts.length, 5000);
+  assert.deepEqual(parseHostList(lines(5001), 5000).errors, ["limit"]);
+  assert.deepEqual(parseRuleList(lines(501)).errors, ["limit"]);
+  assert.equal(parseRuleList(`${lines(4999)}\n*.example.net`, false, 5000).domains.length, 1);
+  assert.deepEqual(parseRuleList(`${lines(5000)}\n*.example.net`, false, 5000).errors, ["limit"]);
+});

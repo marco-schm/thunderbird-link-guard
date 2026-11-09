@@ -43,7 +43,9 @@
     return host;
   }
 
-  function parseHostList(text) {
+  // Own rule cards hold up to MAX_HOSTS entries; imported lists, edited on the settings
+  // page, pass their own larger limit.
+  function parseHostList(text, limit = MAX_HOSTS) {
     const hosts = new Set();
     const errors = [];
     const lines = String(text).split(/\r?\n/);
@@ -52,7 +54,7 @@
       if (!entry) continue;
       try { hosts.add(normalizeHost(entry)); }
       catch { errors.push(index + 1); }
-      if (hosts.size > MAX_HOSTS) {
+      if (hosts.size > limit) {
         errors.push("limit");
         break;
       }
@@ -62,7 +64,7 @@
 
   // The only wildcard accepted in editable rules denotes a whole registrable
   // domain, including its apex. Imported lists remain exact-host-only.
-  function parseRuleList(text, wholeDomainOnly = false) {
+  function parseRuleList(text, wholeDomainOnly = false, limit = MAX_HOSTS) {
     const hosts = new Set();
     const domains = new Set();
     const errors = [];
@@ -75,7 +77,7 @@
         else if (!wholeDomainOnly) hosts.add(normalizeHost(entry));
         else throw new Error("wildcard required");
       } catch { errors.push(index + 1); }
-      if (hosts.size + domains.size > MAX_HOSTS) {
+      if (hosts.size + domains.size > limit) {
         errors.push("limit");
         break;
       }
@@ -83,36 +85,51 @@
     return { hosts: [...hosts].sort(), domains: [...domains].sort(), errors };
   }
 
-  function oneEditOrSwap(a, b) {
-    if (a === b || Math.abs(a.length - b.length) > 1) return false;
-    let left = 0;
-    let right = 0;
-    let edits = 0;
-    while (left < a.length && right < b.length) {
-      if (a[left] === b[right]) { left++; right++; continue; }
-      if (++edits > 1) return false;
-      if (a.length === b.length && left + 1 < a.length &&
-          a[left] === b[right + 1] && a[left + 1] === b[right]) {
-        left += 2;
-        right += 2;
-      } else if (a.length > b.length) left++;
-      else if (b.length > a.length) right++;
-      else { left++; right++; }
+  // A lookalike differs from a trusted domain by one inserted, removed or replaced
+  // character, or by two swapped neighbouring characters. Comparing a candidate with
+  // every trusted domain grows with the number of approvals (100,000 with large lists).
+  // Instead, every such variant of the candidate is generated and looked up in a Set:
+  // about 75 lookups per character, whatever the number of trusted domains, and exact.
+  // Trusted names are normalised hostnames, so variants only need this alphabet.
+  const VARIANT_ALPHABET = "abcdefghijklmnopqrstuvwxyz0123456789-.";
+  const trustedSets = new WeakMap();
+
+  function trustedSetOf(trustedDomains) {
+    if (trustedDomains instanceof Set) return trustedDomains;
+    let set = trustedSets.get(trustedDomains);
+    if (!set) {
+      set = new Set(trustedDomains);
+      trustedSets.set(trustedDomains, set);
     }
-    return edits + (left < a.length || right < b.length ? 1 : 0) === 1;
+    return set;
   }
 
   function lookalikeDomain(candidate, trustedDomains) {
-    if (!candidate || !Array.isArray(trustedDomains)) return null;
+    if (!candidate || !(Array.isArray(trustedDomains) || trustedDomains instanceof Set)) return null;
     const labels = candidate.split(".");
     if (labels.length < 2 || labels[0].length < 4) return null;
-    for (const trusted of trustedDomains.slice(0, 10000)) {
-      if (trusted === candidate) continue;
-      if (oneEditOrSwap(candidate, trusted)) return trusted;
-      const other = trusted.split(".");
-      if (other.length !== labels.length || other[0].length < 4 ||
-          labels.slice(1).join(".") !== other.slice(1).join(".")) continue;
-      if (oneEditOrSwap(labels[0], other[0])) return trusted;
+    const trusted = trustedSetOf(trustedDomains);
+    if (!trusted.size) return null;
+    const found = variant => variant !== candidate && trusted.has(variant);
+    const length = candidate.length;
+    for (let i = 0; i < length; i++) {
+      const removed = candidate.slice(0, i) + candidate.slice(i + 1);
+      if (found(removed)) return removed;
+      if (i + 1 < length) {
+        const swapped = candidate.slice(0, i) + candidate[i + 1] + candidate[i] + candidate.slice(i + 2);
+        if (found(swapped)) return swapped;
+      }
+    }
+    for (let i = 0; i <= length; i++) {
+      const before = candidate.slice(0, i);
+      for (const character of VARIANT_ALPHABET) {
+        const inserted = before + character + candidate.slice(i);
+        if (found(inserted)) return inserted;
+        if (i < length && character !== candidate[i]) {
+          const replaced = before + character + candidate.slice(i + 1);
+          if (found(replaced)) return replaced;
+        }
+      }
     }
     return null;
   }

@@ -109,3 +109,22 @@ test("the documented company-name rule warns about lookalikes but not the domain
     for (const host of quiet) assert.equal(regex.test(program, host, { steps: 1e6 }), false, `${pattern}: ${host}`);
   }
 });
+
+// Host lists may be 512 KiB, but a warning list keeps its own 64 KiB limit, also while
+// it is being downloaded.
+test("a remote warning list stops downloading at its own size limit", async () => {
+  let reads = 0;
+  const chunk = new Uint8Array(16 * 1024).fill(32);
+  const response = { ok: true, url: "https://lists.example.org/w.json",
+    headers: { get(name) { return name === "content-type" ? "application/json" : null; } },
+    body: { getReader() { return {
+      async read() { reads++; return { done: false, value: chunk }; },
+      async cancel() {}
+    }; } } };
+  await assert.rejects(warnings.fetchList(response.url, async () => response), /importTooLarge/);
+  assert.equal(reads, warnings.MAX_BYTES / chunk.length + 1);
+  const declared = { ...response, headers: { get(name) {
+    return name === "content-type" ? "application/json" :
+      name === "content-length" ? String(warnings.MAX_BYTES + 1) : null; } } };
+  await assert.rejects(warnings.fetchList(response.url, async () => declared), /importTooLarge/);
+});

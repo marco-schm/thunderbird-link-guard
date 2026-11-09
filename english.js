@@ -320,7 +320,7 @@ globalThis.LinkGuardEnglish = {
     "message": "Check remote list"
   },
   "importSecurityHint": {
-    "message": "Remote servers must allow CORS. No message content is sent. At most 64 KiB, 500 hostnames and 20 lists; no redirects. Load lists only from trusted sources."
+    "message": "Remote servers must allow CORS. No message content is sent. At most 512 KiB, 5,000 hostnames and 20 lists; no redirects. Load lists only from trusted sources."
   },
   "importPreviewTitle": {
     "message": "Preview"
@@ -353,7 +353,12 @@ globalThis.LinkGuardEnglish = {
     "message": "Loading and checking list …"
   },
   "importTooLarge": {
-    "message": "List is too large (maximum 64 KiB)."
+    "message": "List is too large (maximum $SIZE$ KiB).",
+    "placeholders": {
+      "size": {
+        "content": "$1"
+      }
+    }
   },
   "importFormat": {
     "message": "Invalid list format. Expected: format, version, name, category, and hosts."
@@ -412,7 +417,12 @@ globalThis.LinkGuardEnglish = {
     }
   },
   "hostLimit": {
-    "message": "Up to 500 hostnames per list."
+    "message": "Up to $LIMIT$ hostnames per list.",
+    "placeholders": {
+      "limit": {
+        "content": "$1"
+      }
+    }
   },
   "hostFormatHint": {
     "message": "Exact hosts have no wildcard. A whole-domain rule uses *.example.com and includes example.com itself."

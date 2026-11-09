@@ -318,7 +318,7 @@
     "message": "Sprawdź zdalną listę"
   },
   "importSecurityHint": {
-    "message": "Zdalny serwer musi zezwalać na CORS. Treść wiadomości nie jest wysyłana. Maksymalnie 64 KiB, 500 nazw hostów i 20 list; bez przekierowań. Wczytuj listy tylko z zaufanych źródeł."
+    "message": "Zdalny serwer musi zezwalać na CORS. Treść wiadomości nie jest wysyłana. Maksymalnie 512 KiB, 5000 nazw hostów i 20 list; bez przekierowań. Wczytuj listy tylko z zaufanych źródeł."
   },
   "importPreviewTitle": {
     "message": "Podgląd"
@@ -351,7 +351,12 @@
     "message": "Wczytywanie i sprawdzanie listy…"
   },
   "importTooLarge": {
-    "message": "Lista jest zbyt duża (maksymalnie 64 KiB)."
+    "message": "Lista jest zbyt duża (maksymalnie $SIZE$ KiB).",
+    "placeholders": {
+      "size": {
+        "content": "$1"
+      }
+    }
   },
   "importFormat": {
     "message": "Nieprawidłowy format listy. Wymagane: format, version, name, category i hosts."
@@ -410,7 +415,12 @@
     }
   },
   "hostLimit": {
-    "message": "Do 500 nazw hostów na listę."
+    "message": "Do $LIMIT$ nazw hostów na listę.",
+    "placeholders": {
+      "limit": {
+        "content": "$1"
+      }
+    }
   },
   "hostFormatHint": {
     "message": "Dokładne hosty nie mają symbolu wieloznacznego. Reguła całej domeny używa *.example.com i obejmuje też example.com."

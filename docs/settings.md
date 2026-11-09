@@ -84,7 +84,7 @@ category and number of entries.
   **blocklists** only; on by default. See [Automatic updates](lists.md#automatic-updates).
 - **Remove list** – removes the list on the next save.
 
-Up to 20 lists, each with up to 500 entries.
+Up to 20 lists, each with up to 5,000 entries.
 
 ## Warnings
 

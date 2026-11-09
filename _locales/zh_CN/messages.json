@@ -318,7 +318,7 @@
     "message": "检查远程列表"
   },
   "importSecurityHint": {
-    "message": "远程服务器必须允许 CORS。不会发送邮件内容。最多 64 KiB、500 个主机名和 20 个列表；不允许重定向。只加载可信来源的列表。"
+    "message": "远程服务器必须允许 CORS。不会发送邮件内容。最多 512 KiB、5,000 个主机名和 20 个列表；不允许重定向。只加载可信来源的列表。"
   },
   "importPreviewTitle": {
     "message": "预览"
@@ -351,7 +351,12 @@
     "message": "正在加载并检查列表…"
   },
   "importTooLarge": {
-    "message": "列表过大（最多 64 KiB）。"
+    "message": "列表过大（最多 $SIZE$ KiB）。",
+    "placeholders": {
+      "size": {
+        "content": "$1"
+      }
+    }
   },
   "importFormat": {
     "message": "列表格式无效。应包含 format、version、name、category 和 hosts。"
@@ -410,7 +415,12 @@
     }
   },
   "hostLimit": {
-    "message": "每个列表最多 500 个主机名。"
+    "message": "每个列表最多 $LIMIT$ 个主机名。",
+    "placeholders": {
+      "limit": {
+        "content": "$1"
+      }
+    }
   },
   "hostFormatHint": {
     "message": "精确主机不使用通配符。整个域名的规则写作 *.example.com，也包括 example.com 本身。"

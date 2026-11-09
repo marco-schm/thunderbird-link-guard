@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+- Imported lists may now hold 5,000 entries and 512 KiB each (previously 500 and
+  64 KiB), still at most 20 lists. Warning lists and your own rule cards keep their
+  limits. Host checks use indexed lookups, the lookalike check covers every trusted
+  domain instead of the first 10,000, and the background reuses its state until
+  settings change, so a message with many links stays fast with full lists.
 - Notice: a blocked host offers only **Unblock**. After a confirmation – which names the
   whole domain when one of your whole-domain blocks applies – the block is removed and
   the usual actions return. A host blocked by an imported list shows **Open settings**

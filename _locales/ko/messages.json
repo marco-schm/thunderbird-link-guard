@@ -318,7 +318,7 @@
     "message": "원격 목록 확인"
   },
   "importSecurityHint": {
-    "message": "원격 서버는 CORS를 허용해야 합니다. 메시지 내용은 전송되지 않습니다. 최대 64 KiB, 호스트 이름 500개, 목록 20개이며 리디렉션은 지원하지 않습니다. 신뢰할 수 있는 출처의 목록만 불러오세요."
+    "message": "원격 서버는 CORS를 허용해야 합니다. 메시지 내용은 전송되지 않습니다. 최대 512 KiB, 호스트 이름 5,000개, 목록 20개이며 리디렉션은 지원하지 않습니다. 신뢰할 수 있는 출처의 목록만 불러오세요."
   },
   "importPreviewTitle": {
     "message": "미리보기"
@@ -351,7 +351,12 @@
     "message": "목록을 불러와 확인하는 중 …"
   },
   "importTooLarge": {
-    "message": "목록이 너무 큽니다(최대 64 KiB)."
+    "message": "목록이 너무 큽니다(최대 $SIZE$ KiB).",
+    "placeholders": {
+      "size": {
+        "content": "$1"
+      }
+    }
   },
   "importFormat": {
     "message": "목록 형식이 올바르지 않습니다. 필요한 항목: format, version, name, category, hosts."
@@ -410,7 +415,12 @@
     }
   },
   "hostLimit": {
-    "message": "목록당 호스트 이름은 최대 500개입니다."
+    "message": "목록당 호스트 이름은 최대 $LIMIT$개입니다.",
+    "placeholders": {
+      "limit": {
+        "content": "$1"
+      }
+    }
   },
   "hostFormatHint": {
     "message": "정확한 호스트에는 와일드카드가 없습니다. 도메인 전체 규칙은 *.example.com 형식이며 example.com 자체도 포함합니다."

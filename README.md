@@ -66,9 +66,9 @@ Settings can import lists of hosts from a local file or an HTTPS URL. Every list
 | --- | --- |
 | `kind` | `"allow"` (default) or `"block"`. |
 | `category` | `news`, `social`, `companies` or `other`. |
-| `hosts` | Up to 500 unique DNS hostnames. No URLs, ports, IP addresses or other wildcards. **Blocklists only** may also use `*.example.net`, which blocks the registrable domain and all subdomains. |
+| `hosts` | Up to 5,000 unique DNS hostnames. No URLs, ports, IP addresses or other wildcards. **Blocklists only** may also use `*.example.net`, which blocks the registrable domain and all subdomains. |
 
-Limits: 64 KiB and 500 hosts per list, at most 20 lists. Examples: [allowlist](examples/hosts-example.json), [blocklist](examples/blocklist-example.json).
+Limits: 512 KiB and 5,000 hosts per list, at most 20 lists. Examples: [allowlist](examples/hosts-example.json), [blocklist](examples/blocklist-example.json).
 
 **Remote sources** must use HTTPS with CORS. Credentials, redirects, custom ports, query strings and fragments are rejected, and each fetch is bounded in time and size.
 
