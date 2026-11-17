@@ -28,7 +28,7 @@ Link Guard makes web links in displayed email inactive until you approve their d
 1. Download the XPI from the [latest release](https://github.com/marco-schm/thunderbird-link-guard/releases), or [build it](#development) from source.
 2. In Thunderbird, open **Add-ons and Themes**, choose **Install Add-on From File**, and select the XPI.
 
-Thunderbird 151 or newer is required. Link Guard requests only `messagesRead`, `scripting` and `storage`, and no host permissions. It is developed and tested with Thunderbird 159 on macOS; other versions and platforms are untested.
+Thunderbird 151 or newer is required. Link Guard requests only `messagesModify`, `messagesRead`, `scripting` and `storage`, and no host permissions. It is developed and tested with Thunderbird 159 on macOS; other versions and platforms are untested.
 
 ## How it works
 

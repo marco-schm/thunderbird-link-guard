@@ -47,6 +47,21 @@ test("the package script ships every file the manifest loads", () => {
     manifest.message_display_scripts[0].js.indexOf("display.js"));
 });
 
+// addons.thunderbird.net rejects a manifest with message_display_scripts but without
+// messagesModify, and rejects files in the XPI that the add-on does not use.
+test("the manifest declares messagesModify for its message display scripts", () => {
+  const manifest = require("../manifest.json");
+  assert.ok(manifest.message_display_scripts.length > 0);
+  assert.ok(manifest.permissions.includes("messagesModify"));
+});
+
+test("the package script ships no licence or documentation files", () => {
+  const script = fs.readFileSync(path.join(__dirname, "../scripts/package.sh"), "utf8");
+  const words = script.split(/\s+/);
+  assert.ok(words.includes("vendor/public_suffix_list.dat"));
+  for (const word of words) assert.doesNotMatch(word, /\.(txt|md)$|^vendor\/README|MPL/, word);
+});
+
 test("the panel stylesheet is exposed as a string for the shadow root", () => {
   const context = vm.createContext({});
   vm.runInContext(fs.readFileSync(path.join(__dirname, "../panel-style.js"), "utf8"), context);
