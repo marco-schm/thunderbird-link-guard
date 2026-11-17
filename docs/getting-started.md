@@ -49,11 +49,12 @@ npm run package          # creates dist/link-guard-<version>.xpi
 
 ## Permissions
 
-Link Guard asks for three permissions and no access to any website:
+Link Guard asks for four permissions and no access to any website:
 
 | Permission | Why it is needed |
 | --- | --- |
-| `messagesRead` | to run in displayed messages and to know when another message is shown |
+| `messagesModify` | to run in displayed messages, where it turns links off and shows its notice |
+| `messagesRead` | to know which message is displayed and when another message is shown |
 | `scripting` | to protect messages that were already open when Link Guard was installed or updated |
 | `storage` | to keep your approvals, blocks, lists and settings on this computer |
 

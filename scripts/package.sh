@@ -16,6 +16,6 @@ zip -q -X "$archive" \
   _locales/cs/messages.json _locales/da/messages.json _locales/fi/messages.json \
   _locales/hu/messages.json _locales/ko/messages.json _locales/nl/messages.json \
   _locales/sv/messages.json _locales/tr/messages.json _locales/uk/messages.json \
-  vendor/public_suffix_list.dat vendor/MPL-2.0.txt
+  vendor/public_suffix_list.dat
 unzip -t "$archive" >/dev/null
 printf 'Built %s\n' "$archive"

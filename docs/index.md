@@ -56,7 +56,7 @@ your browser. An approved host can still serve harmful content. See
 | | |
 | --- | --- |
 | Thunderbird | 151 or newer; developed and tested with Thunderbird 159 on macOS |
-| Permissions | `messagesRead`, `scripting`, `storage`; no host permissions |
+| Permissions | `messagesModify`, `messagesRead`, `scripting`, `storage`; no host permissions |
 | Languages | 20, following Thunderbird's interface language; others fall back to English |
 | Network access | none, except list sources you add yourself |
 | License | MIT; the bundled Public Suffix List is MPL 2.0 |
