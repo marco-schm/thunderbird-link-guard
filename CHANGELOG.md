@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.14.2 — 2026-11-17
+
+- Link Guard now also requests the `messagesModify` permission, which Thunderbird's add-on
+  review requires for message display scripts. Link Guard behaves exactly as before;
+  Thunderbird asks once to confirm the new permission when it updates the add-on.
+- The XPI no longer contains `vendor/MPL-2.0.txt`. The bundled Public Suffix List keeps
+  its MPL 2.0 notice in its own header; the licence text stays in the repository.
+
 ## 0.14.1 — 2026-11-09
 
 - **Allow permanently** and **Block** ask again whether the decision covers only this host
