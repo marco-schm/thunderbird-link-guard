@@ -1,6 +1,6 @@
 {
   "extensionName": {
-    "message": "Guardia dei collegamenti"
+    "message": "Link Guard"
   },
   "extensionDescription": {
     "message": "Controlla i collegamenti Web nelle e-mail e richiede l'approvazione esplicita per destinazioni sospette."
@@ -12,13 +12,13 @@
     "message": "Link Guard sta controllando i collegamenti in questo messaggio"
   },
   "toolbarDisabled": {
-    "message": "La protezione del collegamento è disabilitata"
+    "message": "Link Guard è disattivato"
   },
   "toolbarOverflow": {
     "message": "Link Guard: troppi link; i collegamenti rimanenti sono bloccati"
   },
   "toolbarPending": {
-    "message": "Protezione link: $COUNT$ link bloccati",
+    "message": "Link Guard: $COUNT$ link bloccati",
     "placeholders": {
       "count": {
         "content": "$1"
@@ -37,7 +37,7 @@
     }
   },
   "panelSummary": {
-    "message": "Collegamenti web $TOTAL$ controllati · $BLOCKED$ bloccati",
+    "message": "$TOTAL$ collegamenti web controllati · $BLOCKED$ bloccati",
     "placeholders": {
       "total": {
         "content": "$1"
@@ -204,10 +204,10 @@
     "message": "Scegli i nomi host esatti di cui ti fidi per i collegamenti Web nelle e-mail."
   },
   "enabledLabel": {
-    "message": "Abilita la protezione del collegamento"
+    "message": "Attiva Link Guard"
   },
   "enabledHint": {
-    "message": "La disattivazione della protezione rende nuovamente selezionabili i collegamenti direttamente."
+    "message": "Disattivando la protezione, i collegamenti tornano a essere cliccabili direttamente."
   },
   "destinationsLabel": {
     "message": "Mostra la destinazione dei link"
@@ -248,7 +248,7 @@
     "message": "Usa *.example.com per approvare il dominio e i suoi sottodomini, incluso example.com. Gli host con contenuti condivisi restano separati; fallo solo per domini che controlli."
   },
   "broadInvalid": {
-    "message": "$DOMAIN$ non è un dominio registrabile secondo l'elenco dei suffissi pubblici in bundle.",
+    "message": "$DOMAIN$ non è un dominio registrabile secondo la Public Suffix List inclusa.",
     "placeholders": {
       "domain": {
         "content": "$1"
@@ -277,19 +277,19 @@
     "message": "Anteprima"
   },
   "refreshTitle": {
-    "message": "Aggiornamento della revisione"
+    "message": "Esamina l'aggiornamento"
   },
   "stageImport": {
-    "message": "Stage come elenco disabili"
+    "message": "Prepara come elenco disattivato"
   },
   "stageRefresh": {
-    "message": "Aggiornamento sul palco"
+    "message": "Prepara l'aggiornamento"
   },
   "cancelPreview": {
     "message": "Annulla"
   },
   "refreshPreview": {
-    "message": "Esaminare l'aggiornamento remoto"
+    "message": "Esamina l'aggiornamento remoto"
   },
   "removeList": {
     "message": "Rimuovi elenco"
@@ -421,7 +421,7 @@
     }
   },
   "riskyApprovalWarning": {
-    "message": "Questo breve collegamento nasconde la sua destinazione. Consentirlo per questo messaggio?"
+    "message": "Questo link breve nasconde la sua destinazione. Consentirlo per questo messaggio?"
   },
   "riskyApprovalConfirm": {
     "message": "Consenti per questo messaggio"
@@ -470,7 +470,7 @@
     }
   },
   "autoRefreshReview": {
-    "message": "L'aggiornamento automatico non è stato applicato perché è grande o bloccherebbe qualcosa che hai approvato. L'elenco precedente resta attivo; usa «Esaminare l'aggiornamento remoto»."
+    "message": "L'aggiornamento automatico non è stato applicato perché è grande o bloccherebbe qualcosa che hai approvato. L'elenco precedente resta attivo; usa «Esamina l'aggiornamento remoto»."
   },
   "warningsTitle": {
     "message": "Avvisi"

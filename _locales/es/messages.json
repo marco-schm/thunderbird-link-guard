@@ -1,12 +1,12 @@
 {
   "extensionName": {
-    "message": "Guardia de enlace"
+    "message": "Link Guard"
   },
   "extensionDescription": {
     "message": "Comprueba los enlaces web en el correo electrónico y requiere aprobación explícita para destinos sospechosos."
   },
   "optionsAction": {
-    "message": "Link Guard – configuración abierta"
+    "message": "Link Guard – abrir configuración"
   },
   "toolbarInitial": {
     "message": "Link Guard está revisando los enlaces en este mensaje"
@@ -183,7 +183,7 @@
     "message": "Los dominios mostrados y reales difieren"
   },
   "reason_redirectUnsafe": {
-    "message": "El objetivo de redireccionamiento no es seguro o no se puede verificar"
+    "message": "El destino de la redirección no es seguro o no se puede comprobar"
   },
   "overflowNotice": {
     "message": "Más de 500 enlaces: los enlaces adicionales permanecen bloqueados y no aparecen aquí."
@@ -201,10 +201,10 @@
     "message": "Configuración de Link Guard"
   },
   "settingsSubtitle": {
-    "message": "Elija en qué nombres de host exactos confía para los enlaces web en el correo electrónico."
+    "message": "Elige en qué nombres de host exactos confías para los enlaces web del correo electrónico."
   },
   "enabledLabel": {
-    "message": "Habilitar protección de enlace"
+    "message": "Activar Link Guard"
   },
   "enabledHint": {
     "message": "Al desactivar la protección, se puede volver a hacer clic directamente en los enlaces."
@@ -239,13 +239,13 @@
     "message": "Bloquear dominios completos"
   },
   "blockedDomainsHint": {
-    "message": "Use *.example.com para bloquear el dominio y todos sus subdominios, incluido example.com. Esta lista prevalece sobre las aprobaciones e importaciones."
+    "message": "Usa *.example.com para bloquear el dominio y todos sus subdominios, incluido example.com. Esta lista prevalece sobre las aprobaciones e importaciones."
   },
   "broadTitle": {
     "message": "Aprobar dominios completos"
   },
   "broadHint": {
-    "message": "Use *.example.com para aprobar el dominio y sus subdominios, incluido example.com. Los hosts de contenido compartido siguen separados; úselo solo en dominios que controle."
+    "message": "Usa *.example.com para aprobar el dominio y sus subdominios, incluido example.com. Los hosts de contenido compartido siguen separados; úsalo solo en dominios que controles."
   },
   "broadInvalid": {
     "message": "$DOMAIN$ no es un dominio registrable según la Lista pública de sufijos incluida.",
@@ -259,10 +259,10 @@
     "message": "Listas personalizadas y remotas"
   },
   "importsHint": {
-    "message": "Importe un archivo JSON o vincule una lista HTTPS. Cada lista se muestra antes de la activación y se aplica solo después de su revisión. Los cambios remotos en listas de permitidos requieren su aprobación nuevamente."
+    "message": "Importa un archivo JSON o vincula una lista HTTPS. Cada lista se muestra antes de activarse y solo se aplica después de que la revises. Los cambios remotos en listas de permitidos requieren de nuevo tu aprobación."
   },
   "importFileLabel": {
-    "message": "Elija un archivo JSON"
+    "message": "Elige un archivo JSON"
   },
   "importUrlLabel": {
     "message": "URL HTTPS de una lista JSON"
@@ -271,7 +271,7 @@
     "message": "Consultar lista remota"
   },
   "importSecurityHint": {
-    "message": "Los servidores remotos deben permitir CORS. No se envía ningún contenido del mensaje. Como máximo 512 KiB, 5000 nombres de host y 20 listas; sin redirecciones. Cargue listas solo de fuentes confiables."
+    "message": "Los servidores remotos deben permitir CORS. No se envía ningún contenido del mensaje. Como máximo 512 KiB, 5000 nombres de host y 20 listas; sin redirecciones. Carga listas solo de fuentes de confianza."
   },
   "importPreviewTitle": {
     "message": "Vista previa"
@@ -280,10 +280,10 @@
     "message": "Revisar actualización"
   },
   "stageImport": {
-    "message": "Etapa como lista de lesionados"
+    "message": "Preparar como lista desactivada"
   },
   "stageRefresh": {
-    "message": "Actualización de etapa"
+    "message": "Preparar actualización"
   },
   "cancelPreview": {
     "message": "Cancelar"
@@ -298,10 +298,10 @@
     "message": "Lista preparada. Guarda los cambios de abajo para aplicarla."
   },
   "importReady": {
-    "message": "Lista comprobada. Revise los nombres de host en la vista previa."
+    "message": "Lista comprobada. Revisa los nombres de host en la vista previa."
   },
   "importLoading": {
-    "message": "Cargando y revisando lista..."
+    "message": "Cargando y comprobando la lista…"
   },
   "importTooLarge": {
     "message": "La lista es demasiado grande (máximo $SIZE$ KiB).",
@@ -321,7 +321,7 @@
     "message": "Solo se permite una URL de archivo HTTPS sin credenciales, puerto, consulta o fragmento."
   },
   "importFetch": {
-    "message": "La lista remota no se pudo cargar de forma segura. Verifique HTTPS, JSON, CORS y redirecciones."
+    "message": "No se pudo cargar la lista remota de forma segura. Comprueba HTTPS, JSON, CORS y las redirecciones."
   },
   "importListLimit": {
     "message": "Como máximo 20 listas importadas."
@@ -333,7 +333,7 @@
     "message": "Noticias"
   },
   "category_social": {
-    "message": "redes sociales"
+    "message": "Redes sociales"
   },
   "category_companies": {
     "message": "Empresas"
@@ -351,13 +351,13 @@
     "message": "Configuración guardada."
   },
   "settingsLoadFailed": {
-    "message": "No se pudieron cargar las configuraciones."
+    "message": "No se pudo cargar la configuración."
   },
   "settingsSaveFailed": {
-    "message": "No se pudieron guardar los ajustes."
+    "message": "No se pudo guardar la configuración."
   },
   "settingsChanged": {
-    "message": "Las listas cambiaron en otros lugares. Vuelva a cargar esta página antes de guardar."
+    "message": "Las listas se cambiaron en otro lugar. Vuelve a cargar esta página antes de guardar."
   },
   "invalidHostLine": {
     "message": "Nombre de host no válido en la línea $LINE$.",
@@ -421,7 +421,7 @@
     }
   },
   "riskyApprovalWarning": {
-    "message": "Este breve enlace oculta su destino. ¿Permitirlo para este mensaje?"
+    "message": "Este enlace corto oculta su destino. ¿Permitirlo para este mensaje?"
   },
   "riskyApprovalConfirm": {
     "message": "Permitir para este mensaje"
@@ -476,7 +476,7 @@
     "message": "Advertencias"
   },
   "warningsHint": {
-    "message": "Elija qué comprobaciones generan una advertencia y añada las suyas. Un enlace con advertencia sigue inactivo hasta que apruebe su host exacto."
+    "message": "Elige qué comprobaciones generan una advertencia y añade las tuyas. Un enlace con advertencia sigue inactivo hasta que apruebes su host exacto."
   },
   "builtinWarningsTitle": {
     "message": "Advertencias integradas"
@@ -574,7 +574,7 @@
     "message": "Listas de advertencias"
   },
   "warningListsHint": {
-    "message": "Importe reglas desde un archivo JSON o una URL HTTPS. Las listas se muestran para revisarlas y empiezan desactivadas. Solo pueden añadir advertencias, nunca aprobar un enlace, y las listas remotas solo cambian cuando las actualiza."
+    "message": "Importa reglas desde un archivo JSON o una URL HTTPS. Las listas se muestran para revisarlas y empiezan desactivadas. Solo pueden añadir advertencias, nunca aprobar un enlace, y las listas remotas solo cambian cuando las actualizas."
   },
   "warningListFormat": {
     "message": "Lista de advertencias no válida. Se esperaba: format \"link-guard-warnings\", version 1, name y rules."

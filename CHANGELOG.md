@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.14.3 — 2026-11-20
+
+- Corrected machine-translated strings in Spanish, French, Italian and Brazilian
+  Portuguese, among them the button that stages an imported list, which some languages
+  rendered as a list of injured or disabled people. The add-on name stays "Link Guard"
+  in every language, and the Spanish strings now address the user consistently.
+  One Danish button label is clearer. Link Guard behaves exactly as in 0.14.2.
+
 ## 0.14.2 — 2026-11-17
 
 - Link Guard now also requests the `messagesModify` permission, which Thunderbird's add-on

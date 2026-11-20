@@ -1,6 +1,6 @@
 {
   "extensionName": {
-    "message": "Garde de lien"
+    "message": "Link Guard"
   },
   "extensionDescription": {
     "message": "Vérifie les liens Web dans les e-mails et exige une approbation explicite pour les destinations suspectes."
@@ -198,7 +198,7 @@
     "message": "La décision n'a pas pu être enregistrée. Le lien reste bloqué."
   },
   "settingsTitle": {
-    "message": "Paramètres de protection des liens"
+    "message": "Paramètres de Link Guard"
   },
   "settingsSubtitle": {
     "message": "Choisissez les noms d'hôtes exacts auxquels vous faites confiance pour les liens Web dans les e-mails."
@@ -277,19 +277,19 @@
     "message": "Aperçu"
   },
   "refreshTitle": {
-    "message": "Mise à jour de l'examen"
+    "message": "Examiner la mise à jour"
   },
   "stageImport": {
-    "message": "Étape en tant que liste désactivée"
+    "message": "Préparer comme liste désactivée"
   },
   "stageRefresh": {
-    "message": "Mise à jour de l'étape"
+    "message": "Préparer la mise à jour"
   },
   "cancelPreview": {
     "message": "Annuler"
   },
   "refreshPreview": {
-    "message": "Vérifier la mise à jour à distance"
+    "message": "Examiner la mise à jour distante"
   },
   "removeList": {
     "message": "Supprimer la liste"
@@ -470,7 +470,7 @@
     }
   },
   "autoRefreshReview": {
-    "message": "La mise à jour automatique n'a pas été appliquée, car elle est importante ou bloquerait quelque chose que vous avez approuvé. La liste précédente reste active ; utilisez « Vérifier la mise à jour à distance »."
+    "message": "La mise à jour automatique n'a pas été appliquée, car elle est importante ou bloquerait quelque chose que vous avez approuvé. La liste précédente reste active ; utilisez « Examiner la mise à jour distante »."
   },
   "warningsTitle": {
     "message": "Avertissements"
@@ -719,7 +719,7 @@
     }
   },
   "scopePrompt": {
-    "message": "Quel champ d’application doit être approuvé de façon permanente ?"
+    "message": "Quelle portée faut-il approuver définitivement ?"
   },
   "blockScopePrompt": {
     "message": "Quelle portée faut-il bloquer ?"
