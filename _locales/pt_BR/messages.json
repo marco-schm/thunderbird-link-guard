@@ -1,6 +1,6 @@
 {
   "extensionName": {
-    "message": "Guarda de ligação"
+    "message": "Link Guard"
   },
   "extensionDescription": {
     "message": "Verifica links da web em e-mails e exige aprovação explícita para destinos suspeitos."
@@ -183,7 +183,7 @@
     "message": "Os domínios exibidos e reais são diferentes"
   },
   "reason_redirectUnsafe": {
-    "message": "O alvo de redirecionamento não é seguro ou não pode ser verificado"
+    "message": "O destino do redirecionamento não é seguro ou não pode ser verificado"
   },
   "overflowNotice": {
     "message": "Mais de 500 links: links adicionais permanecem bloqueados e não estão listados aqui."
@@ -277,13 +277,13 @@
     "message": "Visualização"
   },
   "refreshTitle": {
-    "message": "Revisão de atualização"
+    "message": "Revisar atualização"
   },
   "stageImport": {
-    "message": "Preparar como lista de deficientes"
+    "message": "Preparar como lista desativada"
   },
   "stageRefresh": {
-    "message": "Atualização de estágio"
+    "message": "Preparar atualização"
   },
   "cancelPreview": {
     "message": "Cancelar"
@@ -512,7 +512,7 @@
     "message": "Minhas regras de aviso"
   },
   "customRulesHint": {
-    "message": "Uma regra mostra seu rótulo como aviso quando o padrão corresponde ao host, à URL completa ou ao texto do link. Padrões são expressões regulares sem distinção de maiúsculas, com até 200 caracteres, sem referências anteriores, lookaround ou \\b, avaliadas em tempo linear."
+    "message": "Uma regra mostra seu rótulo como aviso quando o padrão corresponde ao host, à URL completa ou ao texto do link. Padrões são expressões regulares sem distinção de maiúsculas, com até 200 caracteres, sem retrorreferências, lookaround ou \\b, avaliadas em tempo linear."
   },
   "ruleLabel": {
     "message": "Rótulo"
@@ -556,7 +556,7 @@
     "message": "o padrão tem mais de 200 caracteres."
   },
   "regexUnsupported": {
-    "message": "referências anteriores, lookaround, \\b e escapes \\u não são suportados."
+    "message": "retrorreferências, lookaround, \\b e escapes \\u não são suportados."
   },
   "regexTooComplex": {
     "message": "o padrão é complexo demais."
